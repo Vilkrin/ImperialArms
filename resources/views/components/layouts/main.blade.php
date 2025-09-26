@@ -38,37 +38,37 @@
     <nav class="fixed top-0 w-full z-50 bg-[hsl(var(--background)/0.8)] backdrop-blur-md border-b border-border">
       <div class="container mx-auto px-4">
         <div class="flex items-center justify-between h-16">
-          <a href="index.html" class="flex items-center space-x-3">
+          <a href="{{ route('home') }}" class="flex items-center space-x-3">
             <i class="fa-solid fa-shield text-primary glow-effect text-2xl"></i>
             <span class="font-orbitron text-xl font-bold text-gradient">IMPERIAL ARMS</span>
           </a>
 
           <div class="hidden md:flex items-center space-x-8">
-            <a href="index.html" class="flex items-center space-x-2 text-primary">
+            <a href="{{ route('home') }}" class="flex items-center space-x-2 text-primary">
               <i class="fa-solid fa-shield"></i>
               <span class="font-exo">Home</span>
             </a>
-            <a href="about.html" class="flex items-center space-x-2 text-foreground/80 hover:text-primary transition-colors">
+            <a href="{{ route('about') }}" class="flex items-center space-x-2 text-foreground/80 hover:text-primary transition-colors">
               <i class="fa-solid fa-users"></i>
               <span class="font-exo">About</span>
             </a>
-            <a href="fleet.html" class="flex items-center space-x-2 text-foreground/80 hover:text-primary transition-colors">
+            <a href="{{ route('fleet') }}" class="flex items-center space-x-2 text-foreground/80 hover:text-primary transition-colors">
               <i class="fa-solid fa-ship"></i>
               <span class="font-exo">Fleet Roster</span>
             </a>
-            <a href="#" class="flex items-center space-x-2 text-foreground/80 hover:text-primary transition-colors">
+            <a href="{{ route('mission-board') }}" class="flex items-center space-x-2 text-foreground/80 hover:text-primary transition-colors">
               <i class="fa-solid fa-file-lines"></i>
               <span class="font-exo">Mission Board</span>
             </a>
-            <a href="recruitment.html" class="flex items-center space-x-2 text-foreground/80 hover:text-primary transition-colors">
+            <a href="{{ route('recruitment') }}" class="flex items-center space-x-2 text-foreground/80 hover:text-primary transition-colors">
               <i class="fa-solid fa-user-plus"></i>
               <span class="font-exo">Join Us</span>
             </a>
-            <a href="news.html" class="flex items-center space-x-2 text-foreground/80 hover:text-primary transition-colors">
+            <a href="{{ route('news') }}" class="flex items-center space-x-2 text-foreground/80 hover:text-primary transition-colors">
               <i class="fa-solid fa-tower-broadcast"></i>
               <span class="font-exo">News</span>
             </a>
-            <a href="contact.html" class="flex items-center space-x-2 text-foreground/80 hover:text-primary transition-colors">
+            <a href="{{ route('contact') }}" class="flex items-center space-x-2 text-foreground/80 hover:text-primary transition-colors">
               <i class="fa-solid fa-message"></i>
               <span class="font-exo">Contact</span>
             </a>

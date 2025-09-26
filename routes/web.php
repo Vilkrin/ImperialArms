@@ -14,6 +14,22 @@ Route::get('/about', function () {
     return view('about');
 })->name('about');
 
+Route::get('/fleet', function () {
+    return view('fleet');
+})->name('fleet');
+
+Route::get('/mission-board', function () {
+    return view('mission-board');
+})->name('mission-board');
+
+Route::get('/recruitment', function () {
+    return view('recruitment');
+})->name('recruitment');
+
+Route::get('/news', function () {
+    return view('news');
+})->name('news');
+
 Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
