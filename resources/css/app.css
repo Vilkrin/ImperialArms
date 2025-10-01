@@ -1,4 +1,3 @@
-@import './theme.css'; /* By Sheaf.dev */ 
 @import "tailwindcss";
 @import "../../vendor/livewire/flux/dist/flux.css";
 @import "../assets/fontawesome/css/fontawesome.css";
