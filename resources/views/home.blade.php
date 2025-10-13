@@ -2,54 +2,75 @@
 
     <!-- Hero Section -->
     <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 pb-32">
-      <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" style="background-image:url('../src/assets/ironclad-real.webp'); height: calc(100% + 200px); bottom:-200px;"></div>
-      <div class="absolute inset-0" style="background: linear-gradient(to bottom, hsl(var(--background)/0.7), hsl(var(--background)/0.6), hsl(var(--background)/0.8));"></div>
-
-      <div class="relative z-10 text-center max-w-4xl mx-auto px-4">
-        <div class="mx-auto w-fit mb-6">
-          <i class="fa-solid fa-shield text-primary mx-auto glow-effect text-6xl"></i>
+        <!-- Background Image -->
+        <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" style="background-image: url('assets/ironclad-real.webp'); height: calc(100% + 200px); bottom: -200px;">
+            <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/60 to-black/80"></div>
         </div>
 
-        <h1 class="font-orbitron text-5xl md:text-7xl font-bold mb-6">
-          <span class="text-gradient">IMPERIAL</span>
-          <span class="text-foreground"> ARMS</span>
-        </h1>
-        <p class="text-xl md:text-2xl text-foreground/80 mb-4 font-exo">Securing the Stars. Delivering Firepower.</p>
-        <p class="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto font-exo">Professional freight, logistics, and mercenary operations across the 'verse. Join the most disciplined and efficient organization in the galaxy.</p>
-
-        <!-- Quick Stats -->
-        <div class="flex flex-col md:flex-row items-center justify-center gap-8 mb-12">
-          <div class="flex items-center space-x-3 text-accent">
-            <i class="fa-solid fa-truck h-6 w-6"></i>
-            <span class="font-orbitron font-medium">LOGISTICS</span>
-          </div>
-          <div class="flex items-center space-x-3 text-primary">
-            <i class="fa-solid fa-bolt h-6 w-6"></i>
-            <span class="font-orbitron font-medium">FIREPOWER</span>
-          </div>
-          <div class="flex items-center space-x-3 text-destructive">
-            <!-- Heroicon: Shield -->
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.76v-.506c0-1.262 0-1.893.245-2.73a6.75 6.75 0 0 1 4.5-4.5c.837-.245 1.468-.245 2.73-.245h.55c1.262 0 1.893 0 2.73.245a6.75 6.75 0 0 1 4.5 4.5c.245.837.245 1.468.245 2.73v.55c0 1.262 0 1.893-.245 2.73a6.75 6.75 0 0 1-4.5 4.5c-.837.245-1.468.245-2.73.245h-.506c-1.653 0-2.48 0-3.28-.095a9 9 0 0 1-3.27-1.085c-.7-.392-1.34-.908-2.62-1.94a48.422 48.422 0 0 1-1.2-.98 56.49 56.49 0 0 0-.03-2.988Z" />
-            </svg>
-            <span class="font-orbitron font-medium">SECURITY</span>
-          </div>
+        <!-- Animated Background Elements -->
+        <div class="absolute inset-0 opacity-30">
+            <div class="absolute top-1/4 left-1/4 w-2 h-2 bg-amber-400 rounded-full animate-pulse"></div>
+            <div class="absolute top-1/3 right-1/3 w-1 h-1 bg-amber-400 rounded-full animate-pulse" style="animation-delay: 1s;"></div>
+            <div class="absolute bottom-1/4 left-1/3 w-1.5 h-1.5 bg-amber-400 rounded-full animate-pulse" style="animation-delay: 2s;"></div>
         </div>
 
-        <!-- CTA Buttons -->
-        <div class="flex flex-col md:flex-row items-center justify-center gap-4">
-          <a href="#" class="btn-imperial px-4 py-2 group gap-2 whitespace-nowrap rounded-md">
-            JOIN THE FLEET
-            <!-- Heroicon: Arrow Right -->
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-            </svg>
-          </a>
-          <a href="#" class="px-4 py-2 border border-[hsl(var(--primary)/0.5)] text-primary rounded-md hover:bg-[hsl(var(--primary)/0.1)] gap-2 whitespace-nowrap">
-            VIEW FLEET ROSTER
-          </a>
+        <!-- Content -->
+        <div class="relative z-10 text-center max-w-4xl mx-auto px-4">
+            <div>
+                <svg class="h-16 w-16 text-amber-400 mx-auto mb-6 drop-shadow-[0_0_20px_rgba(251,191,36,0.3)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.618 5.984A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                </svg>
+            </div>
+            
+            <h1 class="font-orbitron text-5xl md:text-7xl font-bold mb-6">
+                <span class="bg-gradient-to-br from-amber-400 to-amber-500 bg-clip-text text-transparent">IMPERIAL</span>
+                <span class="text-slate-100"> ARMS</span>
+            </h1>
+            
+            <p class="text-xl md:text-2xl text-slate-300 mb-4 font-exo">
+                Securing the Stars. Delivering Firepower.
+            </p>
+            
+            <p class="text-lg text-slate-400 mb-8 max-w-2xl mx-auto font-exo">
+                Professional freight, logistics, and mercenary operations across the 'verse. 
+                Join the most disciplined and efficient organization in the galaxy.
+            </p>
+
+            <!-- Quick Stats -->
+            <div class="flex flex-col md:flex-row items-center justify-center gap-8 mb-12">
+                <div class="flex items-center space-x-3 text-amber-400">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
+                    </svg>
+                    <span class="font-orbitron font-medium">LOGISTICS</span>
+                </div>
+                <div class="flex items-center space-x-3 text-amber-400">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                    </svg>
+                    <span class="font-orbitron font-medium">FIREPOWER</span>
+                </div>
+                <div class="flex items-center space-x-3 text-red-500">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.618 5.984A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                    </svg>
+                    <span class="font-orbitron font-medium">SECURITY</span>
+                </div>
+            </div>
+
+            <!-- CTA Buttons -->
+            <div class="flex flex-col md:flex-row items-center justify-center gap-4">
+                <a href="#" class="inline-flex items-center justify-center rounded-md bg-gradient-to-br from-amber-400 to-amber-500 text-slate-900 text-lg px-8 py-4 font-orbitron font-medium transition hover:-translate-y-0.5 shadow-[0_0_20px_rgba(251,191,36,0.3)] group">
+                    JOIN THE FLEET
+                    <svg class="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                    </svg>
+                </a>
+                <a href="fleet.html" class="inline-flex items-center justify-center rounded-md border border-amber-400/50 text-amber-400 text-lg px-8 py-4 hover:bg-amber-400/10 transition">
+                    VIEW FLEET ROSTER
+                </a>
+            </div>
         </div>
-      </div>
     </section>
 
 </x-layouts.main>

@@ -46,22 +46,38 @@ Route::middleware(['auth'])->group(function () {
     Route::get('settings/appearance', Appearance::class)->name('settings.appearance');
 });
 
+// Org Services
+Route::prefix('services')->name('services.')->middleware('auth', 'verified')->group(function () {
+
+    // Freight Services
+    Route::get('/freight', function () {
+        return view('services.freight');
+    })->name('freight');
+
+    // Then Whatever Other Servies You Want
+
+});
+
+// Members Area
+Route::prefix('members')->name('members.')->middleware('auth', 'verified', 'permission:view.member.dashboard')->group(function () {
+
+    // Main Page
+    // Route::get('/', [OrgController::class, 'index'])->name('index');
+
+});
+
 // Admin Dashboard - Grouping routes under 'admin' middleware and prefix for organization
 Route::prefix('admin')->name('admin.')->middleware('auth', 'verified', 'permission:access.admin.panel')->group(function () {
 
     // Dashboard Route
     Route::get('/', [DashboardController::class, 'dashboard'])->name('dashboard');
 
-    // URL Shortener
-    // Route::get('/url-shortener', [URLShortener::class, 'index'])->name('url.short');
-
-    // URL Redirect
-    // Route::get('/url-redirect', [URLRedirect::class, 'index'])->name('url.redirect');
-
     // User Management
     // Route::resource('users', UserController::class);
     // User Management - Roles & Permissions
     // Route::resource('roles', RoleController::class);
+
+
 });
 
 require __DIR__ . '/auth.php';

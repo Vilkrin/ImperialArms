@@ -33,143 +33,283 @@
         @fluxAppearance
 
 </head>
-  <body class="min-h-screen bg-background text-foreground font-exo overflow-x-hidden">
+<body class="bg-gradient-to-b from-slate-900 via-slate-950 to-slate-950 text-slate-100 font-exo overflow-x-hidden">
     <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 bg-[hsl(var(--background)/0.8)] backdrop-blur-md border-b border-border">
-      <div class="container mx-auto px-4">
-        <div class="flex items-center justify-between h-16">
-          <a href="{{ route('home') }}" class="flex items-center space-x-3">
-            <i class="fa-solid fa-shield text-primary glow-effect text-2xl"></i>
-            <span class="font-orbitron text-xl font-bold text-gradient">IMPERIAL ARMS</span>
-          </a>
+    <nav class="fixed top-0 w-full z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-700">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center space-x-3">
+                    <svg class="h-8 w-8 text-amber-400 drop-shadow-[0_0_20px_rgba(251,191,36,0.3)] transition-transform duration-300 hover:-translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.618 5.984A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                    </svg>
+                    <span class="font-orbitron text-xl font-bold bg-gradient-to-br from-amber-400 to-amber-500 bg-clip-text text-transparent">IMPERIAL ARMS</span>
+                </a>
 
-          <div class="hidden md:flex items-center space-x-8">
-            <a href="{{ route('home') }}" class="flex items-center space-x-2 text-primary">
-              <i class="fa-solid fa-shield"></i>
-              <span class="font-exo">Home</span>
-            </a>
-            <a href="{{ route('about') }}" class="flex items-center space-x-2 text-foreground/80 hover:text-primary transition-colors">
-              <i class="fa-solid fa-users"></i>
-              <span class="font-exo">About</span>
-            </a>
-            <a href="{{ route('fleet') }}" class="flex items-center space-x-2 text-foreground/80 hover:text-primary transition-colors">
-              <i class="fa-solid fa-ship"></i>
-              <span class="font-exo">Fleet Roster</span>
-            </a>
-            <a href="{{ route('mission-board') }}" class="flex items-center space-x-2 text-foreground/80 hover:text-primary transition-colors">
-              <i class="fa-solid fa-file-lines"></i>
-              <span class="font-exo">Mission Board</span>
-            </a>
-            <a href="{{ route('recruitment') }}" class="flex items-center space-x-2 text-foreground/80 hover:text-primary transition-colors">
-              <i class="fa-solid fa-user-plus"></i>
-              <span class="font-exo">Join Us</span>
-            </a>
-            <a href="{{ route('news') }}" class="flex items-center space-x-2 text-foreground/80 hover:text-primary transition-colors">
-              <i class="fa-solid fa-tower-broadcast"></i>
-              <span class="font-exo">News</span>
-            </a>
-            <a href="{{ route('contact') }}" class="flex items-center space-x-2 text-foreground/80 hover:text-primary transition-colors">
-              <i class="fa-solid fa-message"></i>
-              <span class="font-exo">Contact</span>
-            </a>
-          </div>
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="{{ route('home') }}" class="flex items-center space-x-2 transition-colors group {{ request()->routeIs('home') ? 'text-amber-400' : 'text-slate-300 hover:text-amber-400' }}">
+                        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.618 5.984A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                        </svg>
+                        <span class="font-exo">Home</span>
+                    </a>
+                    <a href="{{ route('about') }}" class="flex items-center space-x-2 transition-colors group {{ request()->routeIs('about') ? 'text-amber-400' : 'text-slate-300 hover:text-amber-400' }}">
+                        <svg class="h-4 w-4 group-hover:text-amber-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"/>
+                        </svg>
+                        <span class="font-exo">About</span>
+                    </a>
+                    <a href="{{ route('fleet') }}" class="flex items-center space-x-2 transition-colors group {{ request()->routeIs('fleet') ? 'text-amber-400' : 'text-slate-300 hover:text-amber-400' }}">
+                        <svg class="h-4 w-4 group-hover:text-amber-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"/>
+                        </svg>
+                        <span class="font-exo">Fleet Roster</span>
+                    </a>
+                    <a href="{{ route('mission-board') }}" class="flex items-center space-x-2 transition-colors group {{ request()->routeIs('mission-board') ? 'text-amber-400' : 'text-slate-300 hover:text-amber-400' }}">
+                        <svg class="h-4 w-4 group-hover:text-amber-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                        </svg>
+                        <span class="font-exo">Mission Board</span>
+                    </a>
+                    <a href="{{ route('recruitment') }}" class="flex items-center space-x-2 transition-colors group {{ request()->routeIs('recruitment') ? 'text-amber-400' : 'text-slate-300 hover:text-amber-400' }}">
+                        <svg class="h-4 w-4 group-hover:text-amber-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"/>
+                        </svg>
+                        <span class="font-exo">Join Us</span>
+                    </a>
+                    <a href="{{ route('news') }}" class="flex items-center space-x-2 transition-colors group {{ request()->routeIs('news') ? 'text-amber-400' : 'text-slate-300 hover:text-amber-400' }}">
+                        <svg class="h-4 w-4 group-hover:text-amber-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2h4a1 1 0 110 2h-1v12a2 2 0 01-2 2H6a2 2 0 01-2-2V6H3a1 1 0 010-2h4z"/>
+                        </svg>
+                        <span class="font-exo">News</span>
+                    </a>
+                    <a href="{{ route('contact') }}" class="flex items-center space-x-2 transition-colors group {{ request()->routeIs('contact') ? 'text-amber-400' : 'text-slate-300 hover:text-amber-400' }}">
+                        <svg class="h-4 w-4 group-hover:text-amber-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                        </svg>
+                        <span class="font-exo">Contact</span>
+                    </a>
 
-          <!-- Services Dropdown -->
-          <div class="relative group">
-              <button class="flex items-center space-x-2 text-foreground/80 hover:text-primary transition-colors">
-                  <svg class="h-4 w-4 group-hover:text-primary transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
-                  </svg>
-                  <span class="font-exo">Services</span>
-                  <svg class="h-3 w-3 group-hover:text-primary transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-                  </svg>
-              </button>
-          </div>
+                    <!-- Services Dropdown -->
+                    <div class="relative group">
+                        <flux:navbar>
+                            <flux:dropdown>
+                                <flux:navbar.item icon="briefcase" icon:trailing="chevron-down">Services</flux:navbar.item>
+                                <flux:navmenu> 
+                                    <flux:navmenu.item href="{{ route('services.freight') }}">Freight Transport</flux:navmenu.item>
+
+                                </flux:navmenu>
+                            </flux:dropdown>
+                        </flux:navbar>
+                    </div>
                     
-          <div class="flex items-center space-x-4">
-            <!-- Extra nav actions -->
-            @if (Route::has('login'))
-              @auth
-            <div class="flex items-center space-x-3">
-              <a href="members.html" class="btn-outline text-sm px-4 py-2">
-                  <span class="font-exo">Members Area</span>
-              </a>
-            </div>
-                 
-            <div class="flex items-center space-x-3">
-              <a href="#" class="px-3 py-1.5 border border-border rounded text-sm text-foreground/80 hover:text-primary hover:border-[hsl(var(--primary)/.5)] transition-colors font-exo">Members Area</a>
-              <a href="{{ url('/admin') }}" class="px-3 py-1.5 border border-border rounded text-sm text-foreground/80 hover:text-primary hover:border-[hsl(var(--primary)/.5)] transition-colors font-exo">Dashboard</a>              
-            </div>
-            @else
-            <div class="flex items-center space-x-3">
-              <a href="{{ route('login') }}" class="px-3 py-1.5 border border-border rounded text-sm text-foreground/80 hover:text-primary hover:border-[hsl(var(--primary)/.5)] transition-colors font-exo">Login</a>
-              @if (Route::has('register'))
-              <a href="{{ route('register') }}" class="btn-imperial text-sm px-4 py-2">Register</a>
-              @endif
-             @endauth
-            @endif
-            </div>
-          </div>
-        </div>
-      </div>
-    </nav>
+                   <!-- Auth Buttons -->
+                   @if (Route::has('login'))
+                      @auth
+                      @can('view.member.dashboard')
+                    <a href="#" class="inline-flex items-center rounded-md border border-slate-700/80 px-4 py-2 text-sm text-slate-200 hover:border-amber-400/50 hover:bg-amber-400/10 hover:text-amber-400 transition">
+                        <span class="font-exo">Members Area</span>
+                    </a>
+                    @endcan
+                    @can('access.admin.dashboard')
+                    <a href="{{ route('admin.dashboard') }}" class="inline-flex items-center rounded-md border border-slate-700/80 px-4 py-2 text-sm text-slate-200 hover:border-amber-400/50 hover:bg-amber-400/10 hover:text-amber-400 transition">
+                        <span class="font-exo">Dashboard</span>
+                    </a>
+                    @endcan
 
+                    @else
+                    <!-- Auth Buttons -->
+                    <div class="flex items-center space-x-3">
+                        <button class="inline-flex items-center rounded-md border border-slate-700/80 px-4 py-2 text-sm text-slate-200 hover:border-amber-400/50 hover:bg-amber-400/10 hover:text-amber-400 transition">Login</button>
+                    @if (Route::has('register'))
+                        <button class="inline-flex items-center rounded-md bg-gradient-to-br from-amber-400 to-amber-500 text-slate-900 px-4 py-2 text-sm font-orbitron font-medium transition hover:-translate-y-0.5 shadow-[0_0_20px_rgba(251,191,36,0.3)]">Register</button>
+                    </div>
+                  
+                      @endif
+                    @endauth
+                    @endif
+
+                </div>
+
+                <!-- Mobile menu button -->
+                <button id="mobile-menu-btn" class="md:hidden text-slate-300 hover:text-amber-400 transition-colors">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div id="mobile-menu" class="hidden md:hidden bg-slate-900/95 backdrop-blur-md border-t border-slate-700">
+                <div class="px-4 py-4 space-y-3">
+                    <a href="{{ route('home') }}" class="flex items-center space-x-3 transition-colors py-2 text-amber-400">
+                        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.618 5.984A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                        </svg>
+                        <span class="font-exo">Home</span>
+                    </a>
+                    <a href="{{ route('about') }}" class="flex items-center space-x-3 transition-colors py-2 text-slate-300 hover:text-amber-400">
+                        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"/>
+                        </svg>
+                        <span class="font-exo">About</span>
+                    </a>
+                    <a href="{{ route('fleet') }}" class="flex items-center space-x-3 transition-colors py-2 text-slate-300 hover:text-amber-400">
+                        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"/>
+                        </svg>
+                        <span class="font-exo">Fleet Roster</span>
+                    </a>
+                    <a href="{{ route('mission-board') }}" class="flex items-center space-x-3 transition-colors py-2 text-slate-300 hover:text-amber-400">
+                        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                        </svg>
+                        <span class="font-exo">Mission Board</span>
+                    </a>
+                    <a href="{{ route('recruitment') }}" class="flex items-center space-x-3 transition-colors py-2 text-slate-300 hover:text-amber-400">
+                        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"/>
+                        </svg>
+                        <span class="font-exo">Join Us</span>
+                    </a>
+                    <a href="{{ route('news') }}" class="flex items-center space-x-3 transition-colors py-2 text-slate-300 hover:text-amber-400">
+                        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2h4a1 1 0 110 2h-1v12a2 2 0 01-2 2H6a2 2 0 01-2-2V6H3a1 1 0 010-2h4z"/>
+                        </svg>
+                        <span class="font-exo">News</span>
+                    </a>
+                    <a href="{{ route('contact') }}" class="flex items-center space-x-3 transition-colors py-2 text-slate-300 hover:text-amber-400">
+                        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                        </svg>
+                        <span class="font-exo">Contact</span>
+                    </a>
+                    
+                    <!-- Mobile Services Section -->
+                    <div class="pt-3 border-t border-slate-700">
+                        <div class="text-sm font-semibold text-slate-400 mb-2 font-exo">Services</div>
+                        <a href="#" class="flex items-center space-x-3 transition-colors py-2 text-slate-300 hover:text-amber-400">
+                            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
+                            </svg>
+                            <span class="font-exo">Freight Transport</span>
+                        </a>
+                    </div>
+                    
+                    <!-- Mobile Button Items -->
+                    <div class="pt-3 border-t border-slate-700 space-y-2">
+                        <a href="admin/dashboard.html" class="inline-flex items-center rounded-md border border-slate-700/80 px-4 py-2 w-full justify-start text-sm text-slate-200 hover:border-amber-400/50 hover:bg-amber-400/10 hover:text-amber-400 transition">
+                            <span class="font-exo">Dashboard</span>
+                        </a>
+                        <a href="members.html" class="inline-flex items-center rounded-md border border-slate-700/80 px-4 py-2 w-full justify-start text-sm text-slate-200 hover:border-amber-400/50 hover:bg-amber-400/10 hover:text-amber-400 transition">
+                            <span class="font-exo">Members Area</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>    
     
+    <main class="pt-16">
+
     {{ $slot }}
     
+    </main>
   
     <!-- Footer -->
-    <footer class="bg-card/50 border-t border-border">
-      <div class="container mx-auto px-4 py-12">
-        <div class="grid md:grid-cols-4 gap-8">
-          <div class="md:col-span-2">
-            <a href="index.html" class="flex items-center space-x-3 mb-6">
-              <i class="fa-solid fa-shield text-primary glow-effect text-2xl"></i>
-              <span class="font-orbitron text-xl font-bold text-gradient">IMPERIAL ARMS</span>
-            </a>
-            <p class="text-muted-foreground font-exo mb-6 max-w-md">Professional freight, logistics, and mercenary operations across the 'verse. Securing the stars with discipline, efficiency, and firepower.</p>
-            <div class="flex space-x-4">
-              <a href="#" class="p-2 bg-[hsl(var(--muted)/0.5)] rounded hover:bg-[hsl(var(--primary)/0.2)] hover:text-primary transition-colors" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
-              <a href="#" class="p-2 bg-[hsl(var(--muted)/0.5)] rounded hover:bg-[hsl(var(--primary)/0.2)] hover:text-primary transition-colors" aria-label="Spectrum"><i class="fa-solid fa-tower-broadcast"></i></a>
-              <a href="#" class="p-2 bg-[hsl(var(--muted)/0.5)] rounded hover:bg-[hsl(var(--primary)/0.2)] hover:text-primary transition-colors" aria-label="Reddit"><i class="fa-brands fa-reddit"></i></a>
-              <a href="#" class="p-2 bg-[hsl(var(--muted)/0.5)] rounded hover:bg-[hsl(var(--primary)/0.2)] hover:text-primary transition-colors" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+    <footer class="bg-slate-900/50 border-t border-slate-700 m-0">
+        <div class="container mx-auto px-4 py-12">
+            <div class="grid md:grid-cols-4 gap-8">
+                <!-- Organization Info -->
+                <div class="md:col-span-2">
+                    <a href="index.html" class="flex items-center space-x-3 mb-6">
+                        <svg class="h-8 w-8 text-amber-400 drop-shadow-[0_0_20px_rgba(251,191,36,0.3)] transition-transform duration-300 hover:-translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.618 5.984A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                        </svg>
+                        <span class="font-orbitron text-xl font-bold bg-gradient-to-br from-amber-400 to-amber-500 bg-clip-text text-transparent">IMPERIAL ARMS</span>
+                    </a>
+                    <p class="text-slate-400 font-exo mb-6 max-w-md">
+                        Professional freight, logistics, and mercenary operations across the 'verse. 
+                        Securing the stars with discipline, efficiency, and firepower.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="p-2 bg-slate-800/50 rounded hover:bg-amber-400/20 hover:text-amber-400 transition-colors group">
+                            <svg class="h-5 w-5 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="p-2 bg-slate-800/50 rounded hover:bg-amber-400/20 hover:text-amber-400 transition-colors group">
+                            <svg class="h-5 w-5 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2h4a1 1 0 110 2h-1v12a2 2 0 01-2 2H6a2 2 0 01-2-2V6H3a1 1 0 010-2h4z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="p-2 bg-slate-800/50 rounded hover:bg-amber-400/20 hover:text-amber-400 transition-colors group">
+                            <svg class="h-5 w-5 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="p-2 bg-slate-800/50 rounded hover:bg-amber-400/20 hover:text-amber-400 transition-colors group">
+                            <svg class="h-5 w-5 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="font-orbitron text-lg font-bold mb-4 bg-gradient-to-br from-amber-400 to-amber-500 bg-clip-text text-transparent">NAVIGATION</h3>
+                    <ul class="space-y-2">
+                        <li><a href="about.html" class="text-slate-400 hover:text-amber-400 transition-colors font-exo">About Us</a></li>
+                        <li><a href="fleet.html" class="text-slate-400 hover:text-amber-400 transition-colors font-exo">Fleet Roster</a></li>
+                        <li><a href="#" class="text-slate-400 hover:text-amber-400 transition-colors font-exo">Mission Board</a></li>
+                        <li><a href="#" class="text-slate-400 hover:text-amber-400 transition-colors font-exo">Join Us</a></li>
+                        <li><a href="#" class="text-slate-400 hover:text-amber-400 transition-colors font-exo">News</a></li>
+                        <li><a href="#" class="text-slate-400 hover:text-amber-400 transition-colors font-exo">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Organization Details -->
+                <div>
+                    <h3 class="font-orbitron text-lg font-bold mb-4 bg-gradient-to-br from-amber-400 to-amber-500 bg-clip-text text-transparent">ORGANIZATION</h3>
+                    <div class="space-y-3 text-sm">
+                        <div>
+                            <span class="text-slate-400">Founded:</span>
+                            <span class="ml-2 text-slate-100">2947</span>
+                        </div>
+                        <div>
+                            <span class="text-slate-400">Focus:</span>
+                            <span class="ml-2 text-slate-100">Trading, Security</span>
+                        </div>
+                        <div>
+                            <span class="text-slate-400">Commitment:</span>
+                            <span class="ml-2 text-slate-100">Hardcore</span>
+                        </div>
+                        <div>
+                            <span class="text-slate-400">Language:</span>
+                            <span class="ml-2 text-slate-100">English</span>
+                        </div>
+                        <div>
+                            <span class="text-slate-400">Recruiting:</span>
+                            <span class="ml-2 text-amber-400">Yes</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
 
-          <div>
-            <h3 class="font-orbitron text-lg font-bold mb-4 text-gradient">NAVIGATION</h3>
-            <ul class="space-y-2 text-sm">
-              <li><a href="#" class="text-[hsl(var(--muted-foreground))] hover:text-primary transition-colors font-exo">About Us</a></li>
-              <li><a href="#" class="text-[hsl(var(--muted-foreground))] hover:text-primary transition-colors font-exo">Fleet Roster</a></li>
-              <li><a href="#" class="text-[hsl(var(--muted-foreground))] hover:text-primary transition-colors font-exo">Mission Board</a></li>
-              <li><a href="#" class="text-[hsl(var(--muted-foreground))] hover:text-primary transition-colors font-exo">Join Us</a></li>
-              <li><a href="#" class="text-[hsl(var(--muted-foreground))] hover:text-primary transition-colors font-exo">News</a></li>
-              <li><a href="#" class="text-[hsl(var(--muted-foreground))] hover:text-primary transition-colors font-exo">Contact</a></li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 class="font-orbitron text-lg font-bold mb-4 text-gradient">ORGANIZATION</h3>
-            <div class="space-y-3 text-sm">
-              <div><span class="text-[hsl(var(--muted-foreground))]">Founded:</span> <span class="ml-2">2947</span></div>
-              <div><span class="text-[hsl(var(--muted-foreground))]">Focus:</span> <span class="ml-2">Trading, Security</span></div>
-              <div><span class="text-[hsl(var(--muted-foreground))]">Commitment:</span> <span class="ml-2">Hardcore</span></div>
-              <div><span class="text-[hsl(var(--muted-foreground))]">Language:</span> <span class="ml-2">English</span></div>
-              <div><span class="text-[hsl(var(--muted-foreground))]">Recruiting:</span> <span class="ml-2 text-accent">Yes</span></div>
+            <!-- Bottom Bar -->
+            <div class="border-t border-slate-700 mt-12 pt-8 flex flex-col md:flex-row items-center justify-between">
+                <div class="text-slate-400 text-sm font-exo mb-4 md:mb-0">
+                    © 2024 Imperial Arms. All rights reserved. Not affiliated with Cloud Imperium Games.
+                </div>
+                <div class="flex items-center space-x-6 text-sm">
+                    <a href="#" class="text-slate-400 hover:text-amber-400 transition-colors font-exo">Privacy Policy</a>
+                    <a href="#" class="text-slate-400 hover:text-amber-400 transition-colors font-exo">Code of Conduct</a>
+                    <a href="#" class="text-slate-400 hover:text-amber-400 transition-colors font-exo">Terms of Service</a>
+                </div>
             </div>
-          </div>
         </div>
-
-        <div class="border-t border-border mt-12 pt-8 flex flex-col md:flex-row items-center justify-between text-sm">
-          <div class="text-[hsl(var(--muted-foreground))] font-exo mb-4 md:mb-0">© 2024 Imperial Arms. All rights reserved. Not affiliated with Cloud Imperium Games.</div>
-          <div class="flex items-center space-x-6">
-            <a href="#" class="text-[hsl(var(--muted-foreground))] hover:text-primary transition-colors font-exo">Privacy Policy</a>
-            <a href="#" class="text-[hsl(var(--muted-foreground))] hover:text-primary transition-colors font-exo">Code of Conduct</a>
-            <a href="#" class="text-[hsl(var(--muted-foreground))] hover:text-primary transition-colors font-exo">Terms of Service</a>
-          </div>
-        </div>
-      </div>
     </footer>
 
      @livewireScripts
