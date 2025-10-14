@@ -5,6 +5,7 @@ use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Profile;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
     return view('home');
@@ -73,7 +74,7 @@ Route::prefix('admin')->name('admin.')->middleware('auth', 'verified', 'permissi
     Route::get('/', [DashboardController::class, 'dashboard'])->name('dashboard');
 
     // User Management
-    // Route::resource('users', UserController::class);
+    Route::resource('users', UserController::class);
     // User Management - Roles & Permissions
     // Route::resource('roles', RoleController::class);
 
