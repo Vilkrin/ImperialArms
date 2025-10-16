@@ -40,7 +40,7 @@
                         <div class="p-6">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div class="space-y-2">
-                                    <label for="name" class="text-sm font-medium text-slate-200">Full Name *</label>
+                                    <label for="name" class="text-sm font-medium text-slate-200">UserName *</label>
                                     <input id="name" placeholder="Enter full name" class="flex h-10 w-full rounded-md border border-slate-700 bg-slate-900/50 px-3 py-2 text-sm placeholder:text-slate-400 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-amber-400" />
                                 </div>
                                 
