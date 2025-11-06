@@ -1,17 +1,20 @@
-
-                      <a href="users.html" class="inline-flex items-center gap-2 px-3 py-2 text-sm text-slate-300 hover:bg-slate-800/50 rounded transition-colors">
-                        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
-                        </svg>
-                        Back to Users
-                    </a>
-                    <div class="h-6 w-px bg-slate-700"></div>
-                    <div>
-                        <h1 class="font-semibold text-lg text-slate-100">Edit User</h1>
-                        <p class="text-sm text-slate-400">Modify user information and permissions</p>
+<div>
+    
+                    <div class="p-6 flex items-center">
+                        <a href="{{ route('admin.users.index') }}" class="inline-flex items-center gap-2 px-3 py-2 text-sm text-slate-300 hover:bg-slate-800/50 rounded transition-colors">
+                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                            </svg>
+                            Back to Users
+                        </a>
+                        <div class="h-6 w-px bg-slate-700"></div>
+                        <div>
+                            <h1 class="font-semibold text-lg text-slate-100">Edit User</h1>
+                            <p class="text-sm text-slate-400">Modify user information and permissions</p>
+                        </div>
                     </div>
 
-                    <div class="space-y-6">
+                <div class="space-y-6">
                     <!-- Basic Information -->
                     <div class="bg-slate-900/50 border border-amber-400/20 backdrop-blur-sm rounded-lg shadow-sm">
                         <div class="p-6 border-b border-slate-700">
@@ -265,6 +268,5 @@
                         </div>
                     </div>
                 </div>
-            </main>
-        </div>
-    </div>
+
+</div>

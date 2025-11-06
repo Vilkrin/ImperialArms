@@ -34,7 +34,7 @@
 
   </head>
 
-<body class="bg-gradient-to-b from-slate-900 via-slate-950 to-slate-950 text-slate-100 font-exo overflow-x-hidden min-h-screen">
+<body class="bg-slate-950 text-slate-100 font-exo overflow-x-hidden min-h-screen">
     <div class="flex w-full min-h-screen">
         <!-- Sidebar -->
         <aside id="sidebar" class="w-64 min-h-screen bg-slate-900/50 border-r border-slate-700">

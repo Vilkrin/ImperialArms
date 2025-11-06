@@ -1,7 +1,7 @@
 <x-layouts.admin :title="__('Show User')">
 
                 <div class="flex items-center gap-4 space-y-6">
-                    <a href="users.html" class="inline-flex items-center gap-2 px-3 py-2 text-sm text-slate-300 hover:bg-slate-800/50 rounded transition-colors">
+                    <a href="{{ route('admin.users.index') }}" class="inline-flex items-center gap-2 px-3 py-2 text-sm text-slate-300 hover:bg-slate-800/50 rounded transition-colors">
                         <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
                         </svg>
@@ -34,7 +34,7 @@
                                                 {{ $user->getRoleNames()->implode(', ') }}
                                             </span>
                                             <div class="flex items-center gap-1">
-                                                <flux:icon.user-check variant="solid" class="text-green-500 dark:text-green-300" />
+                                                <flux:icon.user-check class="text-green-500 dark:text-green-300" />
                                                 <span class="text-green-600 text-sm">{{ $user->status }}</span>
                                             </div>
                                         </div>
@@ -105,7 +105,7 @@
                                 <div>
                                     <label class="text-sm font-medium text-slate-400">Status</label>
                                     <div class="flex items-center gap-2 mt-1">
-                                        <flux:icon.user-check variant="solid" class="text-green-500 dark:text-green-300" /> 
+                                        <flux:icon.user-check class="text-green-500 dark:text-green-300" /> 
                                         <span class="text-green-600 text-sm">Active</span>
                                     </div>
                                 </div>

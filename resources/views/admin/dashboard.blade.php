@@ -214,50 +214,7 @@
                             </div>
                             <div class="p-6 pt-0">
                                 <div class="border border-slate-700 rounded-lg overflow-hidden">
-                                    <div class="flex items-center justify-between px-4 py-3 border-b border-slate-700 text-sm text-slate-300">
-                                        <button class="p-1 rounded hover:bg-slate-800/50">&#8592;</button>
-                                        <div class="font-medium">October 2025</div>
-                                        <button class="p-1 rounded hover:bg-slate-800/50">&#8594;</button>
-                                    </div>
-                                    <div class="grid grid-cols-7 text-center text-xs text-slate-400 py-2">
-                                        <div>Su</div><div>Mo</div><div>Tu</div><div>We</div><div>Th</div><div>Fr</div><div>Sa</div>
-                                    </div>
-                                    <div class="grid grid-cols-7 gap-px bg-slate-800/40 p-px">
-                                        <div class="bg-slate-900/60 h-12"></div>
-                                        <div class="bg-slate-900/60 h-12"></div>
-                                        <div class="bg-slate-900/60 h-12"></div>
-                                        <div class="bg-slate-900/60 h-12 flex items-center justify-center text-xs text-slate-400">1</div>
-                                        <div class="bg-slate-900/60 h-12 flex items-center justify-center text-xs text-slate-400">2</div>
-                                        <div class="bg-slate-900/60 h-12 flex items-center justify-center text-xs text-slate-400">3</div>
-                                        <div class="bg-slate-900/60 h-12 flex items-center justify-center text-xs text-slate-400">4</div>
-                                        <div class="bg-slate-900/60 h-12 flex items-center justify-center text-xs text-slate-400">5</div>
-                                        <div class="bg-slate-900/60 h-12 flex items-center justify-center text-xs text-slate-400">6</div>
-                                        <div class="bg-slate-900/60 h-12 flex items-center justify-center text-xs text-slate-400">7</div>
-                                        <div class="bg-slate-900/60 h-12 flex items-center justify-center text-xs text-slate-400">8</div>
-                                        <div class="bg-amber-400/20 ring-1 ring-amber-400 h-12 flex items-center justify-center text-xs text-amber-400 font-semibold">9</div>
-                                        <div class="bg-slate-900/60 h-12 flex items-center justify-center text-xs text-slate-400">10</div>
-                                        <div class="bg-slate-900/60 h-12 flex items-center justify-center text-xs text-slate-400">11</div>
-                                        <div class="bg-slate-900/60 h-12 flex items-center justify-center text-xs text-slate-400">12</div>
-                                        <div class="bg-slate-900/60 h-12 flex items-center justify-center text-xs text-slate-400">13</div>
-                                        <div class="bg-slate-900/60 h-12 flex items-center justify-center text-xs text-slate-400">14</div>
-                                        <div class="bg-slate-900/60 h-12 flex items-center justify-center text-xs text-slate-400">15</div>
-                                        <div class="bg-slate-900/60 h-12 flex items-center justify-center text-xs text-slate-400">16</div>
-                                        <div class="bg-slate-900/60 h-12 flex items-center justify-center text-xs text-slate-400">17</div>
-                                        <div class="bg-slate-900/60 h-12 flex items-center justify-center text-xs text-slate-400">18</div>
-                                        <div class="bg-slate-900/60 h-12 flex items-center justify-center text-xs text-slate-400">19</div>
-                                        <div class="bg-slate-900/60 h-12 flex items-center justify-center text-xs text-slate-400">20</div>
-                                        <div class="bg-slate-900/60 h-12 flex items-center justify-center text-xs text-slate-400">21</div>
-                                        <div class="bg-slate-900/60 h-12 flex items-center justify-center text-xs text-slate-400">22</div>
-                                        <div class="bg-slate-900/60 h-12 flex items-center justify-center text-xs text-slate-400">23</div>
-                                        <div class="bg-slate-900/60 h-12 flex items-center justify-center text-xs text-slate-400">24</div>
-                                        <div class="bg-slate-900/60 h-12 flex items-center justify-center text-xs text-slate-400">25</div>
-                                        <div class="bg-slate-900/60 h-12 flex items-center justify-center text-xs text-slate-400">26</div>
-                                        <div class="bg-slate-900/60 h-12 flex items-center justify-center text-xs text-slate-400">27</div>
-                                        <div class="bg-slate-900/60 h-12 flex items-center justify-center text-xs text-slate-400">28</div>
-                                        <div class="bg-slate-900/60 h-12 flex items-center justify-center text-xs text-slate-400">29</div>
-                                        <div class="bg-slate-900/60 h-12 flex items-center justify-center text-xs text-slate-400">30</div>
-                                        <div class="bg-slate-900/60 h-12"></div>
-                                    </div>
+                                   <flux:calendar size="2xl"/>
                                 </div>
                             </div>
                         </div>

@@ -3,15 +3,8 @@
     <!-- Hero Section -->
     <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 pb-32">
         <!-- Background Image -->
-        <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" style="background-image: url('assets/ironclad-real.webp'); height: calc(100% + 200px); bottom: -200px;">
+        <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" style="background-image: url('{{ asset('backgrounds/spacescape_vast_field.png') }}'); height: calc(100% + 200px); bottom: -200px;">
             <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/60 to-black/80"></div>
-        </div>
-
-        <!-- Animated Background Elements -->
-        <div class="absolute inset-0 opacity-30">
-            <div class="absolute top-1/4 left-1/4 w-2 h-2 bg-amber-400 rounded-full animate-pulse"></div>
-            <div class="absolute top-1/3 right-1/3 w-1 h-1 bg-amber-400 rounded-full animate-pulse" style="animation-delay: 1s;"></div>
-            <div class="absolute bottom-1/4 left-1/3 w-1.5 h-1.5 bg-amber-400 rounded-full animate-pulse" style="animation-delay: 2s;"></div>
         </div>
 
         <!-- Content -->
