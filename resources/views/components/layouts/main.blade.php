@@ -39,7 +39,7 @@
         <div class="container mx-auto px-4">
             <div class="flex items-center justify-between h-16">
                 <!-- Logo -->
-                <a href="index.html" class="flex items-center space-x-3">
+                <a href="{{ route('home') }}" class="flex items-center space-x-3">
                     <svg class="h-8 w-8 text-amber-400 drop-shadow-[0_0_20px_rgba(251,191,36,0.3)] transition-transform duration-300 hover:-translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.618 5.984A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
                     </svg>
@@ -130,6 +130,41 @@
                       @endif
                     @endauth
                     @endif
+
+                    
+                    <flux:dropdown align="end">
+                        <flux:profile avatar="https://unavatar.io/x/calebporzio" name="{{ auth()->user()->name }}" />
+
+                        <flux:navmenu class="max-w-[12rem]">
+                            <div class="px-2 py-1.5">
+                                <flux:text size="sm">Signed in as</flux:text>
+                                <flux:heading class="mt-1! truncate">{{ auth()->user()->name }}</flux:heading>
+                                <flux:heading class="mt-1! truncate">{{ auth()->user()->email }}</flux:heading>
+                            </div>
+
+                            <flux:navmenu.separator />
+                        
+                            <flux:navmenu.item href="{{ route('profile.index') }}" icon="user" class="text-zinc-800 dark:text-white">Account</flux:navmenu.item>
+
+                            @can('view.member.dashboard')
+                            <flux:navmenu.item href="#" icon="user" class="text-zinc-800 dark:text-white">Members Area</flux:navmenu.item>
+                            @endcan
+                            
+                            @can('access.admin.dashboard')
+                            <flux:navmenu.item href="{{ route('admin.dashboard') }}" icon="user" class="text-zinc-800 dark:text-white">Admin Area</flux:navmenu.item>
+                            @endcan
+
+                            <flux:navmenu.separator />
+
+                            <form method="POST" action="{{ route('logout') }}" class="w-full cursor-pointer">
+                                @csrf
+                                <flux:menu.item as="button" type="submit" icon="arrow-right-start-on-rectangle" class="text-zinc-800 dark:text-white w-full">
+                                    {{ __('Log Out') }}
+                                </flux:menu.item>
+                            </form>
+                        </flux:navmenu>
+                    </flux:dropdown>
+
 
                 </div>
 
@@ -281,11 +316,11 @@
                         </div>
                         <div>
                             <span class="text-slate-400">Focus:</span>
-                            <span class="ml-2 text-slate-100">Trading, Security</span>
+                            <span class="ml-2 text-slate-100">Security, Exploration.</span>
                         </div>
                         <div>
                             <span class="text-slate-400">Commitment:</span>
-                            <span class="ml-2 text-slate-100">Hardcore</span>
+                            <span class="ml-2 text-slate-100">Regular</span>
                         </div>
                         <div>
                             <span class="text-slate-400">Language:</span>
