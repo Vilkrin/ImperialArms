@@ -53,7 +53,43 @@ class ProfileController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        return redirect()->route('profile.show')->with('success', 'Profile updated successfully.');
+        $user = auth()->user();
+
+        // Validate input
+        $validated = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'email', 'max:255'],
+            'password' => ['nullable', 'confirmed', 'min:8'],
+            'avatar' => ['nullable', 'image', 'max:2048'],
+        ]);
+
+        // Update basic fields
+        $user->name = $validated['name'];
+        $user->email = $validated['email'];
+
+        // Update password only if provided
+        if (!empty($validated['password'])) {
+            $user->password = Hash::make($validated['password']);
+        }
+
+        $user->save();
+
+        // Handle avatar upload
+        if ($request->hasFile('avatar')) {
+
+            // Build the new filename:
+            // example: "andrewbeechey_avatar.jpg"
+            $uploadedFile = $request->file('avatar');
+            $extension = $uploadedFile->getClientOriginalExtension();
+            $fileName = $user->username . '_avatar.' . $extension;
+
+            // If using singleFile(), Spatie replaces automatically.
+            $user->addMedia($uploadedFile)
+                ->usingFileName($fileName)
+                ->toMediaCollection('avatars');
+        }
+
+        return back()->with('success', 'Profile updated successfully!');
     }
 
     /**
