@@ -35,6 +35,8 @@
                       <livewire:avatar-uploader />
 
                     </div>
+                     <form method="POST" action="{{ route('profile.update') }}">
+                    @csrf
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <!-- Full Name -->
                       <div class="space-y-2">
@@ -102,7 +104,8 @@
                         <div class="h-10 flex items-center text-slate-300 font-mono">1,247</div>
                       </div>
                     </div>
-                    
+                     </form>
+                     
                     <div class="flex justify-end pt-4">
                       <button id="saveBtn" class="inline-flex items-center gap-2 h-9 px-4 bg-amber-400 text-slate-900 rounded-md text-sm font-medium hover:bg-amber-300">
                         <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
@@ -124,7 +127,7 @@
                     <p class="text-sm text-slate-400">Manage your account security and authentication</p>
                   </div>
                   <div class="p-6 space-y-6">
-                  <form method="POST" action="{{ route('profile.update') }}" enctype="multipart/form-data">
+                  <form method="POST" action="{{ route('profile.update') }}">
                     @csrf
                     
                     <div>

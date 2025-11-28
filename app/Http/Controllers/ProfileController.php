@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules;
 
 class ProfileController extends Controller
 {
@@ -59,8 +61,7 @@ class ProfileController extends Controller
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'max:255'],
-            'password' => ['nullable', 'confirmed', 'min:8'],
-            'avatar' => ['nullable', 'image', 'max:2048'],
+            'password' => ['nullable', 'confirmed', Rules\Password::defaults()],
         ]);
 
         // Update basic fields
@@ -73,21 +74,6 @@ class ProfileController extends Controller
         }
 
         $user->save();
-
-        // Handle avatar upload
-        if ($request->hasFile('avatar')) {
-
-            // Build the new filename:
-            // example: "andrewbeechey_avatar.jpg"
-            $uploadedFile = $request->file('avatar');
-            $extension = $uploadedFile->getClientOriginalExtension();
-            $fileName = $user->username . '_avatar.' . $extension;
-
-            // If using singleFile(), Spatie replaces automatically.
-            $user->addMedia($uploadedFile)
-                ->usingFileName($fileName)
-                ->toMediaCollection('avatars');
-        }
 
         return back()->with('success', 'Profile updated successfully!');
     }

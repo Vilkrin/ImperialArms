@@ -52,6 +52,6 @@
                         </div>
                        </flux:file-upload>
 
-    {{-- <flux:button type="submit">Save</flux:button> --}}
+    <flux:button type="submit">Save Avatar</flux:button>
 </form>
 

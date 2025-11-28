@@ -5,6 +5,7 @@ namespace App\Livewire;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Livewire\Attributes\Validate;
+use Illuminate\Support\Facades\Auth;
 
 class AvatarUploader extends Component
 {
@@ -20,12 +21,24 @@ class AvatarUploader extends Component
 
     public function removePhoto()
     {
-        $this->photo->delete();
+        $user = Auth::user();
+
+        $user->clearMediaCollection('avatars');
+
         $this->photo = null;
     }
     public function save()
     {
-        $this->photo->store(path: 'photos');
-        return $this->redirect('...');
+        $user = Auth::user();
+
+        $extension = $this->photo->getClientOriginalExtension();
+        $fileName = $user->username . '_avatar.' . $extension;
+
+
+        $user->addMedia($this->photo->getRealPath())
+            ->usingFileName($fileName)
+            ->toMediaCollection('avatars');
+
+        $this->photo = null;
     }
 }
