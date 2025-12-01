@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rules;
 
 class ProfileController extends Controller
 {
@@ -53,29 +51,9 @@ class ProfileController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request)
     {
-        $user = auth()->user();
-
-        // Validate input
-        $validated = $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'email', 'max:255'],
-            'password' => ['nullable', 'confirmed', Rules\Password::defaults()],
-        ]);
-
-        // Update basic fields
-        $user->name = $validated['name'];
-        $user->email = $validated['email'];
-
-        // Update password only if provided
-        if (!empty($validated['password'])) {
-            $user->password = Hash::make($validated['password']);
-        }
-
-        $user->save();
-
-        return back()->with('success', 'Profile updated successfully!');
+        //
     }
 
     /**

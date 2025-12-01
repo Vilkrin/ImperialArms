@@ -29,19 +29,36 @@
                     <p class="text-sm text-slate-400">Your pilot credentials and contact information</p>
                   </div>
 
+                      <div>
+
+                          @if (session()->has('message'))
+
+                              <div class="alert alert-success">
+
+                                  {{ session('message') }}
+
+                              </div>
+
+                          @endif
+
+                      </div>
+
                   <div class="p-6 pt-0 space-y-6">
                     <div class="flex justify-center mb-6">
 
                       <livewire:avatar-uploader />
 
                     </div>
-                     <form method="POST" action="{{ route('profile.update') }}">
-                    @csrf
+
+
+                     <form wire:submit.prevent="save">
+                    
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <!-- Full Name -->
                       <div class="space-y-2">
                         <label for="name" class="block text-sm font-medium leading-none text-slate-200">Name</label>
                         <input id="name" value="{{ $user->name }}" class="flex h-10 w-full rounded-md border border-slate-700 bg-slate-900 px-3 py-2 text-base text-slate-100 ring-offset-slate-950 placeholder:text-slate-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm" readonly />
+                      @error('name') <p class="text-red-500 text-sm">{{ $message }}</p> @enderror
                       </div>
 
                       <!-- Email -->
@@ -49,6 +66,7 @@
                         <label for="email" class="block text-sm font-medium leading-none text-slate-200">Email</label>
                         <div class="relative">
                         <input id="email" type="email" value="{{ $user->email }}" class="flex h-10 w-full rounded-md border border-slate-700 bg-slate-900 px-3 py-2 text-base text-slate-100 ring-offset-slate-950 placeholder:text-slate-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm" readonly />
+                         @error('email') <p class="text-red-500 text-sm">{{ $message }}</p> @enderror
                           <div class="absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-2">
                           @if ($user->email_verified_at)
                               <span class="text-green-500 text-sm flex items-center gap-1">
@@ -103,16 +121,16 @@
                         <label class="block text-sm font-medium leading-none text-slate-200">Flight Hours</label>
                         <div class="h-10 flex items-center text-slate-300 font-mono">1,247</div>
                       </div>
-                    </div>
-                     </form>
+                    </div>                     
                      
                     <div class="flex justify-end pt-4">
                       <button id="saveBtn" class="inline-flex items-center gap-2 h-9 px-4 bg-amber-400 text-slate-900 rounded-md text-sm font-medium hover:bg-amber-300">
                         <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
                         Save Changes
                       </button>
-                    </div>
-                  </div>
+                    </div>     
+                     </form>               
+                  </div>                 
                 </div>
 
             </flux:tab.panel>
@@ -126,6 +144,19 @@
                     </h2>
                     <p class="text-sm text-slate-400">Manage your account security and authentication</p>
                   </div>
+                      <div>
+
+                          @if (session()->has('message'))
+
+                              <div class="alert alert-success">
+
+                                  {{ session('message') }}
+
+                              </div>
+
+                          @endif
+
+                      </div>
                   <div class="p-6 space-y-6">
                   <form method="POST" action="{{ route('profile.update') }}">
                     @csrf

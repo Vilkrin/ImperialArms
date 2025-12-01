@@ -6,6 +6,7 @@ use Livewire\Component;
 use Livewire\WithFileUploads;
 use Livewire\Attributes\Validate;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class AvatarUploader extends Component
 {
@@ -13,6 +14,12 @@ class AvatarUploader extends Component
 
     #[Validate('image|max:10240')] // 10MB Max    
     public $photo;
+    public User $user;
+
+    public function mount()
+    {
+        $this->user = Auth::user();
+    }
 
     public function render()
     {
@@ -27,12 +34,13 @@ class AvatarUploader extends Component
 
         $this->photo = null;
     }
+
     public function save()
     {
         $user = Auth::user();
 
         $extension = $this->photo->getClientOriginalExtension();
-        $fileName = $user->username . '_avatar.' . $extension;
+        $fileName = $user->name . '_avatar.' . $extension;
 
 
         $user->addMedia($this->photo->getRealPath())
