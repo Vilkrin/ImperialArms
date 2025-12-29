@@ -3,16 +3,19 @@
 namespace App\Livewire;
 
 use Livewire\Component;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class ProfileMain extends Component
 {
     public $name;
     public $email;
+    public User $user;
 
     public function mount()
     {
         $user = auth()->user();
-        $this->name = $user->name;
+        $this->user = Auth::user();
         $this->email = $user->email;
     }
 

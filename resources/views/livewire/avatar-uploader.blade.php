@@ -1,7 +1,6 @@
 
     <form wire:submit="save">
 
-
                 <flux:file-upload wire:model="photo">
                 
                     <div

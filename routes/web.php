@@ -52,6 +52,7 @@ Route::prefix('profile')->name('profile.')->middleware(['auth'])->group(function
 
     Route::get('/', [ProfileController::class, 'index'])->name('index');
     Route::post('/', [ProfileController::class, 'update'])->name('update');
+    Route::resource('profile', ProfileController::class);
 });
 
 // Org Services

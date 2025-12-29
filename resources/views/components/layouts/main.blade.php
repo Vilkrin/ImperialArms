@@ -27,6 +27,8 @@
         data-blockingmode="{{ config('services.cookiebot.blocking_mode') }}"
         type="text/javascript"></script>
 
+        <!-- Google ReCaptcha V3 -->
+        {!! RecaptchaV3::initJs() !!}
 
         <!-- Styles -->        
         @livewireStyles
