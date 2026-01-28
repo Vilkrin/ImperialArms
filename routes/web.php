@@ -36,10 +36,6 @@ Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
 
-Route::view('dashboard', 'dashboard')
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
-
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');
 
@@ -51,8 +47,7 @@ Route::middleware(['auth'])->group(function () {
 Route::prefix('profile')->name('profile.')->middleware(['auth'])->group(function () {
 
     Route::get('/', [ProfileController::class, 'index'])->name('index');
-    Route::post('/', [ProfileController::class, 'update'])->name('update');
-    Route::resource('profile', ProfileController::class);
+    Route::patch('/', [ProfileController::class, 'update'])->name('profile.update');
 });
 
 // Org Services

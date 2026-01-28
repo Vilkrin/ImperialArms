@@ -24,5 +24,25 @@ class ProfileSecurity extends Component
         $user->save();
 
         return back()->with('success', 'Password updated!');
+
+
+        $user = $request->user();
+
+        $data = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'email', 'max:255', 'unique:users,email,' . $user->id],
+            'password' => ['nullable', 'string', 'min:8', 'confirmed'],
+        ]);
+
+        // Only set the password if provided
+        if (!empty($data['password'])) {
+            $data['password'] = bcrypt($data['password']);
+        } else {
+            unset($data['password']);
+        }
+
+        $user->update($data);
+
+        return redirect()->route('profile.index')->with('status', 'Profile updated.');
     }
 }
