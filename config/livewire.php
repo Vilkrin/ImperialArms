@@ -4,29 +4,35 @@ return [
 
     /*
     |---------------------------------------------------------------------------
-    | Class Namespace
+    | Component Locations
     |---------------------------------------------------------------------------
     |
-    | This value sets the root class namespace for Livewire component classes in
-    | your application. This value will change where component auto-discovery
-    | finds components. It's also referenced by the file creation commands.
+    | This value sets the root directories that'll be used to resolve view-based
+    | components like single and multi-file components. The make command will
+    | use the first directory in this array to add new component files to.
     |
     */
 
-    'class_namespace' => 'App\\Livewire',
+    'component_locations' => [
+        resource_path('views/components'),
+        resource_path('views/livewire'),
+    ],
 
     /*
     |---------------------------------------------------------------------------
-    | View Path
+    | Component Namespaces
     |---------------------------------------------------------------------------
     |
-    | This value is used to specify where Livewire component Blade templates are
-    | stored when running file creation commands like `artisan make:livewire`.
-    | It is also used if you choose to omit a component's render() method.
+    | This value sets default namespaces that will be used to resolve view-based
+    | components like single-file and multi-file components. These folders'll
+    | also be referenced when creating new components via the make command.
     |
     */
 
-    'view_path' => resource_path('views/livewire'),
+    'component_namespaces' => [
+        'layouts' => resource_path('views/layouts'),
+        'pages' => resource_path('views/pages'),
+    ],
 
     /*
     |---------------------------------------------------------------------------
@@ -38,7 +44,27 @@ return [
     |
     */
 
-    'layout' => 'components.layouts.app',
+    'component_layout' => 'layouts::app',
+
+    /*
+    |---------------------------------------------------------------------------
+    | Make Command
+    |---------------------------------------------------------------------------
+    | This value determines the default configuration for the artisan make command
+    | You can configure the component type (sfc, mfc, class) and whether to use
+    | the high-voltage (⚡) emoji as a prefix in the sfc|mfc component names.
+    |
+    */
+
+    'make_command' => [
+        'type' => 'class', // Options: 'sfc', 'mfc', 'class'
+        'emoji' => false, // Options: true, false
+        'with' => [
+            'js' => false,
+            'css' => false,
+            'test' => false,
+        ],
+    ],
 
     /*
     |---------------------------------------------------------------------------
@@ -50,7 +76,7 @@ return [
     |
     */
 
-    'lazy_placeholder' => null,
+    'component_placeholder' => 'livewire.placeholder',
 
     /*
     |---------------------------------------------------------------------------
@@ -160,6 +186,19 @@ return [
 
     /*
     |---------------------------------------------------------------------------
+    | Smart Wire Keys
+    |---------------------------------------------------------------------------
+    |
+    | Livewire uses loops and keys used within loops to generate smart keys that
+    | are applied to nested components that don't have them. This makes using
+    | nested components more reliable by ensuring that they all have keys.
+    |
+    */
+
+    'smart_wire_keys' => true,
+
+    /*
+    |---------------------------------------------------------------------------
     | Pagination Theme
     |---------------------------------------------------------------------------
     |
@@ -170,4 +209,48 @@ return [
     */
 
     'pagination_theme' => 'tailwind',
+
+    /*
+    |---------------------------------------------------------------------------
+    | Release Token
+    |---------------------------------------------------------------------------
+    |
+    | This token is stored client-side and sent along with each request to check
+    | a users session to see if a new release has invalidated it. If there is
+    | a mismatch it will throw an error and prompt for a browser refresh.
+    |
+    */
+
+    'release_token' => 'a',
+
+    /*
+    |---------------------------------------------------------------------------
+    | CSP Safe
+    |---------------------------------------------------------------------------
+    |
+    | This config is used to determine if Livewire will use the CSP-safe version
+    | of Alpine in its bundle. This is useful for applications that are using
+    | strict Content Security Policy (CSP) to protect against XSS attacks.
+    |
+    */
+
+    'csp_safe' => false,
+
+    /*
+    |---------------------------------------------------------------------------
+    | Payload Guards
+    |---------------------------------------------------------------------------
+    |
+    | These settings protect against malicious or oversized payloads that could
+    | cause denial of service. The default values should feel reasonable for
+    | most web applications. Each can be set to null to disable the limit.
+    |
+    */
+
+    'payload' => [
+        'max_size' => 1024 * 1024,   // 1MB - maximum request payload size in bytes
+        'max_nesting_depth' => 10,   // Maximum depth of dot-notation property paths
+        'max_calls' => 50,           // Maximum method calls per request
+        'max_components' => 20,      // Maximum components per batch request
+    ],
 ];
