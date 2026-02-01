@@ -20,29 +20,17 @@ Route::get('/fleet', function () {
     return view('fleet');
 })->name('fleet');
 
-Route::get('/mission-board', function () {
-    return view('mission-board');
-})->name('mission-board');
-
 Route::get('/recruitment', function () {
     return view('recruitment');
 })->name('recruitment');
 
-Route::get('/news', function () {
-    return view('news');
-})->name('news');
+// Blog
+// Route::get('/blog', [PostController::class, 'index'])->name('blog.index');
+// Route::get('/blog/{slug}', [PostController::class, 'show'])->name('blog.show');
 
 Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
-
-Route::middleware(['auth'])->group(function () {
-    Route::redirect('settings', 'settings/profile');
-
-    Route::get('settings/profile', Profile::class)->name('settings.profile');
-    Route::get('settings/password', Password::class)->name('settings.password');
-    Route::get('settings/appearance', Appearance::class)->name('settings.appearance');
-});
 
 Route::prefix('profile')->name('profile.')->middleware(['auth'])->group(function () {
 
@@ -58,8 +46,7 @@ Route::prefix('services')->name('services.')->middleware('auth', 'verified')->gr
         return view('services.freight');
     })->name('freight');
 
-    // Then Whatever Other Servies You Want
-
+    // Other services can be added here
 });
 
 // Members Area
@@ -70,7 +57,7 @@ Route::prefix('members')->name('members.')->middleware('auth', 'verified', 'perm
 
 });
 
-// Admin Dashboard - Grouping routes under 'admin' middleware and prefix for organization
+// Admin Area
 Route::prefix('admin')->name('admin.')->middleware('auth', 'verified', 'permission:access.admin.panel')->group(function () {
 
     // Dashboard Route
