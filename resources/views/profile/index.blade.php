@@ -13,15 +13,15 @@
         <flux:tab.group>
             <flux:tabs variant="segmented" class="w-full flex gap-2! border! border-slate-800! rounded-lg bg-slate-900/40!"
                 wire:model="tab">
-                <flux:tab name="profile" class="flex-1 text-center text-slate-300 hover:bg-slate-800/50">Profile</flux:tab>
-                <flux:tab name="security" class="flex-1 text-center text-slate-300 hover:bg-slate-800/50">Security</flux:tab>
-                <flux:tab name="myships" class="flex-1 text-center text-slate-300 hover:bg-slate-800/50">My Ships</flux:tab>
+                <flux:tab name="profile" class="flex-1 text-center text-slate-300 hover:bg-slate-800/50 cursor-pointer">Profile</flux:tab>
+                <flux:tab name="security" class="flex-1 text-center text-slate-300 hover:bg-slate-800/50 cursor-pointer">Security</flux:tab>
+                <flux:tab name="myships" class="flex-1 text-center text-slate-300 hover:bg-slate-800/50 cursor-pointer">My Ships</flux:tab>
             </flux:tabs>
 
             <flux:tab.panel name="profile">
 
                 <div class="bg-slate-900/50 border border-amber-400/20 rounded-lg shadow-sm">
-                  <div class="flex flex-col space-y-1.5 p-6">
+                  <div class="flex flex-col space-y-1.5 p-6 border-b border-slate-800">
                     <h2 class="text-2xl font-semibold leading-none tracking-tight flex items-center gap-2 text-slate-100">
                       <svg class="h-5 w-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 15c2.5 0 4.847.655 6.879 1.804M15 11a3 3 0 10-6 0 3 3 0 006 0z"/></svg>
                       Personal Information
@@ -44,7 +44,7 @@
                       </div>
 
                   <div class="p-6 pt-0 space-y-6">
-                    <div class="flex justify-center mb-6">
+                    <div class="flex p-4 justify-center mb-6">
 
                       <livewire:avatar-uploader />
 

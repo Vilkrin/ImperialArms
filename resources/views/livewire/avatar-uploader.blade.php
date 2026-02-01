@@ -37,7 +37,7 @@
 
                 </flux:file-upload>
 
-            <flux:button type="submit">Save Avatar</flux:button>
+            <flux:button type="submit" class="cursor-pointer">Save Avatar</flux:button>
 
     </form>
 
