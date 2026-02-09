@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PostController;
+use App\Livewire\Admin\Settings\SettingsPage;
 
 Route::get('/', function () {
     return view('home');
@@ -25,8 +27,8 @@ Route::get('/recruitment', function () {
 })->name('recruitment');
 
 // Blog
-// Route::get('/blog', [PostController::class, 'index'])->name('blog.index');
-// Route::get('/blog/{slug}', [PostController::class, 'show'])->name('blog.show');
+Route::get('/blog', [PostController::class, 'index'])->name('blog.index');
+Route::get('/blog/{slug}', [PostController::class, 'show'])->name('blog.show');
 
 Route::get('/contact', function () {
     return view('contact');
@@ -68,7 +70,9 @@ Route::prefix('admin')->name('admin.')->middleware('auth', 'verified', 'permissi
     // User Management - Roles & Permissions
     // Route::resource('roles', RoleController::class);
 
-
+    // Settings
+    Route::get('/settings', SettingsPage::class)
+        ->name('settings');
 });
 
 require __DIR__ . '/auth.php';

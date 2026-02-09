@@ -48,6 +48,18 @@ return [
 
     /*
     |---------------------------------------------------------------------------
+    | Lazy Loading Placeholder
+    |---------------------------------------------------------------------------
+    | Livewire allows you to lazy load components that would otherwise slow down
+    | the initial page load. Every component can have a custom placeholder or
+    | you can define the default placeholder view for all components below.
+    |
+    */
+
+    'component_placeholder' => null, // Example: 'placeholders::skeleton'
+
+    /*
+    |---------------------------------------------------------------------------
     | Make Command
     |---------------------------------------------------------------------------
     | This value determines the default configuration for the artisan make command
@@ -68,6 +80,45 @@ return [
 
     /*
     |---------------------------------------------------------------------------
+    | Class Namespace
+    |---------------------------------------------------------------------------
+    |
+    | This value sets the root class namespace for Livewire component classes in
+    | your application. This value will change where component auto-discovery
+    | finds components. It's also referenced by the file creation commands.
+    |
+    */
+
+    'class_namespace' => 'App\\Livewire',
+
+    /*
+    |---------------------------------------------------------------------------
+    | Class Path
+    |---------------------------------------------------------------------------
+    |
+    | This value is used to specify the path where Livewire component class files
+    | are created when running creation commands like `artisan make:livewire`.
+    | This path is customizable to match your projects directory structure.
+    |
+    */
+
+    'class_path' => app_path('Livewire'),
+
+    /*
+    |---------------------------------------------------------------------------
+    | View Path
+    |---------------------------------------------------------------------------
+    |
+    | This value is used to specify where Livewire component Blade templates are
+    | stored when running file creation commands like `artisan make:livewire`.
+    | It is also used if you choose to omit a component's render() method.
+    |
+    */
+
+    'view_path' => resource_path('views/livewire'),
+
+    /*
+    |---------------------------------------------------------------------------
     | Lazy Loading Placeholder
     |---------------------------------------------------------------------------
     | Livewire allows you to lazy load components that would otherwise slow down
@@ -76,7 +127,7 @@ return [
     |
     */
 
-    'component_placeholder' => 'livewire.placeholder',
+    'component_placeholder' => null, // Example: 'placeholders::skeleton'
 
     /*
     |---------------------------------------------------------------------------
