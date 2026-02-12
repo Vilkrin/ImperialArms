@@ -13,6 +13,43 @@
             @endif
         </title>
 
+        <!-- Primary Meta Tags -->
+        <meta name="title" content="{{ config('app.name') }}">
+        <meta name="description" content="A short, clear description of your website or CMS. Keep this under 160 characters for best SEO.">
+
+        <meta name="robots" content="index, follow">
+        <meta name="author" content="{{ config('app.name') }}">
+
+
+        <link rel="canonical" href="https://example.com/">
+
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://imperialarms.com/">
+        <meta property="og:title" content="{{ config('app.name') }}">
+        <meta property="og:description" content="Website Description Here. Keep it concise and compelling to encourage clicks when shared on social media.">
+        <meta property="og:image" content="#">
+
+        <meta property="og:site_name" content="{{ config('app.name') }}">
+        <meta property="og:locale" content="en_GB">
+
+        <!-- 📌 Open Graph Image tip: Use 1200 × 630 for og:image (works everywhere). -->
+
+        <!-- Twitter -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:url" content="https://example.com/">
+        <meta name="twitter:title" content="{{ config('app.name') }}">
+        <meta name="twitter:description" content="A short, clear description of your website or CMS.">
+        <meta name="twitter:image" content="https://example.com/images/social-preview.jpg">
+
+        <!-- Optional -->
+        <meta name="twitter:site" content="@yourhandle">
+        <meta name="twitter:creator" content="@yourhandle">
+
+        <meta name="theme-color" content="#0f172a">
+        <link rel="icon" href="/favicon.ico">
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=inter:400,500,600&display=swap" rel="stylesheet" />
