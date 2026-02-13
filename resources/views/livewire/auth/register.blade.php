@@ -5,7 +5,6 @@
     <x-auth-session-status class="text-center" :status="session('status')" />
 
     <form method="POST" wire:submit="register" class="flex flex-col gap-6">
-        {!! RecaptchaV3::field('register') !!}
         <!-- Name -->
         <flux:input
             wire:model="name"
@@ -48,7 +47,9 @@
             :placeholder="__('Confirm password')"
             viewable
         />
-
+        <div class="flex items-center justify-center">
+              <x-turnstile wire:model="turnstile" />
+        </div>
         <div class="flex items-center justify-end">
             <flux:button type="submit" variant="primary" class="w-full">
                 {{ __('Create account') }}

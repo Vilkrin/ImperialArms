@@ -9,10 +9,13 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
+use RyanChandler\LaravelCloudflareTurnstile\Rules\Turnstile;
 
 #[Layout('components.layouts.auth')]
 class Register extends Component
 {
+    public string $turnstile = '';
+    
     public string $name = '';
 
     public string $email = '';
@@ -26,16 +29,18 @@ class Register extends Component
      */
     public function register(): void
     {
+    
         $validated = $this->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'string', 'confirmed', Rules\Password::defaults()],
-            'g-recaptcha-response' => 'required|recaptchav3:register,0.5'
+            'turnstile' => ['required', new Turnstile],
         ]);
 
         $validated['password'] = Hash::make($validated['password']);
 
         event(new Registered(($user = User::create($validated))));
+        $user->assignRole('user');
 
         Auth::login($user);
 
