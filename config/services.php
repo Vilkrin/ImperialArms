@@ -35,6 +35,11 @@ return [
         ],
     ],
 
+    'cookiebot' => [
+        'id' => env('COOKIEBOT_ID'),
+        'blocking_mode' => env('COOKIEBOT_BLOCKING_MODE', 'auto'),
+    ],
+
     'turnstile' => [
         'key' => env('TURNSTILE_SITE_KEY'),
         'secret' => env('TURNSTILE_SECRET_KEY'),

@@ -56,5 +56,6 @@
                                 </svg>
                                 Save SEO Settings
                             </button>
+                            <flux:button variant="primary" color="amber">Save</flux:button>
                         </div>
                     </div>

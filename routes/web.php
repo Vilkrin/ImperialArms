@@ -1,8 +1,5 @@
 <?php
 
-use App\Livewire\Settings\Appearance;
-use App\Livewire\Settings\Password;
-use App\Livewire\Settings\Profile;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\DashboardController;
@@ -71,8 +68,9 @@ Route::prefix('admin')->name('admin.')->middleware('auth', 'verified', 'permissi
     // Route::resource('roles', RoleController::class);
 
     // Settings
-    Route::get('/settings', SettingsPage::class)
-        ->name('settings');
+    Route::get('/settings', function () {
+        return view('admin.settings.settingspage');
+    })->name('settings');
 });
 
 require __DIR__ . '/auth.php';

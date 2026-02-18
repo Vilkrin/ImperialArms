@@ -1,21 +1,19 @@
 <div>
-    <flux:tabs wire:model="activeTab">
-        <flux:tabs.list>
-            <flux:tabs.trigger value="general">General</flux:tabs.trigger>
-            <flux:tabs.trigger value="seo">SEO</flux:tabs.trigger>
-            <flux:tabs.trigger value="social">Social</flux:tabs.trigger>
-        </flux:tabs.list>
+    <flux:tab.group>
+        <flux:tabs wire:model="tab">
+            <flux:tab name="general">General</flux:tab>
+            <flux:tab name="seo">SEO</flux:tab>
+            <flux:tab name="social">Social</flux:tab>
+        </flux:tabs>
 
-        <flux:tabs.panel value="general">
+        <flux:tab.panel name="general">
             <livewire:admin.settings.general />
-        </flux:tabs.panel>
-
-        <flux:tabs.panel value="seo">
+        </flux:tab.panel>
+        <flux:tab.panel name="seo">
             <livewire:admin.settings.seo />
-        </flux:tabs.panel>
-
-        <flux:tabs.panel value="social">
+        </flux:tab.panel>
+        <flux:tab.panel name="social">
             <livewire:admin.settings.social-links />
-        </flux:tabs.panel>
-    </flux:tabs>
+        </flux:tab.panel>
+    </flux:tab.group>
 </div>
