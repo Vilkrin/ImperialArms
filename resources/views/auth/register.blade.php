@@ -1,10 +1,26 @@
-<div class="flex flex-col gap-6">
+<x-layouts.auth.simple>
+
+    <div class="flex flex-col gap-6">
     <x-auth-header :title="__('Create an account')" :description="__('Enter your details below to create your account')" />
 
     <!-- Session Status -->
     <x-auth-session-status class="text-center" :status="session('status')" />
 
-    <form method="POST" wire:submit="register" class="flex flex-col gap-6">
+    @if ($errors->any())
+        <div class="mb-4 text-sm text-red-600">
+            <div class="font-medium text-red-600">{{ __('Whoops! Something went wrong.') }}</div>
+            
+            <ul class="list-disc list-inside">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
+    <form method="POST" action="/register" class="flex flex-col gap-6">
+        @csrf
+
         <!-- Name -->
         <flux:input
             wire:model="name"
@@ -48,7 +64,6 @@
             viewable
         />
         <div class="flex items-center justify-center">
-              {{-- <x-turnstile wire:model="turnstile" /> --}}
               <x-turnstile  />
         </div>
         <div class="flex items-center justify-end">
@@ -63,3 +78,6 @@
         <flux:link :href="route('login')" wire:navigate>{{ __('Log in') }}</flux:link>
     </div>
 </div>
+
+    
+</x-layouts.auth.simple>

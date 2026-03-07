@@ -131,19 +131,10 @@
                    <!-- Auth Buttons -->
                    @if (Route::has('login'))
                       @auth
-                      @can('view.member.dashboard')
-                    <a href="#" class="inline-flex items-center rounded-md border border-slate-700/80 px-4 py-2 text-sm text-slate-200 hover:border-amber-400/50 hover:bg-amber-400/10 hover:text-amber-400 transition">
-                        <span class="font-exo">Members Area</span>
-                    </a>
-                    @endcan
-                    @can('access.admin.dashboard')
-                    <a href="{{ route('admin.dashboard') }}" class="inline-flex items-center rounded-md border border-slate-700/80 px-4 py-2 text-sm text-slate-200 hover:border-amber-400/50 hover:bg-amber-400/10 hover:text-amber-400 transition">
-                        <span class="font-exo">Dashboard</span>
-                    </a>
-                    @endcan
-                    
+            </div>
+            <div> 
                     <flux:dropdown align="end">
-                        <flux:profile avatar="https://unavatar.io/x/calebporzio" name="{{ auth()->user()->name }}" />
+                        <flux:profile avatar="{{ auth()->user()->getFirstMediaUrl('avatar') ?: 'https://unavatar.io/x/' . auth()->user()->name }}" name="{{ auth()->user()->name }}" />
 
                         <flux:navmenu class="max-w-[12rem]">
                             <div class="px-2 py-1.5">
@@ -166,9 +157,9 @@
 
                             <flux:navmenu.separator />
 
-                            <form method="POST" action="{{ route('logout') }}" class="w-full cursor-pointer">
+                            <form method="POST" action="{{ route('logout') }}" class="w-full">
                                 @csrf
-                                <flux:menu.item as="button" type="submit" icon="arrow-right-start-on-rectangle" class="text-zinc-800 dark:text-white w-full">
+                                <flux:menu.item as="button" type="submit" icon="arrow-right-start-on-rectangle" class="text-zinc-800 dark:text-white w-full cursor-pointer">
                                     {{ __('Log Out') }}
                                 </flux:menu.item>
                             </form>

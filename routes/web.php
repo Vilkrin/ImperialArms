@@ -5,7 +5,6 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PostController;
-use App\Livewire\Admin\Settings\SettingsPage;
 
 Route::get('/', function () {
     return view('home');
@@ -35,6 +34,9 @@ Route::prefix('profile')->name('profile.')->middleware(['auth'])->group(function
 
     Route::get('/', [ProfileController::class, 'index'])->name('index');
     Route::patch('/', [ProfileController::class, 'update'])->name('profile.update');
+    Route::get('/security', [ProfileController::class, 'security'])->name('security');
+    Route::get('/ships', [ProfileController::class, 'ships'])->name('ships');
+    Route::get('/{slug}', [ProfileController::class, 'show'])->name('show');
 });
 
 // Org Services
@@ -72,5 +74,3 @@ Route::prefix('admin')->name('admin.')->middleware('auth', 'verified', 'permissi
         return view('admin.settings.settingspage');
     })->name('settings');
 });
-
-require __DIR__ . '/auth.php';

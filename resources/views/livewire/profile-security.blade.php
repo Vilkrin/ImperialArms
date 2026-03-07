@@ -18,18 +18,84 @@
                       </div>
 
                     </div>
+                  </form>
+                    <div class="pt-4">
+
+                    </div>
+
+                        @if ($errors->any())
+                            <div>
+                                <div>Something went wrong!</div>
+
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+
+                        @if (session('status') == 'two-factor-authentication-enabled')
+                            <div class="mb-4 font-medium text-sm">
+                                Please finish configuring two-factor authentication below.
+                            </div>
+                        @endif
+
+                        @if (session('status') == 'two-factor-authentication-confirmed')
+                          <div class="mb-4 font-medium text-sm">
+                              Two-factor authentication confirmed and enabled successfully.
+                          </div>
+                        @endif
 
                     <div class="pt-4 border-t border-slate-800">
                       <label class="text-sm font-medium text-slate-200">Two-Factor Authentication</label>
                       <div class="mt-2 flex items-center justify-between">
-                        <p class="text-sm text-slate-300">Coming Soon - Not implemented yet.</p>
+                        {{-- <p class="text-sm text-slate-300">Coming Soon - Not implemented yet.</p> --}}
    
                       </div>
-                      <div class="mt-2 flex items-center justify-between">
-                        <p class="text-sm text-slate-300">Add an extra layer of security to your account</p>
-                        <button class="inline-flex items-center justify-center h-9 px-4 border border-slate-700 bg-slate-900/50 rounded-md text-sm text-slate-300 hover:bg-slate-800/50">Enable 2FA</button>
+
+                          @if (auth()->user()->two_factor_secret)
+                              <div>
+                                  {!! auth()->user()->twoFactorQrCodeSvg() !!}
+                              </div>
+
+                              <div>
+                                  @foreach (json_decode(decrypt(auth()->user()->two_factor_recovery_codes), true) as $code)
+                                      <div>{{ $code }}</div>
+                                  @endforeach
+                              </div>
+
+                              <div>
+                                  <form action="/user/two-factor-recovery-codes" method="POST">
+                                      @csrf
+                                      <div>
+                                          <button>Regenerate Codes</button>
+                                      </div>
+                                  </form>
+                              </div>
+                          @endif
+
+                      @if (! auth()->user()->two_factor_secret)
+                      <form action="/user/two-factor-authentication" method="POST">
+                        @csrf
+
+                          <div class="mt-2 flex items-center justify-between">
+                            <p class="text-sm text-slate-300">Add an extra layer of security to your account</p>
+                            <button class="inline-flex items-center justify-center h-9 px-4 border border-slate-700 bg-slate-900/50 rounded-md text-sm text-slate-300 hover:bg-slate-800/50 cursor-pointer">Enable 2FA</button>
+                          
+
+                      </form>
+                          @else
+                      <form action="/user/two-factor-authentication" method="POST">
+                          @csrf
+                          @method('delete')
+                          <div>
+                              <button>Disable</button>
+                          </div>
+                      </form>
+                        @endif
                       </div>
                     </div>
 
-                  </form>
+                 
 </div>
