@@ -1,9 +1,13 @@
 <x-layouts.auth.simple>
 
    <div class="mt-4 flex flex-col gap-6">
-      <flux:text class="text-center">
-         {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
-      </flux:text>
+     <x-auth-header
+        :title="__('Forgot Password')"
+        :description="__('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.')"
+       />
+
+    <!-- Session Status -->
+    <x-auth-session-status class="text-center" :status="session('status')" />
 
       @if ($errors->any())
          <div class="mb-4 font-medium text-sm text-red-600">

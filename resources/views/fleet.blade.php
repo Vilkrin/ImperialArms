@@ -45,7 +45,7 @@
             <!-- Fleet Grid -->
             <div id="fleet-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
                 <!-- Ship Cards -->
-                @forelse ($ships as $ship)
+                {{-- @forelse ($ships as $ship)
                     <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-6 backdrop-blur hover:border-amber-400/50 transition-all duration-300 group ship-card" data-class="{{ $ship->class }}" data-search="{{ strtolower($ship->name . ' ' . $ship->role) }}">
                         <div class="mb-4">
                             <div class="flex items-start justify-between mb-4">
@@ -78,7 +78,7 @@
                     <div class="col-span-full text-center text-slate-400">
                         No ships available at the moment. Please check back later.
                     </div>
-                @endforelse
+                @endforelse --}}
                 <!-- AEGIS Vulcan -->
                 <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-6 backdrop-blur hover:border-amber-400/50 transition-all duration-300 group ship-card" data-class="Support" data-search="vulcan fleet repair & refuel">
                     <div class="mb-4">

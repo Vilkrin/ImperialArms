@@ -1,4 +1,4 @@
-<x-layouts.main :title="__('Home')">
+<x-layouts.main :title="__('Account - Profile')">
 
     <div class="max-w-4xl mx-auto p-6">
       <!-- Header -->

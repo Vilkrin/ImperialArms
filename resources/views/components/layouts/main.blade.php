@@ -134,7 +134,7 @@
             </div>
             <div> 
                     <flux:dropdown align="end">
-                        <flux:profile avatar="{{ auth()->user()->getFirstMediaUrl('avatar') ?: 'https://unavatar.io/x/' . auth()->user()->name }}" name="{{ auth()->user()->name }}" />
+                        <flux:profile avatar="{{ auth()->user()->getFirstMediaUrl('avatars') ?: 'https://unavatar.io/x/' . auth()->user()->name }}" name="{{ auth()->user()->name }}" />
 
                         <flux:navmenu class="max-w-[12rem]">
                             <div class="px-2 py-1.5">

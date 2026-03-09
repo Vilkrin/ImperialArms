@@ -1,7 +1,7 @@
 <x-layouts.auth.simple>
 
    <div class="flex flex-col gap-6">
-    <x-auth-header :title="__('Create an account')" :description="__('Enter your details below to create your account')" />
+    <x-auth-header :title="__('2FA Verification')" :description="__('Please enter the code from your authenticator app')" />
 
     <!-- Session Status -->
     <x-auth-session-status class="text-center" :status="session('status')" />
@@ -25,7 +25,6 @@
 
             <div class="space-y-4">
                 <flux:button variant="primary" type="submit" class="w-full">Verify</flux:button>
-                <flux:button wire:click="resend" class="w-full">Resend code</flux:button>
             </div>
         </form>
         </flux:card>
