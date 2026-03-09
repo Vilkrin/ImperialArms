@@ -79,6 +79,12 @@
                     </div>
                 @endif
 
+                @if (session('status') == 'two-factor-authentication-confirmed')
+                    <div class="p-3 bg-green-900/20 border border-green-700 rounded text-green-300 text-sm font-medium">
+                        Two-factor authentication confirmed and enabled successfully.
+                    </div>
+                @endif
+
                 @if (!auth()->user()->two_factor_secret)
                     <form action="/user/two-factor-authentication" method="POST" class="mt-4">
                         @csrf
@@ -109,16 +115,18 @@
                             @csrf
                             <div class="p-4 border border-slate-700 rounded-lg bg-slate-900/30">
                                 <p class="text-sm font-medium text-slate-200 mb-3">Enter 6-digit code</p>
-                                <flux:otp class="mx-auto mb-4">
-                                    <flux:otp.input />
+                                <flux:otp wire:model="code" length="6" label="OTP Code" label:sr-only :error:icon="false" error:class="text-center" class="mx-auto mb-4" />
+                                    {{-- <flux:otp.input />
                                     <flux:otp.input />
                                     <flux:otp.input />
                                     <flux:otp.separator />
                                     <flux:otp.input />
                                     <flux:otp.input />
-                                    <flux:otp.input />
-                                </flux:otp>
-                                <button class="inline-flex items-center justify-center h-9 px-4 bg-amber-400 text-slate-900 rounded-md text-sm font-medium hover:bg-amber-300 w-full">Confirm 2FA</button>
+                                    <flux:otp.input /> --}}
+                                {{-- </flux:otp> --}}
+                                <flux:button variant="primary" type="submit" class="w-full cursor-pointer">
+                                    Confirm 2FA
+                                </flux:button>
                             </div>
                         </form>
 
@@ -135,11 +143,6 @@
                             </form>
                         </div>
 
-                        @if (session('status') == 'two-factor-authentication-confirmed')
-                            <div class="p-3 bg-green-900/20 border border-green-700 rounded text-green-300 text-sm font-medium">
-                                Two-factor authentication confirmed and enabled successfully.
-                            </div>
-                        @endif
                     </div>
                 @endif
               </div>
