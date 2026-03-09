@@ -91,7 +91,7 @@
 
                 <flux:checkbox wire:model="remember" :label="__('Remember me')" />
 
-                <flux:button variant="primary" type="submit" class="w-full">{{ __('Log in') }}</flux:button>
+                <flux:button variant="primary" type="submit" class="w-full cursor-pointer">{{ __('Log in') }}</flux:button>
             </div>
 
         </form>

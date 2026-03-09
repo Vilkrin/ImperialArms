@@ -43,6 +43,7 @@
         <div x-show="!recovery">
 
         <flux:otp 
+            x-model="code"
             name="code"
             label="OTP Code"
             label:sr-only
@@ -69,7 +70,10 @@
             <flux:input
                 type="text"
                 name="recovery_code"
-                label="Recovery Code"
+                x-ref="recovery_code"
+                x-bind:required="showRecoveryInput"
+                autocomplete="one-time-code"
+                x-model="recovery_code"
                 class="mx-auto"
             />
 
@@ -87,7 +91,7 @@
                 x-on:click="recovery = !recovery"
                 class="w-full"
             >
-            <span x-show="!recovery">Use Recovery Code</span>
+            <span x-show="!recovery" class="cursor-pointer">Use Recovery Code</span>
             <span x-show="recovery">Use Authenticator Code</span>
             </flux:button>
 

@@ -115,15 +115,15 @@
                             @csrf
                             <div class="p-4 border border-slate-700 rounded-lg bg-slate-900/30">
                                 <p class="text-sm font-medium text-slate-200 mb-3">Enter 6-digit code</p>
-                                <flux:otp wire:model="code" length="6" label="OTP Code" label:sr-only :error:icon="false" error:class="text-center" class="mx-auto mb-4" />
-                                    {{-- <flux:otp.input />
+                                <flux:otp x-model="code" name="code" label="OTP Code" label:sr-only :error:icon="false" error:class="text-center" class="mx-auto mb-4">
+                                    <flux:otp.input />
                                     <flux:otp.input />
                                     <flux:otp.input />
                                     <flux:otp.separator />
                                     <flux:otp.input />
                                     <flux:otp.input />
-                                    <flux:otp.input /> --}}
-                                {{-- </flux:otp> --}}
+                                    <flux:otp.input />
+                                </flux:otp>
                                 <flux:button variant="primary" type="submit" class="w-full cursor-pointer">
                                     Confirm 2FA
                                 </flux:button>

@@ -17,6 +17,7 @@ return new class extends Migration
 
             // Core org details
             $table->string('rank')->nullable();                  // e.g. Captain, Ensign, etc.
+            $table->string('call_sign')->nullable();             // e.g. "Red Leader", "Echo-3"
             $table->string('division')->nullable();              // e.g. Command, Engineering, Medical
             $table->string('status')->default('Active');         // e.g. Active, Reserve, Retired
 

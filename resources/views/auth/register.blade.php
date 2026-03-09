@@ -67,7 +67,7 @@
               <x-turnstile  />
         </div>
         <div class="flex items-center justify-end">
-            <flux:button type="submit" variant="primary" class="w-full">
+            <flux:button type="submit" variant="primary" class="w-full cursor-pointer">
                 {{ __('Create account') }}
             </flux:button>
         </div>
