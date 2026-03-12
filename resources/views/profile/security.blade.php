@@ -111,6 +111,7 @@
                         </div>
 
                         <!-- OTP Input and Buttons -->
+                        @if (!auth()->user()->two_factor_confirmed_at)
                         <form method="POST" action="/user/confirmed-two-factor-authentication" class="space-y-4">
                             @csrf
                             <div class="p-4 border border-slate-700 rounded-lg bg-slate-900/30">
@@ -129,6 +130,7 @@
                                 </flux:button>
                             </div>
                         </form>
+                        @endif
 
                         <!-- Management Buttons -->
                         <div class="flex gap-3">

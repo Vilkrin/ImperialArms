@@ -145,14 +145,14 @@
 
                             <flux:navmenu.separator />
                         
-                            <flux:navmenu.item href="{{ route('profile.index') }}" icon="user" class="text-zinc-800 dark:text-white">Account</flux:navmenu.item>
+                            <flux:navmenu.item href="{{ route('profile.index') }}" icon="user" class="text-zinc-800 dark:text-white cursor-pointer">Account</flux:navmenu.item>
 
                             @can('view.member.dashboard')
-                            <flux:navmenu.item href="#" icon="user" class="text-zinc-800 dark:text-white">Members Area</flux:navmenu.item>
+                            <flux:navmenu.item href="{{ route('members.dashboard') }}" icon="user" class="text-zinc-800 dark:text-white cursor-pointer">Members Area</flux:navmenu.item>
                             @endcan
                             
                             @can('access.admin.dashboard')
-                            <flux:navmenu.item href="{{ route('admin.dashboard') }}" icon="user" class="text-zinc-800 dark:text-white">Admin Area</flux:navmenu.item>
+                            <flux:navmenu.item href="{{ route('admin.dashboard') }}" icon="user" class="text-zinc-800 dark:text-white cursor-pointer">Admin Area</flux:navmenu.item>
                             @endcan
 
                             <flux:navmenu.separator />

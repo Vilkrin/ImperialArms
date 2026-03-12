@@ -1,6 +1,28 @@
-<x-layouts.main :title="__('Home')">
+<x-layouts.main :title="__('Members Area')">
 
-          <section class="py-16">
+        <!-- Header -->
+        <section class="py-16 bg-gradient-to-r from-amber-500/10 to-teal-500/10">
+            <div class="container mx-auto px-4">
+                <div class="text-center">
+                    <div class="flex items-center justify-center mb-4">
+                        <i data-lucide="shield" class="h-12 w-12 text-amber-400 mr-4"></i>
+                        <h1 class="text-4xl md:text-5xl font-orbitron font-bold text-gradient">
+                            MEMBERS AREA
+                        </h1>
+                    </div>
+                    <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+                        Exclusive access for Imperial Arms organization members
+                    </p>
+                    <div class="inline-flex items-center px-3 py-1 bg-teal-500/20 text-teal-300 rounded-full text-sm mt-4">
+                        <i data-lucide="users" class="h-4 w-4 mr-2"></i>
+                        Classified Access
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Members Content -->
+        <section class="py-16">
             <div class="container mx-auto px-4">
                 <div class="w-full">
                     <!-- Tab Navigation -->
@@ -201,4 +223,40 @@
                 </div>
             </div>
         </section>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+        
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Tab functionality
+        function showTab(tabName) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.add('hidden');
+            });
+            
+            // Remove active state from all buttons
+            document.querySelectorAll('.tab-button').forEach(button => {
+                button.setAttribute('data-state', '');
+                button.classList.remove('bg-gray-700', 'text-white');
+                button.classList.add('text-gray-400');
+            });
+            
+            // Show selected tab content
+            document.getElementById(tabName).classList.remove('hidden');
+            
+            // Add active state to clicked button
+            event.target.setAttribute('data-state', 'active');
+            event.target.classList.add('bg-gray-700', 'text-white');
+            event.target.classList.remove('text-gray-400');
+        }
+    </script>
+
 </x-layouts.main>
+

@@ -54,8 +54,10 @@ Route::prefix('services')->name('services.')->middleware('auth', 'verified')->gr
 Route::prefix('members')->name('members.')->middleware('auth', 'verified', 'permission:view.member.dashboard')->group(function () {
 
     // Main Page
+    Route::get('/', function () {
+        return view('members.dashboard');
+    })->name('dashboard');
     // Route::get('/', [OrgController::class, 'index'])->name('index');
-
 });
 
 // Admin Area
