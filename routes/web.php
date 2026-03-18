@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\PageController;
 
 Route::get('/', function () {
     return view('home');
@@ -70,6 +71,10 @@ Route::prefix('admin')->name('admin.')->middleware('auth', 'verified', 'permissi
     Route::resource('users', UserController::class);
     // User Management - Roles & Permissions
     // Route::resource('roles', RoleController::class);
+
+    // Content Management
+    Route::resource('posts', PostController::class);
+    Route::resource('pages', PageController::class);
 
     // Settings
     Route::get('/settings', function () {

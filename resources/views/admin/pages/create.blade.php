@@ -33,7 +33,6 @@
                                 
                                 <div class="grid gap-2">
                                     <label for="content" class="block text-sm font-medium text-slate-300">Content</label>
-                                    <textarea id="content" rows="20" placeholder="Write your page content here..." class="flex w-full rounded-md border border-slate-700 bg-slate-900/50 px-3 py-2 text-sm text-slate-100 placeholder:text-slate-400 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-amber-400 min-h-[500px]"></textarea>
                                     <x-forms.tinymce-editor 
                                         name="content" 
                                         class="tinymce-editor"
