@@ -90,8 +90,8 @@
                 </div>
 
                 {{-- <flux:checkbox wire:model="remember" :label="__('Remember me')" /> --}}
-                <div class="flex items-center justify-end cursor-pointer">
-                    <input type="checkbox" id="remember" name="remember">
+                <div class="flex items-center cursor-pointer">
+                    <input type="checkbox" id="remember" name="remember" class="rounded border-gray-300">
                     <label for="remember" class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</label>
                 </div>
 
