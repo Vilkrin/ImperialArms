@@ -1,8 +1,7 @@
 <?php
 
-use App\Livewire\Auth\Login;
 use App\Models\User;
-use Livewire\Livewire;
+
 
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
 
@@ -13,31 +12,32 @@ test('login screen can be rendered', function () {
 });
 
 test('users can authenticate using the login screen', function () {
-    $user = User::factory()->create();
+    $user = User::factory()->create([
+        'password' => bcrypt('password'),
+    ]);
 
-    $response = Livewire::test(Login::class)
-        ->set('email', $user->email)
-        ->set('password', 'password')
-        ->call('login');
-
-    $response
-        ->assertHasNoErrors()
-        ->assertRedirect(route('dashboard', absolute: false));
+    $response = $this->post('/login', [
+        'email' => $user->email,
+        'password' => 'password',
+    ]);
 
     $this->assertAuthenticated();
+
+    $response->assertRedirect('/');
 });
 
 test('users can not authenticate with invalid password', function () {
-    $user = User::factory()->create();
+    $user = User::factory()->create([
+        'password' => bcrypt('password'),
+    ]);
 
-    $response = Livewire::test(Login::class)
-        ->set('email', $user->email)
-        ->set('password', 'wrong-password')
-        ->call('login');
-
-    $response->assertHasErrors('email');
+    $response = $this->post('/login', [
+        'email' => $user->email,
+        'password' => 'wrong-password',
+    ]);
 
     $this->assertGuest();
+    $response->assertSessionHasErrors('email');
 });
 
 test('users can logout', function () {
@@ -45,7 +45,6 @@ test('users can logout', function () {
 
     $response = $this->actingAs($user)->post('/logout');
 
-    $response->assertRedirect('/');
-
     $this->assertGuest();
+    $response->assertRedirect('/');
 });
