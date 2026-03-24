@@ -57,13 +57,6 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-        <!-- Cookiebot -->
-        <script id="Cookiebot"
-        src="https://consent.cookiebot.com/uc.js"
-        data-cbid="{{ config('services.cookiebot.id') }}"
-        data-blockingmode="{{ config('services.cookiebot.blocking_mode') }}"
-        type="text/javascript"></script>
-
         <!-- Styles -->        
         @livewireStyles
         @fluxAppearance
