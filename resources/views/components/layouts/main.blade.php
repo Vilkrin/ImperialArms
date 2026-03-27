@@ -354,6 +354,8 @@
 
      @livewireScripts
      @fluxScripts
+
+     {{-- <livewire:cookie-consent /> --}}
   
   </body>
 </html>
