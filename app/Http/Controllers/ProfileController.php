@@ -22,11 +22,6 @@ class ProfileController extends Controller
         return view('profile.security', compact('user'));
     }
 
-    public function ships()
-    {
-        $user = auth()->user();
-        return view('profile.ships', compact('user'));
-    }
 
     /**
      * Show the form for creating a new resource.

@@ -75,4 +75,12 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
     {
         return $this->hasOne(Dossier::class);
     }
+
+    public function ships()
+    {
+        return $this->belongsToMany(Ship::class, 'member_ships')
+            ->using(MemberShip::class)
+            ->withPivot('name')
+            ->withTimestamps();
+    }
 }

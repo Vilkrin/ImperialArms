@@ -6,6 +6,10 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\FleetController;
+use App\http\Controllers\MemberShipController;
+use App\Http\Controllers\Admin\ShipController as AdminShipController;
+
 
 Route::get('/', function () {
     return view('home');
@@ -15,9 +19,7 @@ Route::get('/about', function () {
     return view('about');
 })->name('about');
 
-Route::get('/fleet', function () {
-    return view('fleet');
-})->name('fleet');
+Route::get('/fleet', [FleetController::class, 'index'])->name('fleet.index');
 
 Route::get('/recruitment', function () {
     return view('recruitment');
@@ -36,7 +38,9 @@ Route::prefix('profile')->name('profile.')->middleware(['auth'])->group(function
     Route::get('/', [ProfileController::class, 'index'])->name('index');
     Route::patch('/', [ProfileController::class, 'update'])->name('profile.update');
     Route::get('/security', [ProfileController::class, 'security'])->name('security');
-    Route::get('/ships', [ProfileController::class, 'ships'])->name('ships');
+    Route::get('/ships', [MemberShipController::class, 'index'])->name('ships');
+    Route::post('/ships', [MemberShipController::class, 'assign'])->name('ships.assign');
+    Route::delete('/ships/{ship}', [MemberShipController::class, 'remove'])->name('ships.remove');
     Route::get('/{slug}', [ProfileController::class, 'show'])->name('show');
 });
 
@@ -71,6 +75,8 @@ Route::prefix('admin')->name('admin.')->middleware('auth', 'verified', 'permissi
     Route::resource('users', UserController::class);
     // User Management - Roles & Permissions
     // Route::resource('roles', RoleController::class);
+    // Ship Management
+    Route::resource('ships', AdminShipController::class);
 
     // Content Management
     Route::resource('posts', PostController::class);

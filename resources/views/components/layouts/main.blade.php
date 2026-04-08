@@ -89,7 +89,7 @@
                         </svg>
                         <span class="font-exo">About</span>
                     </a>
-                    <a href="{{ route('fleet') }}" class="flex items-center space-x-2 transition-colors group {{ request()->routeIs('fleet') ? 'text-amber-400' : 'text-slate-300 hover:text-amber-400' }}">
+                    <a href="{{ route('fleet.index') }}" class="flex items-center space-x-2 transition-colors group {{ request()->routeIs('fleet') ? 'text-amber-400' : 'text-slate-300 hover:text-amber-400' }}">
                         <svg class="h-4 w-4 group-hover:text-amber-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"/>
                         </svg>
@@ -207,7 +207,7 @@
                         </svg>
                         <span class="font-exo">About</span>
                     </a>
-                    <a href="{{ route('fleet') }}" class="flex items-center space-x-3 transition-colors py-2 text-slate-300 hover:text-amber-400">
+                    <a href="{{ route('fleet.index') }}" class="flex items-center space-x-3 transition-colors py-2 text-slate-300 hover:text-amber-400">
                         <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"/>
                         </svg>

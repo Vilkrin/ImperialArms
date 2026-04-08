@@ -67,8 +67,13 @@
               <div class="space-y-3">
                 <h3 class="font-semibold">Ship List</h3>
                 <div class="space-y-2">
+                    @forelse($memberShips as $memberShip)
+                        <p>{{ $memberShip->name }} - {{ $memberShip->pivot->name ?? 'No custom name' }}</p>
+                    @empty
+                        <p>You have no ships assigned.</p>
+                    @endforelse
                   <div class="flex items-center justify-between p-3 bg-slate-800/50 border border-slate-800 rounded-lg">
-                    <div>
+                    <div> 
                       <div class="font-medium">AEGIS Vulcan</div>
                       <div class="text-sm text-slate-300">Support Ship</div>
                     </div>

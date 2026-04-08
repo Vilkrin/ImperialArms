@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('ships', function (Blueprint $table) {
             $table->id();
-            $table->string('manufacturer')->unique();
-            $table->string('model')->unique();
+            $table->string('manufacturer');
+            $table->string('model');
             $table->string('class')->nullable();
             $table->string('role')->nullable();
             $table->string('size')->nullable();
@@ -22,6 +22,8 @@ return new class extends Migration
             $table->unsignedInteger('cargo_capacity')->nullable();
             $table->text('description')->nullable();
             $table->timestamps();
+
+            $table->unique(['manufacturer', 'model']);
         });
     }
 

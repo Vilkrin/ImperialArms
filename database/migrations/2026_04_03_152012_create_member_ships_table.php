@@ -15,13 +15,11 @@ return new class extends Migration
             $table->id();
             $table->foreignId('ship_id')->constrained('ships')->cascadeOnDelete();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->string('name'); // Org-given ship name (e.g., ICS Solaris)
+            $table->string('name');
+            $table->string('serial_number')->nullable();
             $table->boolean('is_owner')->default(true);
-            $table->string('role_on_ship')->nullable(); // e.g., Pilot, Engineer
+            $table->string('role_on_ship')->nullable();
             $table->timestamps();
-
-            // A user shouldn’t have duplicate entries for the same ship type
-            $table->unique(['user_id', 'ship_id']);
         });
     }
 
