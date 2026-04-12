@@ -43,11 +43,6 @@
                   </div>
               @endif
 
-              @if (session('status') === 'profile-information-updated')
-                  <div class="mb-4 font-medium text-sm text-green-600">
-                      Profile Info has been updated.
-                  </div>
-              @endif
             <div class="p-6 space-y-6">
               <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div class="text-center p-4 border border-slate-800 rounded-lg">
@@ -67,11 +62,6 @@
               <div class="space-y-3">
                 <h3 class="font-semibold">Ship List</h3>
                 <div class="space-y-2">
-                    @forelse($memberShips as $memberShip)
-                        <p>{{ $memberShip->name }} - {{ $memberShip->pivot->name ?? 'No custom name' }}</p>
-                    @empty
-                        <p>You have no ships assigned.</p>
-                    @endforelse
                   <div class="flex items-center justify-between p-3 bg-slate-800/50 border border-slate-800 rounded-lg">
                     <div> 
                       <div class="font-medium">AEGIS Vulcan</div>
@@ -88,7 +78,89 @@
                   </div>
                 </div>
               </div>
-            </div>
+              <div class="space-y-3">
+                  <h3 class="font-semibold">Ship List</h3>
+
+                  <div class="space-y-2">
+                      @forelse($memberShips as $memberShip)
+                          <div class="flex items-center justify-between p-3 bg-slate-800/50 border border-slate-800 rounded-lg">
+
+                              {{-- LEFT SIDE --}}
+                              <div class="flex items-center gap-3">
+
+                                  {{-- Ship Image --}}
+                                  @if($memberShip->getFirstMediaUrl('images'))
+                                      <img 
+                                          src="{{ $memberShip->getFirstMediaUrl('images') }}" 
+                                          class="h-10 w-10 object-cover rounded"
+                                      >
+                                  @else
+                                      <div class="h-10 w-10 bg-slate-700 rounded flex items-center justify-center text-xs text-slate-400">
+                                          N/A
+                                      </div>
+                                  @endif
+
+                                  {{-- Ship Info --}}
+                                  <div>
+                                      <div class="font-medium text-slate-100">
+                                          {{ $memberShip->manufacturer }} {{ $memberShip->model }}
+                                          @if($memberShip->pivot->name)
+                                              <span class="text-xs text-slate-400">
+                                                  ({{ $memberShip->pivot->name }})
+                                              </span>
+                                          @endif
+                                      </div>
+
+                                      <div class="text-sm text-slate-300">
+                                          {{ $memberShip->role ?? 'No role set' }}
+                                      </div>
+                                  </div>
+                              </div>
+
+                              {{-- RIGHT SIDE --}}
+                              <div class="flex items-center gap-2">
+
+                                  {{-- Status Dropdown --}}
+                                  <form method="POST" action="{{ route('profile.ships.status', $memberShip->pivot->id) }}">
+                                      @csrf
+                                      @method('PATCH')
+
+                                      <select name="status"
+                                              onchange="this.form.submit()"
+                                              class="text-xs rounded-md border border-slate-700 bg-slate-900 text-slate-300 px-2 py-1">
+
+                                          <option value="active" @selected($memberShip->pivot->status === 'active')>
+                                              Active
+                                          </option>
+                                          <option value="maintenance" @selected($memberShip->pivot->status === 'maintenance')>
+                                              Maintenance
+                                          </option>
+                                          <option value="destroyed" @selected($memberShip->pivot->status === 'destroyed')>
+                                              Destroyed
+                                          </option>
+                                      </select>
+                                  </form>
+
+                                  {{-- Remove Button --}}
+                                  <form method="POST" action="{{ route('profile.ships.remove', $memberShip->pivot->id) }}">
+                                      @csrf
+                                      @method('DELETE')
+
+                                      <button type="submit"
+                                              class="text-xs px-2 py-1 rounded-md border border-red-700 bg-red-900 text-red-300 hover:bg-red-800 transition">
+                                          Remove
+                                      </button>
+                                  </form>
+
+                              </div>
+                          </div>
+                      @empty
+                          <div class="text-slate-400 text-sm">
+                              You have no ships assigned.
+                          </div>
+                      @endforelse
+                  </div>
+              </div>
           </div>
         </section>
       </div>
@@ -96,23 +168,33 @@
 </x-layouts.main>
 
 <flux:modal name="add-ship" class="md:w-96">
-    <div class="space-y-6">
-        <div>
-            <flux:heading size="lg">Add Ship</flux:heading>
-            <flux:text class="mt-2">Select the ship to add to your fleet.</flux:text>
-        </div>
-            <flux:select variant="listbox" searchable placeholder="Choose ship...">
-                <flux:select.option>Aegis Vulcan</flux:select.option>
-                <flux:select.option>RSI Hermes</flux:select.option>
-                <flux:select.option>RSI Apollo</flux:select.option>
-                <flux:select.option>Drake Kraken</flux:select.option>
-                <flux:select.option>Banu Merchentman</flux:select.option>
-                <flux:select.option>Crusader E1</flux:select.option>
-                <flux:select.option>Drake Corsair</flux:select.option>
+    <form method="POST" action="{{ route('profile.ships.assign') }}">
+        @csrf
+
+        <div class="space-y-6">
+            <div>
+                <flux:heading size="lg">Add Ship</flux:heading>
+                <flux:text class="mt-2">Select the ship to add to your fleet.</flux:text>
+            </div>
+
+            {{-- Ship Select --}}
+            <flux:select name="ship_id" variant="listbox" searchable placeholder="Choose ship...">
+                @foreach($ships as $ship)
+                    <flux:select.option value="{{ $ship->id }}">
+                        {{ $ship->manufacturer }} {{ $ship->model }}
+                    </flux:select.option>
+                @endforeach
             </flux:select>
-        <div class="flex">
-            <flux:spacer />
-            <flux:button type="submit" variant="primary" class="cursor-pointer">Add Ship</flux:button>
+
+            {{-- Optional custom name --}}
+            <flux:input name="name" placeholder="Custom ship name (optional)" />
+
+            <div class="flex">
+                <flux:spacer />
+                <flux:button type="submit" variant="primary" class="cursor-pointer">
+                    Add Ship
+                </flux:button>
+            </div>
         </div>
-    </div>
+    </form>
 </flux:modal>

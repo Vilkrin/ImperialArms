@@ -41,6 +41,8 @@ Route::prefix('profile')->name('profile.')->middleware(['auth'])->group(function
     Route::get('/ships', [MemberShipController::class, 'index'])->name('ships');
     Route::post('/ships', [MemberShipController::class, 'assign'])->name('ships.assign');
     Route::delete('/ships/{ship}', [MemberShipController::class, 'remove'])->name('ships.remove');
+    Route::patch('/ships/{membership}/status', [MemberShipController::class, 'updateStatus'])
+        ->name('ships.status');
     Route::get('/{slug}', [ProfileController::class, 'show'])->name('show');
 });
 

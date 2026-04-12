@@ -11,7 +11,8 @@ class MemberShip extends Pivot
     protected $fillable = [
         'user_id',
         'ship_id',
-        'name', // optional: user-given ship name
+        'name',
+        'status',
     ];
 
     public $timestamps = true;
