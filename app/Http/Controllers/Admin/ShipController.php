@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Ship;
+use Illuminate\Validation\Rule;
 
 class ShipController extends Controller
 {
@@ -13,7 +14,8 @@ class ShipController extends Controller
      */
     public function index()
     {
-        $ships = Ship::all();
+        $ships = Ship::latest()->get();
+
         return view('admin.ships.index', compact('ships'));
     }
 
@@ -31,38 +33,47 @@ class ShipController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'manufacturer' => 'required|string',
-            'model'        => 'required|string|unique:ships,model,NULL,id,manufacturer,' . $request->manufacturer,
-            'class'        => 'nullable|string',
-            'role'         => 'nullable|string',
-            'size'         => 'nullable|string',
-            'crew_required' => 'nullable|integer',
-            'cargo_capacity' => 'nullable|integer',
-            'description'  => 'nullable|string',
-            'image'        => 'nullable|image|max:2048',
+            'manufacturer' => ['required', 'string', 'max:255'],
+            'model' => [
+                'required',
+                'string',
+                'max:255',
+                Rule::unique('ships')->where(function ($query) use ($request) {
+                    return $query->where('manufacturer', $request->manufacturer);
+                }),
+            ],
+            'class' => ['nullable', 'string', 'max:255'],
+            'role' => ['nullable', 'string', 'max:255'],
+            'size' => ['nullable', 'string', 'max:255'],
+            'crew_required' => ['nullable', 'integer', 'min:0'],
+            'cargo_capacity' => ['nullable', 'integer', 'min:0'],
+            'description' => ['nullable', 'string'],
+            'image' => ['nullable', 'image', 'max:2048'],
         ]);
 
         $ship = Ship::create($data);
 
         if ($request->hasFile('image')) {
-            $ship->addMedia($request->file('image'))->toMediaCollection('images');
+            $ship->addMediaFromRequest('image')->toMediaCollection('images');
         }
 
-        return redirect()->route('admin.ships.index')->with('success', 'Ship created successfully.');
+        return redirect()
+            ->route('admin.ships.index')
+            ->with('success', 'Ship created successfully.');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Ship $ship)
     {
-        //
+        return view('admin.ships.show', compact('ship'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Ship $ship)
     {
         return view('admin.ships.edit', compact('ship'));
     }
@@ -73,25 +84,36 @@ class ShipController extends Controller
     public function update(Request $request, Ship $ship)
     {
         $data = $request->validate([
-            'manufacturer' => 'required|string',
-            'model'        => 'required|string|unique:ships,model,' . $ship->id . ',id,manufacturer,' . $request->manufacturer,
-            'class'        => 'nullable|string',
-            'role'         => 'nullable|string',
-            'size'         => 'nullable|string',
-            'crew_required' => 'nullable|integer',
-            'cargo_capacity' => 'nullable|integer',
-            'description'  => 'nullable|string',
-            'image'        => 'nullable|image|max:2048',
+            'manufacturer' => ['required', 'string', 'max:255'],
+            'model' => [
+                'required',
+                'string',
+                'max:255',
+                Rule::unique('ships')
+                    ->ignore($ship->id)
+                    ->where(function ($query) use ($request) {
+                        return $query->where('manufacturer', $request->manufacturer);
+                    }),
+            ],
+            'class' => ['nullable', 'string', 'max:255'],
+            'role' => ['nullable', 'string', 'max:255'],
+            'size' => ['nullable', 'string', 'max:255'],
+            'crew_required' => ['nullable', 'integer', 'min:0'],
+            'cargo_capacity' => ['nullable', 'integer', 'min:0'],
+            'description' => ['nullable', 'string'],
+            'image' => ['nullable', 'image', 'max:2048'],
         ]);
 
         $ship->update($data);
 
         if ($request->hasFile('image')) {
             $ship->clearMediaCollection('images');
-            $ship->addMedia($request->file('image'))->toMediaCollection('images');
+            $ship->addMediaFromRequest('image')->toMediaCollection('images');
         }
 
-        return redirect()->route('admin.ships.index')->with('success', 'Ship updated successfully.');
+        return redirect()
+            ->route('admin.ships.index')
+            ->with('success', 'Ship updated successfully.');
     }
 
     /**
@@ -100,6 +122,9 @@ class ShipController extends Controller
     public function destroy(Ship $ship)
     {
         $ship->delete();
-        return redirect()->route('admin.ships.index')->with('success', 'Ship deleted.');
+
+        return redirect()
+            ->route('admin.ships.index')
+            ->with('success', 'Ship deleted successfully.');
     }
 }

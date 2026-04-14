@@ -20,6 +20,7 @@ return new class extends Migration
             $table->boolean('is_owner')->default(true);
             $table->string('role_on_ship')->nullable();
             $table->string('status')->default('active');
+            $table->boolean('is_fleet')->default(false);
             $table->timestamps();
         });
     }

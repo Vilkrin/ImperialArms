@@ -9,6 +9,7 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\FleetController;
 use App\http\Controllers\MemberShipController;
 use App\Http\Controllers\Admin\ShipController as AdminShipController;
+use App\Http\Controllers\Admin\FleetController as AdminFleetController;
 
 
 Route::get('/', function () {
@@ -79,6 +80,7 @@ Route::prefix('admin')->name('admin.')->middleware('auth', 'verified', 'permissi
     // Route::resource('roles', RoleController::class);
     // Ship Management
     Route::resource('ships', AdminShipController::class);
+    Route::resource('fleet', AdminFleetController::class);
 
     // Content Management
     Route::resource('posts', PostController::class);
