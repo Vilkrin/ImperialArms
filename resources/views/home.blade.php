@@ -3,7 +3,7 @@
     <!-- Hero Section -->
     <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 pb-32">
         <!-- Background Image -->
-        <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" style="background-image: url('{{ asset('backgrounds/spacescape_vast_field.png') }}'); height: calc(100% + 200px); bottom: -200px;">
+        <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" style="background-image: url('https://picsum.photos/id/903/1920/1080'); height: calc(100% + 200px); bottom: -200px;">
             <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/60 to-black/80"></div>
         </div>
 

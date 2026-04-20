@@ -6,25 +6,82 @@ use Livewire\Component;
 
 class CookieConsent extends Component
 {
-    public $showBanner = false;
+    public bool $showBanner = true;
+    public bool $showPreferences = false;
 
-    public function mount()
+    public array $preferences = [
+        'necessary' => true,
+        'analytics' => false,
+        'marketing' => false,
+    ];
+
+    public function mount(): void
     {
-        $this->showBanner = !request()->cookie('cookie_consent');
+        $saved = request()->cookie('cookie_consent');
+
+        if ($saved) {
+            $decoded = json_decode($saved, true);
+
+            if (is_array($decoded)) {
+                $this->preferences = array_merge($this->preferences, $decoded);
+                $this->showBanner = false;
+            }
+        }
     }
 
-    public function accept()
+    public function acceptAll(): void
     {
-        cookie()->queue('cookie_consent', 'accepted', 60 * 24 * 365);
-        $this->showBanner = false;
+        $this->preferences = [
+            'necessary' => true,
+            'analytics' => true,
+            'marketing' => true,
+        ];
 
-        $this->dispatch('cookiesAccepted');
+        $this->saveConsent();
     }
 
-    public function reject()
+    public function rejectAll(): void
     {
-        cookie()->queue('cookie_consent', 'rejected', 60 * 24 * 365);
+        $this->preferences = [
+            'necessary' => true,
+            'analytics' => false,
+            'marketing' => false,
+        ];
+
+        $this->saveConsent();
+    }
+
+    public function savePreferences(): void
+    {
+        $this->preferences['necessary'] = true;
+
+        $this->saveConsent();
+    }
+
+    protected function saveConsent(): void
+    {
+        cookie()->queue(
+            cookie(
+                'cookie_consent',
+                json_encode($this->preferences),
+                60 * 24 * 365
+            )
+        );
+
         $this->showBanner = false;
+        $this->showPreferences = false;
+
+        $this->dispatch('cookie-consent-updated', preferences: $this->preferences);
+    }
+
+    public function openPreferences(): void
+    {
+        $this->showPreferences = true;
+    }
+
+    public function closePreferences(): void
+    {
+        $this->showPreferences = false;
     }
 
     public function render()
