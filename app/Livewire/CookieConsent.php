@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use Livewire\Component;
+use Livewire\Attributes\On;
 
 class CookieConsent extends Component
 {
@@ -17,7 +18,7 @@ class CookieConsent extends Component
 
     public function mount(): void
     {
-        $saved = request()->cookie('cookie_consent');
+        $saved = request()->cookie('cookie_consent_preferences');
 
         if ($saved) {
             $decoded = json_decode($saved, true);
@@ -62,7 +63,7 @@ class CookieConsent extends Component
     {
         cookie()->queue(
             cookie(
-                'cookie_consent',
+                'cookie_consent_preferences',
                 json_encode($this->preferences),
                 60 * 24 * 365
             )
@@ -82,6 +83,13 @@ class CookieConsent extends Component
     public function closePreferences(): void
     {
         $this->showPreferences = false;
+    }
+
+    #[On('open-cookie-preferences-window')]
+    public function openPreferencesFromEvent(): void
+    {
+        $this->showBanner = false;
+        $this->showPreferences = true;
     }
 
     public function render()
