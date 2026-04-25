@@ -274,25 +274,17 @@
                         Securing the stars with discipline, efficiency, and firepower.
                     </p>
                     <div class="flex space-x-4">
-                        <a href="#" class="p-2 bg-slate-800/50 rounded hover:bg-amber-400/20 hover:text-amber-400 transition-colors group">
-                            <svg class="h-5 w-5 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
-                            </svg>
+                        <a href="https://bsky.app/profile/lokenplays.bsky.social" class="p-2 bg-slate-800/50 rounded hover:bg-amber-400/20 hover:text-amber-400 transition-colors group">
+                            <i class="fa-brands fa-bluesky"></i>
                         </a>
-                        <a href="#" class="p-2 bg-slate-800/50 rounded hover:bg-amber-400/20 hover:text-amber-400 transition-colors group">
-                            <svg class="h-5 w-5 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2h4a1 1 0 110 2h-1v12a2 2 0 01-2 2H6a2 2 0 01-2-2V6H3a1 1 0 010-2h4z"/>
-                            </svg>
+                        <a href="https://discord.gg/lokenplays" class="p-2 bg-slate-800/50 rounded hover:bg-amber-400/20 hover:text-amber-400 transition-colors group">
+                            <i class="fa-brands fa-discord  "></i>
                         </a>
-                        <a href="#" class="p-2 bg-slate-800/50 rounded hover:bg-amber-400/20 hover:text-amber-400 transition-colors group">
-                            <svg class="h-5 w-5 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"/>
-                            </svg>
+                        <a href="https://www.twitch.tv/lokenplays" class="p-2 bg-slate-800/50 rounded hover:bg-amber-400/20 hover:text-amber-400 transition-colors group">
+                            <i class="fa-brands fa-twitch"></i>
                         </a>
-                        <a href="#" class="p-2 bg-slate-800/50 rounded hover:bg-amber-400/20 hover:text-amber-400 transition-colors group">
-                            <svg class="h-5 w-5 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-                            </svg>
+                        <a href="https://www.youtube.com/watch?v=iik25wqIuFo" class="p-2 bg-slate-800/50 rounded hover:bg-amber-400/20 hover:text-amber-400 transition-colors group">
+                            <i class="fa-brands fa-instagram"></i>
                         </a>
                     </div>
                 </div>
@@ -301,12 +293,12 @@
                 <div>
                     <h3 class="font-orbitron text-lg font-bold mb-4 bg-gradient-to-br from-amber-400 to-amber-500 bg-clip-text text-transparent">NAVIGATION</h3>
                     <ul class="space-y-2">
-                        <li><a href="about.html" class="text-slate-400 hover:text-amber-400 transition-colors font-exo">About Us</a></li>
-                        <li><a href="fleet.html" class="text-slate-400 hover:text-amber-400 transition-colors font-exo">Fleet Roster</a></li>
-                        <li><a href="#" class="text-slate-400 hover:text-amber-400 transition-colors font-exo">Mission Board</a></li>
-                        <li><a href="#" class="text-slate-400 hover:text-amber-400 transition-colors font-exo">Join Us</a></li>
-                        <li><a href="#" class="text-slate-400 hover:text-amber-400 transition-colors font-exo">News</a></li>
-                        <li><a href="#" class="text-slate-400 hover:text-amber-400 transition-colors font-exo">Contact</a></li>
+                        <li><a href="{{ route('about') }}" class="text-slate-400 hover:text-amber-400 transition-colors font-exo">About Us</a></li>
+                        <li><a href="{{ route('blog.index') }}" class="text-slate-400 hover:text-amber-400 transition-colors font-exo">Blog</a></li>
+                        <li><a href="{{ route('fleet.index') }}" class="text-slate-400 hover:text-amber-400 transition-colors font-exo">Fleet Roster</a></li>
+                        <li><a href="{{ route('recruitment') }}" class="text-slate-400 hover:text-amber-400 transition-colors font-exo">Join Us</a></li>
+                        {{-- <li><a href="{{ route('blog.index') }}" class="text-slate-400 hover:text-amber-400 transition-colors font-exo">Blog</a></li> --}}
+                        <li><a href="{{ route('contact') }}" class="text-slate-400 hover:text-amber-400 transition-colors font-exo">Contact</a></li>
                     </ul>
                 </div>
 
