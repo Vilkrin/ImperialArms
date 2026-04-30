@@ -60,25 +60,6 @@
               </div>
 
               <div class="space-y-3">
-                <h3 class="font-semibold">Ship List</h3>
-                <div class="space-y-2">
-                  <div class="flex items-center justify-between p-3 bg-slate-800/50 border border-slate-800 rounded-lg">
-                    <div> 
-                      <div class="font-medium">AEGIS Vulcan</div>
-                      <div class="text-sm text-slate-300">Support Ship</div>
-                    </div>
-                    <span class="inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold border-slate-700 bg-slate-900 text-slate-300">Active</span>
-                  </div>
-                  <div class="flex items-center justify-between p-3 bg-slate-800/50 border border-slate-800 rounded-lg">
-                    <div>
-                      <div class="font-medium">RSI Hermes</div>
-                      <div class="text-sm text-slate-300">Cargo Ship</div>
-                    </div>
-                    <span class="inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold border-slate-700 bg-slate-900 text-slate-300">Maintenance</span>
-                  </div>
-                </div>
-              </div>
-              <div class="space-y-3">
                   <h3 class="font-semibold">Ship List</h3>
 
                   <div class="space-y-2">
@@ -121,7 +102,7 @@
                               <div class="flex items-center gap-2">
 
                                   {{-- Status Dropdown --}}
-                                  <form method="POST" action="{{ route('profile.ships.status', $memberShip->pivot->id) }}">
+                                  <form method="POST" action="{{ route('profile.ships.status', $memberShip->id) }}">
                                       @csrf
                                       @method('PATCH')
 
@@ -142,7 +123,7 @@
                                   </form>
 
                                   {{-- Remove Button --}}
-                                  <form method="POST" action="{{ route('profile.ships.remove', $memberShip->pivot->id) }}">
+                                  <form method="POST" action="{{ route('profile.ships.remove', $memberShip->id) }}">
                                       @csrf
                                       @method('DELETE')
 
@@ -165,9 +146,8 @@
         </section>
       </div>
     </div>
-</x-layouts.main>
 
-<flux:modal name="add-ship" class="md:w-96">
+    <flux:modal name="add-ship" class="md:w-96">
     <form method="POST" action="{{ route('profile.ships.assign') }}">
         @csrf
 
@@ -197,4 +177,5 @@
             </div>
         </div>
     </form>
-</flux:modal>
+    </flux:modal>
+</x-layouts.main>

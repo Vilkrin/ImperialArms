@@ -1,6 +1,7 @@
 <x-layouts.main :title="__('Home')">
 
-    <section id="fleet" class="py-20 bg-slate-800/20 pt-36">
+  <!-- Fleet Section -->
+    <section class="py-20 bg-slate-950 pt-36">
         <div class="container mx-auto px-4">
             <!-- Section Header -->
             <div class="text-center mb-16">
@@ -44,16 +45,16 @@
 
             <!-- Fleet Grid -->
             <div id="fleet-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+                @forelse ($fleetShips as $memberShip)
                 <!-- Ship Cards -->
-                @forelse ($ships as $ship)
-                    <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-6 backdrop-blur hover:border-amber-400/50 transition-all duration-300 group ship-card" data-class="{{ $ship->class }}" data-search="{{ strtolower($ship->name . ' ' . $ship->role) }}">
-                        <div class="mb-4">
-                            <div class="flex items-start justify-between mb-4">
+                <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-6 backdrop-blur hover:border-amber-400/50 transition-all duration-300 group ship-card" data-class="Support" data-search="vulcan fleet repair & refuel">
+                    <div class="mb-4">
+                        <div class="flex items-start justify-between mb-4">
                                 <!-- Ship Image -->
-                                @if($ship->getFirstMediaUrl('images'))
+                                @if($memberShip->ship->getFirstMediaUrl('images'))
                                     <img 
-                                        src="{{ $ship->getFirstMediaUrl('images') }}" 
-                                        alt="{{ $ship->name }}" 
+                                        src="{{ $memberShip->ship->getFirstMediaUrl('images') }}" 
+                                        alt="{{ $memberShip->ship->model }}" 
                                         class="h-16 w-16 object-cover rounded-lg group-hover:scale-110 transition-transform"
                                     >
                                 @else
@@ -62,56 +63,61 @@
                                         ?
                                     </div>
                                 @endif
-                            </div>
-                            <h3 class="font-orbitron text-lg font-bold mb-2 text-slate-100">{{ $ship->name }}</h3>
-                            <p class="font-exo text-slate-400 text-sm mb-4">{{ $ship->description }}</p>
                         </div>
-                        <div class="space-y-3">
-                            <div class="grid grid-cols-2 gap-4 text-sm">
-                                <div>
-                                    <span class="text-slate-400">Class:</span>
-                                    <span class="ml-2 font-medium {{ $ship->class_color }}">{{ $ship->class }}</span>
-                                </div>
-                                <div>
-                                    <span class="text-slate-400">Crew:</span>
-                                    <span class="ml-2 text-slate-100">{{ $ship->crew }}</span>
-                                </div>
+                        <h3 class="font-orbitron text-lg mb-2 text-slate-100">
+                            <span class="font-bold">{{ $memberShip->ship->manufacturer }}</span>
+                            <span> {{ $memberShip->ship->model }}</span>
+                        </h3>
+                        <p class="font-exo text-slate-400 text-sm mb-4">{{ $memberShip->ship->description }}</p>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="grid grid-cols-2 gap-4 text-sm">
+                            <div>
+                                <span class="text-slate-400">Class:</span>
+                                <span class="ml-2 font-medium">{{ $memberShip->ship->class }}</span>
                             </div>
                             <div>
-                                <span class="text-slate-400 text-sm">Role:</span>
-                                <div class="font-medium text-slate-100">{{ $ship->role }}</div>
+                                <span class="text-slate-400">Crew:</span>
+                                <span class="ml-2 text-slate-100">{{ $memberShip->ship->crew_required }}</span>
                             </div>
                         </div>
-                    </div> 
-                    
-                @empty
+                        <div>
+                            <span class="text-slate-400 text-sm">Role:</span>
+                            <div class="font-medium text-slate-100">{{ $memberShip->ship->role }}</div>
+                        </div>
+                    </div>
+                </div>
+
+               @empty
                     <div class="col-span-full text-center text-slate-400">
                         No ships available at the moment. Please check back later.
                     </div>
                 @endforelse
 
+                </div>
 			
             <!-- Fleet Stats -->
-            @if ($ships->isNotEmpty())
+            @if ($fleetShips->isNotEmpty())
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
                 <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-6 backdrop-blur text-center">
-                    <div class="text-3xl font-orbitron font-bold text-amber-400">8</div>
+                    <div class="text-3xl font-orbitron font-bold text-amber-400">{{ $fleetShips->count() }}</div>
                     <div class="text-slate-400 font-exo">Total Vessels</div>
                 </div>
                 <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-6 backdrop-blur text-center">
-                    <div class="text-3xl font-orbitron font-bold text-amber-400">3</div>
+                    <div class="text-3xl font-orbitron font-bold text-amber-400">{{ $fleetShips->filter(fn ($memberShip) => str_contains(strtolower($memberShip->ship->role ?? ''), 'cargo'))->count() }}</div>
                     <div class="text-slate-400 font-exo">Cargo Ships</div>
                 </div>
                 <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-6 backdrop-blur text-center">
-                    <div class="text-3xl font-orbitron font-bold text-red-500">3</div>
+                    <div class="text-3xl font-orbitron font-bold text-red-500">{{ $fleetShips->filter(fn ($memberShip) => str_contains(strtolower($memberShip->ship->role ?? ''), 'combat') || str_contains(strtolower($memberShip->ship->class ?? ''), 'fighter'))->count() }}</div>
                     <div class="text-slate-400 font-exo">Combat Vessels</div>
                 </div>
                 <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-6 backdrop-blur text-center">
-                    <div class="text-3xl font-orbitron font-bold text-amber-400">6</div>
+                    <div class="text-3xl font-orbitron font-bold text-amber-400">{{ $fleetShips->pluck('ship_id')->unique()->count() }}</div>
                     <div class="text-slate-400 font-exo">Available Models</div>
                 </div>
             </div>
             @endif
+        
         </div>
     </section>
 

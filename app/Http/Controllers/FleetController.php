@@ -2,15 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Ship;
-use Illuminate\Support\Facades\Auth;
+use App\Models\MemberShip;
 
 class FleetController extends Controller
 {
     public function index()
     {
-        $ships = Ship::all();
-        return view('fleet', compact('ships'));
+        $fleetShips = MemberShip::with(['ship', 'user'])
+            ->where('is_fleet', true)
+            ->whereHas('user.roles', function ($query) {
+                $query->where('name', 'org member');
+            })
+            ->get();
+
+        return view('fleet', compact('fleetShips'));
     }
 }

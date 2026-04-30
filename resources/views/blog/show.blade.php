@@ -37,7 +37,7 @@
               <span>5 min read</span>
             </div>
           </div>
-              <!-- Social Share (static version of SocialShare component) -->
+              <!-- Social Share -->
               <div class="mt-6 flex flex-wrap items-center gap-3">
                 <span class="text-xs uppercase tracking-wide text-slate-500 font-semibold">
                   Share this post

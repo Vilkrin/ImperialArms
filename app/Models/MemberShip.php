@@ -8,11 +8,16 @@ class MemberShip extends Pivot
 {
     protected $table = 'member_ships';
 
+    public $incrementing = true;
+
+    protected $primaryKey = 'id';
+
     protected $fillable = [
         'user_id',
         'ship_id',
         'name',
         'status',
+        'is_fleet',
     ];
 
     public $timestamps = true;

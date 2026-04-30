@@ -8,8 +8,6 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\FleetController;
 use App\http\Controllers\MemberShipController;
-use App\Http\Controllers\Admin\ShipController as AdminShipController;
-use App\Http\Controllers\Admin\FleetController as AdminFleetController;
 
 
 Route::get('/', function () {
@@ -55,7 +53,7 @@ Route::prefix('services')->name('services.')->middleware('auth', 'verified')->gr
         return view('services.freight');
     })->name('freight');
 
-    // Other services can be added here
+    // Other services to be added here
 });
 
 // Members Area
@@ -79,8 +77,12 @@ Route::prefix('admin')->name('admin.')->middleware('auth', 'verified', 'permissi
     // User Management - Roles & Permissions
     // Route::resource('roles', RoleController::class);
     // Ship Management
-    Route::resource('ships', AdminShipController::class);
-    Route::resource('fleet', AdminFleetController::class);
+    Route::get('/ships', function () {
+        return view('admin.ships.index');
+    })->name('ships.index');
+    Route::get('/fleet', function () {
+        return view('admin.fleet.index');
+    })->name('fleet.index');
 
     // Content Management
     Route::resource('posts', PostController::class);

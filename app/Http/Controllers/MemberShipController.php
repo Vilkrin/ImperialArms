@@ -12,8 +12,11 @@ class MemberShipController extends Controller
     public function index()
     {
 
-        $memberShips = auth()->user()->ships()->with('ship')->get();
-        $ships = Ship::all();
+        $memberShips = auth()->user()->ships()->get();
+
+        $ships = Ship::orderBy('manufacturer')
+            ->orderBy('model')
+            ->get();
 
         return view('profile.ships', compact('memberShips', 'ships'));
     }
@@ -21,18 +24,17 @@ class MemberShipController extends Controller
     public function assign(Request $request)
     {
         $data = $request->validate([
-            'user_id' => 'required|exists:users,id',
-            'name' => 'nullable|string|max:255'
+            'ship_id' => ['required', 'exists:ships,id'],
+            'name' => ['nullable', 'string', 'max:255'],
         ]);
 
-        $user = auth()->user();
-
-        $user->ships()->attach($data['ship_id'], [
+        auth()->user()->ships()->attach($data['ship_id'], [
             'name' => $data['name'] ?? null,
             'status' => 'active',
+            'is_fleet' => false,
         ]);
 
-        return back()->with('success', 'Ship added to your fleet.');
+        return back()->with('success', 'Ship added to your profile.');
     }
 
     public function updateStatus(Request $request, $membershipId)

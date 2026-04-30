@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('status')->default('Active');         // e.g. Active, Reserve, Retired
 
             // Leadership-only fields
-            $table->text('leadership_notes')->nullable();       // Private notes from org leadership
+            $table->json('leadership_notes')->nullable();       // Private notes from org leadership
 
             // Record keeping
             $table->json('service_record')->nullable();         // Promotion / mission history
