@@ -125,7 +125,7 @@
                    @if (Route::has('login'))
                       @auth
             </div>
-            <div> 
+            <div class="hidden md:flex"> 
                     <flux:dropdown align="end">
                         <flux:profile class="cursor-pointer"
                             :avatar="auth()->user()->getFirstMediaUrl('avatars') ?: null"
