@@ -15,20 +15,24 @@
 
         <!-- Primary Meta Tags -->
         <meta name="title" content="{{ config('app.name') }}">
-        <meta name="description" content="A short, clear description of your website or CMS. Keep this under 160 characters for best SEO.">
+        <meta name="description" content="Imperial Arms is a professional mercenary and logistics organization in the Star Citizen universe. We specialize in secure freight transport, high-risk operations, and exploration missions across the 'verse. 
+                With a disciplined approach and a commitment to excellence, we provide top-tier services to clients while fostering a tight-knit community of members. 
+                Join us as we navigate the stars with precision, firepower, and camaraderie.">
 
         <meta name="robots" content="index, follow">
         <meta name="author" content="{{ config('app.name') }}">
 
 
-        <link rel="canonical" href="https://example.com/">
+        <link rel="canonical" href="https://imperialarms.org/">
 
         <!-- Open Graph / Facebook -->
         <meta property="og:type" content="website">
-        <meta property="og:url" content="https://imperialarms.com/">
+        <meta property="og:url" content="https://imperialarms.org/">
         <meta property="og:title" content="{{ config('app.name') }}">
-        <meta property="og:description" content="Website Description Here. Keep it concise and compelling to encourage clicks when shared on social media.">
-        <meta property="og:image" content="#">
+        <meta property="og:description" content="Imperial Arms is a professional mercenary and logistics organization in the Star Citizen universe. We specialize in secure freight transport, high-risk operations, and exploration missions across the 'verse. 
+                With a disciplined approach and a commitment to excellence, we provide top-tier services to clients while fostering a tight-knit community of members. 
+                Join us as we navigate the stars with precision, firepower, and camaraderie.">
+        <meta property="og:image" content="https://imperialarms.org/images/social-preview.jpg">
 
         <meta property="og:site_name" content="{{ config('app.name') }}">
         <meta property="og:locale" content="en_GB">
@@ -37,10 +41,12 @@
 
         <!-- Twitter -->
         <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:url" content="https://example.com/">
+        <meta name="twitter:url" content="https://imperialarms.org/">
         <meta name="twitter:title" content="{{ config('app.name') }}">
-        <meta name="twitter:description" content="A short, clear description of your website or CMS.">
-        <meta name="twitter:image" content="https://example.com/images/social-preview.jpg">
+        <meta name="twitter:description" content="Imperial Arms is a professional mercenary and logistics organization in the Star Citizen universe. We specialize in secure freight transport, high-risk operations, and exploration missions across the 'verse. 
+                With a disciplined approach and a commitment to excellence, we provide top-tier services to clients while fostering a tight-knit community of members. 
+                Join us as we navigate the stars with precision, firepower, and camaraderie.">
+        <meta name="twitter:image" content="https://imperialarms.org/images/social-preview.jpg">
 
         <!-- Optional -->
         <meta name="twitter:site" content="@yourhandle">

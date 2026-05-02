@@ -56,17 +56,20 @@
                                             <option value="German">German</option>
                                         </select>
                                     </div>
+
+                                    <div>
+                                        <form wire:submit="save">
+                                        <label class="block mb-2.5 text-sm font-medium text-heading" for="file_input">Upload file - Site Logo</label>
+                                        <input class="cursor-pointer bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full shadow-xs placeholder:text-body" aria-describedby="file_input_help" id="file_input" type="file">
+                                        <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">webp (MAX. 800x400px).</p>
+                                        
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         
                         <div class="flex justify-end">
-                            <button class="inline-flex items-center gap-2 px-4 py-2 bg-amber-400 text-slate-900 rounded-md font-medium hover:bg-amber-300 transition-colors">
-                                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"/>
-                                </svg>
-                                Save General Settings
-                            </button>
-                            <flux:button variant="primary" color="amber">Save</flux:button>
+                            <flux:button variant="primary" color="amber" class="cursor-pointer">Save</flux:button>
                         </div>
                     </div>
