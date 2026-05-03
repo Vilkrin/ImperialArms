@@ -43,6 +43,10 @@
 
             <flux:separator text="or" />
 
+                @if (session('message'))
+                    <div class="alert alert-danger">{{ session('message') }}</div>
+                @endif
+
                 @if ($errors->any())
                     <div class="mb-4 text-sm text-red-600">
                         <div class="font-medium text-red-600">{{ __('Whoops! Something went wrong.') }}</div>

@@ -22,6 +22,7 @@
             @endif
         </div>
 
+    @if ($user->getFirstMediaUrl('avatars'))
         <button
             type="button"
             wire:click="removePhoto"
@@ -29,6 +30,7 @@
         >
             Remove avatar
         </button>
+    @endif
     </div>
 
     {{-- Upload Section --}}
@@ -55,13 +57,15 @@
             @endif
         </div>
 
-        <div class="pt-4 flex justify-end">
-            <flux:button
-                type="submit"
-                class="cursor-pointer px-6 py-2.5"
-            >
-                Save Avatar
-            </flux:button>
-        </div>
+        @if ($photo)
+            <div class="pt-4 flex justify-end">
+                <flux:button
+                    type="submit"
+                    class="cursor-pointer px-6 py-2.5"
+                >
+                    Save Avatar
+                </flux:button>
+            </div>
+        @endif
     </form>
 </div>

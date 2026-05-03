@@ -28,6 +28,9 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
         'name',
         'email',
         'password',
+        'status',
+        'banned_until',
+        'ban_reason',
     ];
 
     /**
@@ -38,6 +41,10 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
     protected $hidden = [
         'password',
         'remember_token',
+    ];
+
+    protected $dates = [
+        'banned_until'
     ];
 
     /**

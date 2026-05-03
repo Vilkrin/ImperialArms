@@ -6,6 +6,8 @@ use Livewire\Component;
 use App\Models\User;
 use Illuminate\Validation\Rule;
 use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\DB;
+use Flux\Flux;
 
 class EditUser extends Component
 {
@@ -18,6 +20,11 @@ class EditUser extends Component
     public string $status = 'active';
 
     public array $roleStates = [];
+
+
+    public ?string $banned_until = null;
+
+    public string $ban_reason = '';
 
     public function mount(User $user): void
     {
@@ -79,6 +86,30 @@ class EditUser extends Component
         }
 
         $this->user->syncRoles($roles);
+    }
+
+    public function banUser(): void
+    {
+        $this->validate([
+            'ban_reason' => ['required', 'string', 'max:1000'],
+            'banned_until' => ['required', 'date', 'after:today'],
+        ]);
+
+        $this->user->update([
+            'banned_until' => $this->banned_until,
+            'ban_reason' => $this->ban_reason,
+            'status' => 'banned',
+        ]);
+
+        DB::table('sessions')
+            ->where('user_id', $this->user->id)
+            ->delete();
+
+        Flux::toast('User has been banned.', variant: 'success');
+
+        $this->reset(['ban_reason', 'banned_until']);
+
+        $this->modal('ban-user')->close();
     }
 
     public function render()
