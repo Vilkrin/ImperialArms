@@ -24,7 +24,7 @@ Route::get('/recruitment', function () {
     return view('recruitment');
 })->name('recruitment');
 
-// Blog
+// Blog Routes
 Route::get('/blog', [PostController::class, 'index'])->name('blog.index');
 Route::get('/blog/{slug}', [PostController::class, 'show'])->name('blog.show');
 
