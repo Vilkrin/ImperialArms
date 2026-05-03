@@ -35,6 +35,11 @@ class AvatarUploader extends Component
         $this->photo = null;
     }
 
+    public function removeUploadPreview(): void
+    {
+        $this->photo = null;
+    }
+
     public function save()
     {
         $user = Auth::user();

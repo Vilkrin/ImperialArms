@@ -1,43 +1,67 @@
+<div class="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-10 items-start">
 
-    <form wire:submit="save">
+    {{-- Current Avatar --}}
+    <div class="flex flex-col items-center gap-3">
+        <div
+            class="relative flex items-center justify-center h-24 w-24 rounded-full transition-colors cursor-pointer overflow-hidden
+            border border-amber-400/40 hover:border-amber-400/60
+            bg-amber-400/20 hover:bg-amber-400/30
+            dark:border-amber-400/20 dark:hover:border-amber-400/40
+            dark:bg-amber-400/10 dark:hover:bg-amber-400/20"
+        >
+            @if ($photo)
+                <img src="{{ $photo->temporaryUrl() }}" class="h-full w-full object-cover rounded-full" />
+            @elseif ($user->getFirstMediaUrl('avatars'))
+                <img src="{{ $user->getFirstMediaUrl('avatars') }}"
+                     alt="{{ $user->name }}"
+                     class="h-full w-full object-cover rounded-full" />
+            @else
+                <div class="h-full w-full flex items-center justify-center text-2xl font-bold text-amber-300">
+                    <flux:icon name="user" variant="solid" class="text-zinc-500 dark:text-zinc-400" />
+                </div>
+            @endif
+        </div>
 
-                <flux:file-upload wire:model="photo">
-                
-                    <div
-                        class="relative flex items-center justify-center h-24 w-24 rounded-full transition-colors cursor-pointer
-                        border border-amber-400/40 hover:border-amber-400/60
-                        bg-amber-400/20 hover:bg-amber-400/30
-                        dark:border-amber-400/20 dark:hover:border-amber-400/40
-                        dark:bg-amber-400/10 dark:hover:bg-amber-400/20"
-                    >
-                        @if ($photo)
-                            <!-- Preview uploaded avatar -->
-                            <img src="{{ $photo->temporaryUrl() }}" class="h-full w-full object-cover rounded-full" />
+        <button
+            type="button"
+            wire:click="removePhoto"
+            class="cursor-pointer inline-flex items-center justify-center rounded-md border border-red-500/40 px-3 py-1.5 text-sm text-red-300 hover:bg-red-500/10 hover:border-red-500/60 transition-colors"
+        >
+            Remove avatar
+        </button>
+    </div>
 
-                        @elseif ($user->getFirstMediaUrl('avatars'))
-                            <!-- Existing avatar -->
-                                <img src="{{ $user->getFirstMediaUrl('avatars') }}"
-                                    alt="{{ $user->name }}"
-                                    class="h-full w-full object-cover rounded-full" />
-                        @else
-                            <!-- Your existing fallback -->
-                            <div class="h-full w-full flex items-center justify-center rounded-full text-2xl font-bold text-amber-300">
-                                <flux:icon name="user" variant="solid" class="text-zinc-500 dark:text-zinc-400" />
-                            </div>
-                        @endif
+    {{-- Upload Section --}}
+    <form wire:submit="save" class="w-full space-y-5">
+        <flux:file-upload wire:model="photo" label="Upload Avatar">
+            <flux:file-upload.dropzone
+                heading="Drop avatar here or click to browse"
+                text="JPG, PNG, GIF up to 10MB"
+                with-progress
+            />
+        </flux:file-upload>
 
-                        <!-- Corner upload icon -->
-                        <div
-                            class="absolute bottom-0 right-0 bg-white dark:bg-zinc-800 p-1 rounded-full shadow
-                            border border-zinc-200 dark:border-zinc-700"
-                        >
-                            <flux:icon name="arrow-up-circle" variant="solid" class="h-5 w-5 text-amber-500 dark:text-amber-400" />
-                        </div>
-                    </div>
+        <div class="mt-3 flex flex-col gap-2">
+            @if ($photo)
+                <flux:file-item
+                    :heading="$photo->getClientOriginalName()"
+                    :image="$photo->temporaryUrl()"
+                    :size="$photo->getSize()"
+                >
+                <x-slot name="actions">
+                    <flux:file-item.remove wire:click="removeUploadPreview" aria-label="{{ 'Remove file: ' . $photo->getClientOriginalName() }}" />
+                </x-slot>
+                </flux:file-item>
+            @endif
+        </div>
 
-                </flux:file-upload>
-
-            <flux:button type="submit" class="cursor-pointer">Save Avatar</flux:button>
-
+        <div class="pt-4 flex justify-end">
+            <flux:button
+                type="submit"
+                class="cursor-pointer px-6 py-2.5"
+            >
+                Save Avatar
+            </flux:button>
+        </div>
     </form>
-
+</div>
