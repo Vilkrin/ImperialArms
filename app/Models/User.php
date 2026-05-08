@@ -13,11 +13,13 @@ use Spatie\Permission\Traits\HasRoles;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Laravel\Fortify\TwoFactorAuthenticatable;
+use Laravel\Fortify\Contracts\PasskeyUser;
+use Laravel\Fortify\PasskeyAuthenticatable;
 
-class User extends Authenticatable implements MustVerifyEmail, HasMedia
+class User extends Authenticatable implements MustVerifyEmail, HasMedia, PasskeyUser
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable, HasRoles, InteractsWithMedia, TwoFactorAuthenticatable;
+    use HasFactory, Notifiable, HasRoles, InteractsWithMedia, TwoFactorAuthenticatable, PasskeyAuthenticatable;
 
     /**
      * The attributes that are mass assignable.

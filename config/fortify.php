@@ -134,6 +134,23 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Passkey Authentication
+    |--------------------------------------------------------------------------
+    | Here you may configure the settings for passkey authentication, such as
+    | relying party ID, allowed origins, and user handle secret. These settings will be used
+    | when enabling passkey authentication in the features array below.
+    |
+    */
+
+    'passkeys' => [
+        'relying_party_id' => parse_url(config('app.url'), PHP_URL_HOST),
+        'allowed_origins' => [config('app.url')],
+        'user_handle_secret' => config('app.key'),
+        'timeout' => 60000,
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
     | Features
     |--------------------------------------------------------------------------
     |
@@ -153,6 +170,9 @@ return [
             'confirm' => true,
             'confirmPassword' => true,
             // 'window' => 0,
+        ]),
+        Features::passkeys([
+            'confirmPassword' => true,
         ]),
     ],
 
