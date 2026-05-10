@@ -350,10 +350,7 @@
             <!-- Bottom Bar -->
             <div class="border-t border-slate-700 mt-12 pt-8 flex flex-col md:flex-row items-center justify-between">
                 <div class="text-slate-400 text-sm font-exo mb-4 md:mb-0">
-                    © 2026 Imperial Arms. All rights reserved. Site Built by 
-                    <a href="https://vilkrin.uk" target="_blank" rel="noopener" class="text-slate-300 hover:text-amber-400 transition-colors">
-                        Vilkrin.
-                    </a> Not affiliated with Cloud Imperium Games.
+                    {!! $generalSettings?->footer_text ?: '© 2026 Imperial Arms. All rights reserved. Site Built by Vilkrin. Not affiliated with Cloud Imperium Games.' !!}
                 </div>
                 <div class="flex items-center space-x-6 text-sm">
                     <a href="#" class="text-slate-400 hover:text-amber-400 transition-colors font-exo">Privacy Policy</a>

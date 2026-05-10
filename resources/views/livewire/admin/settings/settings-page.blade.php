@@ -1,9 +1,9 @@
 <div>
     <flux:tab.group>
         <flux:tabs wire:model="tab">
-            <flux:tab name="general">General</flux:tab>
-            <flux:tab name="seo">SEO</flux:tab>
-            <flux:tab name="social">Social</flux:tab>
+            <flux:tab name="general" class="cursor-pointer">General</flux:tab>
+            <flux:tab name="seo" class="cursor-pointer">SEO</flux:tab>
+            <flux:tab name="social" class="cursor-pointer">Social</flux:tab>
         </flux:tabs>
 
         <flux:tab.panel name="general">
