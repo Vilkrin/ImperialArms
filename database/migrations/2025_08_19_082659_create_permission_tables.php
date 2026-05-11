@@ -168,6 +168,8 @@ return new class extends Migration
 
         // General / Admin
         Permission::create(['name' => 'manage.users']);
+        Permission::create(['name' => 'manage.site.settings']);
+        Permission::create(['name' => 'manage.site.content']);
         Permission::create(['name' => 'access.admin.panel']);
 
         // Update cache to ensure newly created permissions are recognized

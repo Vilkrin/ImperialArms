@@ -19,6 +19,7 @@
         "livewire/flux-pro": "^2.6",
         "livewire/volt": "^1.7.0",
         "ryangjchandler/laravel-cloudflare-turnstile": "^3.0",
+        "spatie/laravel-activitylog": "^5.0",
         "spatie/laravel-medialibrary": "^11.14",
         "spatie/laravel-permission": "^6.21"
     },

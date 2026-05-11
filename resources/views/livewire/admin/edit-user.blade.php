@@ -37,24 +37,31 @@
                         <div class="p-6 grid grid-cols-2 gap-4">
                             <form wire:submit="save">
                                 
+                                <div>
                                     <flux:field>
                                         <flux:label>Username</flux:label>
                                         <flux:input wire:model="name" />
                                         <flux:error name="name" />
                                     </flux:field>
-                                
+                                </div>
+
+                                <div>                                
                                     <flux:field>
                                         <flux:label>Email</flux:label>
                                         <flux:input type="email" wire:model="email" />
                                         <flux:error name="email" />
                                     </flux:field>
-                                                                
+                                </div>
+                                
+                                <div>
                                     <flux:field>
                                         <flux:label>Password</flux:label>
                                         <flux:input type="password" wire:model="password" />
                                         <flux:error name="password" />
                                     </flux:field>
-                                                                
+                                </div>
+
+                                <div>                                                                
                                     <flux:field>
                                         <flux:label>Status</flux:label>
 
@@ -66,6 +73,7 @@
 
                                         <flux:error name="status" />
                                     </flux:field>
+                                </div>
                                 
                                 <div class="pt-4">
                                     <flux:button type="submit" class="bg-amber-400 hover:bg-amber-500 text-slate-900 font-semibold">Save Changes</flux:button>
@@ -242,34 +250,34 @@
                     </div>
                 </div>
 
-<flux:modal name="ban-user" class="md:w-96">
-    <form wire:submit.prevent="banUser" class="space-y-6">
-        <div>
-            <flux:heading size="lg">Ban User</flux:heading>
-            <flux:text class="mt-2">Are you sure you want to ban this user?</flux:text>
-        </div>
+        <flux:modal name="ban-user" class="md:w-96">
+            <form wire:submit.prevent="banUser" class="space-y-6">
+                <div>
+                    <flux:heading size="lg">Ban User</flux:heading>
+                    <flux:text class="mt-2">Are you sure you want to ban this user?</flux:text>
+                </div>
 
-        <flux:input
-            label="Reason"
-            placeholder="Enter reason for ban"
-            wire:model="ban_reason"
-        />
+                <flux:input
+                    label="Reason"
+                    placeholder="Enter reason for ban"
+                    wire:model="ban_reason"
+                />
 
-        <flux:input
-            label="Banned Until"
-            type="date"
-            wire:model="banned_until"
-        />
+                <flux:input
+                    label="Banned Until"
+                    type="date"
+                    wire:model="banned_until"
+                />
 
-        <div class="flex">
-            <flux:spacer />
+                <div class="flex">
+                    <flux:spacer />
 
-            <flux:button type="submit" variant="primary" class="cursor-pointer">
-                Save changes
-            </flux:button>
-        </div>
-    </form>
-</flux:modal>
+                    <flux:button type="submit" variant="primary" class="cursor-pointer">
+                        Save changes
+                    </flux:button>
+                </div>
+            </form>
+        </flux:modal>
 
     @persist('toast')
         <flux:toast />
