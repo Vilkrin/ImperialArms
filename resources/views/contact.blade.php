@@ -1,8 +1,8 @@
-<x-layouts.main>
+<x-layouts.main :title="__('Contact')">
 
 
         <!-- Contact Section -->
-        <section id="contact" class="py-20 bg-slate-800/20">
+        <section id="contact" class="py-20 bg-gradient-to-b from-slate-900 via-slate-950 to-slate-950">
             <div class="container mx-auto px-4">
                 <div class="text-center mb-16">
                     <h2 class="font-orbitron text-4xl md:text-5xl font-bold mb-6">

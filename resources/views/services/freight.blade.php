@@ -1,6 +1,6 @@
-<x-layouts.main :title="__('Home')">
+<x-layouts.main :title="__('Freight Transport Services')">
 
-        <section class="py-20">
+        <section class="py-20 bg-gradient-to-b from-slate-900 via-slate-950 to-slate-950">
             <div class="container mx-auto px-4">
                 <div class="text-center mb-16">
                     <h1 class="font-orbitron text-4xl md:text-5xl font-bold mb-6">

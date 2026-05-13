@@ -1,7 +1,7 @@
 <x-layouts.main :title="__('About')">
 
     <!-- About Section -->
-    <section id="about" class="py-20 relative pt-36">
+    <section id="about" class="py-20 relative pt-36 bg-gradient-to-b from-slate-900 via-slate-950 to-slate-950">
         <div class="container mx-auto px-4">
             <!-- Section Header -->
             <div class="text-center mb-16">
