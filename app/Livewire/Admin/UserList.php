@@ -40,7 +40,7 @@ class UserList extends Component
         ])->count();
 
         // Example: Active users (adjust to your logic)
-        $this->activeUsers = User::where('is_active', true)->count();
+        $this->activeUsers = User::where('status', 'active')->count();
 
         // Example: Count admins (if using Spatie roles)
         $this->admins = User::role('admin')->count();

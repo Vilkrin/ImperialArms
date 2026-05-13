@@ -153,6 +153,102 @@
 
                                         </form>
                                     </div>
+
+                                    {{-- Front Page Background Image Uploader --}}
+                                    <div class="flex items-start gap-6">
+                                        <div class="flex flex-col items-center gap-3 shrink-0">
+                                            <div
+                                                class="relative flex items-center justify-center h-24 w-24 overflow-hidden
+                                                border border-amber-400/40 hover:border-amber-400/60
+                                                bg-amber-400/20 hover:bg-amber-400/30 transition-colors
+                                                dark:border-amber-400/20 dark:hover:border-amber-400/40
+                                                dark:bg-amber-400/10 dark:hover:bg-amber-400/20"
+                                            >
+                                                {{-- Temporary Upload Preview --}}
+                                                @if ($logoUpload)
+                                                    <img
+                                                        src="{{ $logoUpload->temporaryUrl() }}"
+                                                        alt="Logo Preview"
+                                                        class="h-full w-full object-cover"
+                                                    />
+
+                                                {{-- Saved Logo --}}
+                                                @elseif ($settings->getFirstMediaUrl('logos'))
+                                                    <img
+                                                        src="{{ $settings->getFirstMediaUrl('logos') }}"
+                                                        alt="Site Logo"
+                                                        class="h-full w-full object-cover"
+                                                    />
+
+                                                {{-- Empty State --}}
+                                                @else
+                                                    <div class="flex h-full w-full items-center justify-center">
+                                                        <flux:icon
+                                                            name="photo"
+                                                            variant="solid"
+                                                            class="h-10 w-10 text-zinc-500 dark:text-zinc-400"
+                                                        />
+                                                    </div>
+                                                @endif
+                                            </div>
+
+                                            {{-- Remove Saved Logo --}}
+                                            @if ($settings->getFirstMediaUrl('logos'))
+                                                <button
+                                                    type="button"
+                                                    wire:click="removeLogo"
+                                                    class="cursor-pointer inline-flex items-center justify-center rounded-md
+                                                    border border-red-500/40 px-3 py-1.5 text-sm text-red-300
+                                                    hover:bg-red-500/10 hover:border-red-500/60 transition-colors"
+                                                >
+                                                    Remove Logo
+                                                </button>
+                                            @endif
+                                        </div>
+
+                                        {{-- Upload Form --}}
+                                        <form wire:submit="saveLogo" class="w-full max-w-lg space-y-5 cursor-pointer">
+
+                                            <flux:file-upload wire:model="logoUpload" label="Upload Logo">
+                                                <flux:file-upload.dropzone
+                                                    heading="Drop logo here or click to browse"
+                                                    text="PNG, JPG, WEBP up to 10MB"
+                                                    with-progress
+                                                />
+                                            </flux:file-upload>
+
+                                            {{-- Upload Preview File Item --}}
+                                            @if ($logoUpload)
+                                                <div class="mt-3">
+                                                    <flux:file-item
+                                                        :heading="$logoUpload->getClientOriginalName()"
+                                                        :image="$logoUpload->temporaryUrl()"
+                                                        :size="$logoUpload->getSize()"
+                                                    >
+                                                        <x-slot name="actions">
+                                                            <flux:file-item.remove
+                                                                wire:click="removeUploadPreview"
+                                                                aria-label="Remove logo upload"
+                                                            />
+                                                        </x-slot>
+                                                    </flux:file-item>
+                                                </div>
+                                            @endif
+
+                                            {{-- Save Button --}}
+                                            @if ($logoUpload)
+                                                <div class="flex justify-end pt-4">
+                                                    <flux:button
+                                                        type="submit"
+                                                        class="cursor-pointer px-6 py-2.5"
+                                                    >
+                                                        Save Logo
+                                                    </flux:button>
+                                                </div>
+                                            @endif
+
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
