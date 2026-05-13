@@ -209,9 +209,9 @@
                                         {{-- Upload Form --}}
                                         <form wire:submit="saveLogo" class="w-full max-w-lg space-y-5 cursor-pointer">
 
-                                            <flux:file-upload wire:model="logoUpload" label="Upload Logo">
+                                            <flux:file-upload wire:model="logoUpload" label="Upload BG Image">
                                                 <flux:file-upload.dropzone
-                                                    heading="Drop logo here or click to browse"
+                                                    heading="Drop BG image here or click to browse"
                                                     text="PNG, JPG, WEBP up to 10MB"
                                                     with-progress
                                                 />
@@ -228,7 +228,7 @@
                                                         <x-slot name="actions">
                                                             <flux:file-item.remove
                                                                 wire:click="removeUploadPreview"
-                                                                aria-label="Remove logo upload"
+                                                                aria-label="Remove BG image upload"
                                                             />
                                                         </x-slot>
                                                     </flux:file-item>
@@ -242,7 +242,7 @@
                                                         type="submit"
                                                         class="cursor-pointer px-6 py-2.5"
                                                     >
-                                                        Save Logo
+                                                        Save BG Image
                                                     </flux:button>
                                                 </div>
                                             @endif

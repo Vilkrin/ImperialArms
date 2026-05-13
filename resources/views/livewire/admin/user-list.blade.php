@@ -37,7 +37,7 @@
                         
                         <div class="bg-slate-900/50 border border-amber-400/20 backdrop-blur-sm rounded-lg shadow-sm">
                             <div class="p-6 pb-2">
-                                <h3 class="text-sm font-medium text-slate-400">Pending Invites</h3>
+                                <h3 class="text-sm font-medium text-slate-400">Placeholder Statistic</h3>
                             </div>
                             <div class="p-6 pt-0">
                                 <div class="text-2xl font-bold text-slate-100">7</div>
