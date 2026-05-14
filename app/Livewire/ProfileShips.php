@@ -15,6 +15,8 @@ class ProfileShips extends Component
 
     public $name = '';
 
+    public $serial_number = '';
+
     public function mount()
     {
         // All available ship models users can assign
@@ -39,10 +41,12 @@ class ProfileShips extends Component
         $this->validate([
             'ship_id' => ['required', 'exists:ships,id'],
             'name' => ['nullable', 'string', 'max:255'],
+            'serial_number' => ['nullable', 'string', 'max:255'],
         ]);
 
         auth()->user()->ships()->attach($this->ship_id, [
             'name' => $this->name,
+            'serial_number' => $this->serial_number,
             'status' => 'active',
         ]);
 
@@ -50,6 +54,7 @@ class ProfileShips extends Component
         $this->reset([
             'ship_id',
             'name',
+            'serial_number',
         ]);
 
         // Refresh ship list

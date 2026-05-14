@@ -22,7 +22,7 @@
               <div>
                 <h2 class="text-xl font-semibold">Ships</h2>
                 <p class="text-sm text-slate-400">Your fleet of ships and their status</p>
-                <p class="text-sm text-slate-400">This is just a placeholder for the ship management section.</p>
+                <p class="text-sm text-slate-400">Stat Blocks are placeholder for now, will be updated soon.</p>
               </div>
               <flux:modal.trigger name="add-ship">
                 <flux:button variant="primary" color="amber" class="cursor-pointer">Add Ship</flux:button>
@@ -94,6 +94,12 @@
                                       <div class="text-sm text-slate-300">
                                           {{ $memberShip->role ?? 'No role set' }}
                                       </div>
+
+                                      @if($memberShip->pivot->serial_number)
+                                        <div class="text-xs text-slate-500">
+                                            SN: {{ $memberShip->pivot->serial_number }}
+                                        </div>
+                                      @endif
                                   </div>
                               </div>
 
@@ -174,6 +180,12 @@
                 <flux:input
                     wire:model="name"
                     placeholder="Custom ship name (optional)"
+                />
+
+                {{-- Optional Serial Number --}}
+                <flux:input
+                    wire:model="serial_number"
+                    placeholder="Custom serial number (optional)"
                 />
 
                 <div class="flex">

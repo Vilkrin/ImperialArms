@@ -207,8 +207,10 @@
         </div>
 
         <flux:textarea
+            wire:model="description"
             label="Description"
             placeholder="Enter a brief description of the ship model, its features, and intended use."
+            rows="4"
         />
 
         <flux:input wire:model="image" type="file" label="Ship Image" />

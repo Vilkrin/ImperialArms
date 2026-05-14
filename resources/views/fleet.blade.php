@@ -68,7 +68,9 @@
                             <span class="font-bold">{{ $memberShip->ship->manufacturer }}</span>
                             <span> {{ $memberShip->ship->model }}</span>
                         </h3>
-                        <p class="font-exo text-slate-400 text-sm mb-4">{{ $memberShip->ship->description }}</p>
+                        <p class="font-exo text-slate-400 text-sm mb-4">
+                            {{ $memberShip->ship->description ?: 'No ship description available.' }}
+                        </p>
                     </div>
                     <div class="space-y-3">
                         <div class="grid grid-cols-2 gap-4 text-sm">
