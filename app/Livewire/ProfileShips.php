@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use App\Models\Ship;
+use App\Models\MemberShip;
 
 class ProfileShips extends Component
 {
@@ -73,9 +74,11 @@ class ProfileShips extends Component
         $this->loadShips();
     }
 
-    public function removeShip($shipId)
+    public function removeShip($membershipId)
     {
-        auth()->user()->ships()->detach($shipId);
+        MemberShip::where('id', $membershipId)
+            ->where('user_id', auth()->id())
+            ->delete();
 
         $this->loadShips();
     }

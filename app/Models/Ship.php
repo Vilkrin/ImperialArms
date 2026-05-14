@@ -36,7 +36,7 @@ class Ship extends Model implements HasMedia
     {
         return $this->belongsToMany(User::class, 'member_ships')
             ->using(MemberShip::class)
-            ->withPivot('name')
+            ->withPivot('name', 'serial_number', 'status')
             ->withTimestamps();
     }
 

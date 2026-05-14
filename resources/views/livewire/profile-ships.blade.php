@@ -95,11 +95,9 @@
                                           {{ $memberShip->role ?? 'No role set' }}
                                       </div>
 
-                                      @if($memberShip->pivot->serial_number)
-                                        <div class="text-xs text-slate-500">
-                                            SN: {{ $memberShip->pivot->serial_number }}
-                                        </div>
-                                      @endif
+                                      <div class="text-xs text-slate-500">
+                                        SN: {{ $memberShip->pivot->serial_number ?? 'N/A' }}
+                                      </div>
                                   </div>
                               </div>
 
@@ -127,13 +125,16 @@
                                     </select>
 
                                   {{-- Remove Button --}}
-                                    <button
+
+                                    <flux:button
                                         type="button"
-                                        wire:click="removeShip({{ $memberShip->id }})"
-                                        class="text-xs px-2 py-1 rounded-md border border-red-700 bg-red-900 text-red-300 hover:bg-red-800 transition"
+                                        variant="danger"
+                                        wire:click="removeShip({{ $memberShip->pivot->id }})"
+                                        wire:confirm="Are you sure you want to remove this ship?"
+                                        class="cursor-pointer"
                                     >
                                         Remove
-                                    </button>
+                                    </flux:button>
 
                               </div>
                           </div>
