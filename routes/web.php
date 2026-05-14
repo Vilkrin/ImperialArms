@@ -7,7 +7,6 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\FleetController;
-use App\http\Controllers\MemberShipController;
 
 
 Route::get('/', function () {
@@ -37,11 +36,9 @@ Route::prefix('profile')->name('profile.')->middleware(['auth'])->group(function
     Route::get('/', [ProfileController::class, 'index'])->name('index');
     Route::patch('/', [ProfileController::class, 'update'])->name('profile.update');
     Route::get('/security', [ProfileController::class, 'security'])->name('security');
-    Route::get('/ships', [MemberShipController::class, 'index'])->name('ships');
-    Route::post('/ships', [MemberShipController::class, 'assign'])->name('ships.assign');
-    Route::delete('/ships/{ship}', [MemberShipController::class, 'remove'])->name('ships.remove');
-    Route::patch('/ships/{membership}/status', [MemberShipController::class, 'updateStatus'])
-        ->name('ships.status');
+    Route::get('/ships', function () {
+        return view('profile.ships');
+    })->name('ships');
     Route::get('/{slug}', [ProfileController::class, 'show'])->name('show');
 });
 
