@@ -65,9 +65,17 @@ class ProfileShips extends Component
         $this->modal('add-ship')->close();
     }
 
-    public function updateStatus($shipId, $status)
+    public function updateStatus($membershipId, $status)
     {
-        auth()->user()->ships()->updateExistingPivot($shipId, [
+        $membership = MemberShip::where('id', $membershipId)
+            ->where('user_id', auth()->id())
+            ->first();
+
+        if (! $membership) {
+            return;
+        }
+
+        $membership->update([
             'status' => $status,
         ]);
 
