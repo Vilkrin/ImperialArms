@@ -46,8 +46,8 @@ class ProfileShips extends Component
         ]);
 
         auth()->user()->ships()->attach($this->ship_id, [
-            'name' => $this->name,
-            'serial_number' => $this->serial_number,
+            'name' => $this->name ?: null,
+            'serial_number' => $this->serial_number ?: null,
             'status' => 'active',
         ]);
 

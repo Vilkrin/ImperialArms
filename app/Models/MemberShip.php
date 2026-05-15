@@ -16,6 +16,7 @@ class MemberShip extends Pivot
         'user_id',
         'ship_id',
         'name',
+        'serial_number',
         'status',
         'is_fleet',
     ];
