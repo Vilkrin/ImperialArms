@@ -186,7 +186,6 @@
                 {{-- Optional Serial Number --}}
                 <flux:input
                     wire:model="serial_number"
-                    name="serial_number"
                     placeholder="Custom serial number (optional)"
                 />
 

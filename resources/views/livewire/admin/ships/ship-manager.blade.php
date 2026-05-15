@@ -204,6 +204,7 @@
 
             <flux:input wire:model="crew_required" type="number" label="Crew Size" />
             <flux:input wire:model="cargo_capacity" type="number" label="Cargo Capacity (SCU)" />
+            <flux:input wire:model="size" label="Size" placeholder="Ship Size" />
         </div>
 
         <flux:textarea
