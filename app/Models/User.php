@@ -89,6 +89,7 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia, Passkey
     {
         return $this->belongsToMany(Ship::class, 'member_ships')
             ->using(MemberShip::class)
+            ->as('membership')
             ->withPivot('id', 'name', 'serial_number', 'status', 'is_fleet')
             ->withTimestamps();
     }

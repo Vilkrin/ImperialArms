@@ -84,20 +84,20 @@
                                   <div>
                                       <div class="font-medium text-slate-100">
                                           {{ $memberShip->manufacturer }} {{ $memberShip->model }}
-                                          @if($memberShip->pivot->name)
-                                              <span class="text-xs text-slate-400">
-                                                  ({{ $memberShip->pivot->name }})
-                                              </span>
-                                          @endif
+                                            @if($memberShip->membership->name)
+                                                <span class="text-xs text-slate-400">
+                                                    ({{ $memberShip->membership->name }})
+                                                </span>
+                                            @endif
                                       </div>
 
                                       <div class="text-sm text-slate-300">
                                           {{ $memberShip->role ?? 'No role set' }}
                                       </div>
 
-                                      <div class="text-xs text-slate-500">
-                                        SN: {{ $memberShip->pivot->serial_number ?? 'N/A' }}
-                                      </div>
+                                    <div class="text-xs text-slate-500">
+                                        SN: {{ $memberShip->membership->serial_number ?? 'N/A' }}
+                                    </div>
                                   </div>
                               </div>
 
@@ -106,19 +106,19 @@
 
                                   {{-- Status Dropdown --}}
                                     <select
-                                        wire:change="updateStatus({{ $memberShip->id }}, $event.target.value)"
+                                        wire:change="updateStatus({{ $memberShip->membership->id }}, $event.target.value)"
                                         class="text-xs rounded-md border border-slate-700 bg-slate-900 text-slate-300 px-2 py-1"
                                     >
 
-                                        <option value="active" @selected($memberShip->pivot->status === 'active')>
+                                        <option value="active" @selected($memberShip->membership->status === 'active')>
                                             Active
                                         </option>
 
-                                        <option value="maintenance" @selected($memberShip->pivot->status === 'maintenance')>
+                                        <option value="maintenance" @selected($memberShip->membership->status === 'maintenance')>
                                             Maintenance
                                         </option>
 
-                                        <option value="destroyed" @selected($memberShip->pivot->status === 'destroyed')>
+                                        <option value="destroyed" @selected($memberShip->membership->status === 'destroyed')>
                                             Destroyed
                                         </option>
 
@@ -129,7 +129,7 @@
                                     <flux:button
                                         type="button"
                                         variant="danger"
-                                        wire:click="removeShip({{ $memberShip->pivot->id }})"
+                                        wire:click="removeShip({{ $memberShip->membership->id }})"
                                         wire:confirm="Are you sure you want to remove this ship?"
                                         class="cursor-pointer"
                                     >
