@@ -106,13 +106,13 @@
                             </svg>
                         <span class="font-exo">About</span>
                     </a>
-                    <a href="{{ route('blog.index') }}" class="flex items-center space-x-2 transition-colors group {{ request()->routeIs('blog') ? 'text-amber-400' : 'text-slate-300 hover:text-amber-400' }}">
+                    <a href="{{ route('blog.index') }}" class="flex items-center space-x-2 transition-colors group {{ request()->routeIs('blog.index') ? 'text-amber-400' : 'text-slate-300 hover:text-amber-400' }}">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 0 1-2.25 2.25M16.5 7.5V18a2.25 2.25 0 0 0 2.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 0 0 2.25 2.25h13.5M6 7.5h3v3H6v-3Z" />
                             </svg>
                         <span class="font-exo">Blog</span>
                     </a>
-                    <a href="{{ route('fleet.index') }}" class="flex items-center space-x-2 transition-colors group {{ request()->routeIs('fleet') ? 'text-amber-400' : 'text-slate-300 hover:text-amber-400' }}">
+                    <a href="{{ route('fleet.index') }}" class="flex items-center space-x-2 transition-colors group {{ request()->routeIs('fleet.index') ? 'text-amber-400' : 'text-slate-300 hover:text-amber-400' }}">
                             <svg class="h-4 w-4 group-hover:text-amber-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"/>
                             </svg>
