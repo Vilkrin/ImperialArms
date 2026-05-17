@@ -88,6 +88,13 @@ class EditUser extends Component
         $this->user->syncRoles($roles);
     }
 
+    public function saveDossier(): void
+    {
+        // This is a placeholder for the dossier saving logic
+
+        Flux::toast('Dossier updated successfully.', variant: 'success');
+    }
+
     public function banUser(): void
     {
         $this->validate([
