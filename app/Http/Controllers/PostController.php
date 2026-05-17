@@ -15,7 +15,8 @@ class PostController extends Controller
     {
         // $posts = Post::orderByDesc('published_at')->paginate(8);
 
-        return view('blog.index', compact('posts'));
+        // return view('blog.index', compact('posts'));
+        return view('blog.index');
     }
 
     /**
