@@ -11,9 +11,9 @@
                 </h2>
                 <div class="w-24 h-1 bg-amber-400 mx-auto mb-6"></div>
                 <p class="text-xl text-slate-400 max-w-3xl mx-auto font-exo">
-                    Founded on the principles of military excellence and industrial
-                    efficiency, Imperial Arms represents the pinnacle of professional
-                    operations in the 'verse.
+                    Imperial Arms was founded on the principles of precision craftsmanship, unyielding quality, and relentless innovation. As the premium provider of custom weapons and armor in the Stanton System and beyond, 
+                    our corporation is dedicated to equipping citizens with the finest tools for survival, protection, and dominance. While our core focus remains on bespoke armaments, 
+                    Imperial Arms diversifies its operations to include trade, haulage, salvage, and specialized armed services, ensuring a robust presence across the ‘verse.
                 </p>
             </div>
 
@@ -27,11 +27,8 @@
                         MISSION STATEMENT
                     </h3>
                     <p class="text-lg text-slate-300 font-exo leading-relaxed">
-                        To provide unparalleled freight, logistics, and security services
-                        across the galaxy through disciplined execution, advanced
-                        technology, and unwavering commitment to our clients. Imperial
-                        Arms stands as the premier choice for organizations requiring
-                        reliable, professional, and militarily-precise operations.
+                        To define the standard of excellence in custom weapons and armor manufacturing while expanding our influence and wealth through complementary ventures, 
+                        delivering unmatched value, reliability, and innovation to our customers and partners.
                     </p>
                 </div>
             </div>
@@ -47,10 +44,10 @@
                             <svg class="h-12 w-12 text-amber-400 mx-auto mb-4 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.618 5.984A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
                             </svg>
-                            <h4 class="font-orbitron text-xl font-bold mb-4">Discipline</h4>
+                            <h4 class="font-orbitron text-xl font-bold mb-4">Excellence</h4>
                         </div>
                         <p class="text-center text-slate-400 font-exo">
-                            Military precision in every operation. We maintain the highest standards of professional conduct.
+                            Commitment to superior quality and unmatched craftsmanship. Innovation: Leveraging cutting-edge technology to stay ahead of competitors. Integrity: Adhering to the highest ethical standards in all operations. 
                         </p>
                     </div>
 
@@ -59,10 +56,10 @@
                             <svg class="h-12 w-12 text-amber-400 mx-auto mb-4 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"/>
                             </svg>
-                            <h4 class="font-orbitron text-xl font-bold mb-4">Efficiency</h4>
+                            <h4 class="font-orbitron text-xl font-bold mb-4">Adaptability</h4>
                         </div>
                         <p class="text-center text-slate-400 font-exo">
-                            Streamlined logistics and tactical excellence. Every mission executed with maximum effectiveness.
+                            Evolving to meet the dynamic needs of the ‘verse.
                         </p>
                     </div>
 
@@ -71,10 +68,10 @@
                             <svg class="h-12 w-12 text-amber-400 mx-auto mb-4 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
                             </svg>
-                            <h4 class="font-orbitron text-xl font-bold mb-4">Firepower</h4>
+                            <h4 class="font-orbitron text-xl font-bold mb-4">Teamwork</h4>
                         </div>
                         <p class="text-center text-slate-400 font-exo">
-                            Superior military capabilities and cutting-edge weaponry. We protect what matters.
+                            Fostering a culture of collaboration and respect across all divisions. 
                         </p>
                     </div>
                 </div>
@@ -91,10 +88,10 @@
                             <svg class="h-12 w-12 mx-auto mb-4 text-amber-400 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
                             </svg>
-                            <h4 class="font-orbitron text-xl font-bold mb-4">Logistics Division</h4>
+                            <h4 class="font-orbitron text-xl font-bold mb-4">Manufacturing Division</h4>
                         </div>
                         <p class="text-center text-slate-400 font-exo">
-                            Industrial-scale freight operations, supply chain management, and cargo security.
+                            Focused on the design, production, and delivery of custom weapons and armor.
                         </p>
                     </div>
 
@@ -103,10 +100,10 @@
                             <svg class="h-12 w-12 mx-auto mb-4 text-amber-400 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.618 5.984A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
                             </svg>
-                            <h4 class="font-orbitron text-xl font-bold mb-4">Security Division</h4>
+                            <h4 class="font-orbitron text-xl font-bold mb-4">Logistics Division</h4>
                         </div>
                         <p class="text-center text-slate-400 font-exo">
-                            Professional mercenary services, escort operations, and tactical support.
+                            Handles trading, haulage, and supply chain operations.
                         </p>
                     </div>
 
@@ -115,10 +112,34 @@
                             <svg class="h-12 w-12 mx-auto mb-4 text-red-500 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"/>
                             </svg>
-                            <h4 class="font-orbitron text-xl font-bold mb-4">Operations Division</h4>
+                            <h4 class="font-orbitron text-xl font-bold mb-4">Salvage Division</h4>
                         </div>
                         <p class="text-center text-slate-400 font-exo">
-                            Mission coordination, fleet management, and strategic planning.
+                            Specializes in resource recovery and reclamation.
+                        </p>
+                    </div>
+
+                    <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-6 backdrop-blur group">
+                        <div class="text-center">
+                            <svg class="h-12 w-12 mx-auto mb-4 text-red-500 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"/>
+                            </svg>
+                            <h4 class="font-orbitron text-xl font-bold mb-4">Security Division</h4>
+                        </div>
+                        <p class="text-center text-slate-400 font-exo">
+                            Manages armed units for combat missions and corporate defense.
+                        </p>
+                    </div>
+
+                    <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-6 backdrop-blur group">
+                        <div class="text-center">
+                            <svg class="h-12 w-12 mx-auto mb-4 text-red-500 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"/>
+                            </svg>
+                            <h4 class="font-orbitron text-xl font-bold mb-4">Client Relations Division</h4>
+                        </div>
+                        <p class="text-center text-slate-400 font-exo">
+                            Ensures customer satisfaction and builds lasting partnerships.
                         </p>
                     </div>
                 </div>
