@@ -47,7 +47,22 @@
             <div id="fleet-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
                 @forelse ($fleetShips as $memberShip)
                 <!-- Ship Cards -->
-                <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-6 backdrop-blur hover:border-amber-400/50 transition-all duration-300 group ship-card" data-class="Support" data-search="vulcan fleet repair & refuel">
+                        <div
+                        class="relative overflow-hidden bg-slate-900/50 border border-slate-700 rounded-lg p-6 backdrop-blur hover:border-amber-400/50 transition-all duration-300 group ship-card"
+                        data-class="{{ $memberShip->ship->class }}"
+                        data-search="{{ strtolower($memberShip->ship->manufacturer . ' ' . $memberShip->ship->model . ' ' . $memberShip->ship->role) }}"
+                        >
+                        <!-- Ship Count Corner Ribbon -->
+                        <div class="absolute top-0 right-0 h-24 w-24 bg-amber-400 text-slate-950 [clip-path:polygon(100%_0,0_0,100%_100%)]">
+                            <div class="absolute top-3 right-2 rotate-45 text-center leading-tight">
+                                <div class="font-orbitron text-lg font-bold">
+                                    {{ $memberShip->fleet_count }}
+                                </div>
+                                <div class="text-[10px] font-bold uppercase tracking-wide">
+                                    in fleet
+                                </div>
+                            </div>
+                        </div>
                     <div class="mb-4">
                         <div class="flex items-start justify-between mb-4">
                                 <!-- Ship Image -->
@@ -63,7 +78,7 @@
                                         ?
                                     </div>
                                 @endif
-                        </div>
+                        </div> 
                         <h3 class="font-orbitron text-lg mb-2 text-slate-100">
                             <span class="font-bold">{{ $memberShip->ship->manufacturer }}</span>
                             <span> {{ $memberShip->ship->model }}</span>
