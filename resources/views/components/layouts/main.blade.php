@@ -348,7 +348,6 @@
                         <li><a href="{{ route('blog.index') }}" class="text-slate-400 hover:text-amber-400 transition-colors font-exo">Blog</a></li>
                         <li><a href="{{ route('fleet.index') }}" class="text-slate-400 hover:text-amber-400 transition-colors font-exo">Fleet Roster</a></li>
                         <li><a href="{{ route('recruitment') }}" class="text-slate-400 hover:text-amber-400 transition-colors font-exo">Join Us</a></li>
-                        {{-- <li><a href="{{ route('blog.index') }}" class="text-slate-400 hover:text-amber-400 transition-colors font-exo">Blog</a></li> --}}
                         <li><a href="{{ route('contact') }}" class="text-slate-400 hover:text-amber-400 transition-colors font-exo">Contact</a></li>
                     </ul>
                 </div>

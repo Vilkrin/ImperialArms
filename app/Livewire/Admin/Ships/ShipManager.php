@@ -6,6 +6,7 @@ use Livewire\Component;
 use Livewire\WithFileUploads;
 use App\Models\Ship;
 use Flux\Flux;
+use Illuminate\Support\Str;
 
 class ShipManager extends Component
 {
@@ -116,8 +117,12 @@ class ShipManager extends Component
         }
 
         if ($this->image) {
+            $extension = $this->image->getClientOriginalExtension();
+            $fileName = Str::slug($ship->manufacturer . ' ' . $ship->model, '_') . '.' . $extension;
+
             $ship->clearMediaCollection('images');
             $ship->addMedia($this->image->getRealPath())
+                ->usingFileName($fileName)
                 ->toMediaCollection('images');
         }
 
