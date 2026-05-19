@@ -72,11 +72,14 @@ Route::prefix('admin')->name('admin.')->middleware('auth', 'verified', 'permissi
     // User Management
     Route::resource('users', UserController::class);
     // User Management - Roles & Permissions
-    // Route::resource('roles', RoleController::class);
+    Route::get('/roles', function () {
+        return view('admin.roles.index');
+    })->name('roles.index');
     // Ship Management
     Route::get('/ships', function () {
         return view('admin.ships.index');
     })->name('ships.index');
+    // Fleet Management
     Route::get('/fleet', function () {
         return view('admin.fleet.index');
     })->name('fleet.index');
