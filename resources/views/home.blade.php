@@ -15,7 +15,7 @@
                     <img
                         src="{{ $generalSettings->getFirstMediaUrl('logos') }}"
                         alt="{{ $generalSettings->site_name ?? 'Site Logo' }}"
-                        class="h-24 w-auto mx-auto mb-6 drop-shadow-[0_0_20px_rgba(251,191,36,0.3)]"
+                        class="h-24 w-auto max-w-none object-contain mb-6 drop-shadow-[0_0_20px_rgba(251,191,36,0.3)]"
                     />
                 @else
                     <svg class="h-16 w-16 text-amber-400 mx-auto mb-6 drop-shadow-[0_0_20px_rgba(251,191,36,0.3)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
