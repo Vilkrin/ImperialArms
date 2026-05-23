@@ -143,6 +143,78 @@
                                             <td class="px-5 py-4 text-slate-400">
                                                 {{ $activity->properties['ip'] ?? '—' }}
                                             </td>
+
+                                            <td class="px-5 py-4 text-right">
+                                                <flux:modal.trigger name="activity-details-{{ $activity->id }}">
+                                                    <flux:button variant="ghost" size="sm">
+                                                        Details
+                                                    </flux:button>
+                                                </flux:modal.trigger>
+
+                                                <flux:modal name="activity-details-{{ $activity->id }}" class="md:w-2xl">
+                                                    <div class="space-y-6">
+                                                        <div>
+                                                            <flux:heading size="lg">
+                                                                Activity Details
+                                                            </flux:heading>
+
+                                                            <flux:text class="mt-2">
+                                                                Full information for this logged activity.
+                                                            </flux:text>
+                                                        </div>
+
+                                                        <div class="grid grid-cols-2 gap-4">
+                                                            <div>
+                                                                <p class="text-sm font-medium text-slate-400">Admin User</p>
+                                                                <p class="text-slate-100">
+                                                                    {{ $activity->causer?->name ?? 'System' }}
+                                                                </p>
+                                                            </div>
+
+                                                            <div>
+                                                                <p class="text-sm font-medium text-slate-400">Action</p>
+                                                                <div class="mt-1">
+                                                                    <x-admin.activity-badge :action="$activity->event ?? 'updated'" />
+                                                                </div>
+                                                            </div>
+
+                                                            <div>
+                                                                <p class="text-sm font-medium text-slate-400">Area</p>
+                                                                <p class="text-slate-100">
+                                                                    {{ $activity->properties['area'] ?? 'Unknown' }}
+                                                                </p>
+                                                            </div>
+
+                                                            <div>
+                                                                <p class="text-sm font-medium text-slate-400">IP Address</p>
+                                                                <p class="text-slate-100">
+                                                                    {{ $activity->properties['ip'] ?? 'Unknown' }}
+                                                                </p>
+                                                            </div>
+                                                        </div>
+
+                                                        @if ($activity->properties->has('old') || $activity->properties->has('new'))
+                                                            <div class="space-y-4">
+                                                                <div>
+                                                                    <h4 class="text-sm font-semibold text-slate-300 mb-2">
+                                                                        Previous Values
+                                                                    </h4>
+
+                                                                    <pre class="rounded-lg bg-slate-950 border border-slate-800 p-4 text-xs text-slate-300 overflow-auto">{{ json_encode($activity->properties['old'] ?? [], JSON_PRETTY_PRINT) }}</pre>
+                                                                </div>
+
+                                                                <div>
+                                                                    <h4 class="text-sm font-semibold text-slate-300 mb-2">
+                                                                        New Values
+                                                                    </h4>
+
+                                                                    <pre class="rounded-lg bg-slate-950 border border-slate-800 p-4 text-xs text-slate-300 overflow-auto">{{ json_encode($activity->properties['new'] ?? [], JSON_PRETTY_PRINT) }}</pre>
+                                                                </div>
+                                                            </div>
+                                                        @endif
+                                                    </div>
+                                                </flux:modal>
+                                            </td>
                                         </tr>
                                         @empty
                                         <tr>
@@ -160,68 +232,6 @@
                                         </tr>
                                         @endforelse
 
-                                        <tr class="hover:bg-slate-800/40">
-                                            <td class="px-5 py-4 text-slate-400">10 May 2026, 13:58</td>
-                                            <td class="px-5 py-4">
-                                                <div class="font-medium text-slate-100">Sarah</div>
-                                                <div class="text-xs text-slate-500">Editor</div>
-                                            </td>
-                                            <td class="px-5 py-4">
-                                                <span class="rounded-full border border-green-400/30 bg-green-400/10 px-2 py-1 text-xs font-medium text-green-300">
-                                                    Created
-                                                </span>
-                                            </td>
-                                            <td class="px-5 py-4">Blog</td>
-                                            <td class="px-5 py-4">Created post: Welcome Update</td>
-                                            <td class="px-5 py-4 text-slate-400">192.168.1.44</td>
-                                            <td class="px-5 py-4 text-right">
-                                                <button class="text-sm font-medium text-amber-400 hover:text-amber-300">
-                                                    Details
-                                                </button>
-                                            </td>
-                                        </tr>
-
-                                        <tr class="hover:bg-slate-800/40">
-                                            <td class="px-5 py-4 text-slate-400">10 May 2026, 12:21</td>
-                                            <td class="px-5 py-4">
-                                                <div class="font-medium text-slate-100">James</div>
-                                                <div class="text-xs text-slate-500">Admin</div>
-                                            </td>
-                                            <td class="px-5 py-4">
-                                                <span class="rounded-full border border-red-400/30 bg-red-400/10 px-2 py-1 text-xs font-medium text-red-300">
-                                                    Deleted
-                                                </span>
-                                            </td>
-                                            <td class="px-5 py-4">Gallery</td>
-                                            <td class="px-5 py-4">Removed image from homepage album</td>
-                                            <td class="px-5 py-4 text-slate-400">192.168.1.62</td>
-                                            <td class="px-5 py-4 text-right">
-                                                <button class="text-sm font-medium text-amber-400 hover:text-amber-300">
-                                                    Details
-                                                </button>
-                                            </td>
-                                        </tr>
-
-                                        <tr class="hover:bg-slate-800/40">
-                                            <td class="px-5 py-4 text-slate-400">10 May 2026, 11:45</td>
-                                            <td class="px-5 py-4">
-                                                <div class="font-medium text-slate-100">System</div>
-                                                <div class="text-xs text-slate-500">Automated</div>
-                                            </td>
-                                            <td class="px-5 py-4">
-                                                <span class="rounded-full border border-purple-400/30 bg-purple-400/10 px-2 py-1 text-xs font-medium text-purple-300">
-                                                    Login
-                                                </span>
-                                            </td>
-                                            <td class="px-5 py-4">Authentication</td>
-                                            <td class="px-5 py-4">Admin user logged in</td>
-                                            <td class="px-5 py-4 text-slate-400">192.168.1.25</td>
-                                            <td class="px-5 py-4 text-right">
-                                                <button class="text-sm font-medium text-amber-400 hover:text-amber-300">
-                                                    Details
-                                                </button>
-                                            </td>
-                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
