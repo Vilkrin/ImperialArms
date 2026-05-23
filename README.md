@@ -21,9 +21,9 @@ This project is licensed under the terms described in the [LICENSE](./LICENSE.md
 
 ## Tech Stack
 
-Laravel 12
-Livewire 4 + Flux UI
-Tailwind CSS
-Spatie - Permissions
-Spatie - Media Library
-Spatie - Activity Log
+Laravel 12  
+Livewire 4 + Flux UI  
+Tailwind CSS  
+Spatie - Permissions  
+Spatie - Media Library  
+Spatie - Activity Log  
