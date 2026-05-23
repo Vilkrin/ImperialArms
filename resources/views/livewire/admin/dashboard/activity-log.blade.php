@@ -146,7 +146,7 @@
 
                                             <td class="px-5 py-4 text-right">
                                                 <flux:modal.trigger name="activity-details-{{ $activity->id }}">
-                                                    <flux:button variant="ghost" size="sm">
+                                                    <flux:button variant="ghost" class="cursor-pointer" size="sm">
                                                         Details
                                                     </flux:button>
                                                 </flux:modal.trigger>
