@@ -110,7 +110,7 @@
                                     </thead>
 
                                     <tbody class="divide-y divide-slate-800 text-slate-300">
-                                    @foreach ($activities as $activity)
+                                    @forelse ($activities as $activity)
                                         <tr class="hover:bg-slate-800/40">
                                             <td class="px-5 py-4 text-slate-400">
                                                 {{ $activity->created_at->format('d M Y, H:i') }}
@@ -126,9 +126,7 @@
                                             </td>
 
                                             <td class="px-5 py-4">
-                                                <span class="rounded-full border border-blue-400/30 bg-blue-400/10 px-2 py-1 text-xs font-medium text-blue-300">
-                                                    {{ ucfirst($activity->event ?? 'updated') }}
-                                                </span>
+                                                <x-admin.activity-badge :action="$activity->event ?? 'updated'" />
                                             </td>
 
                                             <td class="px-5 py-4">
@@ -146,7 +144,21 @@
                                                 {{ $activity->properties['ip'] ?? '—' }}
                                             </td>
                                         </tr>
-                                    @endforeach
+                                        @empty
+                                        <tr>
+                                            <td colspan="7" class="px-5 py-10 text-center">
+                                                <div class="flex flex-col items-center justify-center space-y-2">
+                                                    <div class="text-lg font-medium text-slate-300">
+                                                        No activity found
+                                                    </div>
+
+                                                    <p class="text-sm text-slate-500">
+                                                        Admin activity logs will appear here once actions are performed.
+                                                    </p>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        @endforelse
 
                                         <tr class="hover:bg-slate-800/40">
                                             <td class="px-5 py-4 text-slate-400">10 May 2026, 13:58</td>

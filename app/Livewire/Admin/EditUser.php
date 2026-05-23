@@ -74,54 +74,9 @@ class EditUser extends Component
         session()->flash('success', 'User updated successfully.');
     }
 
-    public function updatedRoleStates(): void
-    {
-        $roleIds = collect($this->roleStates)
-            ->filter()
-            ->keys()
-            ->toArray();
 
-        $roles = Role::whereIn('id', $roleIds)
-            ->pluck('name')
-            ->toArray();
 
-        if ($this->user->hasRole('Super Admin')) {
-            $roles[] = 'Super Admin';
-        }
 
-        $this->user->syncRoles($roles);
-    }
-
-    public function saveDossier(): void
-    {
-        // This is a placeholder for the dossier saving logic
-
-        Flux::toast('Dossier updated successfully.', variant: 'success');
-    }
-
-    public function banUser(): void
-    {
-        $this->validate([
-            'ban_reason' => ['required', 'string', 'max:1000'],
-            'banned_until' => ['required', 'date', 'after:today'],
-        ]);
-
-        $this->user->update([
-            'banned_until' => $this->banned_until,
-            'ban_reason' => $this->ban_reason,
-            'status' => 'banned',
-        ]);
-
-        DB::table('sessions')
-            ->where('user_id', $this->user->id)
-            ->delete();
-
-        Flux::toast('User has been banned.', variant: 'success');
-
-        $this->reset(['ban_reason', 'banned_until']);
-
-        $this->modal('ban-user')->close();
-    }
 
     public function render()
     {
