@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Validation\Rule;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Flux\Flux;
 
 class EditUser extends Component
@@ -51,21 +52,24 @@ class EditUser extends Component
                 Rule::unique('users', 'email')->ignore($this->user->id),
             ],
 
-            'status' => ['required', Rule::in(['active', 'inactive', 'banned'])],
+            'password' => ['nullable', 'string', 'min:8'],
 
-            'selectedRoles' => ['array'],
-            'selectedRoles.*' => ['string', 'exists:roles,name'],
+            'status' => ['required', Rule::in(['active', 'inactive', 'banned'])],
         ]);
 
-        $this->user->update([
+        $data = [
             'name' => $this->name,
             'email' => $this->email,
             'status' => $this->status,
-        ]);
+        ];
 
-        if (! $this->user->hasRole('Super Admin')) {
-            $this->user->syncRoles($this->selectedRoles);
+        if (! blank($this->password)) {
+            $data['password'] = Hash::make($this->password);
         }
+
+        $this->user->update($data);
+
+        $this->reset('password');
 
         session()->flash('success', 'User updated successfully.');
     }
