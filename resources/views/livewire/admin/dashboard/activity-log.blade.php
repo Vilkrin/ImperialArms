@@ -150,70 +150,6 @@
                                                         Details
                                                     </flux:button>
                                                 </flux:modal.trigger>
-
-                                                <flux:modal name="activity-details-{{ $activity->id }}" class="md:w-2xl">
-                                                    <div class="space-y-6">
-                                                        <div>
-                                                            <flux:heading size="lg">
-                                                                Activity Details
-                                                            </flux:heading>
-
-                                                            <flux:text class="mt-2">
-                                                                Full information for this logged activity.
-                                                            </flux:text>
-                                                        </div>
-
-                                                        <div class="grid grid-cols-2 gap-4">
-                                                            <div>
-                                                                <p class="text-sm font-medium text-slate-400">Admin User</p>
-                                                                <p class="text-slate-100">
-                                                                    {{ $activity->causer?->name ?? 'System' }}
-                                                                </p>
-                                                            </div>
-
-                                                            <div>
-                                                                <p class="text-sm font-medium text-slate-400">Action</p>
-                                                                <div class="mt-1">
-                                                                    <x-admin.activity-badge :action="$activity->event ?? 'updated'" />
-                                                                </div>
-                                                            </div>
-
-                                                            <div>
-                                                                <p class="text-sm font-medium text-slate-400">Area</p>
-                                                                <p class="text-slate-100">
-                                                                    {{ $activity->properties['area'] ?? 'Unknown' }}
-                                                                </p>
-                                                            </div>
-
-                                                            <div>
-                                                                <p class="text-sm font-medium text-slate-400">IP Address</p>
-                                                                <p class="text-slate-100">
-                                                                    {{ $activity->properties['ip'] ?? 'Unknown' }}
-                                                                </p>
-                                                            </div>
-                                                        </div>
-
-                                                        @if ($activity->properties->has('old') || $activity->properties->has('new'))
-                                                            <div class="space-y-4">
-                                                                <div>
-                                                                    <h4 class="text-sm font-semibold text-slate-300 mb-2">
-                                                                        Previous Values
-                                                                    </h4>
-
-                                                                    <pre class="rounded-lg bg-slate-950 border border-slate-800 p-4 text-xs text-slate-300 overflow-auto">{{ json_encode($activity->properties['old'] ?? [], JSON_PRETTY_PRINT) }}</pre>
-                                                                </div>
-
-                                                                <div>
-                                                                    <h4 class="text-sm font-semibold text-slate-300 mb-2">
-                                                                        New Values
-                                                                    </h4>
-
-                                                                    <pre class="rounded-lg bg-slate-950 border border-slate-800 p-4 text-xs text-slate-300 overflow-auto">{{ json_encode($activity->properties['new'] ?? [], JSON_PRETTY_PRINT) }}</pre>
-                                                                </div>
-                                                            </div>
-                                                        @endif
-                                                    </div>
-                                                </flux:modal>
                                             </td>
                                         </tr>
                                         @empty
@@ -242,3 +178,67 @@
                             </div>
                         </div>
                     </div>
+
+    <flux:modal name="activity-details-{{ $activity->id }}" class="md:w-2xl">
+        <div class="space-y-6">
+            <div>
+                <flux:heading size="lg">
+                    Activity Details
+                </flux:heading>
+
+                <flux:text class="mt-2">
+                    Full information for this logged activity.
+                </flux:text>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4">
+                <div>
+                    <p class="text-sm font-medium text-slate-400">Admin User</p>
+                    <p class="text-slate-100">
+                        {{ $activity->causer?->name ?? 'System' }}
+                    </p>
+                </div>
+
+                <div>
+                    <p class="text-sm font-medium text-slate-400">Action</p>
+                    <div class="mt-1">
+                        <x-admin.activity-badge :action="$activity->event ?? 'updated'" />
+                    </div>
+                </div>
+
+                <div>
+                    <p class="text-sm font-medium text-slate-400">Area</p>
+                    <p class="text-slate-100">
+                        {{ $activity->properties['area'] ?? 'Unknown' }}
+                    </p>
+                </div>
+
+                <div>
+                    <p class="text-sm font-medium text-slate-400">IP Address</p>
+                    <p class="text-slate-100">
+                        {{ $activity->properties['ip'] ?? 'Unknown' }}
+                    </p>
+                </div>
+            </div>
+
+            @if ($activity->properties->has('old') || $activity->properties->has('new'))
+                <div class="space-y-4">
+                    <div>
+                        <h4 class="text-sm font-semibold text-slate-300 mb-2">
+                            Previous Values
+                        </h4>
+
+                        <pre class="rounded-lg bg-slate-950 border border-slate-800 p-4 text-xs text-slate-300 overflow-auto">{{ json_encode($activity->properties['old'] ?? [], JSON_PRETTY_PRINT) }}</pre>
+                    </div>
+
+                    <div>
+                        <h4 class="text-sm font-semibold text-slate-300 mb-2">
+                            New Values
+                        </h4>
+
+                        <pre class="rounded-lg bg-slate-950 border border-slate-800 p-4 text-xs text-slate-300 overflow-auto">{{ json_encode($activity->properties['new'] ?? [], JSON_PRETTY_PRINT) }}</pre>
+                    </div>
+                </div>
+            @endif
+        </div>
+    </flux:modal>
