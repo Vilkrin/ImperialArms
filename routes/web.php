@@ -88,6 +88,21 @@ Route::prefix('admin')->name('admin.')->middleware('auth', 'verified', 'permissi
     Route::resource('posts', PostController::class);
     Route::resource('pages', PageController::class);
 
+    // Services
+    Route::get('/services', function () {
+        return view('admin.services.index');
+    })->name('services.index');
+
+    // Recruitment
+    Route::get('/recruitment', function () {
+        return view('admin.recruitment.index');
+    })->name('recruitment.index');
+
+    // Chat
+    Route::get('/chat', function () {
+        return view('admin.chat.index');
+    })->name('chat.index');
+
     // Settings
     Route::get('/settings', function () {
         return view('admin.settings.settingspage');
