@@ -128,6 +128,28 @@ class UserDetailsForm extends Component
         $this->modal('ban-user')->close();
     }
 
+    public function unbanUser(): void
+    {
+        $this->user->update([
+            'banned_until' => null,
+            'ban_reason' => null,
+            'status' => 'active',
+        ]);
+
+        $this->status = 'active';
+
+        activity('admin')
+            ->causedBy(Auth::user())
+            ->performedOn($this->user)
+            ->event('unbanned')
+            ->withProperties([
+                'area' => 'Users',
+            ])
+            ->log('Unbanned user');
+
+        Flux::toast('User has been unbanned.', variant: 'success');
+    }
+
     public function render()
     {
         return view('livewire.admin.users.user-details-form');
