@@ -22,95 +22,129 @@
                     <!-- Main Content -->
                     <div class="lg:col-span-2">
 
-                        <!-- Featured Post -->
-                        <article class="bg-slate-900 border border-slate-800 rounded-lg overflow-hidden shadow-lg mb-8">
-                            <div class="aspect-[17/8] relative overflow-hidden bg-slate-950">
-                                <div class="absolute inset-0 bg-gradient-to-r from-amber-400/10 via-amber-500/5 to-slate-900/40"></div>
-                            </div>
+                    @if (!$featuredPost && $posts->isEmpty())
 
-                            <div class="p-6 border-t border-slate-800">
-                                <div class="text-sm text-slate-400 mb-2">
-                                    March 15, 2024
+                        <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-8 text-center">
+                            <h2 class="text-2xl font-semibold text-slate-100 mb-2">
+                                No Blogs to Display
+                            </h2>
+
+                            <p class="text-slate-400">
+                                There are currently no blog posts available.
+                            </p>
+                        </div>
+
+                    @else
+
+                        @if ($featuredPost)
+
+                            <!-- Featured Post -->
+                            <article class="bg-slate-900 border border-slate-800 rounded-lg overflow-hidden shadow-lg mb-8">
+
+                                <div class="aspect-[17/8] relative overflow-hidden bg-slate-950">
+
+                                    @if ($featuredPost->getFirstMediaUrl('featured_images'))
+                                        <img
+                                            src="{{ $featuredPost->getFirstMediaUrl('featured_images') }}"
+                                            alt="{{ $featuredPost->title }}"
+                                            class="w-full h-full object-cover"
+                                        >
+                                    @endif
+
+                                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
                                 </div>
 
-                                <h2 class="text-2xl md:text-3xl font-semibold mb-3 text-slate-100">
-                                    The Future of Deep Space Exploration
-                                </h2>
+                                <div class="p-6 border-t border-slate-800">
 
-                                <p class="text-slate-300 mb-4">
-                                    Discover how advanced propulsion systems are revolutionizing long-distance space travel and opening new frontiers for exploration.
-                                </p>
+                                    <div class="text-sm text-slate-400 mb-2">
+                                        {{ $featuredPost->published_at?->format('F j, Y') }}
+                                    </div>
 
-                                <a href="blog-post.html" class="inline-flex items-center text-amber-400 hover:text-amber-300 text-sm font-medium">
-                                    Read more
-                                    <svg class="h-4 w-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                                    </svg>
-                                </a>
-                            </div>
-                        </article>
+                                    <h2 class="text-2xl md:text-3xl font-semibold mb-3 text-slate-100">
+                                        {{ $featuredPost->title }}
+                                    </h2>
+
+                                    <p class="text-slate-300 mb-4 line-clamp-3">
+                                        {{ Str::limit(strip_tags($featuredPost->body), 180) }}
+                                    </p>
+
+                                    <a
+                                        href="{{ route('blog.show', $featuredPost->slug) }}"
+                                        class="inline-flex items-center text-amber-400 hover:text-amber-300 text-sm font-medium"
+                                    >
+                                        Read more
+
+                                        <svg class="h-4 w-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                        </svg>
+                                    </a>
+
+                                </div>
+
+                            </article>
+
+                        @endif
 
                         <!-- Posts Grid -->
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
 
-                            @foreach ([
-                                ['date' => 'March 12, 2024', 'title' => 'Fleet Tactics: Coordinated Strike Operations', 'text' => 'Learn about the strategic importance of fleet coordination and how our teams execute complex multi-ship operations.'],
-                                ['date' => 'March 10, 2024', 'title' => 'Behind the Scenes: Ship Maintenance', 'text' => 'An inside look at the daily operations that keep our fleet in peak condition and ready for any mission.'],
-                                ['date' => 'March 8, 2024', 'title' => 'Recruitment: Finding the Right Crew', 'text' => 'What we look for in new members and how to prepare for joining one of the galaxy\'s premier organizations.'],
-                                ['date' => 'March 5, 2024', 'title' => 'Trade Routes and Economic Strategy', 'text' => 'Understanding the economics of space commerce and how strategic trading builds organizational strength.'],
-                            ] as $post)
+                            @foreach ($posts as $post)
 
                                 <article class="bg-slate-900 border border-slate-800 rounded-lg overflow-hidden flex flex-col shadow-lg">
+
                                     <div class="aspect-video relative overflow-hidden bg-slate-950">
-                                        <div class="absolute inset-0 bg-gradient-to-br from-amber-400/10 to-transparent"></div>
+
+                                        @if ($post->getFirstMediaUrl('featured_images'))
+                                            <img
+                                                src="{{ $post->getFirstMediaUrl('featured_images', 'preview') }}"
+                                                alt="{{ $post->title }}"
+                                                class="w-full h-full object-cover"
+                                            >
+                                        @endif
+
+                                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+
                                     </div>
 
                                     <div class="p-5 flex-1">
+
                                         <div class="text-sm text-slate-400 mb-2">
-                                            {{ $post['date'] }}
+                                            {{ $post->published_at?->format('F j, Y') }}
                                         </div>
 
                                         <h3 class="text-xl font-semibold mb-2 text-slate-100">
-                                            {{ $post['title'] }}
+                                            {{ $post->title }}
                                         </h3>
 
-                                        <p class="text-slate-300 text-sm">
-                                            {{ $post['text'] }}
+                                        <p class="text-slate-300 text-sm line-clamp-3">
+                                            {{ Str::limit(strip_tags($post->body), 120) }}
                                         </p>
+
                                     </div>
 
                                     <div class="px-5 pb-5">
-                                        <a href="blog-post.html" class="inline-flex items-center justify-center w-full rounded-md border border-slate-700 bg-slate-950 px-4 py-2 text-sm font-medium text-slate-100 hover:bg-slate-800 hover:border-amber-400/60 hover:text-amber-300 transition">
+
+                                        <a
+                                            href="{{ route('blog.show', $post->slug) }}"
+                                            class="inline-flex items-center justify-center w-full rounded-md border border-slate-700 bg-slate-950 px-4 py-2 text-sm font-medium text-slate-100 hover:bg-slate-800 hover:border-amber-400/60 hover:text-amber-300 transition"
+                                        >
                                             Read more
                                         </a>
+
                                     </div>
+
                                 </article>
 
                             @endforeach
 
                         </div>
 
-                        <!-- Simple Pagination -->
-                        <div class="flex items-center justify-center gap-2 mt-8">
-                            <button class="inline-flex items-center px-3 py-1.5 rounded-md border border-slate-700 bg-slate-900 text-xs font-medium text-slate-300 hover:bg-slate-800 hover:border-amber-400/60 hover:text-amber-300 transition">
-                                Previous
-                            </button>
-
-                            <button class="inline-flex items-center px-3 py-1.5 rounded-md border border-amber-400 bg-amber-400 text-xs font-semibold text-slate-900">
-                                1
-                            </button>
-
-                            <button class="inline-flex items-center px-3 py-1.5 rounded-md border border-slate-700 bg-slate-900 text-xs font-medium text-slate-300 hover:bg-slate-800 hover:border-amber-400/60 hover:text-amber-300 transition">
-                                2
-                            </button>
-
-                            <span class="text-slate-500 text-xs px-1">...</span>
-
-                            <button class="inline-flex items-center px-3 py-1.5 rounded-md border border-slate-700 bg-slate-900 text-xs font-medium text-slate-300 hover:bg-slate-800 hover:border-amber-400/60 hover:text-amber-300 transition">
-                                Next
-                            </button>
+                        <!-- Pagination -->
+                        <div class="mt-8">
+                            {{ $posts->links() }}
                         </div>
-                    </div>
+
+                    @endif
 
                     <!-- Sidebar -->
                     <aside class="lg:col-span-1">
