@@ -33,7 +33,7 @@
                                     </div>
                                     <p class="text-sm text-slate-400 mb-3">I need help transporting cargo from Port Olisar to ArcCorp...</p>
                                     <div class="flex items-center gap-2">
-                                        <a href="#" class="inline-flex items-center justify-center gap-2 px-3 py-1.5 border border-slate-700 bg-slate-900/50 text-slate-300 rounded-md text-xs font-medium hover:bg-slate-800 transition-colors">
+                                        <a href="{{ route('admin.services.show') }}" class="inline-flex items-center justify-center gap-2 px-3 py-1.5 border border-slate-700 bg-slate-900/50 text-slate-300 rounded-md text-xs font-medium hover:bg-slate-800 transition-colors">
                                             <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>

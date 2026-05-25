@@ -92,12 +92,17 @@ Route::prefix('admin')->name('admin.')->middleware('auth', 'verified', 'permissi
     Route::get('/services', function () {
         return view('admin.services.index');
     })->name('services.index');
-
+    Route::get('/services/show', function () {
+        return view('admin.services.show');
+    })->name('services.show');
 
     // Recruitment
     Route::get('/recruitment', function () {
         return view('admin.recruitment.index');
     })->name('recruitment.index');
+    Route::get('/recruitment/application', function () {
+        return view('admin.recruitment.show');
+    })->name('recruitment.show');
 
     // Chat
     Route::get('/chat', function () {
