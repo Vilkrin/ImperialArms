@@ -74,15 +74,29 @@
 
             <!-- CTA Buttons -->
             <div class="flex flex-col md:flex-row items-center justify-center gap-4">
-                <a href="{{ route('recruitment') }}" class="inline-flex items-center justify-center rounded-md bg-gradient-to-br from-amber-400 to-amber-500 text-slate-900 text-lg px-8 py-4 font-orbitron font-medium transition hover:-translate-y-0.5 shadow-[0_0_20px_rgba(251,191,36,0.3)] group">
+                
+                <a href="{{ route('recruitment') }}"
+                class="inline-flex items-center justify-center gap-2 rounded-md bg-gradient-to-br from-amber-400 to-amber-500 border border-amber-300/40 text-slate-900 text-sm uppercase tracking-wide px-6 py-2.5 font-orbitron font-medium transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_20px_rgba(251,191,36,0.35)] group">
+                    
                     JOIN THE FLEET
-                    <svg class="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+
+                    <svg class="h-4 w-4 group-hover:translate-x-1 transition-transform"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M17 8l4 4m0 0l-4 4m4-4H3"/>
                     </svg>
                 </a>
-                <a href="{{ route('fleet.index') }}" class="inline-flex items-center justify-center rounded-md border border-amber-400/50 text-amber-400 text-lg px-8 py-4 hover:bg-amber-400/10 transition">
+
+                <a href="{{ route('fleet.index') }}"
+                class="inline-flex items-center justify-center rounded-md border border-amber-400/40 bg-black/40 backdrop-blur-sm text-amber-400 text-sm uppercase tracking-wide px-6 py-2.5 font-orbitron font-medium transition-all duration-300 hover:bg-amber-400/10 hover:border-amber-400/70 hover:-translate-y-0.5">
+                    
                     VIEW FLEET ROSTER
                 </a>
+
             </div>
         </div>
     </section>
