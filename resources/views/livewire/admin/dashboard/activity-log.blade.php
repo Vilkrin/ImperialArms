@@ -177,9 +177,7 @@
                                 {{ $activities->links() }}
                             </div>
                         </div>
-                    </div>
-
-    <flux:modal name="activity-details-{{ $activity->id }}" class="md:w-2xl">
+                            <flux:modal name="activity-details-{{ $activity->id }}" class="md:w-2xl">
         <div class="space-y-6">
             <div>
                 <flux:heading size="lg">
@@ -242,3 +240,5 @@
             @endif
         </div>
     </flux:modal>
+                    </div>
+

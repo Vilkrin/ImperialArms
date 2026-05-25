@@ -24,8 +24,9 @@
                                     <input id="title" placeholder="Enter post title..." class="flex h-10 w-full rounded-md border border-slate-700 bg-slate-900/50 px-3 py-2 text-sm placeholder:text-slate-400 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-amber-400" />
                                 </div>
                                 <div class="space-y-2">
-                                    <label class="text-sm font-medium text-slate-200">Excerpt</label>
-                                    <textarea id="excerpt" rows="3" placeholder="Brief summary of the post..." class="flex w-full rounded-md border border-slate-700 bg-slate-900/50 px-3 py-2 text-sm placeholder:text-slate-400 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-amber-400"></textarea>
+                                    <label class="text-sm font-medium text-slate-200">URL Slug</label>
+                                    <input id="slug" placeholder="post-url-slug" class="flex h-10 w-full rounded-md border border-slate-700 bg-slate-900/50 px-3 py-2 text-sm placeholder:text-slate-400 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-amber-400" />
+                                    <p class="text-xs text-slate-400">Preview: <span class="text-slate-300">/blog/</span><span id="slugPreview" class="text-slate-300">post-url-slug</span></p>
                                 </div>
                                 <div class="space-y-2">
                                     <label class="text-sm font-medium text-slate-200">Content</label>
@@ -80,8 +81,11 @@
                                     </select>
                                 </div>
                                 <div class="space-y-2">
-                                    <label class="text-sm font-medium text-slate-200">Read Time</label>
-                                    <input id="readTime" placeholder="e.g. 5 min read" class="flex h-10 w-full rounded-md border border-slate-700 bg-slate-900/50 px-3 py-2 text-sm placeholder:text-slate-400 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-amber-400" />
+                                    <label class="text-sm font-medium text-slate-200">Category</label>
+                                    <select id="category" class="flex h-10 w-full rounded-md border border-slate-700 bg-slate-900/50 px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-amber-400">
+                                        <option value="">Select Tags</option>
+                                        <option>Technology</option><option>Strategy</option><option>Operations</option><option>Recruitment</option><option>Economics</option><option>Training</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -91,12 +95,7 @@
                                 <span class="font-semibold text-slate-100">SEO Settings</span>
                                 <svg class="h-4 w-4 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                             </button>
-                            <div id="collapsible-seo" class="p-4 space-y-4 hidden">
-                                <div class="space-y-2">
-                                    <label class="text-sm font-medium text-slate-200">URL Slug</label>
-                                    <input id="slug" placeholder="post-url-slug" class="flex h-10 w-full rounded-md border border-slate-700 bg-slate-900/50 px-3 py-2 text-sm placeholder:text-slate-400 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-amber-400" />
-                                    <p class="text-xs text-slate-400">Preview: <span class="text-slate-300">/blog/</span><span id="slugPreview" class="text-slate-300">post-url-slug</span></p>
-                                </div>
+                            <div class="p-4 space-y-4">
                                 <div class="space-y-2">
                                     <label class="text-sm font-medium text-slate-200">Meta Title</label>
                                     <input id="metaTitle" placeholder="SEO title" class="flex h-10 w-full rounded-md border border-slate-700 bg-slate-900/50 px-3 py-2 text-sm placeholder:text-slate-400 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-amber-400" />
@@ -111,70 +110,3 @@
                 </div>
 </div>
 
-    <script>
-        // Sidebar toggle (same as other pages)
-        const sidebarToggle = document.getElementById('sidebar-toggle');
-        const sidebar = document.querySelector('aside');
-        if (sidebarToggle && sidebar) {
-            sidebarToggle.addEventListener('click', () => {
-                if (sidebar.classList.contains('w-64')) {
-                    sidebar.classList.remove('w-64');
-                    sidebar.classList.add('w-14');
-                    sidebar.querySelectorAll('h2, h3, p, span').forEach(el => { el.style.display = 'none'; });
-                } else {
-                    sidebar.classList.remove('w-14');
-                    sidebar.classList.add('w-64');
-                    sidebar.querySelectorAll('h2, h3, p, span').forEach(el => { el.style.display = ''; });
-                }
-            });
-        }
-
-        // Collapsibles (simple)
-        document.querySelectorAll('[data-collapsible]').forEach((btn) => {
-            btn.addEventListener('click', () => {
-                const key = btn.getAttribute('data-collapsible');
-                const el = document.getElementById(`collapsible-${key}`);
-                if (el) el.classList.toggle('hidden');
-            });
-        });
-
-        // Title -> slug/meta sync (matches AddPost.tsx behavior)
-        const titleInput = document.getElementById('title');
-        const slugInput = document.getElementById('slug');
-        const metaTitleInput = document.getElementById('metaTitle');
-        const slugPreview = document.getElementById('slugPreview');
-        const generateSlug = (title) => (title || "")
-            .toLowerCase()
-            .replace(/[^a-z0-9]+/g, "-")
-            .replace(/(^-|-$)/g, "");
-
-        const syncFromTitle = () => {
-            const title = titleInput?.value || "";
-            const slug = generateSlug(title) || "";
-            if (slugInput) slugInput.value = slug;
-            if (metaTitleInput) metaTitleInput.value = title;
-            if (slugPreview) slugPreview.textContent = slug || "post-url-slug";
-        };
-
-        const syncSlugPreview = () => {
-            if (!slugInput || !slugPreview) return;
-            slugPreview.textContent = slugInput.value || "post-url-slug";
-        };
-
-        titleInput?.addEventListener('input', syncFromTitle);
-        slugInput?.addEventListener('input', syncSlugPreview);
-        syncFromTitle();
-
-        // Buttons (static demo)
-        const saveDraftBtn = document.getElementById('saveDraftBtn');
-        const publishBtn = document.getElementById('publishBtn');
-        const showToast = (title, description) => {
-            const el = document.createElement('div');
-            el.className = "fixed bottom-6 right-6 z-[200] max-w-sm bg-slate-900 border border-slate-700 rounded-lg shadow-xl p-4";
-            el.innerHTML = `<div class="text-sm font-semibold text-slate-100">${title}</div><div class="text-sm text-slate-400 mt-1">${description}</div>`;
-            document.body.appendChild(el);
-            setTimeout(() => el.remove(), 2500);
-        };
-        saveDraftBtn?.addEventListener('click', () => showToast("Draft saved", "Your post has been saved as a draft."));
-        publishBtn?.addEventListener('click', () => showToast("Post published", "Your post has been published."));
-    </script>

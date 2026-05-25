@@ -7,9 +7,6 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\FleetController;
-use App\Livewire\Admin\Blog\BlogTable;
-use App\Livewire\Admin\Blog\AddPost;
-use App\Livewire\Admin\Blog\EditPost;
 
 
 Route::get('/', function () {
@@ -90,9 +87,14 @@ Route::prefix('admin')->name('admin.')->middleware('auth', 'verified', 'permissi
     // Content Management
     // Blog Posts
     Route::prefix('posts')->name('posts.')->group(function () {
-        Route::get('/', BlogTable::class)->name('index');
-        Route::get('/create', AddPost::class)->name('create');
-        Route::get('/{post}/edit', EditPost::class)->name('edit');
+        Route::view('/', 'admin.blog.index')
+            ->name('index');
+        Route::view('/create', 'admin.blog.create')
+            ->name('create');
+        Route::view('/{post}/edit', 'admin.blog.edit')
+            ->name('edit');
+        Route::view('/{post}', 'admin.blog.show')
+            ->name('show');
     });
     // Pages
     Route::resource('pages', PageController::class);
