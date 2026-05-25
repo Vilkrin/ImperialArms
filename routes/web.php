@@ -93,6 +93,7 @@ Route::prefix('admin')->name('admin.')->middleware('auth', 'verified', 'permissi
         return view('admin.services.index');
     })->name('services.index');
 
+
     // Recruitment
     Route::get('/recruitment', function () {
         return view('admin.recruitment.index');
