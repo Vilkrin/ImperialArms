@@ -83,6 +83,10 @@
                                     <thead class="[&_tr]:border-b">
                                         <tr class="border-b border-slate-700 transition-colors hover:bg-slate-800/50">
                                             <th class="h-12 px-4 text-left align-middle font-medium text-slate-400">
+                                                Featured Image
+                                            </th>
+
+                                            <th class="h-12 px-4 text-left align-middle font-medium text-slate-400">
                                                 Title
                                             </th>
 
@@ -94,6 +98,10 @@
                                                 Categories
                                             </th>
 
+                                            <th class="h-12 px-4 text-left align-middle font-medium text-slate-400 hidden sm:table-cell">
+                                                Tags
+                                            </th>
+
                                             <th class="h-12 px-4 text-left align-middle font-medium text-slate-400">
                                                 Status
                                             </th>
@@ -103,6 +111,7 @@
                                             </th>
 
                                             <th class="h-12 px-4 text-left align-middle font-medium text-slate-400 w-12">
+                                                Actions
                                             </th>
                                         </tr>
                                     </thead>
@@ -114,41 +123,29 @@
                                             <tr class="border-b border-slate-700 transition-colors hover:bg-slate-800/50">
 
                                                 <td class="p-4 align-middle">
-
-                                                    <div class="flex items-start gap-3">
-
-                                                        <div class="h-14 w-20 rounded-md overflow-hidden bg-slate-800 shrink-0">
-
-                                                            @if ($post->getFirstMediaUrl('featured_images', 'preview'))
-
-                                                                <img
-                                                                    src="{{ $post->getFirstMediaUrl('featured_images', 'preview') }}"
-                                                                    alt="{{ $post->title }}"
-                                                                    class="w-full h-full object-cover"
-                                                                >
-
-                                                            @endif
-
-                                                        </div>
-
-                                                        <div>
-
-                                                            <p class="font-medium text-slate-100">
-                                                                {{ $post->title }}
-                                                            </p>
-
-                                                            @if ($post->featured ?? false)
-                                                                <div class="mt-1">
-                                                                    <span class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold border-amber-400/30 text-amber-400 bg-amber-400/10">
-                                                                        Featured
-                                                                    </span>
-                                                                </div>
-                                                            @endif
-
-                                                        </div>
-
+                                                    <div class="h-14 w-20 rounded-md overflow-hidden bg-slate-800 shrink-0">
+                                                        @if ($post->getFirstMediaUrl('featured_images', 'preview'))
+                                                            <img
+                                                                src="{{ $post->getFirstMediaUrl('featured_images', 'preview') }}"
+                                                                alt="{{ $post->title }}"
+                                                                class="w-full h-full object-cover"
+                                                            >
+                                                        @endif
                                                     </div>
+                                                </td>
 
+                                                <td class="p-4 align-middle">
+                                                    <p class="font-medium text-slate-100">
+                                                        {{ $post->title }}
+                                                    </p>
+
+                                                    @if ($post->featured ?? false)
+                                                        <div class="mt-1">
+                                                            <span class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold border-amber-400/30 text-amber-400 bg-amber-400/10">
+                                                                Featured
+                                                            </span>
+                                                        </div>
+                                                    @endif
                                                 </td>
 
                                                 <td class="p-4 align-middle hidden md:table-cell text-slate-400">
@@ -156,53 +153,47 @@
                                                 </td>
 
                                                 <td class="p-4 align-middle hidden sm:table-cell">
-
                                                     <div class="flex flex-wrap gap-1">
-
-                                                        @foreach ($post->categories as $category)
-
+                                                        @forelse ($post->categories as $category)
                                                             <span class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold bg-slate-900 text-slate-200 border-slate-700">
                                                                 {{ $category->name }}
                                                             </span>
-
-                                                        @endforeach
-
+                                                        @empty
+                                                            <span class="text-slate-500">—</span>
+                                                        @endforelse
                                                     </div>
+                                                </td>
 
+                                                <td class="p-4 align-middle hidden sm:table-cell">
+                                                    <div class="flex flex-wrap gap-1">
+                                                        @forelse ($post->tags as $tag)
+                                                            <span class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold bg-slate-900 text-slate-200 border-slate-700">
+                                                                {{ $tag->name }}
+                                                            </span>
+                                                        @empty
+                                                            <span class="text-slate-500">—</span>
+                                                        @endforelse
+                                                    </div>
                                                 </td>
 
                                                 <td class="p-4 align-middle">
-
                                                     @if ($post->status === 'published')
-
                                                         <span class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold bg-emerald-500/15 text-emerald-500 border-emerald-500/20">
                                                             Published
                                                         </span>
-
                                                     @elseif ($post->status === 'draft')
-
                                                         <span class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold bg-slate-800 text-slate-200 border-slate-700">
                                                             Draft
                                                         </span>
-
                                                     @elseif ($post->status === 'archived')
-
                                                         <span class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold bg-slate-900 text-slate-300 border-slate-700">
                                                             Archived
                                                         </span>
-
                                                     @endif
-
                                                 </td>
 
                                                 <td class="p-4 align-middle hidden md:table-cell text-slate-400">
-
-                                                    @if ($post->published_at)
-                                                        {{ $post->published_at->format('M j, Y') }}
-                                                    @else
-                                                        —
-                                                    @endif
-
+                                                    {{ $post->published_at ? $post->published_at->format('M j, Y') : '—' }}
                                                 </td>
 
                                                 <td class="p-4 align-middle">
@@ -227,6 +218,17 @@
                                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
                                                             </svg>
                                                         </a>
+
+                                                        <button
+                                                            type="button"
+                                                            wire:click="deletePost({{ $post->id }})"
+                                                            wire:confirm="Are you sure you want to delete this post?"
+                                                            class="inline-flex items-center justify-center h-8 w-8 rounded-md hover:bg-red-500/10 transition-colors cursor-pointer"
+                                                        >
+                                                            <svg class="h-4 w-4 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6M9 7V4a1 1 0 011-1h4a1 1 0 011 1v3m-7 0h8"/>
+                                                            </svg>
+                                                        </button>
 
                                                     </div>
 
@@ -272,5 +274,8 @@
 
                         </div>
                     </div>
+                    @persist('toast')
+                        <flux:toast />
+                    @endpersist
                 </div>
 

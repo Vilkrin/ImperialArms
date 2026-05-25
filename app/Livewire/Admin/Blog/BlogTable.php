@@ -5,6 +5,7 @@ namespace App\Livewire\Admin\Blog;
 use Livewire\Component;
 use App\Models\Post;
 use Livewire\WithPagination;
+use Flux\Flux;
 
 class BlogTable extends Component
 {
@@ -27,6 +28,17 @@ class BlogTable extends Component
     public function updatingCategory(): void
     {
         $this->resetPage();
+    }
+
+    public function deletePost(Post $post): void
+    {
+        $post->delete();
+
+        Flux::toast(
+            heading: 'Post deleted',
+            text: 'The blog post has been deleted successfully.',
+            variant: 'success',
+        );
     }
 
     public function render()
