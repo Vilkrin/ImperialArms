@@ -20,7 +20,7 @@
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
 
                     <!-- Main Content -->
-                    <div class="lg:col-span-2">
+                    <div class="{{ (!$featuredPost && $posts->isEmpty()) ? 'lg:col-span-3 max-w-2xl mx-auto' : 'lg:col-span-2' }}">
 
                     @if (!$featuredPost && $posts->isEmpty())
 
@@ -146,6 +146,7 @@
 
                     @endif
 
+                    @if ($featuredPost || $posts->isNotEmpty())
                     <!-- Sidebar -->
                     <aside class="lg:col-span-1">
                         <div class="space-y-6 lg:sticky lg:top-24">
@@ -199,6 +200,7 @@
 
                         </div>
                     </aside>
+                    @endif
 
                 </div>
             </div>
