@@ -172,6 +172,36 @@ return new class extends Migration
         Permission::create(['name' => 'manage.site.content']);
         Permission::create(['name' => 'access.admin.panel']);
 
+        // Pages
+        Permission::create(['name' => 'create.pages']);
+        Permission::create(['name' => 'edit.pages']);
+        Permission::create(['name' => 'delete.pages']);
+        Permission::create(['name' => 'publish.pages']);
+        Permission::create(['name' => 'unpublish.pages']);
+        Permission::create(['name' => 'view.unpublished.pages']);
+
+        // Menus
+        Permission::create(['name' => 'manage.menus']);
+
+        // Ships / Fleet
+        Permission::create(['name' => 'manage.ships']);
+        Permission::create(['name' => 'manage.fleet']);
+        Permission::create(['name' => 'manage.member.ships']);
+
+        // Permissions / Roles
+        Permission::create(['name' => 'manage.roles']);
+        Permission::create(['name' => 'manage.permissions']);
+
+        // Services
+        Permission::create(['name' => 'manage.services']);
+
+        // Recruitment
+        Permission::create(['name' => 'manage.recruitment']);
+
+        // Activity Logs / Monitoring
+        Permission::create(['name' => 'view.activity.logs']);
+        Permission::create(['name' => 'export.activity.logs']);
+
         // Update cache to ensure newly created permissions are recognized
         app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
 
@@ -204,6 +234,15 @@ return new class extends Migration
             'view.unpublished.posts',
             'publish.posts',
             'unpublish.posts',
+            'edit.posts',
+            'delete.posts',
+            'create.pages',
+            'edit.pages',
+            'delete.pages',
+            'publish.pages',
+            'unpublish.pages',
+            'view.unpublished.pages',
+            'manage.menus',
             'create.events',
             'edit.events',
             'delete.events',
@@ -223,6 +262,17 @@ return new class extends Migration
             'manage.org.members',
             'assign.org.roles',
             'manage.org.settings',
+            'manage.ships',
+            'manage.fleet',
+            'manage.member.ships',
+            'manage.roles',
+            'manage.permissions',
+            'manage.services',
+            'manage.recruitment',
+            'manage.site.settings',
+            'manage.site.content',
+            'view.activity.logs',
+            'export.activity.logs',
         ]);
 
         // Org Member
