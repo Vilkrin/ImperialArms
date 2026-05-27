@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ProfileController extends Controller
 {
@@ -42,9 +43,16 @@ class ProfileController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+
+    public function show(string $slug)
     {
-        //
+        $user = User::all()->first(function ($user) use ($slug) {
+            return Str::slug($user->name) === $slug;
+        });
+
+        abort_unless($user, 404);
+
+        return view('profile.show', compact('user'));
     }
 
     /**

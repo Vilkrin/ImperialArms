@@ -143,7 +143,7 @@
                         <div class="mt-8">
                             {{ $posts->links() }}
                         </div>
-
+                    </div>
                     @endif
 
                     @if ($featuredPost || $posts->isNotEmpty())

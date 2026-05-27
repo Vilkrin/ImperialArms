@@ -37,10 +37,7 @@ class Post extends Model implements HasMedia
 
     public function categories()
     {
-        return $this->belongsToMany(
-            BlogCategory::class,
-            'blog_category_post'
-        );
+        return $this->belongsToMany(BlogCategory::class);
     }
 
     public function tags()

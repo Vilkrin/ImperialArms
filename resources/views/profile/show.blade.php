@@ -1,4 +1,4 @@
-<x-layouts.main :title='Profile'>
+<x-layouts.main :title="__('Profile')">
 
 <div class="bg-slate-950 text-slate-200">
     <div class="mx-auto max-w-[1420px] px-6 py-8">

@@ -43,6 +43,8 @@ class PostController extends Controller
     {
         $post = Post::where('slug', $slug)->firstOrFail();
 
+        abort_unless($post->status === 'published', 404);
+
         return view('blog.show', compact('post'));
     }
 }
