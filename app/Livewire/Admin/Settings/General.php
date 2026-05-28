@@ -20,6 +20,12 @@ class General extends Component
     public ?string $site_name = null;
     public ?string $site_tagline = null;
     public ?string $footer_text = null;
+    public ?string $timezone = null;
+    public ?string $recruiting = null;
+    public ?string $description = null;
+    public ?string $founded = null;
+    public ?string $focus = null;
+    public ?string $commitment = null;
 
     public function mount(): void
     {
@@ -29,6 +35,12 @@ class General extends Component
         $this->site_name = $this->settings->site_name;
         $this->site_tagline = $this->settings->site_tagline;
         $this->footer_text = $this->settings->footer_text;
+        $this->timezone = $this->settings->timezone;
+        $this->recruiting = $this->settings->recruiting;
+        $this->description = $this->settings->description;
+        $this->founded = $this->settings->founded;
+        $this->focus = $this->settings->focus;
+        $this->commitment = $this->settings->commitment;
     }
 
     public function removeLogo(): void
@@ -47,6 +59,12 @@ class General extends Component
             'site_name' => $this->site_name,
             'site_tagline' => $this->site_tagline,
             'footer_text' => $this->footer_text,
+            'timezone' => $this->timezone,
+            'recruiting' => $this->recruiting,
+            'description' => $this->description,
+            'founded' => $this->founded,
+            'focus' => $this->focus,
+            'commitment' => $this->commitment,
         ]);
     }
 

@@ -358,6 +358,12 @@
 
                                 <flux:input label="URL" wire:model="url" placeholder="/path or https://..." />
 
+                                <flux:input
+                                    label="Icon"
+                                    wire:model="icon"
+                                    placeholder="e.g. home, user, ship, briefcase"
+                                />
+
                                 <flux:select label="Type" wire:model="type">
                                     <flux:select.option value="custom">Custom</flux:select.option>
                                     <flux:select.option value="route">Route</flux:select.option>

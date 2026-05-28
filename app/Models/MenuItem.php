@@ -12,6 +12,7 @@ class MenuItem extends Model
         'parent_id',
         'title',
         'url',
+        'icon',
         'type',
         'route_name',
         'sort_order',

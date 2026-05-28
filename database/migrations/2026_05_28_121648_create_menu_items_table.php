@@ -26,6 +26,8 @@ return new class extends Migration
             $table->string('title');
             $table->string('url')->nullable();
 
+            $table->string('icon')->nullable()->after('title');
+
             $table->string('type')->default('custom'); // custom, page, route, external, column
 
             $table->string('route_name')->nullable();

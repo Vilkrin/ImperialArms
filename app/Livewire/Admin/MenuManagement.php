@@ -18,6 +18,7 @@ class MenuManagement extends Component
 
     public string $title = '';
     public ?string $url = null;
+    public ?string $icon = null;
 
     public string $type = 'custom';
     public ?string $route_name = null;
@@ -44,6 +45,7 @@ class MenuManagement extends Component
 
         $this->title = $item->title;
         $this->url = $item->url;
+        $this->icon = $item->icon;
         $this->type = $item->type;
         $this->route_name = $item->route_name;
 
@@ -60,6 +62,7 @@ class MenuManagement extends Component
             'title' => ['required', 'string', 'max:255'],
             'url' => ['nullable', 'string', 'max:255'],
             'type' => ['required', 'string', 'max:50'],
+            'icon' => ['nullable', 'string', 'max:255'],
             'route_name' => ['nullable', 'string', 'max:255'],
             'target' => ['required', 'string'],
             'is_active' => ['boolean'],
@@ -110,6 +113,7 @@ class MenuManagement extends Component
             'parentId',
             'title',
             'url',
+            'icon',
             'route_name',
         ]);
 
