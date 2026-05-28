@@ -5,7 +5,8 @@ namespace Database\Seeders;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Menu;
+use Illuminate\Support\Facades\Hash;
+
 
 class DatabaseSeeder extends Seeder
 {
@@ -16,27 +17,15 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        // User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        User::factory()->create([
+            'name' => 'Vilkrin',
+            'email' => 'contact@vilkrin.uk',
+            'password' => Hash::make('password'),
+        ]);
 
-        Menu::firstOrCreate(
-            ['location' => 'main_navbar'],
-            [
-                'name' => 'Main Navbar',
-                'slug' => 'main-navbar',
-                'is_active' => true,
-            ]
-        );
-
-        Menu::firstOrCreate(
-            ['location' => 'footer'],
-            [
-                'name' => 'Footer',
-                'slug' => 'footer',
-                'is_active' => true,
-            ]
-        );
+        $this->call([
+            ShipSeeder::class,
+            DemoDataSeeder::class,
+        ]);
     }
 }
