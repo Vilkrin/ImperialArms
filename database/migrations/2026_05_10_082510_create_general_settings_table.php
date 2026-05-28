@@ -16,6 +16,11 @@ return new class extends Migration
             $table->string('site_name')->nullable();
             $table->string('site_tagline')->nullable();
             $table->text('footer_text')->nullable();
+            $table->string('founded')->nullable();
+            $table->string('focus')->nullable();
+            $table->string('commitment')->nullable();
+            $table->string('language')->nullable();
+            $table->boolean('recruiting')->default(false);
             $table->timestamps();
         });
     }
