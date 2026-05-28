@@ -98,6 +98,11 @@ Route::prefix('admin')->name('admin.')->middleware('auth', 'verified', 'permissi
     });
     // Pages
     Route::resource('pages', PageController::class);
+    // Menus
+    Route::get('/menus', function () {
+        return view('admin.menus.index');
+    })->name('menus.index');
+
 
     // Services
     Route::get('/services', function () {
