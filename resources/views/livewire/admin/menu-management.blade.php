@@ -73,20 +73,28 @@
                                                         </div>
 
                                                         <div class="flex-1 min-w-0">
-                                                            <div class="flex items-center gap-2">
-                                                                <span class="font-medium truncate">
-                                                                    {{ $item->title }}
-                                                                </span>
+                                                            <div class="grid grid-cols-[24px_1fr] gap-x-2">
 
-                                                                @if ($item->children->count())
-                                                                    <span class="inline-flex items-center rounded-full border px-2 py-0.5 text-xs border-slate-700 text-slate-300 bg-slate-800/70">
-                                                                        {{ $item->children->count() }}
+                                                                <div class="row-span-2 flex items-center justify-center">
+                                                                    <x-navigation.nav-item :item="$item" />
+                                                                </div>
+
+                                                                <div class="flex items-center gap-2">
+                                                                    <span class="font-medium truncate">
+                                                                        {{ $item->title }}
                                                                     </span>
-                                                                @endif
-                                                            </div>
 
-                                                            <div class="text-xs text-slate-400 font-mono truncate">
-                                                                {{ $item->url }}
+                                                                    @if ($item->children->count())
+                                                                        <span class="inline-flex items-center rounded-full border px-2 py-0.5 text-xs border-slate-700 text-slate-300 bg-slate-800/70">
+                                                                            {{ $item->children->count() }}
+                                                                        </span>
+                                                                    @endif
+                                                                </div>
+
+                                                                <div class="text-xs text-slate-400 font-mono truncate">
+                                                                    {{ $item->url }}
+                                                                </div>
+
                                                             </div>
                                                         </div>
 
@@ -286,7 +294,7 @@
                                                                     </svg>
                                                                 </div>
 
-                                                                <div class="flex-1 min-w-0">
+                                                                <div class="flex-1 min-w-0">                                                                    
                                                                     <div class="font-medium truncate">
                                                                         {{ $link->title }}
                                                                     </div>
