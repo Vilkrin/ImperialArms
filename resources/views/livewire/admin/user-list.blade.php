@@ -94,7 +94,7 @@
                                         </tr>
                                     </thead>
                                     <tbody class="[&_tr:last-child]:border-0">
-                                        @forelse ($users as $user)
+                                        @forelse ($this->users as $user)
                                         <tr class="border-b border-slate-700 transition-colors hover:bg-slate-800/50">
                                             <td class="p-4 align-middle">
                                                 <div>
@@ -190,6 +190,9 @@
                                         
                                     </tbody>
                                 </table>
+
+                                {{ $this->users->links() }}
+
                             </div>
                         </div>
                     </div>

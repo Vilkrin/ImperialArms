@@ -4,6 +4,7 @@ namespace App\Livewire\Admin\Blog;
 
 use Livewire\Component;
 use App\Models\Post;
+use Livewire\Attributes\Computed;
 use Livewire\WithPagination;
 use Flux\Flux;
 
@@ -14,6 +15,12 @@ class BlogTable extends Component
     public string $search = '';
     public string $status = 'all';
     public string $category = 'all';
+
+    public function search()
+    {
+        $this->resetPage();
+    }
+
 
     public function updatingSearch(): void
     {
@@ -41,10 +48,11 @@ class BlogTable extends Component
         );
     }
 
-    public function render()
+    #[Computed]
+    public function posts()
     {
-        $posts = Post::query()
-            ->with(['user', 'categories'])
+        return Post::query()
+            ->with(['user', 'categories', 'tags', 'media'])
             ->when($this->search, function ($query) {
                 $query->where(function ($query) {
                     $query->where('title', 'like', '%' . $this->search . '%')
@@ -63,10 +71,12 @@ class BlogTable extends Component
             })
             ->latest()
             ->paginate(10);
+    }
 
+    public function render()
+    {
         return view('livewire.admin.blog.blog-table', [
-            'posts' => $posts,
-            'totalPosts' => Post::count(),
+            'totalPosts' => $this->posts->total(),
             'publishedPosts' => Post::where('status', 'published')->count(),
             'draftPosts' => Post::where('status', 'draft')->count(),
             'featuredPosts' => 0,

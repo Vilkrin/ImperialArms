@@ -118,7 +118,7 @@
 
                                     <tbody class="[&_tr:last-child]:border-0">
 
-                                        @forelse ($posts as $post)
+                                        @forelse ($this->posts as $post)
 
                                             <tr class="border-b border-slate-700 transition-colors hover:bg-slate-800/50">
 
@@ -269,6 +269,8 @@
                                     </tbody>
 
                                 </table>
+
+                                {{ $this->posts->links() }}
 
                             </div>
 
