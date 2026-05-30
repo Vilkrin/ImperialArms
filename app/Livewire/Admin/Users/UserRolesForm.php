@@ -5,10 +5,13 @@ namespace App\Livewire\Admin\Users;
 use Livewire\Component;
 use App\Models\User;
 use Spatie\Permission\Models\Role;
+use Livewire\WithPagination;
 use Flux\Flux;
 
 class UserRolesForm extends Component
 {
+    use WithPagination;
+
     public User $user;
 
     public array $roleStates = [];

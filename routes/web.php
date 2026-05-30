@@ -42,6 +42,17 @@ Route::prefix('profile')->name('profile.')->middleware(['auth'])->group(function
     Route::get('/{slug}', [ProfileController::class, 'show'])->name('show');
 });
 
+Route::prefix('forum')->name('forum.')->middleware('auth', 'verified')->group(function () {
+
+    Route::get('/', function () {
+        return view('forum.index');
+    })->name('index');
+
+    // Route::get('/{slug}', function ($slug) {
+    //     return view('forum.show', ['slug' => $slug]);
+    // })->name('show');
+});
+
 // Org Services
 Route::prefix('services')->name('services.')->middleware('auth', 'verified')->group(function () {
 

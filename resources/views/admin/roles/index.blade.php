@@ -1,7 +1,5 @@
 <x-layouts.admin :title="__('Roles Management')">
 
-
-
     <flux:tab.group>
         <flux:tabs variant="segmented">
             <flux:tab name="roles" class="cursor-pointer" icon="users">Roles</flux:tab>
