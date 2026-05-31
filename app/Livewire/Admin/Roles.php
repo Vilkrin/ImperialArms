@@ -7,6 +7,7 @@ use Flux\Flux;
 use Illuminate\Validation\Rule;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use Illuminate\Support\Facades\DB;
 use Livewire\WithPagination;
 
 class Roles extends Component
@@ -65,6 +66,8 @@ class Roles extends Component
         $role->syncPermissions($this->selectedPermissions);
 
         $this->resetForm();
+        $this->resetPage();
+        $this->search = '';
 
         Flux::toast(
             variant: 'success',
@@ -113,7 +116,7 @@ class Roles extends Component
         return view('livewire.admin.roles', [
             'roles' => Role::withCount('users')
                 ->when($this->search, function ($query) {
-                    $query->where('name', 'like', '%' . $this->search . '%');
+                    $query->whereRaw('LOWER(name) LIKE ?', ['%' . strtolower($this->search) . '%']);
                 })
                 ->orderBy('name')
                 ->paginate(25),
