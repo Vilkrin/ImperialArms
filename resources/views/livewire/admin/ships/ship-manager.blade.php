@@ -168,7 +168,7 @@
 
                 <x-slot name="empty">
                     <flux:select.option.empty when-loading="Loading classes...">
-                        No classes found.
+                        No Ship Class found.
                     </flux:select.option.empty>
                 </x-slot>
             </flux:select>
