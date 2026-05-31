@@ -4,7 +4,10 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use Livewire\Attributes\Validate;
+use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+use Flux\Flux;
 
 
 class ProfileSecurity extends Component
@@ -16,25 +19,29 @@ class ProfileSecurity extends Component
 
     public $password_confirmation;
 
-    public function mount(User $user)
+    public function mount()
     {
-        $this->user = $user;
+        $this->user = Auth::user();
     }
 
     public function updatePassword()
     {
-        // Save user details
-
-        if ($this->password) {
-            $this->user->password = bcrypt($this->password);
+        if (! $this->password) {
+            Flux::toast(variant: 'danger', text: 'Enter a new password first.');
+            return;
         }
 
+        $this->validate();
+
+        $this->user->password = Hash::make($this->password);
         $this->user->save();
 
-        return redirect()->route('profile.index')->with('status', 'Profile updated.');
+        $this->reset([
+            'password',
+            'password_confirmation',
+        ]);
 
-        // Redirect to the user list page
-        return redirect()->route('profile.index');
+        Flux::toast(variant: 'success', text: 'Password updated successfully.');
     }
 
     public function render()

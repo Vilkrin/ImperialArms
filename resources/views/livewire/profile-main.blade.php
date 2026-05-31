@@ -6,15 +6,24 @@
                       <!-- Full Name -->
                       <div class="space-y-2">
                         <label for="name" class="block text-sm font-medium leading-none text-slate-200">Name</label>
-                        <input id="name" value="{{ $user->name }}" class="flex h-10 w-full rounded-md border border-slate-700 bg-slate-900 px-3 py-2 text-base text-slate-100 ring-offset-slate-950 placeholder:text-slate-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm" readonly />
-                      @error('name') <p class="text-red-500 text-sm">{{ $message }}</p> @enderror
+                        <input
+                              id="name"
+                              wire:model="name"
+                              class="flex h-10 w-full rounded-md border border-slate-700 bg-slate-900 px-3 py-2 text-base text-slate-100 ring-offset-slate-950 placeholder:text-slate-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
+                          />
+                          @error('name') <p class="text-red-500 text-sm">{{ $message }}</p> @enderror
                       </div>
 
                       <!-- Email -->
                       <div class="space-y-2">
                         <label for="email" class="block text-sm font-medium leading-none text-slate-200">Email</label>
                         <div class="relative">
-                        <input id="email" type="email" value="{{ $user->email }}" class="flex h-10 w-full rounded-md border border-slate-700 bg-slate-900 px-3 py-2 text-base text-slate-100 ring-offset-slate-950 placeholder:text-slate-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm" readonly />
+                        <input
+                              id="email"
+                              type="email"
+                              wire:model="email"
+                              class="flex h-10 w-full rounded-md border border-slate-700 bg-slate-900 px-3 py-2 text-base text-slate-100 ring-offset-slate-950 placeholder:text-slate-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
+                          />
                          @error('email') <p class="text-red-500 text-sm">{{ $message }}</p> @enderror
                           <div class="absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-2">
                           @if ($user->email_verified_at)
@@ -73,7 +82,14 @@
                     </div>                     
                      
                     <div class="flex justify-end pt-4">
-                      <flux:button variant="primary" color="amber" class="cursor-pointer" wire:click="save">Save Changes</flux:button>
+                      <flux:button
+                          type="submit"
+                          variant="primary"
+                          color="amber"
+                          class="cursor-pointer"
+                      >
+                          Save Changes
+                      </flux:button>
                     </div>     
                      </form>  
 

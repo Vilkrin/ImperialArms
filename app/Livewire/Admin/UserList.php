@@ -5,6 +5,7 @@ namespace App\Livewire\Admin;
 use Livewire\Component;
 use App\Models\User;
 use Carbon\Carbon;
+use Spatie\Permission\Models\Role;
 use Livewire\WithPagination;
 use Livewire\Attributes\Computed;
 
@@ -17,10 +18,30 @@ class UserList extends Component
     public $sortDirection = 'asc';
     public $showDeleteModal = false;
     public $userToDelete = null;
+    public $roleFilter = 'all';
+    public $statusFilter = 'all';
 
-    public function search()
+    public function updatedSearch()
     {
         $this->resetPage();
+    }
+
+    public function updatedRoleFilter()
+    {
+        $this->resetPage();
+    }
+
+    public function updatedStatusFilter()
+    {
+        $this->resetPage();
+    }
+
+    #[Computed]
+    public function roles()
+    {
+        return Role::query()
+            ->orderBy('name')
+            ->pluck('name');
     }
 
     #[Computed]
@@ -28,12 +49,22 @@ class UserList extends Component
     {
         return User::query()
             ->with('roles')
+
             ->when($this->search, function ($query) {
                 $query->where(function ($query) {
                     $query->where('name', 'like', '%' . $this->search . '%')
                         ->orWhere('email', 'like', '%' . $this->search . '%');
                 });
             })
+
+            ->when($this->roleFilter !== 'all', function ($query) {
+                $query->role($this->roleFilter);
+            })
+
+            ->when($this->statusFilter !== 'all', function ($query) {
+                $query->where('status', $this->statusFilter);
+            })
+
             ->orderBy($this->sortField, $this->sortDirection)
             ->paginate(10);
     }
