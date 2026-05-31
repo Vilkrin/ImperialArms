@@ -15,4 +15,8 @@
         </flux:tab.panel>
     </flux:tab.group>
 
+    @persist('toast')
+     <flux:toast />
+    @endpersist
+
 </x-layouts.admin>
