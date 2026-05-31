@@ -4,6 +4,7 @@ namespace App\Livewire\Admin;
 
 use Livewire\Component;
 use Flux\Flux;
+use Illuminate\Validation\Rule;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 use Livewire\WithPagination;
@@ -55,7 +56,13 @@ class Permissions extends Component
     public function save()
     {
         $this->validate([
-            'name' => 'required|string|max:255|unique:permissions,name,' . $this->editingId,
+            'name' => [
+                'required',
+                'string',
+                'max:255',
+                Rule::unique('permissions', 'name')->ignore($this->editingId),
+            ],
+            'selectedRoles' => ['array'],
         ]);
 
         $permission = Permission::updateOrCreate(
