@@ -84,6 +84,8 @@ class Permissions extends Component
             ->each(fn($role) => $role->revokePermissionTo($permission));
 
         $this->resetForm();
+        $this->resetPage();
+        $this->search = '';
 
         Flux::toast(
             variant: 'success',
@@ -106,7 +108,7 @@ class Permissions extends Component
         return view('livewire.admin.permissions', [
             'permissions' => Permission::withCount('roles')
                 ->when($this->search, function ($query) {
-                    $query->where('name', 'like', '%' . $this->search . '%');
+                    $query->whereRaw('LOWER(name) LIKE ?', ['%' . strtolower($this->search) . '%']);
                 })
                 ->orderBy('name')
                 ->paginate(25),

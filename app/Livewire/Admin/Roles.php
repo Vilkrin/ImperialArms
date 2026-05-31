@@ -7,7 +7,6 @@ use Flux\Flux;
 use Illuminate\Validation\Rule;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
-use Illuminate\Support\Facades\DB;
 use Livewire\WithPagination;
 
 class Roles extends Component
