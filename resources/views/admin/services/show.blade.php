@@ -1,7 +1,7 @@
 <x-layouts.admin :title="__('Services Management')">
 
                 <div class="max-w-4xl">
-                    <a href="services.html" class="inline-flex items-center gap-2 px-3 py-2 text-sm text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 rounded-lg transition-colors mb-4">
+                    <a href="{{ route('admin.services.index') }}" class="inline-flex items-center gap-2 px-3 py-2 text-sm text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 rounded-lg transition-colors mb-4">
                         <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
                         </svg>
