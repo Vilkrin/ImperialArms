@@ -6,10 +6,10 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>
-            @hasSection('title')
-            @yield('title') | {{ config('app.name', 'Laravel') }}
+            @if (! empty($title))
+                {{ $siteName }} - {{ $title }}
             @else
-            {{ config('app.name', 'Laravel') }}
+                {{ $siteName }}
             @endif
         </title>
 

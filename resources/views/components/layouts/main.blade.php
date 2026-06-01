@@ -6,55 +6,57 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>
-            @hasSection('title')
-            @yield('title') | {{ config('app.name', 'Laravel') }}
+            @if (! empty($title))
+                {{ $siteName }} - {{ $title }}
             @else
-            {{ config('app.name', 'Laravel') }}
+                {{ $siteName }}
             @endif
         </title>
 
-        <!-- Primary Meta Tags -->
-        <meta name="title" content="{{ config('app.name') }}">
-        <meta name="description" content="Imperial Arms is a professional mercenary and logistics organization in the Star Citizen universe. We specialize in secure freight transport, high-risk operations, and exploration missions across the 'verse. 
-                With a disciplined approach and a commitment to excellence, we provide top-tier services to clients while fostering a tight-knit community of members. 
-                Join us as we navigate the stars with precision, firepower, and camaraderie.">
+        <meta name="title" content="{{ ! empty($title) ? $siteName . ' - ' . $title : $siteName }}">
 
-        <meta name="robots" content="index, follow">
-        <meta name="author" content="{{ config('app.name') }}">
+        <meta name="description" content="@yield('description', $seoSettings?->meta_description)">
 
+        <meta name="robots" content="{{ $robots }}">
 
-        <link rel="canonical" href="https://imperialarms.org/">
+        <meta name="author" content="{{ $seoSettings?->meta_author ?: $siteName }}">
 
-        <!-- Open Graph / Facebook -->
-        <meta property="og:type" content="website">
-        <meta property="og:url" content="https://imperialarms.org/">
-        <meta property="og:title" content="{{ config('app.name') }}">
-        <meta property="og:description" content="Imperial Arms is a professional mercenary and logistics organization in the Star Citizen universe. We specialize in secure freight transport, high-risk operations, and exploration missions across the 'verse. 
-                With a disciplined approach and a commitment to excellence, we provide top-tier services to clients while fostering a tight-knit community of members. 
-                Join us as we navigate the stars with precision, firepower, and camaraderie.">
-        <meta property="og:image" content="https://imperialarms.org/images/social-preview.jpg">
+        <link rel="canonical" href="{{ $seoSettings?->canonical_url ?: url()->current() }}">
 
-        <meta property="og:site_name" content="{{ config('app.name') }}">
-        <meta property="og:locale" content="en_GB">
+        <meta property="og:type" content="{{ $seoSettings?->og_type ?: 'website' }}">
+        <meta property="og:url" content="{{ url()->current() }}">
+        <meta property="og:title" content="{{ ! empty($title) ? $siteName . ' - ' . $title : ($seoSettings?->og_title ?: $siteName) }}">
+        <meta property="og:description" content="@yield('description', $seoSettings?->og_description ?: $seoSettings?->meta_description)">
+        <meta property="og:site_name" content="{{ $seoSettings?->og_site_name ?: $siteName }}">
+        <meta property="og:locale" content="{{ $seoSettings?->og_locale ?: 'en_GB' }}">
 
-        <!-- 📌 Open Graph Image tip: Use 1200 × 630 for og:image (works everywhere). -->
+        <meta name="twitter:card" content="{{ $seoSettings?->twitter_card ?: 'summary_large_image' }}">
+        <meta name="twitter:url" content="{{ $seoSettings?->og_url ?: url()->current() }}">
+        <meta name="twitter:title" content="{{ ! empty($title) ? $siteName . ' - ' . $title : ($seoSettings?->twitter_title ?: $siteName) }}">
+        <meta name="twitter:description" content="@yield('description', $seoSettings?->twitter_description ?: $seoSettings?->meta_description)">
 
-        <!-- Twitter -->
-        <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:url" content="https://imperialarms.org/">
-        <meta name="twitter:title" content="{{ config('app.name') }}">
-        <meta name="twitter:description" content="Imperial Arms is a professional mercenary and logistics organization in the Star Citizen universe. We specialize in secure freight transport, high-risk operations, and exploration missions across the 'verse. 
-                With a disciplined approach and a commitment to excellence, we provide top-tier services to clients while fostering a tight-knit community of members. 
-                Join us as we navigate the stars with precision, firepower, and camaraderie.">
-        <meta name="twitter:image" content="https://imperialarms.org/images/social-preview.jpg">
+        @if ($seoSettings?->twitter_site)
+            <meta name="twitter:site" content="{{ $seoSettings->twitter_site }}">
+        @endif
 
-        <!-- Optional -->
-        <meta name="twitter:site" content="@yourhandle">
-        <meta name="twitter:creator" content="@yourhandle">
+        @if ($seoSettings?->twitter_creator)
+            <meta name="twitter:creator" content="{{ $seoSettings->twitter_creator }}">
+        @endif
 
-        <meta name="theme-color" content="#0f172a">
-        <link rel="icon" href="/favicon.ico">
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+        <meta name="theme-color" content="{{ $seoSettings?->theme_color ?: '#0f172a' }}">
+
+        @if ($seoSettings?->getFirstMediaUrl('social_preview'))
+            <meta property="og:image" content="{{ $seoSettings->getFirstMediaUrl('social_preview') }}">
+            <meta name="twitter:image" content="{{ $seoSettings->getFirstMediaUrl('social_preview') }}">
+        @endif
+
+        @if ($seoSettings?->getFirstMediaUrl('favicon'))
+            <link rel="icon" href="{{ $seoSettings->getFirstMediaUrl('favicon') }}">
+        @endif
+
+        @if ($seoSettings?->getFirstMediaUrl('apple_touch_icon'))
+            <link rel="apple-touch-icon" href="{{ $seoSettings->getFirstMediaUrl('apple_touch_icon') }}">
+        @endif
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">

@@ -19,133 +19,159 @@
                 {{-- General Settings Form --}}
                 <form wire:submit="saveGeneralSettings">
 
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
 
-                        <div>
-                            <flux:field>
-                                <flux:label>Site Title</flux:label>
-                                <flux:description>The main name of the website.</flux:description>
+                        {{-- Site Information --}}
+                        <div class="space-y-4">
+                            <h4 class="text-sm font-semibold text-amber-400 uppercase tracking-wider mb-4">
+                                Site Information
+                            </h4>
 
-                                <flux:input
-                                    wire:model="site_name"
-                                    placeholder="Imperial Arms"
+                            {{-- Site Title --}}
+                            <div>
+                                <flux:field>
+                                    <flux:label>Site Title</flux:label>
+                                    <flux:description>The main name of the website.</flux:description>
+
+                                    <flux:input
+                                        wire:model="site_name"
+                                        placeholder="Imperial Arms"
+                                    />
+
+                                    <flux:error name="site_name"/>
+                                </flux:field>
+                            </div>
+
+                            {{-- Site Tagline --}}
+                            <div>
+                                <flux:field>
+                                    <flux:label>Site Tagline</flux:label>
+                                    <flux:description>A short tagline or subtitle for the website.</flux:description>
+
+                                    <flux:input
+                                        wire:model="site_tagline"
+                                        placeholder="United We Stand Among The Stars"
+                                    />
+
+                                    <flux:error name="site_tagline"/>
+                                </flux:field>
+                            </div>
+
+                            {{-- Description --}}
+                            <div>
+                                <flux:field>
+                                    <flux:label>Description</flux:label>
+                                    <flux:description>A brief description of the Org.</flux:description>
+
+                                    <flux:textarea
+                                        wire:model="description"
+                                        placeholder="All your souls belong to us. We are the best mercenary org in the 'verse. Join us for fun and profit!"
+                                    />
+
+                                    <flux:error name="description"/>
+                                </flux:field>
+                            </div>
+
+                            {{-- Footer Text --}}
+                            <div>
+                                <flux:editor
+                                    wire:model="footer_text"
+                                    label="Footer Text"
                                 />
+                            </div>
 
-                                <flux:error name="site_name"/>
-                            </flux:field>
                         </div>
 
-                        <div>
-                            <flux:field>
-                                <flux:label>Site Tagline</flux:label>
-                                <flux:description>A short tagline or subtitle for the website.</flux:description>
+                        {{-- Organization Information --}}
+                        <div class="space-y-4">
+                            <h4 class="text-sm font-semibold text-amber-400 uppercase tracking-wider mb-4">
+                                Organization Information
+                            </h4>
 
-                                <flux:input
-                                    wire:model="site_tagline"
-                                    placeholder="United We Stand Among The Stars"
-                                />
+                            {{-- Founded --}}
+                            <div>
+                                <flux:field>
+                                    <flux:label>Founded</flux:label>
+                                    <flux:description>The year the Org was founded.</flux:description>
 
-                                <flux:error name="site_tagline"/>
-                            </flux:field>
-                        </div>
+                                    <flux:input
+                                        wire:model="founded"
+                                        placeholder="2942"
+                                    />
 
-                        <div>
-                            <flux:field>
-                                <flux:label>Description</flux:label>
-                                <flux:description>A brief description of the Org.</flux:description>
+                                    <flux:error name="founded"/>
+                                </flux:field>
+                            </div>
 
-                                <flux:textarea
-                                    wire:model="description"
-                                    placeholder="All your souls belong to us. We are the best mercenary org in the 'verse. Join us for fun and profit!"
-                                />
+                            {{-- Focus --}}
+                            <div>
+                                <flux:field>
+                                    <flux:label>Focus</flux:label>
+                                    <flux:description>The main focus or specialty of the Org.</flux:description>
 
-                                <flux:error name="description"/>
-                            </flux:field>
-                        </div>
+                                    <flux:input
+                                        wire:model="focus"
+                                        placeholder="Mercenary Services"
+                                    />
 
-                        <div>
-                            <flux:field>
-                                <flux:label>Founded</flux:label>
-                                <flux:description>The year the Org was founded.</flux:description>
+                                    <flux:error name="focus"/>
+                                </flux:field>
+                            </div>
 
-                                <flux:input
-                                    wire:model="founded"
-                                    placeholder="2942"
-                                />
+                            {{-- Commitment --}}
+                            <div>
+                                <flux:field>
+                                    <flux:label>Commitment</flux:label>
+                                    <flux:description>
+                                        Defines the organization’s expected activity and roleplay involvement level.
+                                    </flux:description>
 
-                                <flux:error name="founded"/>
-                            </flux:field>
-                        </div>
+                                    <flux:input
+                                        wire:model="commitment"
+                                        placeholder="Regular, Social, Casual"
+                                    />
+                                </flux:field>
+                            </div>
 
-                        <div>
-                            <flux:field>
-                                <flux:label>Focus</flux:label>
-                                <flux:description>The main focus or specialty of the Org.</flux:description>
+                            {{-- Languages --}}
+                            <div>
+                                <flux:field>
+                                    <flux:label>Languages</flux:label>
+                                    <flux:description>Primary languages spoken by members of the Org.</flux:description>
 
-                                <flux:input
-                                    wire:model="focus"
-                                    placeholder="Mercenary Services"
-                                />
+                                    <flux:input
+                                        wire:model="language"
+                                        placeholder="English, Spanish, etc."
+                                    />
+                                </flux:field>
+                            </div>
 
-                                <flux:error name="focus"/>
-                            </flux:field>
-                        </div>
+                            {{-- Timezone --}}
+                            <div>
+                                <flux:field>
+                                    <flux:label>Timezone</flux:label>
+                                    <flux:description>Primary timezone of the Org's members.</flux:description>
 
-                        <div>
-                            <flux:field>
-                                <flux:label>Commitment</flux:label>
-                                <flux:description>
-                                    Defines the organization’s expected activity and roleplay involvement level.
-                                </flux:description>
+                                    <flux:input
+                                        wire:model="timezone"
+                                        placeholder="UTC, EST, etc."
+                                    />
+                                </flux:field>
+                            </div>
 
-                                <flux:input
-                                    wire:model="commitment"
-                                    placeholder="Regular, Social, Casual"
-                                />
-                            </flux:field>
-                        </div>
+                            {{-- Recruiting Status --}}
+                            <div>
+                                <flux:field>
+                                    <flux:label>Recruiting Status</flux:label>
+                                    <flux:description>Is the Org currently recruiting new members?</flux:description>
 
-                        <div>
-                            <flux:field>
-                                <flux:label>Languages</flux:label>
-                                <flux:description>Primary languages spoken by members of the Org.</flux:description>
+                                    <flux:input
+                                        wire:model="recruiting"
+                                        placeholder="Yes, No, Recruiting"
+                                    />
+                                </flux:field>
+                            </div>
 
-                                <flux:input
-                                    wire:model="language"
-                                    placeholder="English, Spanish, etc."
-                                />
-                            </flux:field>
-                        </div>
-
-                        <div>
-                            <flux:field>
-                                <flux:label>Timezone</flux:label>
-                                <flux:description>Primary timezone of the Org's members.</flux:description>
-
-                                <flux:input
-                                    wire:model="timezone"
-                                    placeholder="UTC, EST, etc."
-                                />
-                            </flux:field>
-                        </div>
-
-                        <div>
-                            <flux:field>
-                                <flux:label>Recruiting Status</flux:label>
-                                <flux:description>Is the Org currently recruiting new members?</flux:description>
-
-                                <flux:input
-                                    wire:model="recruiting"
-                                    placeholder="Yes, No, Recruiting"
-                                />
-                            </flux:field>
-                        </div>
-
-                        <div>
-                            <flux:editor
-                                wire:model="footer_text"
-                                label="Footer Text"
-                            />
                         </div>
 
                     </div>
@@ -165,9 +191,11 @@
 
                 {{-- Logo Upload Section --}}
                 <div class="mt-8 border-t border-slate-700 pt-6">
+                    <h4 class="text-sm font-semibold text-amber-400 uppercase tracking-wider mb-4">
+                        Org Logo
+                    </h4>
 
                     <div class="flex flex-col lg:flex-row gap-6">
-
                         {{-- Logo Preview --}}
                         <div class="flex flex-col items-center gap-3 shrink-0">
 
