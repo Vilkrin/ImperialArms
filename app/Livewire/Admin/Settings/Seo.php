@@ -54,10 +54,10 @@ class Seo extends Component
         $this->allow_ai_search = (bool) $this->settings->allow_ai_search;
         $this->allow_ai_training = (bool) $this->settings->allow_ai_training;
 
-        $this->og_title = $this->settings->og_title;
-        $this->og_description = $this->settings->og_description;
-        $this->og_type = $this->settings->og_type;
-        $this->og_url = $this->settings->og_url;
+        $this->og_title = $this->settings->og_title ?? '';
+        $this->og_description = $this->settings->og_description ?? '';
+        $this->og_type = $this->settings->og_type ?? 'website';
+        $this->og_url = $this->settings->og_url ?? '';
     }
 
     public function removeSocialPreview(): void
