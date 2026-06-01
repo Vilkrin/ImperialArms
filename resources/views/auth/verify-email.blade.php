@@ -22,7 +22,7 @@
 
             <form method="POST" action="{{ route('logout') }}">
                @csrf
-               <flux:button type="submit" variant="link" class="text-sm w-full">
+               <flux:button type="submit" variant="ghost" class="text-sm w-full">
                      {{ __('Log out') }}
                </flux:button>
             </form>
