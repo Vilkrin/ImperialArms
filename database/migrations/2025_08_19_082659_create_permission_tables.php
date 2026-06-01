@@ -282,6 +282,7 @@ return new class extends Migration
             'publish.videos',
             'unpublish.videos',
             'view.unpublished.videos',
+            'view.member.dashboard',
             'manage.org.members',
             'assign.org.roles',
             'manage.org.settings',
