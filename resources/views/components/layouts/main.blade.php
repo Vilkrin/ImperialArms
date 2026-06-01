@@ -322,10 +322,7 @@
                             {{ $generalSettings?->site_name ?? 'IMPERIAL ARMS' }}
                         </span>
                     </a>
-                    <p class="text-slate-400 font-exo mb-6 max-w-md">
-                        Professional freight, logistics, and mercenary operations across the 'verse. 
-                        Securing the stars with discipline, efficiency, and firepower.
-                    </p>
+                    <p class="text-slate-400 font-exo mb-6 max-w-md"> {{ $generalSettings?->site_description ?? 'Someone Forgot to Add a Description.' }} </p>
                     <div class="flex space-x-4">
                         <a href="https://bsky.app/profile/lokenplays.bsky.social" class="p-2 bg-slate-800/50 rounded hover:bg-amber-400/20 hover:text-amber-400 transition-colors group">
                             <i class="fa-brands fa-bluesky"></i>
