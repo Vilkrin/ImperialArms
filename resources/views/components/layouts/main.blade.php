@@ -360,23 +360,23 @@
                     <div class="space-y-3 text-sm">
                         <div>
                             <span class="text-slate-400">Founded:</span>
-                            <span class="ml-2 text-slate-100">2947</span>
+                            <span class="ml-2 text-slate-100">{!! $generalSettings?->founded ?: 'N/A' !!}</span>
                         </div>
                         <div>
                             <span class="text-slate-400">Focus:</span>
-                            <span class="ml-2 text-slate-100">Security, Exploration.</span>
+                            <span class="ml-2 text-slate-100">{!! $generalSettings?->focus ?: 'N/A' !!}</span>
                         </div>
                         <div>
                             <span class="text-slate-400">Commitment:</span>
-                            <span class="ml-2 text-slate-100">Regular</span>
+                            <span class="ml-2 text-slate-100">{!! $generalSettings?->commitment ?: 'N/A' !!}</span>
                         </div>
                         <div>
                             <span class="text-slate-400">Language:</span>
-                            <span class="ml-2 text-slate-100">English</span>
+                            <span class="ml-2 text-slate-100">{!! $generalSettings?->language ?: 'N/A' !!}</span>
                         </div>
                         <div>
                             <span class="text-slate-400">Recruiting:</span>
-                            <span class="ml-2 text-amber-400">Yes</span>
+                            <span class="ml-2 text-amber-400">{!! $generalSettings?->recruiting ?: 'N/A' !!}</span>
                         </div>
                     </div>
                 </div>

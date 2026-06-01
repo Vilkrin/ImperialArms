@@ -131,6 +131,7 @@ return new class extends Migration
 
         // Create permissions
         // Posts
+        Permission::create(['name' => 'view.posts']);
         Permission::create(['name' => 'create.posts']);
         Permission::create(['name' => 'edit.posts']);
         Permission::create(['name' => 'delete.posts']);
@@ -139,12 +140,14 @@ return new class extends Migration
         Permission::create(['name' => 'view.unpublished.posts']);
 
         // Gallery
+        Permission::create(['name' => 'view.images']);
         Permission::create(['name' => 'create.images']);
         Permission::create(['name' => 'edit.images']);
         Permission::create(['name' => 'delete.images']);
         Permission::create(['name' => 'manage.albums']);
 
         // Videos
+        Permission::create(['name' => 'view.videos']);
         Permission::create(['name' => 'create.videos']);
         Permission::create(['name' => 'edit.videos']);
         Permission::create(['name' => 'delete.videos']);
@@ -153,6 +156,7 @@ return new class extends Migration
         Permission::create(['name' => 'view.unpublished.videos']);
 
         // Events
+        Permission::create(['name' => 'view.events']);
         Permission::create(['name' => 'create.events']);
         Permission::create(['name' => 'edit.events']);
         Permission::create(['name' => 'delete.events']);
@@ -165,14 +169,19 @@ return new class extends Migration
         Permission::create(['name' => 'manage.org.members']);
         Permission::create(['name' => 'assign.org.roles']);
         Permission::create(['name' => 'manage.org.settings']);
+        Permission::create(['name' => 'manage.user.dossiers']);
 
         // General / Admin
         Permission::create(['name' => 'manage.users']);
+        Permission::create(['name' => 'view.users']);
+        Permission::create(['name' => 'ban.users']);
+        Permission::create(['name' => 'unban.users']);
         Permission::create(['name' => 'manage.site.settings']);
         Permission::create(['name' => 'manage.site.content']);
         Permission::create(['name' => 'access.admin.panel']);
 
         // Pages
+        Permission::create(['name' => 'view.pages']);
         Permission::create(['name' => 'create.pages']);
         Permission::create(['name' => 'edit.pages']);
         Permission::create(['name' => 'delete.pages']);
@@ -187,6 +196,8 @@ return new class extends Migration
         Permission::create(['name' => 'manage.ships']);
         Permission::create(['name' => 'manage.fleet']);
         Permission::create(['name' => 'manage.member.ships']);
+        Permission::create(['name' => 'view.ships']);
+        Permission::create(['name' => 'view.fleet']);
 
         // Permissions / Roles
         Permission::create(['name' => 'manage.roles']);
@@ -209,6 +220,7 @@ return new class extends Migration
         // Writer
         $role = Role::create(['name' => 'writer']);
         $role->givePermissionTo([
+            'view.posts',
             'create.posts',
             'edit.posts',
             'delete.posts',
@@ -217,6 +229,7 @@ return new class extends Migration
         // Editor
         $role = Role::create(['name' => 'editor']);
         $role->givePermissionTo([
+            'view.posts',
             'create.posts',
             'edit.posts',
             'delete.posts',
@@ -229,13 +242,20 @@ return new class extends Migration
         // Admin
         $role = Role::create(['name' => 'admin']);
         $role->givePermissionTo([
-            'manage.users',
             'access.admin.panel',
+            'view.users',
+            'manage.users',
+            'ban.users',
+            'unban.users',
+            'manage.user.dossiers',
+            'view.posts',
+            'create.posts',
+            'edit.posts',
+            'delete.posts',
             'view.unpublished.posts',
             'publish.posts',
             'unpublish.posts',
-            'edit.posts',
-            'delete.posts',
+            'view.pages',
             'create.pages',
             'edit.pages',
             'delete.pages',
@@ -244,15 +264,18 @@ return new class extends Migration
             'view.unpublished.pages',
             'manage.menus',
             'create.events',
+            'view.events',
             'edit.events',
             'delete.events',
             'publish.events',
             'unpublish.events',
             'view.unpublished.events',
+            'view.images',
             'create.images',
             'edit.images',
             'delete.images',
             'manage.albums',
+            'view.videos',
             'create.videos',
             'edit.videos',
             'delete.videos',
@@ -265,6 +288,8 @@ return new class extends Migration
             'manage.ships',
             'manage.fleet',
             'manage.member.ships',
+            'view.ships',
+            'view.fleet',
             'manage.roles',
             'manage.permissions',
             'manage.services',
