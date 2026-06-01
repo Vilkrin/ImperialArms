@@ -180,7 +180,7 @@
                             <flux:navmenu.item href="{{ route('members.dashboard') }}" icon="user" class="text-zinc-800 dark:text-white cursor-pointer">Members Area</flux:navmenu.item>
                             @endcan
                             
-                            @can('access.admin.dashboard')
+                            @can('access.admin.panel')
                             <flux:navmenu.item href="{{ route('admin.dashboard') }}" icon="user" class="text-zinc-800 dark:text-white cursor-pointer">Admin Area</flux:navmenu.item>
                             @endcan
 

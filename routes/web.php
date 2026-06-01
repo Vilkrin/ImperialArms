@@ -81,23 +81,27 @@ Route::prefix('admin')->name('admin.')->middleware('auth', 'verified', 'permissi
     Route::get('/', [DashboardController::class, 'dashboard'])->name('dashboard');
 
     // User Management
-    Route::resource('users', UserController::class);
+    Route::resource('users', UserController::class)
+        ->middleware('permission:view.users');
     // User Management - Roles & Permissions
     Route::get('/roles', function () {
         return view('admin.roles.index');
-    })->name('roles.index');
+    })->name('roles.index')
+        ->middleware('permission:manage.roles');
     // Ship Management
     Route::get('/ships', function () {
         return view('admin.ships.index');
-    })->name('ships.index');
+    })->name('ships.index')
+        ->middleware('permission:manage.ships');
     // Fleet Management
     Route::get('/fleet', function () {
         return view('admin.fleet.index');
-    })->name('fleet.index');
+    })->name('fleet.index')
+        ->middleware('permission:view.fleet');
 
     // Content Management
     // Blog Posts
-    Route::prefix('posts')->name('posts.')->group(function () {
+    Route::prefix('posts')->name('posts.')->middleware('permission:view.posts')->group(function () {
         Route::view('/', 'admin.blog.index')
             ->name('index');
         Route::view('/create', 'admin.blog.create')
@@ -107,37 +111,45 @@ Route::prefix('admin')->name('admin.')->middleware('auth', 'verified', 'permissi
         Route::view('/{post}', 'admin.blog.show')
             ->name('show');
     });
+
     // Pages
-    Route::resource('pages', PageController::class);
+    Route::resource('pages', PageController::class)->middleware('permission:view.pages');
+
     // Menus
     Route::get('/menus', function () {
         return view('admin.menus.index');
-    })->name('menus.index');
-
+    })->name('menus.index')
+        ->middleware('permission:manage.menus');
 
     // Services
     Route::get('/services', function () {
         return view('admin.services.index');
-    })->name('services.index');
+    })
+        ->name('services.index')
+        ->middleware('permission:manage.services');
+
     Route::get('/services/show', function () {
         return view('admin.services.show');
-    })->name('services.show');
+    })
+        ->name('services.show')
+        ->middleware('permission:manage.services');
 
     // Recruitment
     Route::get('/recruitment', function () {
         return view('admin.recruitment.index');
-    })->name('recruitment.index');
+    })
+        ->name('recruitment.index')
+        ->middleware('permission:manage.recruitment');
+
     Route::get('/recruitment/application', function () {
         return view('admin.recruitment.show');
-    })->name('recruitment.show');
-
-    // Chat
-    Route::get('/chat', function () {
-        return view('admin.chat.index');
-    })->name('chat.index');
+    })
+        ->name('recruitment.show')
+        ->middleware('permission:manage.recruitment');
 
     // Settings
     Route::get('/settings', function () {
         return view('admin.settings.settingspage');
-    })->name('settings');
+    })->name('settings')
+        ->middleware('permission:manage.site.settings');
 });

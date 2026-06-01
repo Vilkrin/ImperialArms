@@ -45,27 +45,19 @@ class Seo extends Component
     {
         $this->settings = SeoSetting::firstOrCreate([]);
 
-        $this->fill($this->settings->only([
-            'meta_title',
-            'meta_description',
-            'meta_author',
-            'canonical_url',
-            'allow_search_indexing',
-            'allow_ai_search',
-            'allow_ai_training',
-            'og_title',
-            'og_description',
-            'og_type',
-            'og_url',
-            'og_site_name',
-            'og_locale',
-            'twitter_card',
-            'twitter_title',
-            'twitter_description',
-            'twitter_site',
-            'twitter_creator',
-            'theme_color',
-        ]));
+        $this->meta_title = $this->settings->meta_title;
+        $this->meta_description = $this->settings->meta_description;
+        $this->meta_author = $this->settings->meta_author;
+        $this->canonical_url = $this->settings->canonical_url;
+
+        $this->allow_search_indexing = (bool) $this->settings->allow_search_indexing;
+        $this->allow_ai_search = (bool) $this->settings->allow_ai_search;
+        $this->allow_ai_training = (bool) $this->settings->allow_ai_training;
+
+        $this->og_title = $this->settings->og_title;
+        $this->og_description = $this->settings->og_description;
+        $this->og_type = $this->settings->og_type;
+        $this->og_url = $this->settings->og_url;
     }
 
     public function removeSocialPreview(): void
