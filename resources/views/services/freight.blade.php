@@ -173,7 +173,7 @@
                                 <button type="submit" class="inline-flex items-center rounded-md bg-gradient-to-br from-amber-400 to-amber-500 text-slate-900 px-4 py-2 text-sm font-orbitron font-medium transition hover:-translate-y-0.5 shadow-[0_0_20px_rgba(251,191,36,0.3)]">
                                     SUBMIT REQUEST
                                 </button>
-                                <a href="contact.html" class="text-amber-400 hover:text-amber-300 font-exo transition-colors">
+                                <a href="{{ route('contact') }}" class="text-amber-400 hover:text-amber-300 font-exo transition-colors">
                                     Need Help? Contact Support →
                                 </a>
                             </div>

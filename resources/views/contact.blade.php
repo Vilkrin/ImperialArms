@@ -43,12 +43,12 @@
                                     <span class="text-slate-400">Response Time:</span>
                                     <span class="text-slate-100">24/7</span>
                                 </div>
-                                <button class="border border-amber-400/50 text-amber-400 hover:bg-amber-400/10 px-3 py-1 rounded text-sm transition-colors">
+                                <a href="https://discord.gg/imperialarms" target="_blank" class="border border-amber-400/50 text-amber-400 hover:bg-amber-400/10 px-3 py-1 rounded text-sm transition-colors">
                                     Connect
                                     <svg class="ml-2 h-4 w-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
                                     </svg>
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -57,8 +57,8 @@
                     <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-6 backdrop-blur">
                         <div class="flex items-center justify-between mb-4">
                             <div class="flex items-center space-x-4">
-                                <svg class="h-8 w-8 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 0 1-.825-.242m9.345-8.334a2.126 2.126 0 0 0-.476-.095 48.64 48.64 0 0 0-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0 0 11.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155" />
                                 </svg>
                                 <div>
                                     <h3 class="font-orbitron text-xl font-bold">Spectrum</h3>
@@ -76,12 +76,12 @@
                                     <span class="text-slate-400">Response Time:</span>
                                     <span class="text-slate-100">Daily</span>
                                 </div>
-                                <button class="border border-amber-400/50 text-amber-400 hover:bg-amber-400/10 px-3 py-1 rounded text-sm transition-colors">
+                                <a href="#" target="_blank" class="border border-amber-400/50 text-amber-400 hover:bg-amber-400/10 px-3 py-1 rounded text-sm transition-colors">
                                     Connect
                                     <svg class="ml-2 h-4 w-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
                                     </svg>
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -312,7 +312,7 @@
                                 </p>
                             </div>
                             <div>
-                                <button class="inline-flex items-center justify-center rounded-md bg-gradient-to-br from-amber-400 to-amber-500 text-slate-900 px-4 py-2 font-orbitron font-medium transition hover:-translate-y-0.5 shadow-[0_0_20px_rgba(251,191,36,0.3)] w-full mb-4 group">
+                                <a href="https://discord.gg/imperialarms" target="_blank" class="inline-flex items-center justify-center rounded-md bg-gradient-to-br from-amber-400 to-amber-500 text-slate-900 px-4 py-2 font-orbitron font-medium transition hover:-translate-y-0.5 shadow-[0_0_20px_rgba(251,191,36,0.3)] w-full mb-4 group">
                                     <svg class="mr-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
                                     </svg>
@@ -320,13 +320,13 @@
                                     <svg class="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
                                     </svg>
-                                </button>
-                                <button class="w-full border border-amber-400/50 text-amber-400 hover:bg-amber-400/10 px-4 py-2 rounded transition-colors">
+                                </a>
+                                <a href="#" target="_blank" class="inline-flex items-center justify-center border border-amber-400/50 text-amber-400 hover:bg-amber-400/10 px-4 py-2 rounded transition-colors w-full mb-4 group">
                                     <svg class="mr-2 h-5 w-5 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
                                     </svg>
-                                    VIEW SPECTRUM PAGE
-                                </button>
+                                    VIEW SPECTRUM PAGE                                
+                                </a>
                             </div>
                         </div>
                     </div>
