@@ -324,18 +324,17 @@
                     </a>
                     <p class="text-slate-400 font-exo mb-6 max-w-md"> {{ $generalSettings?->site_description ?? 'Someone Forgot to Add a Description.' }} </p>
                     <div class="flex space-x-4">
-                        <a href="https://bsky.app/profile/lokenplays.bsky.social" class="p-2 bg-slate-800/50 rounded hover:bg-amber-400/20 hover:text-amber-400 transition-colors group">
-                            <i class="fa-brands fa-bluesky"></i>
-                        </a>
-                        <a href="https://discord.gg/lokenplays" class="p-2 bg-slate-800/50 rounded hover:bg-amber-400/20 hover:text-amber-400 transition-colors group">
-                            <i class="fa-brands fa-discord  "></i>
-                        </a>
-                        <a href="https://www.twitch.tv/lokenplays" class="p-2 bg-slate-800/50 rounded hover:bg-amber-400/20 hover:text-amber-400 transition-colors group">
-                            <i class="fa-brands fa-twitch"></i>
-                        </a>
-                        <a href="https://www.youtube.com/watch?v=iik25wqIuFo" class="p-2 bg-slate-800/50 rounded hover:bg-amber-400/20 hover:text-amber-400 transition-colors group">
-                            <i class="fa-brands fa-instagram"></i>
-                        </a>
+                        @foreach ($socialLinks as $socialLink)
+                            <a
+                                href="{{ $socialLink->url }}"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="p-2 bg-slate-800/50 rounded hover:bg-amber-400/20 hover:text-amber-400 transition-colors group"
+                                title="{{ $socialLink->name }}"
+                            >
+                                <i class="{{ $socialLink->icon }}"></i>
+                            </a>
+                        @endforeach
                     </div>
                 </div>
 

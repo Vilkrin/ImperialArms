@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name'); // Discord, Spectrum, Reddit, Email
             $table->string('url');
             $table->string('icon')->nullable(); // discord, reddit, envelope, etc
-            $table->integer('sort_order')->default(0);
+            $table->unsignedInteger('sort_order')->default(0);
             $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
