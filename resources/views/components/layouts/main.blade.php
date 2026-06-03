@@ -324,7 +324,7 @@
                     </a>
                     <p class="text-slate-400 font-exo mb-6 max-w-md"> {{ $generalSettings?->site_description ?? 'Someone Forgot to Add a Description.' }} </p>
                     <div class="flex space-x-4">
-                        @foreach ($socialLinks as $socialLink)
+                        @forelse ($socialLinks as $socialLink)
                             <a
                                 href="{{ $socialLink->url }}"
                                 target="_blank"
@@ -334,7 +334,11 @@
                             >
                                 <i class="{{ $socialLink->icon }}"></i>
                             </a>
-                        @endforeach
+                        @empty
+                            <span class="text-sm text-slate-400">
+                                No Socials have been set yet.
+                            </span>
+                        @endforelse
                     </div>
                 </div>
 
