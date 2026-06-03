@@ -6,6 +6,9 @@ use Livewire\Component;
 use App\Models\User;
 use Carbon\Carbon;
 use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rule;
+use Flux\Flux;
 use Livewire\WithPagination;
 use Livewire\Attributes\Computed;
 
@@ -20,6 +23,26 @@ class UserList extends Component
     public $userToDelete = null;
     public $roleFilter = 'all';
     public $statusFilter = 'all';
+    public string $name = '';
+    public string $email = '';
+    public string $password = '';
+
+    public array $selectedRoles = [];
+
+    public $availableRoles = [];
+
+    public function mount()
+    {
+        $this->availableRoles = Role::query()
+            ->where('name', '!=', 'Super Admin')
+            ->orderBy('name')
+            ->get()
+            ->map(fn($role) => [
+                'name' => $role->name,
+                'label' => ucfirst($role->name),
+            ])
+            ->toArray();
+    }
 
     public function updatedSearch()
     {
@@ -40,8 +63,43 @@ class UserList extends Component
     public function roles()
     {
         return Role::query()
+            ->where('name', '!=', 'Super Admin')
             ->orderBy('name')
             ->pluck('name');
+    }
+
+    public function createUser(): void
+    {
+        $this->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'email', 'max:255', Rule::unique('users', 'email')],
+            'password' => ['required', 'string', 'min:8'],
+            'selectedRoles' => ['array'],
+        ]);
+
+        $user = User::create([
+            'name' => $this->name,
+            'email' => $this->email,
+            'password' => Hash::make($this->password),
+        ]);
+
+        $user->syncRoles($this->selectedRoles);
+
+        $this->reset([
+            'name',
+            'email',
+            'password',
+            'selectedRoles',
+        ]);
+
+        $this->resetPage();
+
+        Flux::modal('add-user')->close();
+
+        Flux::toast(
+            variant: 'success',
+            text: 'User added successfully.'
+        );
     }
 
     #[Computed]

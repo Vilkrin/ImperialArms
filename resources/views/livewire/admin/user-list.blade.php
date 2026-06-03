@@ -51,8 +51,10 @@
                         <div class="p-6">
                             <div class="flex items-center justify-between mb-4">
                                 <h3 class="text-2xl font-semibold leading-none tracking-tight text-slate-100">Users</h3>
-                                <div class="flex items-center gap-2">
-                                    <flux:button icon="user-plus" href="{{ route('admin.users.create') }}" variant="primary" color="amber">Add User</flux:button>
+                                <div class="flex items-center gap-2">                                    
+                                    <flux:modal.trigger name="add-user">
+                                        <flux:button icon="user-plus" variant="primary" color="amber" class="cursor-pointer">Add User</flux:button>
+                                    </flux:modal.trigger>
                                     <div class="relative">
                                         <svg class="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
@@ -209,4 +211,91 @@
                             </div>
                         </div>
                     </div>
+                    <flux:modal name="add-user" class="md:w-96">
+                        <form wire:submit="createUser" class="space-y-6">
+                            <div>
+                                <flux:heading size="lg">Add User</flux:heading>
+                                <flux:text class="mt-2">
+                                    Enter the details for the new user.
+                                </flux:text>
+                            </div>
+
+                            <flux:field>
+                                <flux:label>Username</flux:label>
+                                <flux:description>
+                                    This will be publicly displayed.
+                                </flux:description>
+
+                                <flux:input wire:model="name" />
+
+                                <flux:error name="name" />
+                            </flux:field>
+
+                            <flux:field>
+                                <flux:label>Email</flux:label>
+                                <flux:description>
+                                    Must be a valid email address.
+                                </flux:description>
+
+                                <flux:input
+                                    wire:model="email"
+                                    type="email"
+                                />
+
+                                <flux:error name="email" />
+                            </flux:field>
+
+                            <flux:field>
+                                <flux:label>Password</flux:label>
+                                <flux:description>
+                                    Must be at least 8 characters.
+                                </flux:description>
+
+                                <flux:input
+                                    wire:model="password"
+                                    type="password"
+                                />
+
+                                <flux:error name="password" />
+                            </flux:field>
+
+                            <flux:fieldset>
+                                <flux:legend>Roles</flux:legend>
+
+                                <div class="max-h-64 overflow-y-auto space-y-3 pr-2">
+                                    @foreach ($availableRoles as $role)
+                                        <flux:switch
+                                            wire:model="selectedRoles"
+                                            value="{{ $role['name'] }}"
+                                            label="{{ $role['label'] }}"
+                                            align="left"
+                                        />
+                                    @endforeach
+                                </div>
+
+                                <flux:error name="selectedRoles" />
+                            </flux:fieldset>
+
+                            <div class="flex justify-end gap-2">
+                                <flux:modal.close>
+                                    <flux:button
+                                        type="button"
+                                        variant="ghost"
+                                        class="cursor-pointer"
+                                    >
+                                        Cancel
+                                    </flux:button>
+                                </flux:modal.close>
+
+                                <flux:button
+                                    type="submit"
+                                    variant="primary"
+                                    color="amber"
+                                    class="cursor-pointer"
+                                >
+                                    Add User
+                                </flux:button>
+                            </div>
+                        </form>
+                    </flux:modal>
                 </div>

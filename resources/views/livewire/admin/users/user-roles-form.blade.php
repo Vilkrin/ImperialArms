@@ -19,7 +19,7 @@
                             </div>
 
                             <div class="p-6">
-                                <div class="space-y-3">
+                                <div class="space-y-3 max-h-[500px] overflow-y-auto pr-2">
                                     @foreach ($roles->where('name', '!=', 'Super Admin') as $role)
                                     <div class="flex items-center justify-between p-3 border border-slate-700 rounded-lg hover:bg-slate-800/50 transition-colors">
                                         
