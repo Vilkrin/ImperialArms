@@ -121,6 +121,9 @@
                         </tbody>
                     </table>
                 </div>
+                <div class="mt-6">
+                    {{ $ships->links() }}
+                </div>
             </div>
         </div>
 

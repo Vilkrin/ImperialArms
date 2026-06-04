@@ -3,16 +3,17 @@
 namespace App\Livewire\Admin\Ships;
 
 use Livewire\Component;
+use Livewire\Attributes\Computed;
 use Livewire\WithFileUploads;
+use Livewire\WithPagination;
 use App\Models\Ship;
 use Flux\Flux;
 use Illuminate\Support\Str;
 
 class ShipManager extends Component
 {
-    use WithFileUploads;
+    use WithFileUploads, WithPagination;
 
-    public $ships;
     public $classSearch = '';
     public $roleSearch = '';
 
@@ -33,13 +34,15 @@ class ShipManager extends Component
 
     public function mount()
     {
-        $this->loadShips();
+        $this->ships = Ship::orderBy('manufacturer')
+            ->orderBy('model')
+            ->get();
     }
 
-    #[\Livewire\Attributes\Computed]
+    #[Computed]
     public function classOptions()
     {
-        return \App\Models\Ship::query()
+        return Ship::query()
             ->where('class', 'like', '%' . trim($this->classSearch) . '%')
             ->whereNotNull('class')
             ->distinct()
@@ -64,15 +67,10 @@ class ShipManager extends Component
         $this->resetErrorBag('classSearch');
     }
 
-    public function loadShips()
-    {
-        $this->ships = Ship::latest()->get();
-    }
-
-    #[\Livewire\Attributes\Computed]
+    #[Computed]
     public function roleOptions()
     {
-        return \App\Models\Ship::query()
+        return Ship::query()
             ->where('role', 'like', '%' . trim($this->roleSearch) . '%')
             ->whereNotNull('role')
             ->distinct()
@@ -106,7 +104,7 @@ class ShipManager extends Component
             'crew_required' => 'nullable|integer|min:0',
             'cargo_capacity' => 'nullable|integer|min:0',
             'description' => 'nullable|string',
-            'image' => 'nullable|image|max:2048',
+            'image' => 'nullable|image|max:20480', // 20MB max
         ]);
 
         if ($this->editingId) {
@@ -133,7 +131,7 @@ class ShipManager extends Component
         );
 
         $this->resetForm();
-        $this->loadShips();
+        $this->resetPage();
         $this->modal('ship-form')->close();
     }
 
@@ -162,7 +160,7 @@ class ShipManager extends Component
             variant: 'success'
         );
 
-        $this->loadShips();
+        $this->resetPage();
     }
 
     public function resetForm()
@@ -183,6 +181,8 @@ class ShipManager extends Component
 
     public function render()
     {
-        return view('livewire.admin.ships.ship-manager');
+        return view('livewire.admin.ships.ship-manager', [
+            'ships' => Ship::latest()->paginate(10),
+        ]);
     }
 }

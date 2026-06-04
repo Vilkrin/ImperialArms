@@ -3,13 +3,14 @@
 namespace App\Livewire\Admin\Fleet;
 
 use Livewire\Component;
+use Livewire\WithPagination;
 use App\Models\MemberShip;
 
 class FleetManager extends Component
 {
+    use WithPagination;
+
     public $membershipId = null;
-
-
 
     public function addToFleet()
     {
@@ -27,7 +28,7 @@ class FleetManager extends Component
         ]);
 
         $this->reset('membershipId');
-
+        $this->resetPage();
         $this->modal('add-ship')->close();
     }
 
@@ -40,6 +41,8 @@ class FleetManager extends Component
         $memberShip->update([
             'is_fleet' => false,
         ]);
+
+        $this->resetPage();
     }
 
     public function render()
@@ -50,7 +53,7 @@ class FleetManager extends Component
                 ->whereHas('user.roles', function ($query) {
                     $query->where('name', 'org member');
                 })
-                ->get(),
+                ->paginate(10),
 
             'availableShips' => MemberShip::with(['user', 'ship'])
                 ->where('is_fleet', false)

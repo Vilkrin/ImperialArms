@@ -119,11 +119,13 @@
                                             </td>
                                             <td class="p-4 align-middle">
                                                 <div class="flex flex-wrap gap-1">
-                                                    @foreach($user->getRoleNames() as $role)
+                                                    @forelse ($user->getRoleNames() as $role)
                                                         <span class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold border-slate-700 bg-slate-800 text-slate-300">
                                                             {{ $role }}
                                                         </span>
-                                                    @endforeach
+                                                    @empty
+                                                        <span class="text-sm text-slate-500">No role</span>
+                                                    @endforelse
                                                 </div>
                                             </td>
                                             <td class="p-4 align-middle">
