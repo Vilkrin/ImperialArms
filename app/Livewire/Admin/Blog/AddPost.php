@@ -170,16 +170,6 @@ class AddPost extends Component
 
     public function render()
     {
-        return view('livewire.admin.blog.add-post', [
-            'categories' => BlogCategory::query()
-                ->when($this->categorySearch, fn($query) => $query->where('name', 'like', '%' . $this->categorySearch . '%'))
-                ->orderBy('name')
-                ->get(),
-
-            'tags' => Tag::query()
-                ->when($this->tagSearch, fn($query) => $query->where('name', 'like', '%' . $this->tagSearch . '%'))
-                ->orderBy('name')
-                ->get(),
-        ]);
+        return view('livewire.admin.blog.add-post');
     }
 }

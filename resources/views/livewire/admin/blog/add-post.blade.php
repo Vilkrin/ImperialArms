@@ -1,7 +1,7 @@
 <div>
                 <!-- Page actions -->
                 <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
-                    <a href="posts.html" class="inline-flex items-center gap-2 text-slate-300 hover:text-amber-400 transition-colors">
+                    <a href="{{ route('admin.posts.index') }}" class="inline-flex items-center gap-2 text-slate-300 hover:text-amber-400 transition-colors">
                         <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
                         Back to Posts
                     </a>
@@ -68,8 +68,21 @@
                                         <p class="text-sm text-red-400">{{ $message }}</p>
                                     @enderror
                                 </div>
+
                                 <div class="space-y-2">
-                                    <flux:editor wire:model="body" label="Content" description="Write your post content here... " />
+                                    <label class="text-sm font-medium text-slate-200">Content</label>
+
+                                    <div wire:ignore>
+                                        <x-admin.forms.summernote-editor
+                                            id="post-content-editor"
+                                            wire-model="body"
+                                            placeholder="Write your post content here..."
+                                        />
+                                    </div>
+
+                                    @error('body')
+                                        <p class="text-sm text-red-400">{{ $message }}</p>
+                                    @enderror
                                 </div>
                             </div>
                         </div>

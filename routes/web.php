@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\FleetController;
+use App\Models\Post;
 
 
 Route::get('/', function () {
@@ -106,10 +107,12 @@ Route::prefix('admin')->name('admin.')->middleware('auth', 'verified', 'permissi
             ->name('index');
         Route::view('/create', 'admin.blog.create')
             ->name('create');
-        Route::view('/{post}/edit', 'admin.blog.edit')
-            ->name('edit');
-        Route::view('/{post}', 'admin.blog.show')
-            ->name('show');
+        Route::get('/{post}/edit', function (Post $post) {
+            return view('admin.blog.edit', compact('post'));
+        })->name('edit');
+        Route::get('/{post}', function (Post $post) {
+            return view('admin.blog.show', compact('post'));
+        })->name('show');
     });
 
     // Pages

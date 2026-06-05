@@ -1,7 +1,8 @@
 @props([
     'id' => 'summernote-editor',
-    'height' => 550,
+    'wireModel' => null,
     'placeholder' => 'Write your content here...',
+    'height' => 550,
 ])
 
 <style>
@@ -98,7 +99,15 @@
                 ['table', ['table']],
                 ['insert', ['link', 'picture', 'video']],
                 ['view', ['fullscreen', 'codeview']]
-            ]
+            ],
+
+            callbacks: {
+                onChange: function(contents) {
+                    @if ($wireModel)
+                        @this.set('{{ $wireModel }}', contents);
+                    @endif
+                }
+            }
         });
     });
 </script>
