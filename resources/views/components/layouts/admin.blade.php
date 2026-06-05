@@ -20,11 +20,12 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-        <x-head.tinymce-config/>
+        <link rel="stylesheet" href="{{ Vite::asset('resources/assets/summernote/summernote-lite.min.css') }}">
 
         <!-- Styles -->        
         @livewireStyles
         @fluxAppearance
+        
 
   </head>
 
@@ -116,7 +117,10 @@
 
      @livewireScripts
      @fluxScripts
-  
+
+    <script src="{{ Vite::asset('resources/assets/jquery/jquery-3.7.1.min.js') }}"></script>
+    <script src="{{ Vite::asset('resources/assets/summernote/summernote-lite.min.js') }}"></script>
+
   </body>
 
 </html>

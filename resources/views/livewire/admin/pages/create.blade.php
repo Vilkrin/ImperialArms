@@ -24,20 +24,26 @@
                         <div class="bg-slate-900/50 border border-amber-400/20 backdrop-blur-sm rounded-lg shadow-sm">
                             <div class="p-6 border-b border-slate-700">
                                 <h2 class="text-xl font-semibold text-slate-100">Page Content</h2>
+                                <p class="mt-1 text-sm text-slate-400">
+                                    Create and manage your site's pages.
+                                </p>
                             </div>
                             <div class="p-6 space-y-6">
-                                <div class="grid gap-2">
-                                    <input type="text" id="title" placeholder="Enter page title here..." class="flex h-12 w-full bg-transparent px-0 text-xl font-semibold text-slate-100 placeholder:text-slate-500 focus-visible:outline-none border-none">
-                                </div>
-                                
-                                <div class="grid gap-2">
-                                    <label for="content" class="block text-sm font-medium text-slate-300">Content</label>
-                                    <x-forms.tinymce-editor 
-                                        name="content" 
-                                        class="tinymce-editor"
-                                        :value="old('content', $post->content ?? '')" 
+                                <div class="mb-6">
+                                    <input
+                                        type="text"
+                                        id="title"
+                                        placeholder="Enter page title here..."
+                                        class="w-full rounded-lg border border-slate-600 bg-slate-800/60 px-4 py-3 text-slate-100 placeholder:text-slate-500 focus:border-amber-400 focus:outline-none"
                                     />
                                 </div>
+                                
+
+                                <x-admin.forms.summernote-editor id="page-content-editor">
+                                    <h2>Hello Imperial Arms</h2>
+                                    <p>This is a Summernote test editor.</p>
+                                </x-admin.forms.summernote-editor>
+
                             </div>
                         </div>
                     </div>

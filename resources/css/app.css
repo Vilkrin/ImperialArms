@@ -3,6 +3,7 @@
 @import "../assets/fontawesome/css/fontawesome.css";
 @import "../assets/fontawesome/css/brands.css";
 @import "../assets/fontawesome/css/solid.css";
+@import "../assets/summernote/summernote-lite.min.css";
 
 @source '../views';
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
