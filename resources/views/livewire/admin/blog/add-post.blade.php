@@ -75,7 +75,7 @@
                                     <div wire:ignore>
                                         <x-admin.forms.summernote-editor
                                             id="post-content-editor"
-                                            wire-model="body"
+                                            wireModel="body"
                                             placeholder="Write your post content here..."
                                         />
                                     </div>
@@ -86,9 +86,6 @@
                                 </div>
                             </div>
                         </div>
-                        <p class="text-xs text-slate-400">
-    Body length: {{ strlen($body) }}
-</p>
                     </div>
 
                     <!-- Settings -->

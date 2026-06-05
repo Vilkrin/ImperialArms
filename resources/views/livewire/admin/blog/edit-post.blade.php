@@ -75,7 +75,7 @@
                         <div wire:ignore>
                             <x-admin.forms.summernote-editor
                                 id="post-content-editor"
-                                wire-model="body"
+                                wireModel="body"
                             >
                                 {!! $body !!}
                             </x-admin.forms.summernote-editor>
