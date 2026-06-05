@@ -116,9 +116,6 @@
      @livewireScripts
      @fluxScripts
 
-    <script src="{{ Vite::asset('resources/assets/jquery/jquery-3.7.1.min.js') }}"></script>
-    <script src="{{ Vite::asset('resources/assets/summernote/summernote-lite.min.js') }}"></script>
-
   </body>
 
 </html>
