@@ -20,8 +20,6 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-        <link rel="stylesheet" href="{{ Vite::asset('resources/assets/summernote/summernote-lite.min.css') }}">
-
         <!-- Styles -->        
         @livewireStyles
         @fluxAppearance
