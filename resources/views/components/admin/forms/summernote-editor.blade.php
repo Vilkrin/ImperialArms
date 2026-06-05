@@ -104,7 +104,7 @@
             callbacks: {
                 onChange: function(contents) {
                     @if ($wireModel)
-                        @this.set('{{ $wireModel }}', contents);
+                        $wire.set('{{ $wireModel }}', contents);
                     @endif
                 }
             }

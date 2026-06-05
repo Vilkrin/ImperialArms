@@ -86,6 +86,9 @@
                                 </div>
                             </div>
                         </div>
+                        <p class="text-xs text-slate-400">
+    Body length: {{ strlen($body) }}
+</p>
                     </div>
 
                     <!-- Settings -->
