@@ -1,11 +1,5 @@
 // Imperial Arms - Main JavaScript
 
-import "../assets/jquery/jquery-3.7.1.min.js";
-
-window.$ = window.jQuery = window.jQuery || window.$;
-
-import "../assets/summernote/summernote-lite.min.js";
-
 // Mobile menu functionality
 document.addEventListener("DOMContentLoaded", function () {
     const mobileMenuBtn = document.getElementById("mobile-menu-btn");

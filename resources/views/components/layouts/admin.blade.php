@@ -116,6 +116,9 @@
      @livewireScripts
      @fluxScripts
 
+    <script src="{{ asset('vendor/jquery/jquery-3.7.1.min.js') }}"></script>
+    <script src="{{ asset('vendor/summernote/summernote-lite.min.js') }}"></script>
+
   </body>
 
 </html>
