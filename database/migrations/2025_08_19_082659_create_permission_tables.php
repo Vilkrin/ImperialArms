@@ -169,13 +169,14 @@ return new class extends Migration
         Permission::create(['name' => 'manage.org.members']);
         Permission::create(['name' => 'assign.org.roles']);
         Permission::create(['name' => 'manage.org.settings']);
-        Permission::create(['name' => 'manage.user.dossiers']);
+        Permission::create(['name' => 'manage.user.dossier']);
 
         // General / Admin
         Permission::create(['name' => 'manage.users']);
         Permission::create(['name' => 'view.users']);
         Permission::create(['name' => 'ban.users']);
         Permission::create(['name' => 'unban.users']);
+        Permission::create(['name' => 'manage.users.roles']);
         Permission::create(['name' => 'manage.site.settings']);
         Permission::create(['name' => 'manage.site.content']);
         Permission::create(['name' => 'access.admin.panel']);
@@ -247,7 +248,8 @@ return new class extends Migration
             'manage.users',
             'ban.users',
             'unban.users',
-            'manage.user.dossiers',
+            'manage.user.dossier',
+            'manage.users.roles',
             'view.posts',
             'create.posts',
             'edit.posts',

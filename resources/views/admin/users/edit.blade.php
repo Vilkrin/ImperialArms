@@ -29,14 +29,17 @@
                 
 
 
-                   <!-- User Roles and Dossier -->
+                    <!-- User Roles and Dossier -->
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                        <!-- User Roles -->
-                        <livewire:admin.users.user-roles-form :user="$user" />
 
-                        <!-- Dossier Information -->
-                        <livewire:admin.users.user-dossier-form :user="$user" />
-                        
+                        @can('manage.user.roles')
+                            <livewire:admin.users.user-roles-form :user="$user" />
+                        @endcan
+
+                        @can('manage.user.dossier')
+                            <livewire:admin.users.user-dossier-form :user="$user" />
+                        @endcan
+
                     </div>
                 </div>
 

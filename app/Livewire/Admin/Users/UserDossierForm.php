@@ -7,6 +7,15 @@ use Flux\Flux;
 
 class UserDossierForm extends Component
 {
+    public function mount(User $user): void
+    {
+        abort_unless(
+            auth()->user()->can('manage.user.dossier'),
+            403
+        );
+
+        $this->user = $user;
+    }
 
     public function saveDossier(): void
     {

@@ -18,6 +18,10 @@ class UserRolesForm extends Component
 
     public function mount(User $user): void
     {
+        if (! auth()->user()->can('manage.user.roles')) {
+            abort(403);
+        }
+
         $this->user = $user;
 
         foreach (Role::all() as $role) {
