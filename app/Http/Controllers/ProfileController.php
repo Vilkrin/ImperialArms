@@ -52,7 +52,7 @@ class ProfileController extends Controller
 
         abort_unless($user, 404);
 
-        return view('profile.show', compact('user'));
+        return view('users.show', compact('user'));
     }
 
     /**

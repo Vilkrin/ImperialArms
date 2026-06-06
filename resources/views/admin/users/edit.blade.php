@@ -32,15 +32,17 @@
                     <!-- User Roles and Dossier -->
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
 
+                        <!-- User Roles -->
                         @can('manage.user.roles')
                             <livewire:admin.users.user-roles-form :user="$user" />
                         @endcan
 
+                        <!-- Dossier Information -->
                         @can('manage.user.dossier')
                             <livewire:admin.users.user-dossier-form :user="$user" />
                         @endcan
 
-                    </div>
+                    </div> 
                 </div>
 
     @persist('toast')

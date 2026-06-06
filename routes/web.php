@@ -32,6 +32,12 @@ Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
 
+Route::get('/about', function () {
+    return view('about');
+})->name('about');
+
+Route::get('/user/{slug}', [ProfileController::class, 'show'])->name('users.show');
+
 Route::prefix('profile')->name('profile.')->middleware(['auth'])->group(function () {
 
     Route::get('/', [ProfileController::class, 'index'])->name('index');
@@ -40,18 +46,25 @@ Route::prefix('profile')->name('profile.')->middleware(['auth'])->group(function
     Route::get('/ships', function () {
         return view('profile.ships');
     })->name('ships');
-    Route::get('/{slug}', [ProfileController::class, 'show'])->name('show');
 });
 
-Route::prefix('forum')->name('forum.')->middleware('auth', 'verified')->group(function () {
+Route::prefix('forum')->name('forum.')->group(function () {
 
     Route::get('/', function () {
         return view('forum.index');
     })->name('index');
 
-    // Route::get('/{slug}', function ($slug) {
-    //     return view('forum.show', ['slug' => $slug]);
-    // })->name('show');
+    Route::get('/category', function () {
+        return view('forum.category');
+    })->name('category');
+
+    Route::get('/thread', function () {
+        return view('forum.thread');
+    })->name('thread');
+
+    Route::get('/new-thread', function () {
+        return view('forum.new-thread');
+    })->name('new-thread');
 });
 
 // Org Services

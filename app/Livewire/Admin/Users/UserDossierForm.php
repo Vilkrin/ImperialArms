@@ -3,10 +3,13 @@
 namespace App\Livewire\Admin\Users;
 
 use Livewire\Component;
+use App\Models\User;
 use Flux\Flux;
 
 class UserDossierForm extends Component
 {
+    public User $user;
+
     public function mount(User $user): void
     {
         abort_unless(

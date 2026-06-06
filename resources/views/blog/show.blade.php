@@ -32,7 +32,7 @@
                         <div class="flex flex-wrap items-center gap-4 text-slate-400 text-sm">
                             @if ($post->user)
                                 <a
-                                    href="{{ route('profile.show', ['slug' => Str::slug($post->user->name)]) }}"
+                                    href="{{ route('users.show', ['slug' => Str::slug($post->user->name)]) }}"
                                     class="hover:text-amber-400 transition-colors"
                                 >
                                     {{ $post->user->name }}
