@@ -10,12 +10,15 @@
                                 </p>
                             </div>
 
+                            @can('export.activity.logs')
                             <button
                                 type="button"
                                 class="inline-flex items-center justify-center rounded-lg border border-slate-700 bg-slate-900 px-4 py-2 text-sm font-medium text-slate-200 hover:bg-slate-800 cursor-pointer"
                             >
                                 Export Logs
-                            </button>
+                            </button>                                
+                            @endcan
+
                         </div>
 
                         <!-- Stats -->
@@ -192,6 +195,13 @@
                                                         <p class="text-slate-100">
                                                             {{ $activity->properties['ip'] ?? 'Unknown' }}
                                                         </p>
+                                                    </div>
+
+                                                    <div>
+                                                        {{ $activity->description }}
+                                                        @if ($activity->subject)
+                                                            : {{ $activity->subject->name ?? 'User #' . $activity->subject_id }}
+                                                        @endif
                                                     </div>
                                                 </div>
 
