@@ -190,7 +190,17 @@
                                                 <div class="flex items-center gap-1">
                                                     <flux:button class="cursor-pointer" href="{{ route('admin.users.show', $user->id) }}" icon="eye">View</flux:button>
                                                     <flux:button class="cursor-pointer" href="{{ route('admin.users.edit', $user->id) }}" icon="pencil-square">Edit</flux:button>
-                                                    <flux:button class="cursor-pointer" wire:click="confirmDelete({{ $user->id }})" icon="trash" variant="danger">Delete</flux:button>
+                                                    <flux:modal.trigger name="delete-user">
+                                                        <flux:button
+                                                            wire:click="confirmDelete({{ $user->id }})"
+                                                            variant="danger"
+                                                            size="sm"
+                                                            icon="trash"
+                                                            class="cursor-pointer"
+                                                        >
+                                                            Delete
+                                                        </flux:button>
+                                                    </flux:modal.trigger>
                                                 </div>
                                             </td>
                                         </tr>
@@ -213,6 +223,33 @@
                             </div>
                         </div>
                     </div>
+                    <flux:modal name="delete-user" class="md:w-96">
+                        <div class="space-y-6">
+                            <div>
+                                <flux:heading size="lg">Delete User</flux:heading>
+
+                                <flux:text class="mt-2">
+                                    Are you sure you want to delete this user? This action cannot be undone.
+                                </flux:text>
+                            </div>
+
+                            <div class="flex justify-end gap-2">
+                                <flux:modal.close>
+                                    <flux:button type="button" variant="ghost" class="cursor-pointer">
+                                        Cancel
+                                    </flux:button>
+                                </flux:modal.close>
+
+                                <flux:button
+                                    wire:click="deleteUser"
+                                    variant="danger"
+                                    class="cursor-pointer"
+                                >
+                                    Delete User
+                                </flux:button>
+                            </div>
+                        </div>
+                    </flux:modal>
                     <flux:modal name="add-user" class="md:w-96">
                         <form wire:submit="createUser" class="space-y-6">
                             <div>

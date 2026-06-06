@@ -19,7 +19,6 @@ class UserList extends Component
     public $search = '';
     public $sortField = 'name';
     public $sortDirection = 'asc';
-    public $showDeleteModal = false;
     public $userToDelete = null;
     public $roleFilter = 'all';
     public $statusFilter = 'all';
@@ -125,6 +124,27 @@ class UserList extends Component
 
             ->orderBy($this->sortField, $this->sortDirection)
             ->paginate(10);
+    }
+
+    public function confirmDelete(int $userId): void
+    {
+        $this->userToDelete = $userId;
+    }
+
+    public function deleteUser(): void
+    {
+        $user = User::findOrFail($this->userToDelete);
+
+        $user->delete();
+
+        $this->reset('userToDelete');
+
+        Flux::modal('delete-user')->close();
+
+        Flux::toast(
+            variant: 'success',
+            text: 'User deleted successfully.'
+        );
     }
 
     public function render()
