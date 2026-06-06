@@ -19,7 +19,7 @@ class UserRolesForm extends Component
     public function mount(User $user): void
     {
         abort_unless(
-            auth()->user()->can('manage.user.roles'),
+            auth()->user()->can('manage.users.roles'),
             403
         );
 

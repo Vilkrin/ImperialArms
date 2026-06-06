@@ -33,7 +33,7 @@
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
 
                         <!-- User Roles -->
-                        @can('manage.user.roles')
+                        @can('manage.users.roles')
                             <livewire:admin.users.user-roles-form :user="$user" />
                         @endcan
 
