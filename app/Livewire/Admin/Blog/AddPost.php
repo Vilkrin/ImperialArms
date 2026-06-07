@@ -8,6 +8,7 @@ use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Support\Str;
 use Livewire\WithFileUploads;
+use Carbon\Carbon;
 use Flux\Flux;
 
 class AddPost extends Component
@@ -20,6 +21,8 @@ class AddPost extends Component
 
     public string $status = 'draft';
     public ?string $published_at = null;
+    public ?string $published_time = null;
+    public bool $is_featured = false;
 
     public bool $is_published = false;
 
@@ -120,6 +123,7 @@ class AddPost extends Component
             'body' => 'required|string',
             'status' => 'required|string|in:draft,published,archived',
             'published_at' => 'nullable|date',
+            'published_time' => 'nullable|date_format:H:i',
 
             'category_ids' => 'nullable|array',
             'category_ids.*' => 'exists:blog_categories,id',
@@ -131,6 +135,7 @@ class AddPost extends Component
             'seo_description' => 'nullable|string',
 
             'featured_image' => 'nullable|image|max:2048',
+            'is_featured' => 'boolean',
         ]);
 
         $post = Post::create([
@@ -141,8 +146,13 @@ class AddPost extends Component
             'status' => $this->status,
             'is_published' => $this->status === 'published',
             'published_at' => $this->status === 'published'
-                ? ($this->published_at ?: now())
+                ? (
+                    $this->published_at
+                    ? Carbon::parse($this->published_at . ' ' . ($this->published_time ?: '00:00'))
+                    : now()
+                )
                 : null,
+            'is_featured' => $this->is_featured,
             'seo_title' => $this->seo_title,
             'seo_description' => $this->seo_description,
         ]);

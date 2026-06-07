@@ -122,6 +122,16 @@
                             >
                             @error('published_at') <p class="text-sm text-red-400">{{ $message }}</p> @enderror
                         </div>
+                        
+                        <div class="space-y-2">
+                            <label class="text-sm font-medium text-slate-200">Publish Time</label>
+
+                            <input
+                                type="time"
+                                wire:model="published_time"
+                                class="flex h-10 w-full rounded-md border border-slate-700 bg-slate-900/50 px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-amber-400"
+                            />
+                        </div>
 
                         <label class="flex items-center justify-between gap-3">
                             <span class="text-sm font-medium text-slate-200">Featured Post</span>

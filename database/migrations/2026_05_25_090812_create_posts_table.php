@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('status')->default('draft');
             $table->boolean('is_published')->default(false);
             $table->timestamp('published_at')->nullable();
+            $table->boolean('is_featured')->default(false)->after('is_published');
             $table->string('seo_title')->nullable();
             $table->text('seo_description')->nullable();
             $table->integer('view_count')->default(0);

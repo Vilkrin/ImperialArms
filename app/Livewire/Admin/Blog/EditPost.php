@@ -6,6 +6,7 @@ use Livewire\Component;
 use App\Models\BlogCategory;
 use App\Models\Post;
 use App\Models\Tag;
+use Carbon\Carbon;
 use Flux\Flux;
 use Illuminate\Support\Str;
 
@@ -19,6 +20,8 @@ class EditPost extends Component
 
     public string $status = 'draft';
     public ?string $published_at = null;
+    public ?string $published_time = null;
+    public bool $is_featured = false;
 
     public bool $is_published = false;
 
@@ -40,6 +43,8 @@ class EditPost extends Component
         $this->body = $post->body;
         $this->status = $post->status;
         $this->published_at = $post->published_at?->format('Y-m-d');
+        $this->published_time = $post->published_at?->format('H:i');
+        $this->is_featured = (bool) $post->is_featured;
         $this->is_published = (bool) $post->is_published;
 
         $this->category_ids = $post->categories->pluck('id')->toArray();
@@ -119,6 +124,8 @@ class EditPost extends Component
             'body' => 'required|string',
             'status' => 'required|string|in:draft,published,archived',
             'published_at' => 'nullable|date',
+            'published_time' => 'nullable|date_format:H:i',
+            'is_featured' => 'boolean',
 
             'category_ids' => 'nullable|array',
             'category_ids.*' => 'exists:blog_categories,id',
@@ -137,8 +144,13 @@ class EditPost extends Component
             'status' => $this->status,
             'is_published' => $this->status === 'published',
             'published_at' => $this->status === 'published'
-                ? ($this->published_at ?: now())
+                ? (
+                    $this->published_at
+                    ? Carbon::parse($this->published_at . ' ' . ($this->published_time ?: '00:00'))
+                    : now()
+                )
                 : null,
+            'is_featured' => $this->is_featured,
             'seo_title' => $this->seo_title,
             'seo_description' => $this->seo_description,
         ]);
