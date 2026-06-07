@@ -322,7 +322,9 @@
                             {{ $generalSettings?->site_name ?? 'IMPERIAL ARMS' }}
                         </span>
                     </a>
-                    <p class="text-slate-400 font-exo mb-6 max-w-md"> {{ $generalSettings?->site_description ?? 'Someone Forgot to Add a Description.' }} </p>
+                        <p class="text-slate-400 font-exo mb-6 max-w-md">
+                            {{ $generalSettings?->description ?? 'Someone Forgot to Add a Description.' }}
+                        </p>
                     <div class="flex space-x-4">
                         @forelse ($socialLinks as $socialLink)
                             <a

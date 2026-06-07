@@ -7,6 +7,7 @@ use App\Models\GeneralSetting;
 use Livewire\WithFileUploads;
 use Livewire\Attributes\Validate;
 use Illuminate\Support\Facades\View;
+use Flux\Flux;
 
 class General extends Component
 {
@@ -48,6 +49,8 @@ class General extends Component
     public function removeLogo(): void
     {
         $this->settings->clearMediaCollection('logos');
+
+        Flux::toast(variant: 'success', text: 'Logo removed.');
     }
 
     public function removeUploadPreview(): void
@@ -69,6 +72,11 @@ class General extends Component
             'focus' => $this->focus,
             'commitment' => $this->commitment,
         ]);
+
+        Flux::toast(
+            variant: 'success',
+            text: 'General settings saved.'
+        );
     }
 
     public function saveLogo(): void
@@ -87,6 +95,8 @@ class General extends Component
             ->toMediaCollection('logos');
 
         $this->logoUpload = null;
+
+        Flux::toast(variant: 'success', text: 'Logo saved.');
     }
 
     public function render()

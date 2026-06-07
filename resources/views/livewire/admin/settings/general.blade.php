@@ -298,6 +298,9 @@
 
                 </div>
 
+                    @persist('toast')
+                        <flux:toast />
+                    @endpersist
             </div>
         </div>
     </div>
