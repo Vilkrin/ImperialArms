@@ -158,19 +158,19 @@
                             <flux:field>
                                 <flux:label>Allow Search Indexing</flux:label>
                                 <flux:description>Allows normal search engines to index the site.</flux:description>
-                                <flux:switch wire:model="allow_search_indexing" />
+                                <flux:switch wire:model.live="allow_search_indexing" />
                             </flux:field>
 
                             <flux:field>
                                 <flux:label>Allow AI Search</flux:label>
                                 <flux:description>Allows AI search tools to read and reference the site.</flux:description>
-                                <flux:switch wire:model="allow_ai_search" />
+                                <flux:switch wire:model.live="allow_ai_search" />
                             </flux:field>
 
                             <flux:field>
                                 <flux:label>Allow AI Training</flux:label>
                                 <flux:description>Allows AI crawlers to use the site for training datasets.</flux:description>
-                                <flux:switch wire:model="allow_ai_training" />
+                                <flux:switch wire:model.live="allow_ai_training" />
                             </flux:field>
                         </div>
                     </div>
