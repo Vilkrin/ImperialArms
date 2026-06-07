@@ -5,6 +5,8 @@ namespace App\Livewire\Admin\Settings;
 use Livewire\Component;
 use App\Models\SeoSetting;
 use Livewire\WithFileUploads;
+use App\Services\SeoFileGenerator;
+use Illuminate\Support\Facades\Cache;
 use Flux\Flux;
 
 class Seo extends Component
@@ -96,7 +98,7 @@ class Seo extends Component
         $this->appleTouchIconUpload = null;
     }
 
-    public function saveSeoSettings(): void
+    public function saveSeoSettings(SeoFileGenerator $seoFileGenerator): void
     {
         $data = $this->validate([
             'meta_title' => 'nullable|string|max:255',
@@ -156,6 +158,10 @@ class Seo extends Component
             'faviconUpload',
             'appleTouchIconUpload',
         ]);
+
+        Cache::forget('seo_settings');
+
+        $seoFileGenerator->generate($this->settings);
 
         Flux::toast(variant: 'success', text: 'SEO settings saved.');
     }

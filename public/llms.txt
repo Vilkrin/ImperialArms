@@ -1,0 +1,15 @@
+# Laravel
+
+Imperial Arms is a Star Citizen organization focused on mercenary services, logistics, and operations across the verse.
+
+## Important Pages
+
+- Home: https://imperialarms.test
+- Recruitment: https://imperialarms.test/recruitment
+- Fleet: https://imperialarms.test/fleet
+- Blog: https://imperialarms.test/blog
+
+## AI Usage
+
+AI search access is allowed.
+AI training access is not allowed.
