@@ -14,5 +14,12 @@ class GeneralSetting extends Model implements HasMedia
         'site_name',
         'site_tagline',
         'footer_text',
+        'timezone',
+        'recruiting',
+        'description',
+        'founded',
+        'focus',
+        'commitment',
+        'language',
     ];
 }

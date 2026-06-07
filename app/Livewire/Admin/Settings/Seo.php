@@ -60,6 +60,16 @@ class Seo extends Component
         $this->og_description = $this->settings->og_description ?? '';
         $this->og_type = $this->settings->og_type ?? 'website';
         $this->og_url = $this->settings->og_url ?? '';
+        $this->og_site_name = $this->settings->og_site_name ?? '';
+        $this->og_locale = $this->settings->og_locale ?? 'en_GB';
+
+        $this->twitter_card = $this->settings->twitter_card ?? 'summary_large_image';
+        $this->twitter_title = $this->settings->twitter_title ?? '';
+        $this->twitter_description = $this->settings->twitter_description ?? '';
+        $this->twitter_site = $this->settings->twitter_site ?? '';
+        $this->twitter_creator = $this->settings->twitter_creator ?? '';
+
+        $this->theme_color = $this->settings->theme_color ?? '#0f172a';
     }
 
     public function removeSocialPreview(): void

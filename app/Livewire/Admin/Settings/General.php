@@ -22,6 +22,7 @@ class General extends Component
     public ?string $footer_text = null;
     public ?string $timezone = null;
     public ?string $recruiting = null;
+    public ?string $language = null;
     public ?string $description = null;
     public ?string $founded = null;
     public ?string $focus = null;
@@ -37,6 +38,7 @@ class General extends Component
         $this->footer_text = $this->settings->footer_text;
         $this->timezone = $this->settings->timezone;
         $this->recruiting = $this->settings->recruiting;
+        $this->language = $this->settings->language;
         $this->description = $this->settings->description;
         $this->founded = $this->settings->founded;
         $this->focus = $this->settings->focus;
@@ -61,6 +63,7 @@ class General extends Component
             'footer_text' => $this->footer_text,
             'timezone' => $this->timezone,
             'recruiting' => $this->recruiting,
+            'language' => $this->language,
             'description' => $this->description,
             'founded' => $this->founded,
             'focus' => $this->focus,
