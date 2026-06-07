@@ -41,7 +41,6 @@ return new class extends Migration
             $table->string('og_title')->nullable();
             $table->text('og_description')->nullable();
             $table->string('og_type')->default('website');
-            $table->string('og_url')->nullable();
             $table->string('og_site_name')->nullable();
             $table->string('og_locale')->default('en_GB');
 

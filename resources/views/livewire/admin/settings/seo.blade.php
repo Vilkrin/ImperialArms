@@ -85,12 +85,6 @@
                             </flux:field>
 
                             <flux:field>
-                                <flux:label>OG URL</flux:label>
-                                <flux:input wire:model="og_url" placeholder="https://imperialarms.org/" />
-                                <flux:error name="og_url" />
-                            </flux:field>
-
-                            <flux:field>
                                 <flux:label>OG Site Name</flux:label>
                                 <flux:input wire:model="og_site_name" placeholder="Imperial Arms" />
                                 <flux:error name="og_site_name" />

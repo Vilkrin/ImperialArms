@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
@@ -45,6 +46,15 @@ class PostController extends Controller
 
         abort_unless($post->status === 'published', 404);
 
-        return view('blog.show', compact('post'));
+        $seoTitle = $post->seo_title;
+
+        $seoDescription = $post->seo_description
+            ?: Str::limit(strip_tags($post->body), 160);
+
+        return view('blog.show', compact(
+            'post',
+            'seoTitle',
+            'seoDescription'
+        ));
     }
 }

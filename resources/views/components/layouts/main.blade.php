@@ -13,7 +13,7 @@
             @endif
         </title>
 
-        <meta name="title" content="{{ ! empty($title) ? $siteName . ' - ' . $title : $siteName }}">
+        <meta name="title" content="@yield('seo_title', ! empty($title) ? $siteName . ' - ' . $title : $siteName)">
 
         <meta name="description" content="@yield('description', $seoSettings?->meta_description)">
 
@@ -25,14 +25,14 @@
 
         <meta property="og:type" content="{{ $seoSettings?->og_type ?: 'website' }}">
         <meta property="og:url" content="{{ url()->current() }}">
-        <meta property="og:title" content="{{ ! empty($title) ? $siteName . ' - ' . $title : ($seoSettings?->og_title ?: $siteName) }}">
+        <meta property="og:title" content="@yield('seo_title', ! empty($title) ? $siteName . ' - ' . $title : ($seoSettings?->og_title ?: $siteName))">
         <meta property="og:description" content="@yield('description', $seoSettings?->og_description ?: $seoSettings?->meta_description)">
         <meta property="og:site_name" content="{{ $seoSettings?->og_site_name ?: $siteName }}">
         <meta property="og:locale" content="{{ $seoSettings?->og_locale ?: 'en_GB' }}">
 
         <meta name="twitter:card" content="{{ $seoSettings?->twitter_card ?: 'summary_large_image' }}">
-        <meta name="twitter:url" content="{{ $seoSettings?->og_url ?: url()->current() }}">
-        <meta name="twitter:title" content="{{ ! empty($title) ? $siteName . ' - ' . $title : ($seoSettings?->twitter_title ?: $siteName) }}">
+        <meta name="twitter:url" content="{{ url()->current() }}">
+        <meta name="twitter:title" content="@yield('seo_title', ! empty($title) ? $siteName . ' - ' . $title : ($seoSettings?->twitter_title ?: $siteName))">
         <meta name="twitter:description" content="@yield('description', $seoSettings?->twitter_description ?: $seoSettings?->meta_description)">
 
         @if ($seoSettings?->twitter_site)

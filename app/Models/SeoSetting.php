@@ -23,7 +23,6 @@ class SeoSetting extends Model implements HasMedia
         'og_title',
         'og_description',
         'og_type',
-        'og_url',
         'og_site_name',
         'og_locale',
 

@@ -59,7 +59,6 @@ class Seo extends Component
         $this->og_title = $this->settings->og_title ?? '';
         $this->og_description = $this->settings->og_description ?? '';
         $this->og_type = $this->settings->og_type ?? 'website';
-        $this->og_url = $this->settings->og_url ?? '';
         $this->og_site_name = $this->settings->og_site_name ?? '';
         $this->og_locale = $this->settings->og_locale ?? 'en_GB';
 
@@ -123,7 +122,6 @@ class Seo extends Component
             'og_title' => 'nullable|string|max:255',
             'og_description' => 'nullable|string',
             'og_type' => 'required|string|max:50',
-            'og_url' => 'nullable|string|max:255',
             'og_site_name' => 'nullable|string|max:255',
             'og_locale' => 'required|string|max:20',
 

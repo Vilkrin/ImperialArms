@@ -1,3 +1,6 @@
+@section('seo_title', $seoTitle)
+@section('description', $seoDescription)
+
 <x-layouts.main :title="$post->title">
 
     <div class="relative z-10 min-h-screen bg-slate-950 text-slate-100 pb-16">
