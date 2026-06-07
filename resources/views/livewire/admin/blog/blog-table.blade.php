@@ -6,22 +6,28 @@
                                 <svg class="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
                                 </svg>
-                                <input id="postsSearch" placeholder="Search posts..." class="flex h-10 w-full rounded-md border border-slate-700 bg-slate-900/50 px-3 py-2 text-sm pl-10 placeholder:text-slate-400 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-amber-400" />
+```                             <input
+                                    id="postsSearch"
+                                    wire:model.live.debounce.300ms="search"
+                                    placeholder="Search posts..."
+                                    class="flex h-10 w-full rounded-md border border-slate-700 bg-slate-900/50 px-3 py-2 text-sm pl-10 placeholder:text-slate-400 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-amber-400"
+                                />
                             </div>
-                            <select id="statusFilter" class="flex h-10 w-full sm:w-40 rounded-md border border-slate-700 bg-slate-900/50 px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-amber-400">
+                            <select wire:model.live="status" class="flex h-10 w-full sm:w-40 rounded-md border border-slate-700 bg-slate-900/50 px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-amber-400">
                                 <option value="all">All Status</option>
                                 <option value="published">Published</option>
+                                <option value="scheduled">Scheduled</option>
                                 <option value="draft">Draft</option>
                                 <option value="archived">Archived</option>
                             </select>
-                            <select id="categoryFilter" class="flex h-10 w-full sm:w-44 rounded-md border border-slate-700 bg-slate-900/50 px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-amber-400">
-                                <option value="All">All</option>
-                                <option value="Technology">Technology</option>
-                                <option value="Strategy">Strategy</option>
-                                <option value="Operations">Operations</option>
-                                <option value="Recruitment">Recruitment</option>
-                                <option value="Economics">Economics</option>
-                                <option value="Training">Training</option>
+                            <select wire:model.live="category" class="flex h-10 w-full sm:w-44 rounded-md border border-slate-700 bg-slate-900/50 px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-amber-400">
+                                <option value="all">All Categories</option>
+
+                                @foreach ($categories as $category)
+                                    <option value="{{ $category->id }}">
+                                        {{ $category->name }}
+                                    </option>
+                                @endforeach
                             </select>
                         </div>
                         <a href="{{ route('admin.posts.create') }}" class="inline-flex items-center justify-center gap-2 px-4 py-2 bg-amber-400 text-slate-900 rounded-md text-sm font-medium hover:bg-amber-300 transition-colors">
@@ -139,7 +145,7 @@
                                                         {{ $post->title }}
                                                     </p>
 
-                                                    @if ($post->featured ?? false)
+                                                    @if ($post->is_featured)
                                                         <div class="mt-1">
                                                             <span class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold border-amber-400/30 text-amber-400 bg-amber-400/10">
                                                                 Featured
@@ -181,6 +187,10 @@
                                                         <span class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold bg-emerald-500/15 text-emerald-500 border-emerald-500/20">
                                                             Published
                                                         </span>
+                                                    @elseif ($post->status === 'scheduled')
+                                                        <span class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold bg-amber-400/10 text-amber-400 border-amber-400/20">
+                                                            Scheduled
+                                                        </span>
                                                     @elseif ($post->status === 'draft')
                                                         <span class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold bg-slate-800 text-slate-200 border-slate-700">
                                                             Draft
@@ -193,22 +203,21 @@
                                                 </td>
 
                                                 <td class="p-4 align-middle hidden md:table-cell text-slate-400">
-                                                    {{ $post->published_at ? $post->published_at->format('M j, Y') : '—' }}
+                                                    {{ $post->published_at ? $post->published_at->format('M j, Y H:i') : '—' }}
                                                 </td>
 
                                                 <td class="p-4 align-middle">
 
                                                     <div class="flex items-center justify-end gap-2">
 
-                                                        <a
-                                                            href="{{ route('blog.show', $post->slug) }}"
-                                                            class="inline-flex items-center justify-center h-8 w-8 rounded-md hover:bg-slate-800/60 transition-colors"
-                                                        >
+                                                    @if ($post->status === 'published' && $post->is_published)
+                                                        <a href="{{ route('blog.show', $post->slug) }}" class="inline-flex items-center justify-center h-8 w-8 rounded-md hover:bg-slate-800/60 transition-colors">
                                                             <svg class="h-4 w-4 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
                                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.477 0 8.268 2.943 9.542 7-1.274 4.057-5.065 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
                                                             </svg>
                                                         </a>
+                                                    @endif
 
                                                         <a
                                                             href="{{ route('admin.posts.edit', $post) }}"

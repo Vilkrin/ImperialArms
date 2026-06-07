@@ -17,12 +17,16 @@ class PostController extends Controller
         $featuredPost = null;
 
         $query = Post::query()
+            ->where('status', 'published')
             ->where('is_published', true)
             ->whereNotNull('published_at')
+            ->where('published_at', '<=', now())
             ->orderByDesc('published_at');
 
         if ($page == 1) {
-            $featuredPost = (clone $query)->first();
+            $featuredPost = (clone $query)
+                ->where('is_featured', true)
+                ->first();
 
             $posts = $query
                 ->when($featuredPost, fn($query) => $query->where('id', '!=', $featuredPost->id))
@@ -42,9 +46,13 @@ class PostController extends Controller
      */
     public function show($slug)
     {
-        $post = Post::where('slug', $slug)->firstOrFail();
-
-        abort_unless($post->status === 'published', 404);
+        $post = Post::query()
+            ->where('slug', $slug)
+            ->where('status', 'published')
+            ->where('is_published', true)
+            ->whereNotNull('published_at')
+            ->where('published_at', '<=', now())
+            ->firstOrFail();
 
         $seoTitle = $post->seo_title;
 

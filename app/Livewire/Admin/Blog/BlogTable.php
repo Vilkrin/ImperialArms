@@ -76,10 +76,12 @@ class BlogTable extends Component
     public function render()
     {
         return view('livewire.admin.blog.blog-table', [
-            'totalPosts' => $this->posts->total(),
+            'totalPosts' => Post::count(),
             'publishedPosts' => Post::where('status', 'published')->count(),
+            'scheduledPosts' => Post::where('status', 'scheduled')->count(),
             'draftPosts' => Post::where('status', 'draft')->count(),
-            'featuredPosts' => 0,
+            'featuredPosts' => Post::where('is_featured', true)->count(),
+            'categories' => \App\Models\BlogCategory::orderBy('name')->get(),
         ]);
     }
 }

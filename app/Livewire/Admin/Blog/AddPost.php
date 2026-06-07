@@ -121,7 +121,7 @@ class AddPost extends Component
             'title' => 'required|string|max:255',
             'slug' => 'required|string|max:255|unique:posts,slug',
             'body' => 'required|string',
-            'status' => 'required|string|in:draft,published,archived',
+            'status' => 'required|string|in:draft,scheduled,published,archived',
             'published_at' => 'nullable|date',
             'published_time' => 'nullable|date_format:H:i',
 
@@ -138,20 +138,30 @@ class AddPost extends Component
             'is_featured' => 'boolean',
         ]);
 
+        $publishedAt = $this->published_at
+            ? Carbon::parse(
+                $this->published_at . ' ' . ($this->published_time ?: '00:00')
+            )
+            : null;
+
+        $status = $this->status;
+
+        if ($status === 'published' && $publishedAt && $publishedAt->isFuture()) {
+            $status = 'scheduled';
+        }
+
+        if ($status === 'published' && ! $publishedAt) {
+            $publishedAt = now();
+        }
+
         $post = Post::create([
             'user_id' => auth()->id(),
             'title' => $this->title,
             'slug' => $this->slug,
             'body' => $this->body,
-            'status' => $this->status,
-            'is_published' => $this->status === 'published',
-            'published_at' => $this->status === 'published'
-                ? (
-                    $this->published_at
-                    ? Carbon::parse($this->published_at . ' ' . ($this->published_time ?: '00:00'))
-                    : now()
-                )
-                : null,
+            'status' => $status,
+            'is_published' => $status === 'published',
+            'published_at' => $publishedAt,
             'is_featured' => $this->is_featured,
             'seo_title' => $this->seo_title,
             'seo_description' => $this->seo_description,
