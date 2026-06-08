@@ -22,37 +22,6 @@
                     <!-- Main Content -->
                     <div class="{{ $posts->isEmpty() ? 'lg:col-span-3 max-w-2xl mx-auto' : 'lg:col-span-2' }}">
 
-                        @if ($search || $selectedCategory || $selectedTag)
-                            <div class="mb-6 flex flex-wrap items-center gap-2">
-                                <span class="text-sm text-slate-400">Filtered by:</span>
-
-                                @if ($search)
-                                    <span class="inline-flex items-center rounded-full border border-slate-700 bg-slate-900 px-3 py-1 text-xs text-slate-300">
-                                        Search: {{ $search }}
-                                    </span>
-                                @endif
-
-                                @if ($selectedCategory)
-                                    <span class="inline-flex items-center rounded-full border border-slate-700 bg-slate-900 px-3 py-1 text-xs text-slate-300">
-                                        Category: {{ $categories->firstWhere('slug', $selectedCategory)?->name ?? $selectedCategory }}
-                                    </span>
-                                @endif
-
-                                @if ($selectedTag)
-                                    <span class="inline-flex items-center rounded-full border border-slate-700 bg-slate-900 px-3 py-1 text-xs text-slate-300">
-                                        Tag: {{ $tags->firstWhere('slug', $selectedTag)?->name ?? $selectedTag }}
-                                    </span>
-                                @endif
-
-                                <a
-                                    href="{{ route('blog.index') }}"
-                                    class="text-xs text-amber-400 hover:text-amber-300"
-                                >
-                                    Clear filters
-                                </a>
-                            </div>
-                        @endif
-
                         @if ($posts->isEmpty())
 
                             <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-8 text-center">
@@ -61,8 +30,17 @@
                                 </h2>
 
                                 <p class="text-slate-400">
-                                    There are currently no blog posts matching your filters.
+                                    There are currently no blog posts available.
                                 </p>
+
+                                @if ($search || $selectedCategory || $selectedTag)
+                                    <a
+                                        href="{{ route('blog.index') }}"
+                                        class="inline-flex items-center mt-4 text-amber-400 hover:text-amber-300 text-sm font-medium"
+                                    >
+                                        Clear filters
+                                    </a>
+                                @endif
                             </div>
 
                         @else
@@ -102,36 +80,6 @@
                                                 {{ Str::limit(strip_tags($post->body), 120) }}
                                             </p>
 
-                                            @if ($post->categories->isNotEmpty() || $post->tags->isNotEmpty())
-                                                <div class="mt-4 flex flex-wrap gap-2">
-                                                    @foreach ($post->categories as $category)
-                                                        <a
-                                                            href="{{ route('blog.index', array_filter([
-                                                                'search' => $search,
-                                                                'category' => $category->slug,
-                                                                'tag' => $selectedTag,
-                                                            ])) }}"
-                                                            class="inline-flex items-center rounded-full border border-amber-400/20 bg-amber-400/10 px-2.5 py-0.5 text-xs font-semibold text-amber-300 hover:bg-amber-400/20 transition"
-                                                        >
-                                                            {{ $category->name }}
-                                                        </a>
-                                                    @endforeach
-
-                                                    @foreach ($post->tags as $tag)
-                                                        <a
-                                                            href="{{ route('blog.index', array_filter([
-                                                                'search' => $search,
-                                                                'category' => $selectedCategory,
-                                                                'tag' => $tag->slug,
-                                                            ])) }}"
-                                                            class="inline-flex items-center rounded-full border border-slate-700 bg-slate-950 px-2.5 py-0.5 text-xs font-semibold text-slate-300 hover:border-amber-400/40 hover:text-amber-300 transition"
-                                                        >
-                                                            #{{ $tag->name }}
-                                                        </a>
-                                                    @endforeach
-                                                </div>
-                                            @endif
-
                                         </div>
 
                                         <div class="px-5 pb-5">
@@ -140,7 +88,7 @@
                                                 href="{{ route('blog.show', $post->slug) }}"
                                                 class="inline-flex items-center justify-center w-full rounded-md border border-slate-700 bg-slate-950 px-4 py-2 text-sm font-medium text-slate-100 hover:bg-slate-800 hover:border-amber-400/60 hover:text-amber-300 transition"
                                             >
-                                                Read More
+                                                Read more
                                             </a>
 
                                         </div>
@@ -173,7 +121,7 @@
                                     </div>
 
                                     <div class="p-5">
-                                        <form method="GET" action="{{ route('blog.index') }}" class="space-y-3">
+                                        <form method="GET" action="{{ route('blog.index') }}">
                                             @if ($selectedCategory)
                                                 <input type="hidden" name="category" value="{{ $selectedCategory }}">
                                             @endif
@@ -209,7 +157,7 @@
                                     </div>
 
                                     <div class="p-5">
-                                        <div class="grid grid-cols-1 gap-2 text-sm">
+                                        <div class="grid grid-cols-2 gap-2 text-sm">
                                             @forelse ($categories as $category)
                                                 <a
                                                     href="{{ route('blog.index', array_filter([
@@ -217,14 +165,12 @@
                                                         'category' => $category->slug,
                                                         'tag' => $selectedTag,
                                                     ])) }}"
-                                                    class="text-left rounded-md px-2 py-1 transition {{ $selectedCategory === $category->slug ? 'bg-amber-400/10 text-amber-300' : 'text-slate-200 hover:text-amber-400 hover:bg-slate-800' }}"
+                                                    class="text-left text-slate-200 hover:text-amber-400 hover:bg-slate-800 rounded-md px-2 py-1 transition {{ $selectedCategory === $category->slug ? 'text-amber-400 bg-slate-800' : '' }}"
                                                 >
                                                     {{ $category->name }}
                                                 </a>
                                             @empty
-                                                <p class="text-sm text-slate-500">
-                                                    No categories yet.
-                                                </p>
+                                                <span class="text-slate-500 col-span-2">No categories yet.</span>
                                             @endforelse
                                         </div>
                                     </div>
@@ -237,7 +183,7 @@
                                     </div>
 
                                     <div class="p-5">
-                                        <div class="flex flex-wrap gap-2">
+                                        <div class="flex flex-wrap gap-2 text-sm">
                                             @forelse ($tags as $tag)
                                                 <a
                                                     href="{{ route('blog.index', array_filter([
@@ -245,16 +191,40 @@
                                                         'category' => $selectedCategory,
                                                         'tag' => $tag->slug,
                                                     ])) }}"
-                                                    class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition {{ $selectedTag === $tag->slug ? 'border-amber-400/30 bg-amber-400/10 text-amber-300' : 'border-slate-700 bg-slate-950 text-slate-300 hover:border-amber-400/40 hover:text-amber-300' }}"
+                                                    class="inline-flex items-center rounded-md px-2 py-1 transition text-slate-200 hover:text-amber-400 hover:bg-slate-800 {{ $selectedTag === $tag->slug ? 'text-amber-400 bg-slate-800' : '' }}"
                                                 >
                                                     #{{ $tag->name }}
                                                 </a>
                                             @empty
-                                                <p class="text-sm text-slate-500">
-                                                    No tags yet.
-                                                </p>
+                                                <span class="text-slate-500">No tags yet.</span>
                                             @endforelse
                                         </div>
+                                    </div>
+                                </section>
+
+                                @if ($search || $selectedCategory || $selectedTag)
+                                    <section class="bg-slate-900 border border-slate-800 rounded-lg shadow-sm">
+                                        <div class="p-5">
+                                            <a
+                                                href="{{ route('blog.index') }}"
+                                                class="inline-flex items-center text-amber-400 hover:text-amber-300 text-sm font-medium"
+                                            >
+                                                Clear filters
+                                            </a>
+                                        </div>
+                                    </section>
+                                @endif
+
+                                <!-- Side Widget -->
+                                <section class="bg-slate-900 border border-slate-800 rounded-lg shadow-sm">
+                                    <div class="p-5 border-b border-slate-800">
+                                        <h2 class="font-orbitron text-lg font-semibold text-slate-100">Side Widget</h2>
+                                    </div>
+
+                                    <div class="p-5">
+                                        <p class="text-sm text-slate-400">
+                                            You can put anything you want inside of these side widgets. They are easy to use and styled to match the Imperial Arms design system.
+                                        </p>
                                     </div>
                                 </section>
 
