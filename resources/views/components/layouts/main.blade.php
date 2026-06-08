@@ -61,7 +61,7 @@
             <link rel="apple-touch-icon" href="{{ $seoSettings->getFirstMediaUrl('apple_touch_icon') }}">
         @endif
 
-        @if ($generalSettings)
+        {{-- @if ($generalSettings)
             <script type="application/ld+json">
                 @json(array_filter([
                     '@context' => 'https://schema.org',
@@ -72,7 +72,7 @@
                     'logo' => $generalSettings->getFirstMediaUrl('logos') ?: null,
                 ]))
             </script>
-        @endif
+        @endif --}}
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
