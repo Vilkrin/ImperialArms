@@ -21,7 +21,6 @@ class EditPost extends Component
     public string $status = 'draft';
     public ?string $published_at = null;
     public ?string $published_time = null;
-    public bool $is_featured = false;
 
     public bool $is_published = false;
 
@@ -44,7 +43,6 @@ class EditPost extends Component
         $this->status = $post->status;
         $this->published_at = $post->published_at?->format('Y-m-d');
         $this->published_time = $post->published_at?->format('H:i');
-        $this->is_featured = (bool) $post->is_featured;
         $this->is_published = (bool) $post->is_published;
 
         $this->category_ids = $post->categories->pluck('id')->toArray();
@@ -118,14 +116,13 @@ class EditPost extends Component
 
     public function updatePost()
     {
-        $data = $this->validate([
+        $this->validate([
             'title' => 'required|string|max:255',
             'slug' => 'required|string|max:255|unique:posts,slug,' . $this->post->id,
             'body' => 'required|string',
             'status' => 'required|string|in:draft,scheduled,published,archived',
             'published_at' => 'nullable|date',
             'published_time' => 'nullable|date_format:H:i',
-            'is_featured' => 'boolean',
 
             'category_ids' => 'nullable|array',
             'category_ids.*' => 'exists:blog_categories,id',
@@ -158,7 +155,6 @@ class EditPost extends Component
             'status' => $status,
             'is_published' => $status === 'published',
             'published_at' => $publishedAt,
-            'is_featured' => $this->is_featured,
             'seo_title' => $this->seo_title,
             'seo_description' => $this->seo_description,
         ]);

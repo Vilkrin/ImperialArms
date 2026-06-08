@@ -22,7 +22,6 @@ class AddPost extends Component
     public string $status = 'draft';
     public ?string $published_at = null;
     public ?string $published_time = null;
-    public bool $is_featured = false;
 
     public bool $is_published = false;
 
@@ -117,7 +116,7 @@ class AddPost extends Component
 
     public function save()
     {
-        $data = $this->validate([
+        $this->validate([
             'title' => 'required|string|max:255',
             'slug' => 'required|string|max:255|unique:posts,slug',
             'body' => 'required|string',
@@ -135,7 +134,6 @@ class AddPost extends Component
             'seo_description' => 'nullable|string',
 
             'featured_image' => 'nullable|image|max:2048',
-            'is_featured' => 'boolean',
         ]);
 
         $publishedAt = $this->published_at
@@ -162,7 +160,6 @@ class AddPost extends Component
             'status' => $status,
             'is_published' => $status === 'published',
             'published_at' => $publishedAt,
-            'is_featured' => $this->is_featured,
             'seo_title' => $this->seo_title,
             'seo_description' => $this->seo_description,
         ]);

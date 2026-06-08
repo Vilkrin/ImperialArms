@@ -117,14 +117,6 @@
                                         class="flex h-10 w-full rounded-md border border-slate-700 bg-slate-900/50 px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-amber-400"
                                     />
                                 </div>
-                                <label class="flex items-center justify-between gap-3">
-                                    <span class="text-sm font-medium text-slate-200">Featured Post</span>
-                                    <input
-                                        type="checkbox"
-                                        wire:model="is_featured"
-                                        class="h-4 w-4 accent-amber-400"
-                                    />
-                                </label>
                             </div>
                         </div>
 

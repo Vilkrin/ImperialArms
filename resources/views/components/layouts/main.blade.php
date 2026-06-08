@@ -61,19 +61,6 @@
             <link rel="apple-touch-icon" href="{{ $seoSettings->getFirstMediaUrl('apple_touch_icon') }}">
         @endif
 
-        {{-- @if ($generalSettings)
-            <script type="application/ld+json">
-                @json(array_filter([
-                    '@context' => 'https://schema.org',
-                    '@type' => 'Organization',
-                    'name' => $generalSettings->site_name ?: 'Imperial Arms',
-                    'description' => $generalSettings->description ?: 'Imperial Arms is a Star Citizen organization focused on mercenary services, logistics, and operations across the verse.',
-                    'url' => url('/'),
-                    'logo' => $generalSettings->getFirstMediaUrl('logos') ?: null,
-                ]))
-            </script>
-        @endif --}}
-
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=inter:400,500,600&display=swap" rel="stylesheet" />

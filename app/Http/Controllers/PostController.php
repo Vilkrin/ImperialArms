@@ -12,32 +12,43 @@ class PostController extends Controller
      */
     public function index()
     {
-        $page = request()->get('page', 1);
+        $search = request('search');
+        $category = request('category');
+        $tag = request('tag');
 
-        $featuredPost = null;
-
-        $query = Post::query()
+        $posts = Post::query()
+            ->with(['user', 'categories', 'tags', 'media'])
             ->where('status', 'published')
             ->where('is_published', true)
             ->whereNotNull('published_at')
             ->where('published_at', '<=', now())
-            ->orderByDesc('published_at');
-
-        if ($page == 1) {
-            $featuredPost = (clone $query)
-                ->where('is_featured', true)
-                ->first();
-
-            $posts = $query
-                ->when($featuredPost, fn($query) => $query->where('id', '!=', $featuredPost->id))
-                ->paginate(4);
-        } else {
-            $posts = $query->paginate(5);
-        }
+            ->when($search, function ($query) use ($search) {
+                $query->where(function ($query) use ($search) {
+                    $query->where('title', 'like', '%' . $search . '%')
+                        ->orWhere('body', 'like', '%' . $search . '%');
+                });
+            })
+            ->when($category, function ($query) use ($category) {
+                $query->whereHas('categories', function ($query) use ($category) {
+                    $query->where('slug', $category);
+                });
+            })
+            ->when($tag, function ($query) use ($tag) {
+                $query->whereHas('tags', function ($query) use ($tag) {
+                    $query->where('slug', $tag);
+                });
+            })
+            ->orderByDesc('published_at')
+            ->paginate(6)
+            ->withQueryString();
 
         return view('blog.index', [
-            'featuredPost' => $featuredPost,
             'posts' => $posts,
+            'categories' => \App\Models\BlogCategory::orderBy('name')->get(),
+            'tags' => \App\Models\Tag::orderBy('name')->get(),
+            'search' => $search,
+            'selectedCategory' => $category,
+            'selectedTag' => $tag,
         ]);
     }
 
@@ -47,6 +58,7 @@ class PostController extends Controller
     public function show($slug)
     {
         $post = Post::query()
+            ->with(['user', 'categories', 'tags', 'media'])
             ->where('slug', $slug)
             ->where('status', 'published')
             ->where('is_published', true)
@@ -54,12 +66,12 @@ class PostController extends Controller
             ->where('published_at', '<=', now())
             ->firstOrFail();
 
-        $seoTitle = $post->seo_title;
+        $seoTitle = $post->seo_title ?: $post->title;
 
         $seoDescription = $post->seo_description
             ?: Str::limit(strip_tags($post->body), 160);
 
-        $socialImage = $post->getFirstMediaUrl('blog_images')
+        $socialImage = $post->getFirstMediaUrl('featured_images')
             ?: null;
 
         return view('blog.show', compact(

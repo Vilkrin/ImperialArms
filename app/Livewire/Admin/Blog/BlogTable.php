@@ -6,6 +6,7 @@ use Livewire\Component;
 use App\Models\Post;
 use Livewire\Attributes\Computed;
 use Livewire\WithPagination;
+use App\Models\BlogCategory;
 use Flux\Flux;
 
 class BlogTable extends Component
@@ -80,8 +81,7 @@ class BlogTable extends Component
             'publishedPosts' => Post::where('status', 'published')->count(),
             'scheduledPosts' => Post::where('status', 'scheduled')->count(),
             'draftPosts' => Post::where('status', 'draft')->count(),
-            'featuredPosts' => Post::where('is_featured', true)->count(),
-            'categories' => \App\Models\BlogCategory::orderBy('name')->get(),
+            'categories' => BlogCategory::orderBy('name')->get(),
         ]);
     }
 }
