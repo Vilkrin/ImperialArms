@@ -165,7 +165,7 @@
                                                         'category' => $category->slug,
                                                         'tag' => $selectedTag,
                                                     ])) }}"
-                                                    class="text-left text-slate-200 hover:text-amber-400 hover:bg-slate-800 rounded-md px-2 py-1 transition {{ $selectedCategory === $category->slug ? 'text-amber-400 bg-slate-800' : '' }}"
+                                                    class="text-left text-amber-400 hover:text-amber-300 rounded-md px-2 py-1 transition {{ $selectedCategory === $category->slug ? 'font-semibold' : '' }}"
                                                 >
                                                     {{ $category->name }}
                                                 </a>
@@ -191,7 +191,7 @@
                                                         'category' => $selectedCategory,
                                                         'tag' => $tag->slug,
                                                     ])) }}"
-                                                    class="inline-flex items-center rounded-md px-2 py-1 transition text-slate-200 hover:text-amber-400 hover:bg-slate-800 {{ $selectedTag === $tag->slug ? 'text-amber-400 bg-slate-800' : '' }}"
+                                                    class="inline-flex items-center rounded-md px-2 py-1 transition text-amber-400 hover:text-amber-300 hover:bg-slate-800 {{ $selectedTag === $tag->slug ? 'bg-slate-800 font-semibold' : '' }}"
                                                 >
                                                     #{{ $tag->name }}
                                                 </a>
