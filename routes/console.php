@@ -4,3 +4,5 @@ use Illuminate\Support\Facades\Schedule;
 
 Schedule::command('posts:publish-scheduled')
   ->everyFifteenMinutes();
+
+Schedule::command('sitemap:generate')->daily();
