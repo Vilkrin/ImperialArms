@@ -8,6 +8,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\FleetController;
 use App\Models\Post;
+use Illuminate\Support\Facades\Storage;
 
 
 Route::get('/', function () {
@@ -36,10 +37,11 @@ Route::get('/about', function () {
     return view('about');
 })->name('about');
 
-Route::get('/sitemap-test', function () {
+Route::get('/sitemap-debug', function () {
     return [
-        'exists' => file_exists(public_path('sitemap.xml')),
-        'path' => public_path('sitemap.xml'),
+        'public_exists' => file_exists(public_path('sitemap.xml')),
+        'storage_exists' => Storage::disk('public')->exists('sitemap.xml'),
+        'storage_path' => Storage::disk('public')->path('sitemap.xml'),
     ];
 });
 
