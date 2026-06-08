@@ -37,14 +37,6 @@ Route::get('/about', function () {
     return view('about');
 })->name('about');
 
-Route::get('/sitemap-debug', function () {
-    return [
-        'public_exists' => file_exists(public_path('sitemap.xml')),
-        'storage_exists' => Storage::disk('public')->exists('sitemap.xml'),
-        'storage_path' => Storage::disk('public')->path('sitemap.xml'),
-    ];
-});
-
 Route::get('/user/{slug}', [ProfileController::class, 'show'])->name('users.show');
 
 Route::prefix('profile')->name('profile.')->middleware(['auth'])->group(function () {
