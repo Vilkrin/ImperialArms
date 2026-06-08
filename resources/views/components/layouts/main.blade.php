@@ -63,16 +63,16 @@
 
         @if ($generalSettings)
             <script type="application/ld+json">
-            {
-                "@context": "https://schema.org",
-                "@type": "Organization",
-                "name": "{{ $generalSettings->site_name ?: 'Imperial Arms' }}",
-                "description": "{{ $generalSettings->description ?: 'Imperial Arms is a Star Citizen organization focused on mercenary services, logistics, and operations across the verse.' }}",
-                "url": "{{ url('/') }}"
-                @if ($generalSettings->getFirstMediaUrl('logos'))
-                ,"logo": "{{ $generalSettings->getFirstMediaUrl('logos') }}"
-                @endif
-            }
+                {
+                    "@context": "https://schema.org",
+                    "@type": "Organization",
+                    "name": "{{ $generalSettings->site_name ?: 'Imperial Arms' }}",
+                    "description": "{{ $generalSettings->description ?: 'Imperial Arms is a Star Citizen organization focused on mercenary services, logistics, and operations across the verse.' }}",
+                    "url": "{{ url('/') }}"
+                    @if ($generalSettings->getFirstMediaUrl('logos'))
+                        ,"logo": "{{ $generalSettings->getFirstMediaUrl('logos') }}"
+                    @endif
+                }
             </script>
         @endif
 

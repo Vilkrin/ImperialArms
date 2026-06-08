@@ -36,6 +36,13 @@ Route::get('/about', function () {
     return view('about');
 })->name('about');
 
+Route::get('/sitemap-test', function () {
+    return [
+        'exists' => file_exists(public_path('sitemap.xml')),
+        'path' => public_path('sitemap.xml'),
+    ];
+});
+
 Route::get('/user/{slug}', [ProfileController::class, 'show'])->name('users.show');
 
 Route::prefix('profile')->name('profile.')->middleware(['auth'])->group(function () {
