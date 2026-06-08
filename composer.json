@@ -21,7 +21,8 @@
         "ryangjchandler/laravel-cloudflare-turnstile": "^3.0",
         "spatie/laravel-activitylog": "^5.0",
         "spatie/laravel-medialibrary": "^11.14",
-        "spatie/laravel-permission": "^6.21"
+        "spatie/laravel-permission": "^6.21",
+        "spatie/laravel-sitemap": "^8.1"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^4.0",

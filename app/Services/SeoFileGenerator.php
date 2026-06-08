@@ -70,7 +70,7 @@ class SeoFileGenerator
     $siteName = $seoSetting?->meta_title ?: config('app.name', 'Imperial Arms');
 
     $description = $seoSetting?->meta_description
-      ?: 'Imperial Arms is a Star Citizen organization focused on mercenary services, logistics, and operations across the verse.';
+      ?: 'Imperial Arms is a Star Citizen organization focused on mercenary services, logistics, mercenary operations, and community activity across the verse.';
 
     $aiTrainingText = $allowAiTraining ? 'allowed' : 'not allowed';
 
@@ -79,12 +79,25 @@ class SeoFileGenerator
 
 {$description}
 
+## Site Purpose
+
+Imperial Arms is a Star Citizen organization website for presenting organization information, recruitment details, fleet information, blog posts, services, and community content.
+
 ## Important Pages
 
 - Home: {$this->url('/')}
-- Recruitment: {$this->url('/recruitment')}
-- Fleet: {$this->url('/fleet')}
+- About: {$this->url('/about')}
 - Blog: {$this->url('/blog')}
+- Fleet Roster: {$this->url('/fleet')}
+- Recruitment: {$this->url('/recruitment')}
+- Contact: {$this->url('/contact')}
+- Services: {$this->url('/services')}
+
+## Content Notes
+
+The blog contains organization updates, announcements, and related Star Citizen content.
+The fleet roster contains ship and fleet information for the organization.
+The recruitment page contains joining information for prospective members.
 
 ## AI Usage
 
