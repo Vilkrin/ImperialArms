@@ -59,10 +59,14 @@ class PostController extends Controller
         $seoDescription = $post->seo_description
             ?: Str::limit(strip_tags($post->body), 160);
 
+        $socialImage = $post->getFirstMediaUrl('blog_images')
+            ?: null;
+
         return view('blog.show', compact(
             'post',
             'seoTitle',
-            'seoDescription'
+            'seoDescription',
+            'socialImage'
         ));
     }
 }

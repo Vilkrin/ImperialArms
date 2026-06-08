@@ -21,7 +21,7 @@
 
         <meta name="author" content="{{ $seoSettings?->meta_author ?: $siteName }}">
 
-        <link rel="canonical" href="{{ $seoSettings?->canonical_url ?: url()->current() }}">
+        <link rel="canonical" href="{{ url()->current() }}">
 
         <meta property="og:type" content="{{ $seoSettings?->og_type ?: 'website' }}">
         <meta property="og:url" content="{{ url()->current() }}">
@@ -45,7 +45,10 @@
 
         <meta name="theme-color" content="{{ $seoSettings?->theme_color ?: '#0f172a' }}">
 
-        @if ($seoSettings?->getFirstMediaUrl('social_preview'))
+        @if (trim($__env->yieldContent('social_image')))
+            <meta property="og:image" content="@yield('social_image')">
+            <meta name="twitter:image" content="@yield('social_image')">
+        @elseif ($seoSettings?->getFirstMediaUrl('social_preview'))
             <meta property="og:image" content="{{ $seoSettings->getFirstMediaUrl('social_preview') }}">
             <meta name="twitter:image" content="{{ $seoSettings->getFirstMediaUrl('social_preview') }}">
         @endif
@@ -56,6 +59,21 @@
 
         @if ($seoSettings?->getFirstMediaUrl('apple_touch_icon'))
             <link rel="apple-touch-icon" href="{{ $seoSettings->getFirstMediaUrl('apple_touch_icon') }}">
+        @endif
+
+        @if ($generalSettings)
+            <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "Organization",
+                "name": "{{ $generalSettings->site_name ?: 'Imperial Arms' }}",
+                "description": "{{ $generalSettings->description ?: 'Imperial Arms is a Star Citizen organization focused on mercenary services, logistics, and operations across the verse.' }}",
+                "url": "{{ url('/') }}"
+                @if ($generalSettings->getFirstMediaUrl('logos'))
+                ,"logo": "{{ $generalSettings->getFirstMediaUrl('logos') }}"
+                @endif
+            }
+            </script>
         @endif
 
         <!-- Fonts -->

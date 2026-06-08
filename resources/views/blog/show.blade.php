@@ -1,5 +1,12 @@
-@section('seo_title', $seoTitle)
 @section('description', $seoDescription)
+
+@if ($seoTitle)
+    @section('seo_title', $seoTitle)
+@endif
+
+@if ($socialImage)
+    @section('social_image', $socialImage)
+@endif
 
 <x-layouts.main :title="$post->title">
 
