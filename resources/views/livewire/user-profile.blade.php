@@ -4,7 +4,7 @@
         <!-- Hero band -->
         <div class="relative">
           <div class="absolute inset-0">
-            <img src="assets/placeholder/hero-banner.png" alt="" class="h-full w-full object-cover" />
+            <img src="{{ asset('assets/placeholder/hero-banner.png') }}" alt="" class="h-full w-full object-cover" />
             <div class="absolute inset-0 bg-gradient-to-r from-slate-950/80 via-slate-950/35 to-transparent"></div>
             <div class="absolute inset-0 bg-gradient-to-t from-slate-950/25 to-transparent"></div>
           </div>
@@ -63,7 +63,7 @@
               <div class="space-y-6">
                 <!-- About -->
                 <section class="rounded-lg border border-slate-800/80 bg-slate-950/70 relative overflow-hidden min-h-[410px]">
-                  <img src="assets/placeholder/about-watermark.png" alt="" aria-hidden="true" loading="lazy" class="pointer-events-none select-none absolute right-8 top-1/2 w-96 -translate-y-1/2 -translate-x-2 opacity-[0.08] invert md:right-12 md:-translate-x-4 md:w-[31rem]" />
+                  <img src="{{ asset('assets/placeholder/about-watermark.png') }}" alt="" aria-hidden="true" loading="lazy" class="pointer-events-none select-none absolute right-8 top-1/2 w-96 -translate-y-1/2 -translate-x-2 opacity-[0.08] invert md:right-12 md:-translate-x-4 md:w-[31rem]" />
                   <div class="flex items-center justify-between mb-0 px-6 pb-4 pt-6 border-b border-slate-600/30 md:px-8 md:pt-8 relative z-10">
                     <div class="flex items-center gap-3">
                       <svg class="h-4 w-4 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7-6.3-4.6L5.7 21l2.3-7-6-4.6h7.6L12 2z"/></svg>
