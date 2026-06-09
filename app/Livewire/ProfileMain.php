@@ -19,12 +19,20 @@ class ProfileMain extends Component
     #[Validate('required|email', as: 'Email Address')]
     public $email;
 
+    #[Validate('nullable|string|max:255')]
+    public $tagline;
+
+    #[Validate('nullable|string|max:2000')]
+    public $bio;
+
     public function mount()
     {
         $this->user = Auth::user();
 
         $this->name = $this->user->name;
         $this->email = $this->user->email;
+        $this->tagline = $this->user->tagline;
+        $this->bio = $this->user->bio;
     }
 
     public function save()
@@ -34,6 +42,8 @@ class ProfileMain extends Component
         $this->user->update([
             'name' => $this->name,
             'email' => $this->email,
+            'tagline' => $this->tagline,
+            'bio' => $this->bio,
         ]);
 
         Flux::success('Profile updated successfully.');

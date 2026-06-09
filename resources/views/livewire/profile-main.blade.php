@@ -48,21 +48,33 @@
                         </div>
                       </div>
 
-                      <!-- Call Sign -->
+                      <!-- Tagline -->
                       <div class="space-y-2">
-                        <label for="callSign" class="block text-sm font-medium leading-none text-slate-200">Call Sign</label>
-                        <input id="callSign" value="ALPHA-7" class="flex h-10 w-full rounded-md border border-slate-700 bg-slate-900 px-3 py-2 text-base text-slate-100 font-mono ring-offset-slate-950 placeholder:text-slate-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm" />
+                          <flux:field>
+                              <flux:label>Tagline</flux:label>
+
+                              <flux:input
+                                  wire:model="tagline"
+                                  placeholder="Through order, we bring strength."
+                              />
+
+                              <flux:error name="tagline" />
+                          </flux:field>
                       </div>
 
-                      <!-- Rank -->
+                      <!-- Bio -->
                       <div class="space-y-2">
-                        <label class="block text-sm font-medium leading-none text-slate-200">Rank</label>
-                        <div class="h-10 flex items-center">
-                          <span class="inline-flex items-center rounded-md border px-2.5 py-0.5 text-sm font-semibold border-slate-700 bg-slate-800 text-amber-400">
-                            <svg class="h-3 w-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8l-2 4h4l-2 4"/></svg>
-                            Captain
-                          </span>
-                        </div>
+                          <flux:field>
+                              <flux:label>Bio</flux:label>
+
+                              <flux:textarea
+                                  wire:model="bio"
+                                  rows="4"
+                                  placeholder="Tell others about yourself..."
+                              />
+
+                              <flux:error name="bio" />
+                          </flux:field>
                       </div>
 
                       <!-- Join Date -->

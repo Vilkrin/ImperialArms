@@ -1,7 +1,7 @@
-<x-layouts.main :title="__('Profile')">
+<x-layouts.main :title="sprintf('%s\'s Profile', $user->name)">
 
     <section class="bg-slate-950">
-        <livewire:user-profile />
+        <livewire:user-profile :user="$user" />
     </section>
 
 </x-layouts.main>

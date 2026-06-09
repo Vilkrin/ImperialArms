@@ -33,6 +33,8 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia, Passkey
         'status',
         'banned_until',
         'ban_reason',
+        'bio',
+        'tagline',
     ];
 
     /**
