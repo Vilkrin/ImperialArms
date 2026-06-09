@@ -42,7 +42,7 @@
           </div>
         </div>
 
-        <!-- Tabs (full bleed) -->
+        <!-- Tabs -->
         <div class="border-t border-b border-slate-700/40 bg-slate-950/25">
           <div class="px-6 sm:px-8 flex flex-wrap sm:flex-nowrap gap-4 sm:gap-6" id="profileTabs">
               <button class="profile-tab active px-5 py-4 font-orbitron text-sm uppercase tracking-wide border-b-2 border-amber-400 text-amber-400 bg-transparent flex items-center gap-2 -mb-px" data-tab="overview"><svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.618 5.984A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>Overview</button>
@@ -281,3 +281,27 @@
         </div>
       </div>
     </div>
+
+  <script>
+    function switchTab(tabId) {
+      document.querySelectorAll('.profile-panel').forEach(function (panel) {
+        panel.classList.add('hidden');
+      });
+      var target = document.getElementById('tab-' + tabId);
+      if (target) target.classList.remove('hidden');
+
+      document.querySelectorAll('.profile-tab').forEach(function (btn) {
+        var isActive = btn.dataset.tab === tabId;
+        btn.classList.toggle('border-amber-400', isActive);
+        btn.classList.toggle('text-amber-400', isActive);
+        btn.classList.toggle('border-transparent', !isActive);
+        btn.classList.toggle('text-slate-400', !isActive);
+      });
+    }
+
+    document.querySelectorAll('.profile-tab').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        switchTab(btn.dataset.tab);
+      });
+    });
+  </script>
