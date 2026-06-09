@@ -326,34 +326,137 @@
             </div>
           </div>
 
-          <!-- SHIPS TAB -->
-          <div id="tab-ships" class="profile-panel hidden">
-            <section class="rounded-lg border border-slate-800/80 bg-slate-950/70 overflow-hidden">
-              <div class="flex items-center justify-between mb-0 px-6 pb-4 pt-6 border-b border-slate-600/30 md:px-8 md:pt-8"><div class="flex items-center gap-3"><svg class="h-4 w-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg><h2 class="font-orbitron text-sm font-bold tracking-wider uppercase text-slate-100">Hangar</h2></div></div>
-              <div class="p-6 pt-5 md:p-8">
-              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                <div class="rounded-md overflow-hidden border border-slate-800/80 bg-slate-950/60 group"><div class="relative h-40 overflow-hidden"><img src="assets/polaris-real.webp" alt="Anvil Carrack" class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500" /><div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent"></div></div><div class="p-3"><div class="font-orbitron text-sm font-bold text-slate-100">Pathfinder</div><div class="text-xs text-amber-400 mt-1">Expedition</div><div class="text-xs text-slate-500 mt-1">Crew: 6</div></div></div>
-                <div class="rounded-md overflow-hidden border border-slate-800/80 bg-slate-950/60 group"><div class="relative h-40 overflow-hidden"><img src="assets/vanguard-real.jpg" alt="MISC Freelancer DUR" class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500" /><div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent"></div></div><div class="p-3"><div class="font-orbitron text-sm font-bold text-slate-100">Swift Arrow</div><div class="text-xs text-amber-400 mt-1">Explorer</div><div class="text-xs text-slate-500 mt-1">Crew: 2</div></div></div>
-                <div class="rounded-md overflow-hidden border border-slate-800/80 bg-slate-950/60 group"><div class="relative h-40 overflow-hidden"><img src="assets/ironclad-real.webp" alt="Aegis Hammerhead" class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500" /><div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent"></div></div><div class="p-3"><div class="font-orbitron text-sm font-bold text-slate-100">Sentinel Wing</div><div class="text-xs text-amber-400 mt-1">Gunship</div><div class="text-xs text-slate-500 mt-1">Crew: 9</div></div></div>
-                <div class="rounded-md overflow-hidden border border-slate-800/80 bg-slate-950/60 group"><div class="relative h-40 overflow-hidden"><img src="assets/hoplite-real.jpg" alt="Anvil Hurricane" class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500" /><div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent"></div></div><div class="p-3"><div class="font-orbitron text-sm font-bold text-slate-100">Star Lance</div><div class="text-xs text-amber-400 mt-1">Heavy Fighter</div><div class="text-xs text-slate-500 mt-1">Crew: 2</div></div></div>
-              </div>
-              </div>
-            </section>
-          </div>
+            <!-- SHIPS TAB -->
+            <div id="tab-ships" class="profile-panel hidden">
+                <section class="rounded-lg border border-slate-800/80 bg-slate-950/70 overflow-hidden">
+                    <div class="flex items-center justify-between mb-0 px-6 pb-4 pt-6 border-b border-slate-600/30 md:px-8 md:pt-8">
+                        <div class="flex items-center gap-3">
+                            <svg class="h-4 w-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                            </svg>
 
-          <!-- BLOGS TAB -->
-          <div id="tab-blogs" class="profile-panel hidden">
-            <section class="rounded-lg border border-slate-800/80 bg-slate-950/70 overflow-hidden">
-              <div class="flex items-center justify-between mb-0 px-6 pb-4 pt-6 border-b border-slate-600/30 md:px-8 md:pt-8"><div class="flex items-center gap-3"><svg class="h-4 w-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg><h2 class="font-orbitron text-sm font-bold tracking-wider uppercase text-slate-100">Blog Posts</h2></div></div>
-              <div class="p-6 pt-5 md:p-8">
-              <div class="space-y-6">
-                <a href="blog-post.html" class="group grid grid-cols-1 sm:grid-cols-[12rem_minmax(0,1fr)] gap-5 border-b border-slate-600/25 pb-6"><div class="relative h-32 rounded-md border border-slate-800/80 overflow-hidden"><img src="assets/authentic-sc-fleet.jpg" alt="" class="h-full w-full object-cover opacity-75 group-hover:scale-105 transition-transform" /><div class="absolute bottom-2 left-2 font-orbitron text-[10px] uppercase text-amber-400">Technology</div></div><div><div class="font-orbitron text-xl font-bold text-slate-100 group-hover:text-amber-400">The Future of Deep Space Exploration</div><p class="mt-2 text-slate-400">Charting the unknown demands both courage and the right technology.</p><div class="mt-4 flex justify-between text-sm text-slate-500"><span>March 15, 2024</span><span>1.2K views · 34 comments</span></div></div></a>
-                <a href="blog.html" class="group grid grid-cols-1 sm:grid-cols-[12rem_minmax(0,1fr)] gap-5 border-b border-slate-600/25 pb-6"><div class="relative h-32 rounded-md border border-slate-800/80 overflow-hidden"><img src="assets/polaris-real.webp" alt="" class="h-full w-full object-cover opacity-75 group-hover:scale-105 transition-transform" /><div class="absolute bottom-2 left-2 font-orbitron text-[10px] uppercase text-amber-400">Exploration</div></div><div><div class="font-orbitron text-xl font-bold text-slate-100 group-hover:text-amber-400">Mapping Uncharted Jump Points</div><p class="mt-2 text-slate-400">Lessons from three months beyond the outer rim trade lanes.</p><div class="mt-4 flex justify-between text-sm text-slate-500"><span>February 28, 2024</span><span>842 views · 19 comments</span></div></div></a>
-                <a href="blog.html" class="group grid grid-cols-1 sm:grid-cols-[12rem_minmax(0,1fr)] gap-5"><div class="relative h-32 rounded-md border border-slate-800/80 overflow-hidden"><img src="assets/vanguard-real.jpg" alt="" class="h-full w-full object-cover opacity-75 group-hover:scale-105 transition-transform" /><div class="absolute bottom-2 left-2 font-orbitron text-[10px] uppercase text-amber-400">Operations</div></div><div><div class="font-orbitron text-xl font-bold text-slate-100 group-hover:text-amber-400">Long-Range Recon: Field Notes</div><p class="mt-2 text-slate-400">What every exploration crew should pack before leaving charted space.</p><div class="mt-4 flex justify-between text-sm text-slate-500"><span>January 12, 2024</span><span>615 views · 11 comments</span></div></div></a>
+                            <h2 class="font-orbitron text-sm font-bold tracking-wider uppercase text-slate-100">Hangar</h2>
+                        </div>
+                    </div>
+
+                    <div class="p-6 pt-5 md:p-8">
+                        @if($paginatedShips->count())
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                                @foreach($paginatedShips as $memberShip)
+                                    <div class="rounded-md overflow-hidden border border-slate-800/80 bg-slate-950/60 group">
+                                        <div class="relative h-40 overflow-hidden">
+                                            <img
+                                                src="{{ $memberShip->ship?->getFirstMediaUrl('ship_images') ?: asset('assets/placeholder/ship-placeholder.png') }}"
+                                                alt="{{ $memberShip->ship?->manufacturer }} {{ $memberShip->ship?->model }}"
+                                                class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                            />
+
+                                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent"></div>
+                                        </div>
+
+                                        <div class="p-3">
+                                            <div class="font-orbitron text-sm font-bold text-slate-100 truncate">
+                                                {{ $memberShip->name ?: $memberShip->ship?->model }}
+                                            </div>
+
+                                            <div class="text-xs text-amber-400 mt-1 truncate">
+                                                {{ $memberShip->ship?->role ?? 'Unknown Role' }}
+                                            </div>
+
+                                            <div class="text-xs text-slate-500 mt-1">
+                                                Crew: {{ $memberShip->ship?->crew_required ?? 'Unknown' }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+
+                            <div class="mt-6">
+                                {{ $paginatedShips->links() }}
+                            </div>
+                        @else
+                            <p class="text-sm text-slate-500 font-exo italic">
+                                No ships have been added yet.
+                            </p>
+                        @endif
+                    </div>
+                </section>
+            </div>
+
+              <!-- BLOGS TAB -->
+              <div id="tab-blogs" class="profile-panel hidden">
+                  <section class="rounded-lg border border-slate-800/80 bg-slate-950/70 overflow-hidden">
+                      <div class="flex items-center justify-between mb-0 px-6 pb-4 pt-6 border-b border-slate-600/30 md:px-8 md:pt-8">
+                          <div class="flex items-center gap-3">
+                              <svg class="h-4 w-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                              </svg>
+
+                              <h2 class="font-orbitron text-sm font-bold tracking-wider uppercase text-slate-100">
+                                  Blog Posts
+                              </h2>
+                          </div>
+                      </div>
+
+                      <div class="p-6 pt-5 md:p-8">
+                          @if($paginatedPosts->count())
+                              <div class="space-y-6">
+                                  @foreach($paginatedPosts as $post)
+                                      <a
+                                          href="{{ route('blog.show', $post->slug) }}"
+                                          class="group grid grid-cols-1 sm:grid-cols-[12rem_minmax(0,1fr)] gap-5 {{ ! $loop->last ? 'border-b border-slate-600/25 pb-6' : '' }}"
+                                      >
+                                          <div class="relative h-32 rounded-md border border-slate-800/80 overflow-hidden">
+                                              <img
+                                                  src="{{ $this->postImage($post) ?: asset('assets/placeholder/blog-placeholder.png') }}"
+                                                  alt="{{ $post->title }}"
+                                                  class="h-full w-full object-cover opacity-75 group-hover:scale-105 transition-transform duration-500"
+                                              />
+
+                                              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 to-transparent"></div>
+
+                                              <div class="absolute bottom-2 left-2 font-orbitron text-[10px] uppercase text-amber-400">
+                                                  {{ $post->categories->first()?->name ?? 'Blog' }}
+                                              </div>
+                                          </div>
+
+                                          <div>
+                                              <div class="font-orbitron text-xl font-bold text-slate-100 group-hover:text-amber-400 transition-colors">
+                                                  {{ $post->title }}
+                                              </div>
+
+                                              <p class="mt-2 text-slate-400">
+                                                  {{ $this->postExcerpt($post) }}
+                                              </p>
+
+                                              <div class="mt-4 flex justify-between text-sm text-slate-500">
+                                                  <span>
+                                                      {{ $post->published_at?->format('F j, Y') ?? $post->created_at->format('F j, Y') }}
+                                                  </span>
+
+                                                  <span>
+                                                      {{ number_format($post->view_count ?? 0) }}
+                                                      views ·
+                                                      {{ number_format($post->comment_count ?? 0) }}
+                                                      comments
+                                                  </span>
+                                              </div>
+                                          </div>
+                                      </a>
+                                  @endforeach
+                              </div>
+
+                              <div class="mt-8">
+                                  {{ $paginatedPosts->links() }}
+                              </div>
+                          @else
+                              <p class="text-sm text-slate-500 font-exo italic">
+                                  No blog posts have been published yet.
+                              </p>
+                          @endif
+                      </div>
+                  </section>
               </div>
-              </div>
-            </section>
-          </div>
 
           <!-- ACTIVITY TAB -->
           <div id="tab-activity" class="profile-panel hidden">

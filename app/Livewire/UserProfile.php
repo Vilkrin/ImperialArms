@@ -6,9 +6,12 @@ use Livewire\Component;
 use App\Models\Post;
 use App\Models\User;
 use App\Models\MemberShip;
+use Livewire\WithPagination;
 
 class UserProfile extends Component
 {
+    use WithPagination;
+
     public User $user;
 
     public $ships;
@@ -42,6 +45,28 @@ class UserProfile extends Component
             ->get();
     }
 
+    public function paginatedShips()
+    {
+        return MemberShip::query()
+            ->with('ship')
+            ->where('user_id', $this->user->id)
+            ->latest()
+            ->paginate(8, ['*'], 'shipsPage');
+    }
+
+    public function paginatedPosts()
+    {
+        return Post::query()
+            ->with('categories')
+            ->where('user_id', $this->user->id)
+            ->where('status', 'published')
+            ->where('is_published', true)
+            ->whereNotNull('published_at')
+            ->where('published_at', '<=', now())
+            ->latest('published_at')
+            ->paginate(6, ['*'], 'postsPage');
+    }
+
     public function postExcerpt(Post $post): string
     {
         return str($post->body)
@@ -61,6 +86,9 @@ class UserProfile extends Component
 
     public function render()
     {
-        return view('livewire.user-profile');
+        return view('livewire.user-profile', [
+            'paginatedShips' => $this->paginatedShips(),
+            'paginatedPosts' => $this->paginatedPosts(),
+        ]);
     }
 }
