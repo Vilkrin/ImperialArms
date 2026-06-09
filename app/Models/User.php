@@ -59,7 +59,19 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia, Passkey
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'last_login_at' => 'datetime',
+            'last_seen' => 'datetime',
         ];
+    }
+
+    /**
+     * Determine if the user is currently online.
+     * 
+     */
+
+    public function getIsOnlineAttribute(): bool
+    {
+        return $this->last_seen?->gt(now()->subMinutes(5)) ?? false;
     }
 
     /**

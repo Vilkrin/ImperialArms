@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Schema;
 use App\Models\GeneralSetting;
 use App\Models\SocialLink;
 use Illuminate\Support\Facades\View;
+use Illuminate\Auth\Events\Login;
+use Illuminate\Support\Facades\Event;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -40,6 +42,13 @@ class AppServiceProvider extends ServiceProvider
                     ->get()
             );
         }
+
+        Event::listen(Login::class, function (Login $event) {
+            $event->user->forceFill([
+                'last_login_at' => now(),
+                'last_seen' => now(),
+            ])->saveQuietly();
+        });
 
         // Implicitly grant "Super Admin" role all permissions
         // This works in the app by using gate-related functions like auth()->user->can() and @can()

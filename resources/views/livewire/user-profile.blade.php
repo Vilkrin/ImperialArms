@@ -1,289 +1,283 @@
-<div class="bg-slate-950 text-slate-200">
-    <div class="mx-auto max-w-[1420px] px-6 py-8">
+    <div class="container mx-auto px-4 pt-8 pb-8 2xl:max-w-[1500px]">
+      <div class="rounded-xl border border-slate-800/70 bg-slate-950/50 backdrop-blur-sm shadow-[0_8px_28px_rgba(0,0,0,0.22)]">
 
-        {{-- Connected Profile Shell --}}
-        <div class="overflow-hidden rounded-lg border border-slate-700/70 bg-slate-950/90 shadow-2xl">
-
-            {{-- Breadcrumb --}}
-            <div class="border-b border-slate-800/80 px-8 py-4 text-xs uppercase tracking-wide text-slate-400">
-                <div class="flex items-center gap-2">
-                    <a href="{{ route('home') }}" class="hover:text-amber-400">Home</a>
-                    <span>›</span>
-                    <a href="#" class="hover:text-amber-400">Members</a>
-                    <span>›</span>
-                    <span class="text-amber-400">Darth_Vexor</span>
+        <!-- Hero band -->
+        <div class="relative">
+          <div class="absolute inset-0">
+            <img src="assets/hero-banner.png" alt="" class="h-full w-full object-cover" />
+            <div class="absolute inset-0 bg-gradient-to-r from-slate-950/80 via-slate-950/35 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/25 to-transparent"></div>
+          </div>
+          <div class="relative p-6 md:p-8 lg:p-10">
+            <nav class="font-exo text-xs uppercase tracking-wider text-slate-400 flex flex-wrap items-center gap-2">
+              <a href="index.html" class="hover:text-amber-400 transition-colors">Home</a>
+              <span class="text-slate-600">&gt;</span>
+              <a href="members.html" class="hover:text-amber-400 transition-colors">Members</a>
+              <span class="text-slate-600">&gt;</span>
+              <span class="text-slate-100">NOVA-1</span>
+            </nav>
+            <div class="mt-6 h-px w-full bg-gradient-to-r from-slate-500/70 via-slate-600/35 to-transparent"></div>
+            <div class="relative mt-6 flex flex-col md:flex-row gap-7 items-start">
+              <div class="relative h-44 w-44 md:h-48 md:w-48 shrink-0 rounded-lg border border-amber-400/80 overflow-hidden shadow-[0_0_20px_rgba(251,191,36,0.15)]">
+                <img src="assets/avatar-sarah-chen.jpg" alt="Captain Sarah Chen" class="h-full w-full object-cover" />
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-3">
+                  <h1 class="font-orbitron text-4xl font-bold text-slate-100">NOVA-1</h1>
+                  <svg class="h-7 w-7 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
                 </div>
+                <div class="text-amber-400 font-orbitron text-lg font-semibold mt-2">Exploration Vanguard</div>
+                <div class="flex flex-wrap items-center gap-6 mt-4 pb-4 border-b border-slate-600/25 text-sm text-slate-400 font-exo">
+                  <span class="flex items-center gap-1.5"><svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>Member since 2951.06.12</span>
+                  <span class="flex items-center gap-1.5"><span class="h-2.5 w-2.5 rounded-full bg-green-500 shadow-[0_0_6px_rgba(34,197,94,0.8)]"></span>Last seen 1 hour ago</span>
+                </div>
+                <p class="mt-4 italic text-base leading-7 text-slate-200/80 font-exo max-w-3xl">"Beyond the known lies everything worth finding."</p>
+                <div class="flex flex-wrap items-center gap-4 mt-6">
+                  <button class="inline-flex items-center h-12 px-8 bg-gradient-to-r from-amber-400 to-amber-600 text-slate-900 font-orbitron text-base rounded-md hover:opacity-90 transition-opacity">Send Message</button>
+                  <button class="inline-flex items-center h-12 px-8 border border-amber-400/50 text-amber-400 font-orbitron text-base rounded-md hover:bg-amber-400/10 transition-colors">Follow</button>
+                  <button class="inline-flex items-center justify-center h-12 w-12 border border-amber-400/40 text-amber-400 rounded-md hover:bg-amber-400/10 transition-colors" aria-label="More options"><svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h.01M12 12h.01M19 12h.01"/></svg></button>
+                </div>
+              </div>
             </div>
+          </div>
+        </div>
 
-            {{-- Hero --}}
-            <section
-                class="relative min-h-[340px] bg-cover bg-center"
-                style="background-image:
-                    linear-gradient(to right, rgba(2,6,23,.98) 0%, rgba(2,6,23,.90) 34%, rgba(2,6,23,.55) 58%, rgba(2,6,23,.15) 100%),
-                    url('{{ asset("images/mockups/profile/banner.jpg") }}');"
-            >
-                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
+        <!-- Tabs (full bleed) -->
+        <div class="border-t border-b border-slate-700/40 bg-slate-950/25">
+          <div class="px-6 sm:px-8 flex flex-wrap sm:flex-nowrap gap-4 sm:gap-6" id="profileTabs">
+              <button class="profile-tab active px-5 py-4 font-orbitron text-sm uppercase tracking-wide border-b-2 border-amber-400 text-amber-400 bg-transparent flex items-center gap-2 -mb-px" data-tab="overview"><svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.618 5.984A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>Overview</button>
+              <button class="profile-tab px-5 py-4 font-orbitron text-sm uppercase tracking-wide border-b-2 border-transparent text-slate-400 hover:text-amber-400 flex items-center gap-2 -mb-px" data-tab="ships"><svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>Ships</button>
+              <button class="profile-tab px-5 py-4 font-orbitron text-sm uppercase tracking-wide border-b-2 border-transparent text-slate-400 hover:text-amber-400 flex items-center gap-2 -mb-px" data-tab="blogs"><svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>Blogs</button>
+              <button class="profile-tab px-5 py-4 font-orbitron text-sm uppercase tracking-wide border-b-2 border-transparent text-slate-400 hover:text-amber-400 flex items-center gap-2 -mb-px" data-tab="activity"><svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>Activity</button>
+              <button class="profile-tab px-5 py-4 font-orbitron text-sm uppercase tracking-wide border-b-2 border-transparent text-slate-400 hover:text-amber-400 flex items-center gap-2 -mb-px" data-tab="medals"><svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>Medals</button>
+              <button class="profile-tab px-5 py-4 font-orbitron text-sm uppercase tracking-wide border-b-2 border-transparent text-slate-400 hover:text-amber-400 flex items-center gap-2 -mb-px" data-tab="friends"><svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>Friends</button>
+          </div>
+        </div>
 
-                <div class="relative z-10 flex min-h-[340px] items-center px-8 py-8">
-                    <div class="flex items-center gap-10">
+        <!-- Tab content -->
+        <div class="px-6 sm:px-8 pb-8 pt-7">
 
-                        <div class="relative shrink-0">
-                            <img
-                                src="{{ asset("images/mockups/profile/avatar.jpg") }}"
-                                alt="Darth_Vexor"
-                                class="h-52 w-52 rounded-md border border-amber-400/70 bg-slate-900 object-cover shadow-[0_0_35px_rgba(251,191,36,0.18)]"
-                            >
-
-                            <div class="absolute -bottom-3 -left-3 flex h-12 w-12 items-center justify-center rounded-full border border-amber-400/60 bg-slate-950 shadow-lg">
-                                <span class="text-lg text-amber-400">✦</span>
-                            </div>
-                        </div>
-
-                        <div class="max-w-2xl">
-                            <div class="flex items-center gap-3">
-                                <h1 class="text-4xl font-bold tracking-tight text-white">Darth_Vexor</h1>
-                                <span class="rounded-full bg-amber-400 px-2 py-1 text-xs font-bold text-slate-950">✓</span>
-                            </div>
-
-                            <p class="mt-2 text-xl text-amber-400">Imperial Admiral</p>
-
-                            <div class="mt-4 flex flex-wrap gap-5 text-sm text-slate-400">
-                                <span>Member since May 14, 2022</span>
-                                <span class="text-green-400">● Last seen 2 hours ago</span>
-                            </div>
-
-                            <p class="mt-6 max-w-xl italic text-slate-300">
-                                “Through order, we bring strength. Through strength, we secure the verse.”
-                            </p>
-
-                            <div class="mt-7 flex gap-3">
-                                <button class="rounded-md bg-gradient-to-br from-amber-300 to-amber-500 px-7 py-3 text-sm font-semibold uppercase text-slate-950 shadow-lg shadow-amber-950/30">
-                                    Send Message
-                                </button>
-
-                                <button class="rounded-md border border-slate-600/90 bg-slate-950/40 px-7 py-3 text-sm font-semibold uppercase text-slate-200 hover:border-amber-400 hover:text-amber-400">
-                                    Follow
-                                </button>
-
-                                <button class="rounded-md border border-slate-600/90 bg-slate-950/40 px-4 py-3 text-slate-200 hover:border-amber-400 hover:text-amber-400">
-                                    ...
-                                </button>
-                            </div>
-                        </div>
-
+          <!-- OVERVIEW TAB -->
+          <div id="tab-overview" class="profile-panel">
+            <div class="grid lg:grid-cols-[minmax(0,2.05fr)_minmax(360px,1fr)] gap-6">
+              <div class="space-y-6">
+                <!-- About -->
+                <section class="rounded-lg border border-slate-800/80 bg-slate-950/70 relative overflow-hidden min-h-[410px]">
+                  <img src="assets/about-watermark.png" alt="" aria-hidden="true" loading="lazy" class="pointer-events-none select-none absolute right-8 top-1/2 w-96 -translate-y-1/2 -translate-x-2 opacity-[0.08] invert md:right-12 md:-translate-x-4 md:w-[31rem]" />
+                  <div class="flex items-center justify-between mb-0 px-6 pb-4 pt-6 border-b border-slate-600/30 md:px-8 md:pt-8 relative z-10">
+                    <div class="flex items-center gap-3">
+                      <svg class="h-4 w-4 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7-6.3-4.6L5.7 21l2.3-7-6-4.6h7.6L12 2z"/></svg>
+                      <h2 class="font-orbitron text-sm font-bold tracking-wider uppercase text-slate-100">About Chen</h2>
                     </div>
-                </div>
+                  </div>
+                  <div class="p-6 pt-5 md:p-8 relative z-10">
+                    <div class="max-w-[58%] min-w-[280px] md:min-w-[460px] space-y-6 text-left">
+                      <p class="text-lg text-slate-400 font-exo leading-8">Veteran deep space explorer and technology enthusiast. Leads Imperial Arms' long-range reconnaissance division, charting jump points where few dare to fly.</p>
+                      <div class="space-y-5 text-base">
+                        <div class="flex items-start gap-4"><svg class="h-5 w-5 text-amber-400 mt-1 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg><div><div class="text-sm uppercase tracking-wide text-slate-400">Location</div><div class="text-slate-100 leading-7">Terra, Sol System</div></div></div>
+                        <div class="flex items-start gap-4"><svg class="h-5 w-5 text-amber-400 mt-1 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg><div><div class="text-sm uppercase tracking-wide text-slate-400">Company</div><div class="text-slate-100 leading-7">The Black Cohort</div></div></div>
+                        <div class="flex items-start gap-4"><svg class="h-5 w-5 text-amber-400 mt-1 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.618 5.984A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg><div><div class="text-sm uppercase tracking-wide text-slate-400">Role</div><div class="text-slate-100 leading-7">Exploration Lead</div></div></div>
+                        <div class="flex items-start gap-4"><svg class="h-5 w-5 text-amber-400 mt-1 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg><div><div class="text-sm uppercase tracking-wide text-slate-400">Interests</div><div class="text-slate-100 leading-7">Exploration, Cartography, Quantum Theory, Deep Space</div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+
+                <!-- Ships (overview) -->
+                <section class="rounded-lg border border-slate-800/80 bg-slate-950/70 overflow-hidden">
+                  <div class="flex items-center justify-between mb-0 px-6 pb-4 pt-6 border-b border-slate-600/30 md:px-8 md:pt-8">
+                    <div class="flex items-center gap-3"><svg class="h-4 w-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg><h2 class="font-orbitron text-sm font-bold tracking-wider uppercase text-slate-100">Ships</h2></div>
+                    <button type="button" onclick="switchTab('ships')" class="text-xs font-orbitron uppercase tracking-wider text-amber-400 hover:opacity-80 inline-flex items-center gap-1">View All Ships <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg></button>
+                  </div>
+                  <div class="p-6 pt-5 md:p-8">
+                  <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 w-full">
+                    <div class="rounded-md overflow-hidden border border-slate-800/80 bg-slate-950/60 group">
+                      <div class="relative h-36 overflow-hidden"><img src="assets/polaris-real.webp" alt="Anvil Carrack" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" /><div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent"></div></div>
+                      <div class="p-3"><div class="font-orbitron text-sm font-bold text-slate-100 truncate">Pathfinder</div><div class="text-xs text-amber-400 truncate mt-1">Expedition</div><div class="text-xs text-slate-500 mt-1">Crew: 6</div></div>
+                    </div>
+                    <div class="rounded-md overflow-hidden border border-slate-800/80 bg-slate-950/60 group">
+                      <div class="relative h-36 overflow-hidden"><img src="assets/vanguard-real.jpg" alt="MISC Freelancer DUR" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" /><div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent"></div></div>
+                      <div class="p-3"><div class="font-orbitron text-sm font-bold text-slate-100 truncate">Swift Arrow</div><div class="text-xs text-amber-400 truncate mt-1">Explorer</div><div class="text-xs text-slate-500 mt-1">Crew: 2</div></div>
+                    </div>
+                    <div class="rounded-md overflow-hidden border border-slate-800/80 bg-slate-950/60 group">
+                      <div class="relative h-36 overflow-hidden"><img src="assets/ironclad-real.webp" alt="Aegis Hammerhead" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" /><div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent"></div></div>
+                      <div class="p-3"><div class="font-orbitron text-sm font-bold text-slate-100 truncate">Sentinel Wing</div><div class="text-xs text-amber-400 truncate mt-1">Gunship</div><div class="text-xs text-slate-500 mt-1">Crew: 9</div></div>
+                    </div>
+                    <div class="rounded-md overflow-hidden border border-slate-800/80 bg-slate-950/60 group">
+                      <div class="relative h-36 overflow-hidden"><img src="assets/hoplite-real.jpg" alt="Anvil Hurricane" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" /><div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent"></div></div>
+                      <div class="p-3"><div class="font-orbitron text-sm font-bold text-slate-100 truncate">Star Lance</div><div class="text-xs text-amber-400 truncate mt-1">Heavy Fighter</div><div class="text-xs text-slate-500 mt-1">Crew: 2</div></div>
+                    </div>
+                  </div>
+                  </div>
+                </section>
+
+                <!-- Blog (overview) -->
+                <section class="rounded-lg border border-slate-800/80 bg-slate-950/70 overflow-hidden flex flex-col">
+                  <div class="flex items-center justify-between mb-0 px-6 pb-4 pt-6 border-b border-slate-600/30 md:px-8 md:pt-8">
+                    <div class="flex items-center gap-3"><svg class="h-4 w-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg><h2 class="font-orbitron text-sm font-bold tracking-wider uppercase text-slate-100">Blog Posts</h2></div>
+                    <a href="blog.html" class="text-xs font-orbitron uppercase tracking-wider text-amber-400 hover:opacity-80 inline-flex items-center gap-1">View All Blogs <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg></a>
+                  </div>
+                  <div class="p-6 pt-5 md:p-8 flex flex-col flex-1">
+                  <div class="space-y-6">
+                    <a href="blog-post.html" class="group grid grid-cols-1 sm:grid-cols-[10rem_minmax(0,1fr)] gap-5 transition-colors border-b border-slate-600/25 pb-6">
+                      <div class="relative h-32 sm:h-28 overflow-hidden rounded-md border border-slate-800/80"><img src="assets/authentic-sc-fleet.jpg" alt="" class="h-full w-full object-cover opacity-75 group-hover:scale-105 transition-transform duration-500" /><div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 to-transparent"></div><div class="absolute bottom-2 left-2 font-orbitron text-[10px] uppercase tracking-wide text-amber-400">Technology</div></div>
+                      <div class="flex flex-col justify-center min-w-0"><div class="font-orbitron text-lg font-bold text-slate-100 group-hover:text-amber-400 transition-colors">The Future of Deep Space Exploration</div><p class="mt-2 text-sm text-slate-400 line-clamp-2">Charting the unknown demands both courage and the right technology.</p><div class="mt-3 flex items-center justify-between text-xs text-slate-500"><span>March 15, 2024</span><div class="flex gap-4"><span>1.2K views</span><span>34 comments</span></div></div></div>
+                    </a>
+                    <a href="blog.html" class="group grid grid-cols-1 sm:grid-cols-[10rem_minmax(0,1fr)] gap-5 transition-colors border-b border-slate-600/25 pb-6">
+                      <div class="relative h-32 sm:h-28 overflow-hidden rounded-md border border-slate-800/80"><img src="assets/polaris-real.webp" alt="" class="h-full w-full object-cover opacity-75 group-hover:scale-105 transition-transform duration-500" /><div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 to-transparent"></div><div class="absolute bottom-2 left-2 font-orbitron text-[10px] uppercase tracking-wide text-amber-400">Exploration</div></div>
+                      <div class="flex flex-col justify-center min-w-0"><div class="font-orbitron text-lg font-bold text-slate-100 group-hover:text-amber-400 transition-colors">Mapping Uncharted Jump Points</div><p class="mt-2 text-sm text-slate-400 line-clamp-2">Lessons from three months beyond the outer rim trade lanes.</p><div class="mt-3 flex items-center justify-between text-xs text-slate-500"><span>February 28, 2024</span><div class="flex gap-4"><span>842 views</span><span>19 comments</span></div></div></div>
+                    </a>
+                    <a href="blog.html" class="group grid grid-cols-1 sm:grid-cols-[10rem_minmax(0,1fr)] gap-5 transition-colors">
+                      <div class="relative h-32 sm:h-28 overflow-hidden rounded-md border border-slate-800/80"><img src="assets/vanguard-real.jpg" alt="" class="h-full w-full object-cover opacity-75 group-hover:scale-105 transition-transform duration-500" /><div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 to-transparent"></div><div class="absolute bottom-2 left-2 font-orbitron text-[10px] uppercase tracking-wide text-amber-400">Operations</div></div>
+                      <div class="flex flex-col justify-center min-w-0"><div class="font-orbitron text-lg font-bold text-slate-100 group-hover:text-amber-400 transition-colors">Long-Range Recon: Field Notes</div><p class="mt-2 text-sm text-slate-400 line-clamp-2">What every exploration crew should pack before leaving charted space.</p><div class="mt-3 flex items-center justify-between text-xs text-slate-500"><span>January 12, 2024</span><div class="flex gap-4"><span>615 views</span><span>11 comments</span></div></div></div>
+                    </a>
+                  </div>
+                  <div class="mt-6 pt-6 border-t border-slate-600/30">
+                    <a href="blog.html" class="w-full h-11 border border-amber-400/50 text-amber-400 hover:bg-amber-400/10 font-orbitron text-xs uppercase tracking-wider rounded-md flex items-center justify-center gap-2">View All Blog Posts <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg></a>
+                  </div>
+                  </div>
+                </section>
+              </div>
+
+              <!-- Right column -->
+              <div class="space-y-6">
+                <section class="rounded-lg border border-slate-800/80 bg-slate-950/70 overflow-hidden">
+                  <div class="flex items-center justify-between mb-0 px-6 pb-4 pt-6 border-b border-slate-600/30 md:px-8 md:pt-8"><div class="flex items-center gap-3"><svg class="h-4 w-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg><h2 class="font-orbitron text-sm font-bold tracking-wider uppercase text-slate-100">Stats Overview</h2></div></div>
+                  <div class="p-6 pt-5 md:p-8">
+                  <div class="space-y-4 text-base">
+                    <div class="flex items-center justify-between"><span class="text-slate-400 font-exo">Total Ships</span><span class="font-orbitron text-lg font-bold text-amber-400">14</span></div>
+                    <div class="flex items-center justify-between"><span class="text-slate-400 font-exo">Blog Posts</span><span class="font-orbitron text-lg font-bold text-amber-400">7</span></div>
+                    <div class="flex items-center justify-between"><span class="text-slate-400 font-exo">Forum Posts</span><span class="font-orbitron text-lg font-bold text-amber-400">642</span></div>
+                    <div class="flex items-center justify-between"><span class="text-slate-400 font-exo">Reactions Received</span><span class="font-orbitron text-lg font-bold text-amber-400">1,840</span></div>
+                    <div class="flex items-center justify-between"><span class="text-slate-400 font-exo">Medals Earned</span><span class="font-orbitron text-lg font-bold text-amber-400">19</span></div>
+                    <div class="border-t border-slate-600/30 pt-4 mt-2 flex items-center justify-between"><div><div class="text-base text-slate-400 font-exo">Rank</div><div class="text-sm text-slate-400">Top 5% of Imperial Arms</div></div><span class="font-orbitron font-bold text-amber-400 text-3xl">#212</span></div>
+                  </div>
+                  </div>
+                </section>
+
+                <section class="rounded-lg border border-slate-800/80 bg-slate-950/70 overflow-hidden">
+                  <div class="flex items-center justify-between mb-0 px-6 pb-4 pt-6 border-b border-slate-600/30 md:px-8 md:pt-8">
+                    <div class="flex items-center gap-3"><svg class="h-4 w-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg><h2 class="font-orbitron text-sm font-bold tracking-wider uppercase text-slate-100">Medals</h2></div>
+                    <button type="button" onclick="switchTab('medals')" class="text-xs font-orbitron uppercase tracking-wider text-amber-400 hover:opacity-80 inline-flex items-center gap-1">View All <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg></button>
+                  </div>
+                  <div class="p-6 pt-5 md:p-8">
+                  <div class="grid grid-cols-3 gap-3">
+                    <div class="flex flex-col items-center text-center gap-2 p-2" title="Charted 50+ new routes"><div class="h-16 w-16 rounded-full border border-amber-400/40 bg-amber-400/10 text-amber-400 flex items-center justify-center"><svg class="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg></div><span class="text-[11px] leading-tight text-slate-400">Trailblazer</span></div>
+                    <div class="flex flex-col items-center text-center gap-2 p-2" title="10,000 ly traveled"><div class="h-16 w-16 rounded-full border border-teal-400/40 bg-teal-400/10 text-teal-400 flex items-center justify-center"><svg class="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg></div><span class="text-[11px] leading-tight text-slate-400">Long Haul</span></div>
+                    <div class="flex flex-col items-center text-center gap-2 p-2" title="Discovered a derelict"><div class="h-16 w-16 rounded-full border border-slate-600 bg-slate-800 text-slate-400 flex items-center justify-center"><svg class="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg></div><span class="text-[11px] leading-tight text-slate-400">First Contact</span></div>
+                    <div class="flex flex-col items-center text-center gap-2 p-2" title="Flawless navigation record"><div class="h-16 w-16 rounded-full border border-amber-400/40 bg-amber-400/10 text-amber-400 flex items-center justify-center"><svg class="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg></div><span class="text-[11px] leading-tight text-slate-400">Quantum Ace</span></div>
+                    <div class="flex flex-col items-center text-center gap-2 p-2" title="Deep space veteran"><div class="h-16 w-16 rounded-full border border-teal-400/40 bg-teal-400/10 text-teal-400 flex items-center justify-center"><svg class="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg></div><span class="text-[11px] leading-tight text-slate-400">Void Walker</span></div>
+                    <div class="flex flex-col items-center text-center gap-2 p-2" title="Cartography excellence"><div class="h-16 w-16 rounded-full border border-red-400/40 bg-red-400/10 text-red-400 flex items-center justify-center"><svg class="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg></div><span class="text-[11px] leading-tight text-slate-400">Cartographer</span></div>
+                  </div>
+                  </div>
+                </section>
+
+                <section class="rounded-lg border border-slate-800/80 bg-slate-950/70 overflow-hidden">
+                  <div class="flex items-center justify-between mb-0 px-6 pb-4 pt-6 border-b border-slate-600/30 md:px-8 md:pt-8"><div class="flex items-center gap-3"><svg class="h-4 w-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg><h2 class="font-orbitron text-sm font-bold tracking-wider uppercase text-slate-100">Company</h2></div></div>
+                  <div class="p-6 pt-5 md:p-8">
+                  <div class="flex items-center gap-6">
+                    <div class="h-20 w-20 rounded-full bg-red-500/15 border border-red-500/40 flex items-center justify-center shadow-[0_0_24px_rgba(239,68,68,0.18)]"><svg class="h-10 w-10 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.618 5.984A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg></div>
+                    <div><div class="font-orbitron text-xl font-bold text-slate-100">The Black Cohort</div><div class="text-base text-slate-400 mt-1.5">Vanguard</div></div>
+                  </div>
+                  <div class="grid grid-cols-3 gap-2 mt-6 pt-4 border-t border-slate-600/30 text-center">
+                    <div><div class="text-xs text-slate-400">Members</div><div class="font-orbitron text-lg font-bold text-slate-100 mt-1">142</div></div>
+                    <div><div class="text-xs text-slate-400">Ships</div><div class="font-orbitron text-lg font-bold text-slate-100 mt-1">87</div></div>
+                    <div><div class="text-xs text-slate-400">Rank</div><div class="font-orbitron text-lg font-bold text-slate-100 mt-1">#7</div></div>
+                  </div>
+                  <a href="members.html" class="w-full mt-6 h-10 border border-amber-400/50 text-amber-400 hover:bg-amber-400/10 font-orbitron text-xs uppercase tracking-wider rounded-md flex items-center justify-center gap-2">View Company <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg></a>
+                  </div>
+                </section>
+
+                <section class="rounded-lg border border-slate-800/80 bg-slate-950/70 overflow-hidden">
+                  <div class="flex items-center justify-between mb-0 px-6 pb-4 pt-6 border-b border-slate-600/30 md:px-8 md:pt-8"><div class="flex items-center gap-3"><svg class="h-4 w-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg><h2 class="font-orbitron text-sm font-bold tracking-wider uppercase text-slate-100">Recent Activity</h2></div></div>
+                  <div class="p-6 pt-5 md:p-8">
+                  <div class="space-y-5">
+                    <a href="blog-post.html" class="block hover:opacity-80 transition-opacity"><div class="flex gap-4"><div class="h-11 w-11 shrink-0 rounded-full bg-amber-400/10 border border-amber-400/40 flex items-center justify-center"><svg class="h-6 w-6 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></div><div class="min-w-0"><p class="text-base leading-7 text-slate-100">Published a new blog post: <span class="text-amber-400 font-semibold">The Future of Deep Space Exploration</span></p><span class="text-sm text-slate-400">1 day ago</span></div></div></a>
+                    <a href="forum.html" class="block hover:opacity-80 transition-opacity"><div class="flex gap-4"><div class="h-11 w-11 shrink-0 rounded-full bg-amber-400/10 border border-amber-400/40 flex items-center justify-center"><svg class="h-6 w-6 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg></div><div class="min-w-0"><p class="text-base leading-7 text-slate-100">Posted in forum: <span class="text-amber-400 font-semibold">Jump Point Discoveries</span></p><span class="text-sm text-slate-400">3 hours ago</span></div></div></a>
+                    <div><div class="flex gap-4"><div class="h-11 w-11 shrink-0 rounded-full bg-amber-400/10 border border-amber-400/40 flex items-center justify-center"><svg class="h-6 w-6 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></div><div class="min-w-0"><p class="text-base leading-7 text-slate-100">Updated ship: <span class="text-amber-400 font-semibold">Pathfinder</span></p><span class="text-sm text-slate-400">2 days ago</span></div></div></div>
+                    <div><div class="flex gap-4"><div class="h-11 w-11 shrink-0 rounded-full bg-amber-400/10 border border-amber-400/40 flex items-center justify-center"><svg class="h-6 w-6 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg></div><div class="min-w-0"><p class="text-base leading-7 text-slate-100">Earned medal: <span class="text-amber-400 font-semibold">Trailblazer</span></p><span class="text-sm text-slate-400">5 days ago</span></div></div></div>
+                  </div>
+                  </div>
+                </section>
+              </div>
+            </div>
+          </div>
+
+          <!-- SHIPS TAB -->
+          <div id="tab-ships" class="profile-panel hidden">
+            <section class="rounded-lg border border-slate-800/80 bg-slate-950/70 overflow-hidden">
+              <div class="flex items-center justify-between mb-0 px-6 pb-4 pt-6 border-b border-slate-600/30 md:px-8 md:pt-8"><div class="flex items-center gap-3"><svg class="h-4 w-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg><h2 class="font-orbitron text-sm font-bold tracking-wider uppercase text-slate-100">Hangar</h2></div></div>
+              <div class="p-6 pt-5 md:p-8">
+              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="rounded-md overflow-hidden border border-slate-800/80 bg-slate-950/60 group"><div class="relative h-40 overflow-hidden"><img src="assets/polaris-real.webp" alt="Anvil Carrack" class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500" /><div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent"></div></div><div class="p-3"><div class="font-orbitron text-sm font-bold text-slate-100">Pathfinder</div><div class="text-xs text-amber-400 mt-1">Expedition</div><div class="text-xs text-slate-500 mt-1">Crew: 6</div></div></div>
+                <div class="rounded-md overflow-hidden border border-slate-800/80 bg-slate-950/60 group"><div class="relative h-40 overflow-hidden"><img src="assets/vanguard-real.jpg" alt="MISC Freelancer DUR" class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500" /><div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent"></div></div><div class="p-3"><div class="font-orbitron text-sm font-bold text-slate-100">Swift Arrow</div><div class="text-xs text-amber-400 mt-1">Explorer</div><div class="text-xs text-slate-500 mt-1">Crew: 2</div></div></div>
+                <div class="rounded-md overflow-hidden border border-slate-800/80 bg-slate-950/60 group"><div class="relative h-40 overflow-hidden"><img src="assets/ironclad-real.webp" alt="Aegis Hammerhead" class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500" /><div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent"></div></div><div class="p-3"><div class="font-orbitron text-sm font-bold text-slate-100">Sentinel Wing</div><div class="text-xs text-amber-400 mt-1">Gunship</div><div class="text-xs text-slate-500 mt-1">Crew: 9</div></div></div>
+                <div class="rounded-md overflow-hidden border border-slate-800/80 bg-slate-950/60 group"><div class="relative h-40 overflow-hidden"><img src="assets/hoplite-real.jpg" alt="Anvil Hurricane" class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500" /><div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent"></div></div><div class="p-3"><div class="font-orbitron text-sm font-bold text-slate-100">Star Lance</div><div class="text-xs text-amber-400 mt-1">Heavy Fighter</div><div class="text-xs text-slate-500 mt-1">Crew: 2</div></div></div>
+              </div>
+              </div>
             </section>
+          </div>
 
-            {{-- Tabs --}}
-            <div class="flex border-y border-slate-800 bg-slate-950/95 px-8">
-                @foreach (['Overview', 'Ships', 'Blogs', 'Activity', 'Medals', 'Friends'] as $tab)
-                    <button class="border-b-2 px-8 py-5 text-sm uppercase tracking-wide transition
-                        {{ $loop->first ? 'border-amber-400 text-amber-400' : 'border-transparent text-slate-400 hover:text-amber-400' }}">
-                        {{ $tab }}
-                    </button>
-                @endforeach
-            </div>
+          <!-- BLOGS TAB -->
+          <div id="tab-blogs" class="profile-panel hidden">
+            <section class="rounded-lg border border-slate-800/80 bg-slate-950/70 overflow-hidden">
+              <div class="flex items-center justify-between mb-0 px-6 pb-4 pt-6 border-b border-slate-600/30 md:px-8 md:pt-8"><div class="flex items-center gap-3"><svg class="h-4 w-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg><h2 class="font-orbitron text-sm font-bold tracking-wider uppercase text-slate-100">Blog Posts</h2></div></div>
+              <div class="p-6 pt-5 md:p-8">
+              <div class="space-y-6">
+                <a href="blog-post.html" class="group grid grid-cols-1 sm:grid-cols-[12rem_minmax(0,1fr)] gap-5 border-b border-slate-600/25 pb-6"><div class="relative h-32 rounded-md border border-slate-800/80 overflow-hidden"><img src="assets/authentic-sc-fleet.jpg" alt="" class="h-full w-full object-cover opacity-75 group-hover:scale-105 transition-transform" /><div class="absolute bottom-2 left-2 font-orbitron text-[10px] uppercase text-amber-400">Technology</div></div><div><div class="font-orbitron text-xl font-bold text-slate-100 group-hover:text-amber-400">The Future of Deep Space Exploration</div><p class="mt-2 text-slate-400">Charting the unknown demands both courage and the right technology.</p><div class="mt-4 flex justify-between text-sm text-slate-500"><span>March 15, 2024</span><span>1.2K views · 34 comments</span></div></div></a>
+                <a href="blog.html" class="group grid grid-cols-1 sm:grid-cols-[12rem_minmax(0,1fr)] gap-5 border-b border-slate-600/25 pb-6"><div class="relative h-32 rounded-md border border-slate-800/80 overflow-hidden"><img src="assets/polaris-real.webp" alt="" class="h-full w-full object-cover opacity-75 group-hover:scale-105 transition-transform" /><div class="absolute bottom-2 left-2 font-orbitron text-[10px] uppercase text-amber-400">Exploration</div></div><div><div class="font-orbitron text-xl font-bold text-slate-100 group-hover:text-amber-400">Mapping Uncharted Jump Points</div><p class="mt-2 text-slate-400">Lessons from three months beyond the outer rim trade lanes.</p><div class="mt-4 flex justify-between text-sm text-slate-500"><span>February 28, 2024</span><span>842 views · 19 comments</span></div></div></a>
+                <a href="blog.html" class="group grid grid-cols-1 sm:grid-cols-[12rem_minmax(0,1fr)] gap-5"><div class="relative h-32 rounded-md border border-slate-800/80 overflow-hidden"><img src="assets/vanguard-real.jpg" alt="" class="h-full w-full object-cover opacity-75 group-hover:scale-105 transition-transform" /><div class="absolute bottom-2 left-2 font-orbitron text-[10px] uppercase text-amber-400">Operations</div></div><div><div class="font-orbitron text-xl font-bold text-slate-100 group-hover:text-amber-400">Long-Range Recon: Field Notes</div><p class="mt-2 text-slate-400">What every exploration crew should pack before leaving charted space.</p><div class="mt-4 flex justify-between text-sm text-slate-500"><span>January 12, 2024</span><span>615 views · 11 comments</span></div></div></a>
+              </div>
+              </div>
+            </section>
+          </div>
 
-            {{-- Content Background --}}
-            <div class="bg-slate-950/95 p-6">
-                <div class="grid gap-6 lg:grid-cols-[minmax(0,1fr)_360px]">
+          <!-- ACTIVITY TAB -->
+          <div id="tab-activity" class="profile-panel hidden">
+            <section class="rounded-lg border border-slate-800/80 bg-slate-950/70 overflow-hidden">
+              <div class="flex items-center justify-between mb-0 px-6 pb-4 pt-6 border-b border-slate-600/30 md:px-8 md:pt-8"><div class="flex items-center gap-3"><svg class="h-4 w-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg><h2 class="font-orbitron text-sm font-bold tracking-wider uppercase text-slate-100">Recent Activity</h2></div></div>
+              <div class="p-6 pt-5 md:p-8">
+              <div class="space-y-5">
+                <a href="blog-post.html" class="block hover:opacity-80"><div class="flex gap-4"><div class="h-11 w-11 rounded-full bg-amber-400/10 border border-amber-400/40 flex items-center justify-center"><svg class="h-6 w-6 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></div><div><p class="text-slate-100">Published a new blog post: <span class="text-amber-400 font-semibold">The Future of Deep Space Exploration</span></p><span class="text-sm text-slate-400">1 day ago</span></div></div></a>
+                <a href="forum.html" class="block hover:opacity-80"><div class="flex gap-4"><div class="h-11 w-11 rounded-full bg-amber-400/10 border border-amber-400/40 flex items-center justify-center"><svg class="h-6 w-6 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg></div><div><p class="text-slate-100">Posted in forum: <span class="text-amber-400 font-semibold">Jump Point Discoveries</span></p><span class="text-sm text-slate-400">3 hours ago</span></div></div></a>
+                <div class="flex gap-4"><div class="h-11 w-11 rounded-full bg-amber-400/10 border border-amber-400/40 flex items-center justify-center"><svg class="h-6 w-6 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></div><div><p class="text-slate-100">Updated ship: <span class="text-amber-400 font-semibold">Pathfinder</span></p><span class="text-sm text-slate-400">2 days ago</span></div></div>
+                <div class="flex gap-4"><div class="h-11 w-11 rounded-full bg-amber-400/10 border border-amber-400/40 flex items-center justify-center"><svg class="h-6 w-6 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg></div><div><p class="text-slate-100">Earned medal: <span class="text-amber-400 font-semibold">Trailblazer</span></p><span class="text-sm text-slate-400">5 days ago</span></div></div>
+              </div>
+              </div>
+            </section>
+          </div>
 
-                    {{-- Main Column --}}
-                    <main class="space-y-6">
+          <!-- MEDALS TAB -->
+          <div id="tab-medals" class="profile-panel hidden">
+            <section class="rounded-lg border border-slate-800/80 bg-slate-950/70 overflow-hidden">
+              <div class="flex items-center justify-between mb-0 px-6 pb-4 pt-6 border-b border-slate-600/30 md:px-8 md:pt-8"><div class="flex items-center gap-3"><svg class="h-4 w-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg><h2 class="font-orbitron text-sm font-bold tracking-wider uppercase text-slate-100">Medals &amp; Honors</h2></div></div>
+              <div class="p-6 pt-5 md:p-8">
+              <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div class="flex items-center gap-3 p-4 rounded-lg border border-slate-800/80 bg-slate-950/60"><div class="h-12 w-12 rounded-full border border-amber-400/40 bg-amber-400/10 text-amber-400 flex items-center justify-center shrink-0"><svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg></div><div><div class="font-orbitron text-sm font-bold text-slate-100">Trailblazer</div><div class="text-xs text-slate-400">Charted 50+ new routes</div></div></div>
+                <div class="flex items-center gap-3 p-4 rounded-lg border border-slate-800/80 bg-slate-950/60"><div class="h-12 w-12 rounded-full border border-teal-400/40 bg-teal-400/10 text-teal-400 flex items-center justify-center shrink-0"><svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg></div><div><div class="font-orbitron text-sm font-bold text-slate-100">Long Haul</div><div class="text-xs text-slate-400">10,000 ly traveled</div></div></div>
+                <div class="flex items-center gap-3 p-4 rounded-lg border border-slate-800/80 bg-slate-950/60"><div class="h-12 w-12 rounded-full border border-slate-600 bg-slate-800 text-slate-400 flex items-center justify-center shrink-0"><svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg></div><div><div class="font-orbitron text-sm font-bold text-slate-100">First Contact</div><div class="text-xs text-slate-400">Discovered a derelict</div></div></div>
+                <div class="flex items-center gap-3 p-4 rounded-lg border border-slate-800/80 bg-slate-950/60"><div class="h-12 w-12 rounded-full border border-amber-400/40 bg-amber-400/10 text-amber-400 flex items-center justify-center shrink-0"><svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg></div><div><div class="font-orbitron text-sm font-bold text-slate-100">Quantum Ace</div><div class="text-xs text-slate-400">Flawless navigation record</div></div></div>
+                <div class="flex items-center gap-3 p-4 rounded-lg border border-slate-800/80 bg-slate-950/60"><div class="h-12 w-12 rounded-full border border-teal-400/40 bg-teal-400/10 text-teal-400 flex items-center justify-center shrink-0"><svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg></div><div><div class="font-orbitron text-sm font-bold text-slate-100">Void Walker</div><div class="text-xs text-slate-400">Deep space veteran</div></div></div>
+                <div class="flex items-center gap-3 p-4 rounded-lg border border-slate-800/80 bg-slate-950/60"><div class="h-12 w-12 rounded-full border border-red-400/40 bg-red-400/10 text-red-400 flex items-center justify-center shrink-0"><svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg></div><div><div class="font-orbitron text-sm font-bold text-slate-100">Cartographer</div><div class="text-xs text-slate-400">Cartography excellence</div></div></div>
+              </div>
+              </div>
+            </section>
+          </div>
 
-                        {{-- About --}}
-                        <section class="overflow-hidden rounded-lg border border-slate-700/70 bg-slate-900/60">
-                            <div class="border-b border-slate-800 px-6 py-4">
-                                <h2 class="text-sm font-semibold uppercase tracking-wide text-white">
-                                    About Darth_Vexor
-                                </h2>
-                            </div>
-
-                            <div class="relative min-h-[300px] p-6">
-                                <div class="pointer-events-none absolute bottom-4 right-10 text-[260px] leading-none text-amber-400/5">
-                                    ✦
-                                </div>
-
-                                <p class="relative max-w-2xl text-sm leading-7 text-slate-300">
-                                    Veteran of countless campaigns and a strategist of the highest order.
-                                    Loyal to Imperial Arms and dedicated to its eternal dominance across the stars.
-                                </p>
-
-                                <div class="relative mt-10 grid max-w-3xl gap-x-20 gap-y-7 text-sm sm:grid-cols-2">
-                                    <div>
-                                        <p class="text-xs uppercase tracking-wide text-slate-500">Location</p>
-                                        <p class="mt-1 text-white">Bastion, Stanton System</p>
-                                    </div>
-
-                                    <div>
-                                        <p class="text-xs uppercase tracking-wide text-slate-500">Company</p>
-                                        <p class="mt-1 text-white">The Black Cohort</p>
-                                    </div>
-
-                                    <div>
-                                        <p class="text-xs uppercase tracking-wide text-slate-500">Role</p>
-                                        <p class="mt-1 text-white">Strategist</p>
-                                    </div>
-
-                                    <div>
-                                        <p class="text-xs uppercase tracking-wide text-slate-500">Interests</p>
-                                        <p class="mt-1 text-white">Fleet Command, PvP, Lore, Exploration</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-
-                        {{-- Ships --}}
-                        <section class="rounded-lg border border-slate-700/70 bg-slate-900/60 p-6">
-                            <div class="mb-5 flex items-center justify-between">
-                                <h2 class="text-sm font-semibold uppercase tracking-wide text-white">Ships</h2>
-                                <a href="#" class="text-xs uppercase text-amber-400 hover:text-amber-300">View All Ships →</a>
-                            </div>
-
-                            <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-                                @foreach ([
-                                    ['Aegis Idris-P', 'Corvette', 'Flagship', 'idris.jpg'],
-                                    ['Anvil F7C-M', 'Super Hornet Mk II', 'Personal', 'hornet.jpg'],
-                                    ['Drake Vulture', 'Salvage Ship', 'Personal', 'vulture.jpg'],
-                                    ['RSI Polaris', 'Corvette', 'Org Hangar', 'polaris.jpg'],
-                                ] as $ship)
-                                    <article class="overflow-hidden rounded-md border border-slate-700 bg-slate-950/70 transition hover:border-amber-400/60">
-                                        <img src="{{ asset("images/mockups/ships/" . $ship[3]) }}" alt="{{ $ship[0] }}" class="h-40 w-full object-cover">
-
-                                        <div class="p-4">
-                                            <h3 class="text-sm font-semibold uppercase text-white">{{ $ship[0] }}</h3>
-                                            <p class="mt-1 text-sm text-slate-400">{{ $ship[1] }}</p>
-                                            <p class="mt-3 text-xs uppercase text-slate-500">{{ $ship[2] }}</p>
-                                        </div>
-                                    </article>
-                                @endforeach
-                            </div>
-                        </section>
-
-                        {{-- Blogs --}}
-                        <section class="rounded-lg border border-slate-700/70 bg-slate-900/60 p-6">
-                            <div class="mb-5 flex items-center justify-between">
-                                <h2 class="text-sm font-semibold uppercase tracking-wide text-white">Blog Posts</h2>
-                                <a href="#" class="text-xs uppercase text-amber-400 hover:text-amber-300">View All Blogs →</a>
-                            </div>
-
-                            <div class="space-y-5">
-                                @foreach ([
-                                    ['Operation: Pyro Shield', 'A recap of our defensive operations in Pyro. Against all odds, Imperial Arms held the line.', 'May 10, 2024', 'pyro-shield.jpg'],
-                                    ['Fleet Tactics: Breaking the Line', 'Insight into formation breaking maneuvers and overwhelming the enemy through superior coordination.', 'Apr 28, 2024', 'fleet-tactics.jpg'],
-                                    ['Training the Next Generation', 'Building our members into elite pilots and leaders. Investment in training is investment in victory.', 'Mar 15, 2024', 'training.jpg'],
-                                ] as $post)
-                                    <article class="grid gap-5 border-b border-slate-800 pb-5 last:border-0 md:grid-cols-[200px_1fr]">
-                                        <img src="{{ asset("images/mockups/blogs/" . $post[3]) }}" alt="{{ $post[0] }}" class="h-28 w-full rounded-md object-cover">
-
-                                        <div>
-                                            <h3 class="text-lg font-semibold text-white">{{ $post[0] }}</h3>
-                                            <p class="mt-2 text-sm leading-6 text-slate-400">{{ $post[1] }}</p>
-
-                                            <div class="mt-3 flex items-center justify-between text-xs text-slate-500">
-                                                <span>{{ $post[2] }}</span>
-                                                <span>👁 2.1K &nbsp; 💬 142</span>
-                                            </div>
-                                        </div>
-                                    </article>
-                                @endforeach
-                            </div>
-
-                            <button class="mt-4 w-full rounded-md border border-slate-700 py-3 text-xs font-semibold uppercase text-amber-400 hover:border-amber-400">
-                                View All Blog Posts →
-                            </button>
-                        </section>
-
-                    </main>
-
-                    {{-- Sidebar --}}
-                    <aside class="space-y-6">
-                        <section class="rounded-lg border border-slate-700/70 bg-slate-900/60">
-                            <div class="border-b border-slate-800 px-6 py-4">
-                                <h2 class="text-sm font-semibold uppercase tracking-wide text-white">Stats Overview</h2>
-                            </div>
-
-                            <div class="divide-y divide-slate-800 px-6 py-3 text-sm">
-                                @foreach ([
-                                    ['Total Ships', '24'],
-                                    ['Blog Posts', '18'],
-                                    ['Forum Posts', '1,247'],
-                                    ['Reactions Received', '3,892'],
-                                    ['Medals Earned', '32'],
-                                    ['Rank', '#128'],
-                                ] as $stat)
-                                    <div class="flex items-center justify-between py-4">
-                                        <span class="uppercase text-slate-400">{{ $stat[0] }}</span>
-                                        <span class="text-lg text-amber-400">{{ $stat[1] }}</span>
-                                    </div>
-                                @endforeach
-
-                                <p class="pb-4 text-xs text-slate-500">Top 1% of Imperial Arms</p>
-                            </div>
-                        </section>
-
-                        <section class="rounded-lg border border-slate-700/70 bg-slate-900/60 p-6">
-                            <div class="mb-5 flex items-center justify-between">
-                                <h2 class="text-sm font-semibold uppercase tracking-wide text-white">Medals</h2>
-                                <a href="#" class="text-xs uppercase text-amber-400">View All →</a>
-                            </div>
-
-                            <div class="grid grid-cols-3 gap-5">
-                                @foreach (range(1, 6) as $medal)
-                                    <img src="{{ asset("images/mockups/medals/medal-" . $medal . ".png") }}" alt="Medal" class="aspect-square rounded object-cover">
-                                @endforeach
-                            </div>
-                        </section>
-
-                        <section class="rounded-lg border border-slate-700/70 bg-slate-900/60 p-6">
-                            <h2 class="mb-5 text-sm font-semibold uppercase tracking-wide text-white">Company</h2>
-
-                            <div class="flex items-center gap-4">
-                                <img src="{{ asset("images/mockups/company/black-cohort.png") }}" alt="The Black Cohort" class="h-20 w-20 rounded-full border border-red-500/50 object-cover">
-
-                                <div>
-                                    <h3 class="font-semibold text-white">The Black Cohort</h3>
-                                    <p class="text-sm text-amber-400">Executor</p>
-                                </div>
-                            </div>
-
-                            <div class="mt-6 grid grid-cols-3 text-center">
-                                <div><p class="text-lg text-amber-400">142</p><p class="text-xs text-slate-500">Members</p></div>
-                                <div><p class="text-lg text-amber-400">87</p><p class="text-xs text-slate-500">Ships</p></div>
-                                <div><p class="text-lg text-amber-400">#7</p><p class="text-xs text-slate-500">Rank</p></div>
-                            </div>
-
-                            <a href="#" class="mt-6 block rounded-md border border-slate-700 py-3 text-center text-xs font-semibold uppercase text-amber-400 hover:border-amber-400">
-                                View Company →
-                            </a>
-                        </section>
-
-                        <section class="rounded-lg border border-slate-700/70 bg-slate-900/60 p-6">
-                            <h2 class="mb-5 text-sm font-semibold uppercase tracking-wide text-white">Recent Activity</h2>
-
-                            <div class="space-y-5 text-sm">
-                                @foreach ([
-                                    ['Posted in forum:', 'Fleet Tactics Discussion', '2 hours ago'],
-                                    ['Published a new blog post:', 'Operation: Pyro Shield', '1 day ago'],
-                                    ['Updated ship:', 'Aegis Idris-P', '2 days ago'],
-                                    ['Earned medal:', 'Strategic Commander', '3 days ago'],
-                                ] as $activity)
-                                    <div>
-                                        <p class="text-slate-300">
-                                            {{ $activity[0] }}
-                                            <span class="text-amber-400">{{ $activity[1] }}</span>
-                                        </p>
-                                        <p class="mt-1 text-xs text-slate-500">{{ $activity[2] }}</p>
-                                    </div>
-                                @endforeach
-                            </div>
-                        </section>
-                    </aside>
-
-                </div>
-            </div>
+          <!-- FRIENDS TAB -->
+          <div id="tab-friends" class="profile-panel hidden">
+            <section class="rounded-lg border border-slate-800/80 bg-slate-950/70 overflow-hidden">
+              <div class="flex items-center justify-between mb-0 px-6 pb-4 pt-6 border-b border-slate-600/30 md:px-8 md:pt-8"><div class="flex items-center gap-3"><svg class="h-4 w-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg><h2 class="font-orbitron text-sm font-bold tracking-wider uppercase text-slate-100">Friends</h2></div></div>
+              <div class="p-6 pt-5 md:p-8">
+              <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                <a href="user-profile2.html" class="flex items-center gap-3 p-3 rounded-lg border border-slate-800/80 bg-slate-950/60 hover:border-amber-400/40 transition-colors"><div class="h-10 w-10 rounded-full border border-amber-400/30 bg-amber-400/10 text-amber-400 text-xs font-bold flex items-center justify-center shrink-0">JM</div><div class="min-w-0"><div class="font-orbitron text-sm font-bold text-slate-100 truncate">Commander Jake Morrison</div><div class="text-xs text-slate-400 truncate">Fleet Tactician</div></div></a>
+                <a href="user-profile2.html" class="flex items-center gap-3 p-3 rounded-lg border border-slate-800/80 bg-slate-950/60 hover:border-amber-400/40 transition-colors"><div class="h-10 w-10 rounded-full border border-amber-400/30 bg-amber-400/10 text-amber-400 text-xs font-bold flex items-center justify-center shrink-0">ML</div><div class="min-w-0"><div class="font-orbitron text-sm font-bold text-slate-100 truncate">Chief Engineer Marcus Liu</div><div class="text-xs text-slate-400 truncate">Head of Maintenance</div></div></a>
+                <a href="user-profile2.html" class="flex items-center gap-3 p-3 rounded-lg border border-slate-800/80 bg-slate-950/60 hover:border-amber-400/40 transition-colors"><div class="h-10 w-10 rounded-full border border-amber-400/30 bg-amber-400/10 text-amber-400 text-xs font-bold flex items-center justify-center shrink-0">EW</div><div class="min-w-0"><div class="font-orbitron text-sm font-bold text-slate-100 truncate">Lt. Commander Emma Watson</div><div class="text-xs text-slate-400 truncate">Recruitment Director</div></div></a>
+              </div>
+              </div>
+            </section>
+          </div>
 
         </div>
+      </div>
     </div>
-</div>
