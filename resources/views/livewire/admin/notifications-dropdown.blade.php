@@ -1,3 +1,4 @@
+                <div wire:poll.30s>
                     <flux:dropdown position="bottom" align="end">
                         <flux:button
                             variant="ghost"
@@ -104,4 +105,5 @@
                             </div>
                         </flux:menu>
                     </flux:dropdown>
+                </div>
 
