@@ -21,8 +21,6 @@ class GitHubWebhookController extends Controller
 
         abort_unless(hash_equals($signature, $request->header('X-Hub-Signature-256', '')), 403);
 
-        \Log::info('GitHub webhook received', $request->all());
-
         if ($request->header('X-GitHub-Event') !== 'push') {
             return response()->json(['ignored' => true]);
         }
