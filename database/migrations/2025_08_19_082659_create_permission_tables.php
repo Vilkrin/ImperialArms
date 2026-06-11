@@ -181,6 +181,12 @@ return new class extends Migration
         Permission::create(['name' => 'manage.site.content']);
         Permission::create(['name' => 'access.admin.panel']);
 
+        // Notifications
+        Permission::create(['name' => 'receive.github.notifications']);
+        Permission::create(['name' => 'receive.user.registration.notifications']);
+        Permission::create(['name' => 'receive.recruitment.notifications']);
+        Permission::create(['name' => 'receive.service.notifications']);
+
         // Pages
         Permission::create(['name' => 'view.pages']);
         Permission::create(['name' => 'create.pages']);

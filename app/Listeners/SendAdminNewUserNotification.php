@@ -23,10 +23,10 @@ class SendAdminNewUserNotification
      */
     public function handle(object $event): void
     {
-        $admins = User::permission('access.admin.panel')->get();
+        $recipients = User::permission('receive.user.registration.notifications')->get();
 
-        foreach ($admins as $admin) {
-            $admin->notify(
+        foreach ($recipients as $recipient) {
+            $recipient->notify(
                 new NewUserRegisteredNotification($event->user)
             );
         }

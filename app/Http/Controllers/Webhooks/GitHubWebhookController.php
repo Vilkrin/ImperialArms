@@ -34,7 +34,7 @@ class GitHubWebhookController extends Controller
         $message = $payload['head_commit']['message'] ?? 'Website code was updated.';
         $author = $payload['head_commit']['author']['name'] ?? 'GitHub';
 
-        $admins = User::permission('access.admin.panel')->get();
+        $admins = User::permission('receive.github.notifications')->get();
 
         foreach ($admins as $admin) {
             $admin->notify(new WebsiteUpdatedNotification(
