@@ -140,7 +140,7 @@
                     <div class="relative group">
                         <flux:navbar>
                             <flux:dropdown>
-                                <flux:navbar.item icon="briefcase" icon:trailing="chevron-down">Services</flux:navbar.item>
+                                <flux:navbar.item icon="briefcase" icon:trailing="chevron-down" class="cursor-pointer">Services</flux:navbar.item>
                                 <flux:navmenu> 
                                     <flux:navmenu.item href="{{ route('services.freight') }}">Freight Transport</flux:navmenu.item>
 
