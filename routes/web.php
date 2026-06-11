@@ -8,7 +8,6 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\FleetController;
 use App\Models\Post;
-use Illuminate\Support\Facades\Storage;
 
 
 Route::get('/', function () {
