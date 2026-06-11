@@ -20,78 +20,78 @@
 
                             <div class="max-h-80 overflow-y-auto">
                                 @forelse($notifications as $notification)
-                                    <flux:menu.item
-                                        x-on:click="$flux.modal('notification-{{ $notification->id }}').show()" class="cursor-pointer"
-                                    >
-                                        <div class="flex items-start gap-3">
-                                            <span class="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-amber-400"></span>
+                                    <flux:modal.trigger name="notification-{{ $notification->id }}">
+                                        <flux:menu.item class="cursor-pointer">
+                                            <div class="flex items-start gap-3">
+                                                <span class="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-amber-400"></span>
 
+                                                <div>
+                                                    <p class="text-sm font-medium text-slate-100">
+                                                        {{ $notification->data['title'] ?? 'Notification' }}
+                                                    </p>
+
+                                                    <p class="text-xs text-slate-400">
+                                                        {{ $notification->data['message'] ?? '' }}
+                                                    </p>
+
+                                                    <p class="mt-1 text-xs text-slate-500">
+                                                        {{ $notification->created_at->diffForHumans() }}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </flux:menu.item>
+                                    </flux:modal.trigger>
+
+                                    <flux:modal name="notification-{{ $notification->id }}" class="md:w-[32rem]">
+                                        <div class="space-y-4">
                                             <div>
-                                                <p class="text-sm font-medium text-slate-100">
-                                                    {{ $notification->data['title'] }}
-                                                </p>
+                                                <h2 class="text-lg font-semibold text-slate-100">
+                                                    {{ $notification->data['title'] ?? 'Notification' }}
+                                                </h2>
 
-                                                <p class="text-xs text-slate-400">
-                                                    {{ $notification->data['message'] }}
-                                                </p>
-
-                                                <p class="mt-1 text-xs text-slate-500">
+                                                <p class="mt-1 text-sm text-slate-400">
                                                     {{ $notification->created_at->diffForHumans() }}
                                                 </p>
                                             </div>
+
+                                            <div class="rounded-lg border border-slate-700 bg-slate-950/70 p-4">
+                                                <p class="text-sm text-slate-300 whitespace-pre-line">
+                                                    {{ $notification->data['commit_message'] ?? $notification->data['message'] ?? '' }}
+                                                </p>
+                                            </div>
+
+                                            @if(! empty($notification->data['branch']))
+                                                <p class="text-sm text-slate-400">
+                                                    Branch:
+                                                    <span class="text-slate-200">{{ $notification->data['branch'] }}</span>
+                                                </p>
+                                            @endif
+
+                                            @if(! empty($notification->data['author']))
+                                                <p class="text-sm text-slate-400">
+                                                    Author:
+                                                    <span class="text-slate-200">{{ $notification->data['author'] }}</span>
+                                                </p>
+                                            @endif
+
+                                            @if(! empty($notification->data['commit_url']))
+                                                <a
+                                                    href="{{ $notification->data['commit_url'] }}"
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    class="inline-flex text-sm font-medium text-amber-400 hover:text-amber-300"
+                                                >
+                                                    View commit on GitHub
+                                                </a>
+                                            @endif
                                         </div>
-                                    </flux:menu.item>
+                                    </flux:modal>
                                 @empty
                                     <div class="px-4 py-6 text-center text-sm text-slate-400">
                                         No notifications
                                     </div>
                                 @endforelse
                             </div>
-
-                            <flux:modal name="notification-{{ $notification->id }}" class="md:w-[32rem]">
-                                <div class="space-y-4">
-                                    <div>
-                                        <h2 class="text-lg font-semibold text-slate-100">
-                                            {{ $notification->data['title'] ?? 'Notification' }}
-                                        </h2>
-
-                                        <p class="mt-1 text-sm text-slate-400">
-                                            {{ $notification->created_at->diffForHumans() }}
-                                        </p>
-                                    </div>
-
-                                    <div class="rounded-lg border border-slate-700 bg-slate-950/70 p-4">
-                                        <p class="text-sm text-slate-300 whitespace-pre-line">
-                                            {{ $notification->data['commit_message'] ?? $notification->data['message'] ?? '' }}
-                                        </p>
-                                    </div>
-
-                                    @if(! empty($notification->data['branch']))
-                                        <p class="text-sm text-slate-400">
-                                            Branch:
-                                            <span class="text-slate-200">{{ $notification->data['branch'] }}</span>
-                                        </p>
-                                    @endif
-
-                                    @if(! empty($notification->data['author']))
-                                        <p class="text-sm text-slate-400">
-                                            Author:
-                                            <span class="text-slate-200">{{ $notification->data['author'] }}</span>
-                                        </p>
-                                    @endif
-
-                                    @if(! empty($notification->data['commit_url']))
-                                        <a
-                                            href="{{ $notification->data['commit_url'] }}"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            class="inline-flex text-sm font-medium text-amber-400 hover:text-amber-300"
-                                        >
-                                            View commit on GitHub
-                                        </a>
-                                    @endif
-                                </div>
-                            </flux:modal>
 
                             <flux:separator />
 
