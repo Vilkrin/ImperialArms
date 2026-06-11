@@ -14,66 +14,71 @@
         </flux:button>
 
         <flux:menu class="w-80 overflow-hidden rounded-lg border border-slate-700 bg-slate-900 p-0 shadow-xl">
-            <div class="flex items-center justify-between border-b border-slate-700 px-4 py-3">
-                <h3 class="text-sm font-semibold text-slate-100">Notifications</h3>
+            <div class="border-b border-slate-700 px-4 py-3">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-sm font-semibold text-slate-100">Notifications</h3>
 
-                @if($unreadCount > 0)
-                    <button
-                        type="button"
-                        wire:click="markAllAsRead"
-                        class="cursor-pointer text-xs text-amber-400 hover:text-amber-300"
-                    >
-                        Mark all read
-                    </button>
-                @endif
+                    <div class="flex items-center gap-3">
+                        @if($unreadCount > 0)
+                            <button
+                                type="button"
+                                wire:click="markAllAsRead"
+                                class="cursor-pointer text-xs text-amber-400 hover:text-amber-300"
+                            >
+                                Mark all read
+                            </button>
+                        @endif
 
-                @if($notifications->count() > 0)
-                    <button
-                        type="button"
-                        wire:click="clearAllNotifications"
-                        wire:confirm="Clear all notifications?"
-                        class="cursor-pointer text-xs text-red-400 hover:text-red-300"
-                    >
-                        Clear all
-                    </button>
-                @endif
+                        @if($notifications->count() > 0)
+                            <button
+                                type="button"
+                                wire:click="clearAllNotifications"
+                                wire:confirm="Clear all notifications?"
+                                class="cursor-pointer text-xs text-red-400 hover:text-red-300"
+                            >
+                                Clear all
+                            </button>
+                        @endif
+                    </div>
+                </div>
             </div>
 
             <div class="max-h-80 overflow-y-auto">
                 @forelse($notifications as $notification)
-                    <flux:menu.item
-                        as="button"
-                        type="button"
-                        wire:click="openNotification('{{ $notification->id }}')"
-                        class="w-full cursor-pointer border-b border-slate-700/50 px-4 py-3 text-left hover:bg-slate-800/60"
-                    >
-                        <div class="flex items-start gap-3">
-                            <span class="mt-2 h-2 w-2 flex-shrink-0 rounded-full {{ is_null($notification->read_at) ? 'bg-amber-400' : 'bg-slate-500' }}"></span>
+                    <div class="border-b border-slate-700/50 px-4 py-3 hover:bg-slate-800/60">
+                        <button
+                            type="button"
+                            wire:click="openNotification('{{ $notification->id }}')"
+                            class="w-full cursor-pointer text-left"
+                        >
+                            <div class="flex items-start gap-3">
+                                <span class="mt-2 h-2 w-2 flex-shrink-0 rounded-full {{ is_null($notification->read_at) ? 'bg-amber-400' : 'bg-slate-500' }}"></span>
 
-                            <div>
-                                <p class="text-sm font-medium text-slate-100">
-                                    {{ $notification->data['title'] ?? 'Notification' }}
-                                </p>
+                                <div>
+                                    <p class="text-sm font-medium text-slate-100">
+                                        {{ $notification->data['title'] ?? 'Notification' }}
+                                    </p>
 
-                                <p class="text-xs text-slate-400">
-                                    {{ Str::limit($notification->data['message'] ?? '', 80) }}
-                                </p>
+                                    <p class="text-xs text-slate-400">
+                                        {{ Str::limit($notification->data['message'] ?? '', 80) }}
+                                    </p>
 
-                                <p class="mt-1 text-xs text-slate-500">
-                                    {{ $notification->created_at->diffForHumans() }}
-                                </p>
-
-                                <button
-                                    type="button"
-                                    wire:click="clearNotification('{{ $notification->id }}')"
-                                    wire:confirm="Clear this notification?"
-                                    class="mt-2 cursor-pointer text-xs text-red-400 hover:text-red-300"
-                                >
-                                    Clear
-                                </button>
+                                    <p class="mt-1 text-xs text-slate-500">
+                                        {{ $notification->created_at->diffForHumans() }}
+                                    </p>
+                                </div>
                             </div>
-                        </div>
-                    </flux:menu.item>
+                        </button>
+
+                        <button
+                            type="button"
+                            wire:click="clearNotification('{{ $notification->id }}')"
+                            wire:confirm="Clear this notification?"
+                            class="ml-5 mt-2 cursor-pointer text-xs text-red-400 hover:text-red-300"
+                        >
+                            Clear
+                        </button>
+                    </div>
                 @empty
                     <div class="px-4 py-6 text-center text-sm text-slate-400">
                         No notifications
