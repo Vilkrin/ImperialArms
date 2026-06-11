@@ -26,6 +26,17 @@
                         Mark all read
                     </button>
                 @endif
+
+                @if($notifications->count() > 0)
+                    <button
+                        type="button"
+                        wire:click="clearAllNotifications"
+                        wire:confirm="Clear all notifications?"
+                        class="cursor-pointer text-xs text-red-400 hover:text-red-300"
+                    >
+                        Clear all
+                    </button>
+                @endif
             </div>
 
             <div class="max-h-80 overflow-y-auto">
@@ -51,6 +62,15 @@
                                 <p class="mt-1 text-xs text-slate-500">
                                     {{ $notification->created_at->diffForHumans() }}
                                 </p>
+
+                                <button
+                                    type="button"
+                                    wire:click="clearNotification('{{ $notification->id }}')"
+                                    wire:confirm="Clear this notification?"
+                                    class="mt-2 cursor-pointer text-xs text-red-400 hover:text-red-300"
+                                >
+                                    Clear
+                                </button>
                             </div>
                         </div>
                     </flux:menu.item>

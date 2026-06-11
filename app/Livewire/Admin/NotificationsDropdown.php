@@ -44,6 +44,21 @@ class NotificationsDropdown extends Component
             ->markAsRead();
     }
 
+    public function clearNotification(string $id): void
+    {
+        auth()->user()
+            ->notifications()
+            ->where('id', $id)
+            ->delete();
+    }
+
+    public function clearAllNotifications(): void
+    {
+        auth()->user()
+            ->notifications()
+            ->delete();
+    }
+
     public function render()
     {
         return view('livewire.admin.notifications-dropdown', [
