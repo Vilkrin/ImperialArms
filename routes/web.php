@@ -8,6 +8,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\FleetController;
 use App\Models\Post;
+use App\Http\Controllers\Webhooks\GitHubWebhookController;
 
 
 Route::get('/', function () {
@@ -169,3 +170,7 @@ Route::prefix('admin')->name('admin.')->middleware('auth', 'verified', 'permissi
     })->name('settings')
         ->middleware('permission:manage.site.settings');
 });
+
+
+Route::post('/webhooks/github', GitHubWebhookController::class)
+    ->name('webhooks.github');
