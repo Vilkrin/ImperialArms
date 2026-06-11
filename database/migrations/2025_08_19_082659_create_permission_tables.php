@@ -307,6 +307,11 @@ return new class extends Migration
             'manage.site.content',
             'view.activity.logs',
             'export.activity.logs',
+            'receive.github.notifications',
+            'receive.user.registration.notifications',
+            'receive.recruitment.notifications',
+            'receive.service.notifications',
+
         ]);
 
         // Org Member
