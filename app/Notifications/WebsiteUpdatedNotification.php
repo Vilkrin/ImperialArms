@@ -18,6 +18,9 @@ class WebsiteUpdatedNotification extends Notification
         public string $title,
         public string $message,
         public ?string $url = null,
+        public ?string $commitUrl = null,
+        public ?string $branch = null,
+        public ?string $author = null,
     ) {
         //
     }
@@ -55,6 +58,11 @@ class WebsiteUpdatedNotification extends Notification
             'message' => $this->message,
             'url' => $this->url,
             'icon' => 'code-bracket',
+
+            'commit_message' => $this->message,
+            'commit_url' => $this->commitUrl,
+            'branch' => $this->branch,
+            'author' => $this->author,
         ];
     }
 }

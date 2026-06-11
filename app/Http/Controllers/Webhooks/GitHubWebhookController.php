@@ -40,7 +40,10 @@ class GitHubWebhookController extends Controller
             $admin->notify(new WebsiteUpdatedNotification(
                 title: 'Website update pushed',
                 message: $author . ' pushed to ' . $branch . ': ' . $message,
-                url: route('admin.dashboard')
+                url: route('admin.dashboard'),
+                commitUrl: $payload['head_commit']['url'] ?? null,
+                branch: $branch,
+                author: $author,
             ));
         }
 
