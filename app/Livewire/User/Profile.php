@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\User;
 
 use Livewire\Component;
 use App\Models\Post;
 use App\Models\User;
+use App\Models\UserProfile;
 use App\Models\MemberShip;
 use Livewire\WithPagination;
 
-class UserProfile extends Component
+class Profile extends Component
 {
     use WithPagination;
 
@@ -86,7 +87,7 @@ class UserProfile extends Component
 
     public function render()
     {
-        return view('livewire.user-profile', [
+        return view('livewire.user.profile', [
             'paginatedShips' => $this->paginatedShips(),
             'paginatedPosts' => $this->paginatedPosts(),
         ]);

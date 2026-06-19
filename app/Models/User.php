@@ -93,6 +93,10 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia, Passkey
         $this->addMediaCollection('avatars')->singleFile();
     }
 
+    public function profile()
+    {
+        return $this->hasOne(UserProfile::class);
+    }
 
     public function dossier()
     {

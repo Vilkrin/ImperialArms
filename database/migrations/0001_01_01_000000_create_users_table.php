@@ -21,8 +21,6 @@ return new class extends Migration
             $table->string('status')->default('active');
             $table->timestamp('last_login_at')->nullable();
             $table->timestamp('last_seen')->nullable();
-            $table->text('bio')->nullable();
-            $table->string('tagline')->nullable();
             $table->timestamps();
         });
 
