@@ -5,12 +5,14 @@ namespace App\Livewire;
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\UserProfile;
 use Livewire\Attributes\Validate;
 use Flux\Flux;
 
 class ProfileMain extends Component
 {
     public User $user;
+    public UserProfile $userprofile;
     public $password;
 
     #[Validate('required|string|max:255')]
@@ -31,8 +33,8 @@ class ProfileMain extends Component
 
         $this->name = $this->user->name;
         $this->email = $this->user->email;
-        $this->tagline = $this->user->tagline;
-        $this->bio = $this->user->bio;
+        $this->tagline = $this->userprofile->tagline;
+        $this->bio = $this->userprofile->bio;
     }
 
     public function save()
