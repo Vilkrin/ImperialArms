@@ -31,6 +31,8 @@ class ProfileMain extends Component
     {
         $this->user = Auth::user();
 
+        $this->userprofile = $this->user->profile()->firstOrCreate();
+
         $this->name = $this->user->name;
         $this->email = $this->user->email;
         $this->tagline = $this->userprofile->tagline;
@@ -44,6 +46,9 @@ class ProfileMain extends Component
         $this->user->update([
             'name' => $this->name,
             'email' => $this->email,
+        ]);
+
+        $this->userprofile->update([
             'tagline' => $this->tagline,
             'bio' => $this->bio,
         ]);
