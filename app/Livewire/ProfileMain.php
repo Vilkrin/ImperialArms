@@ -53,7 +53,11 @@ class ProfileMain extends Component
             'bio' => $this->bio,
         ]);
 
-        Flux::success('Profile updated successfully.');
+        Flux::toast(
+            heading: 'Success',
+            text: 'Profile updated successfully.',
+            variant: 'success',
+        );
     }
 
     public function render()
