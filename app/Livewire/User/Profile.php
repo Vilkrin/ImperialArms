@@ -22,7 +22,7 @@ class Profile extends Component
 
     public function mount(User $user): void
     {
-        $this->user = $user;
+        $this->user = $user->load('profile');
 
         $this->avatarUrl = $user->getFirstMediaUrl('avatars')
             ?: asset('assets/avatars/default-avatar.png');

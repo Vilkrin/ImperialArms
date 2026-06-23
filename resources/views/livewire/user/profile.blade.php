@@ -52,7 +52,7 @@
 
                 @if($user->tagline)
                     <p class="mt-4 italic text-base leading-7 text-slate-200/80 font-exo max-w-3xl">
-                        "{{ $user->tagline }}"
+                        "{{ $user->profile->tagline }}"
                     </p>
                 @else
                     <p class="mt-4 italic text-base leading-7 text-slate-500 font-exo max-w-3xl">
@@ -101,9 +101,9 @@
                   <div class="p-6 pt-5 md:p-8 relative z-10">
                     <div class="max-w-[58%] min-w-[280px] md:min-w-[460px] space-y-6 text-left">
 
-                      @if($user->bio)
+                      @if($user->profile->bio)
                           <p class="text-lg text-slate-400 font-exo leading-8">
-                              {{ $user->bio }}
+                              {{ $user->profile->bio }}
                           </p>
                       @else
                           <p class="text-lg text-slate-500 font-exo leading-8 italic">
