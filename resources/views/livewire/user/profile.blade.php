@@ -50,7 +50,7 @@
                     </span>
                 </div>
 
-                @if($user->tagline)
+                @if($user->profile->tagline)
                     <p class="mt-4 italic text-base leading-7 text-slate-200/80 font-exo max-w-3xl">
                         "{{ $user->profile->tagline }}"
                     </p>
