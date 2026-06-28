@@ -132,7 +132,7 @@ class Seo extends Component
             'twitter_creator' => 'nullable|string|max:255',
 
             'socialPreviewUpload' => 'nullable|image|max:10240',
-            'faviconUpload' => 'nullable|image|max:2048',
+            'faviconUpload' => 'nullable|file|mimes:ico|extensions:ico|max:256',
             'appleTouchIconUpload' => 'nullable|image|max:2048',
 
             'theme_color' => 'nullable|string|max:20',

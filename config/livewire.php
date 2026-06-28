@@ -162,6 +162,7 @@ return [
             'mpga',
             'webp',
             'wma',
+            'ico',
         ],
         'max_upload_time' => 5, // Max duration (in minutes) before an upload is invalidated...
         'cleanup' => true, // Should cleanup temporary uploads older than 24 hrs...
